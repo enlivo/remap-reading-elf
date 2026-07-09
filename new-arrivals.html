@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals | The Reading Elf</title>
+    <meta name="description" content="Check out the newest additions to our magical collection.">
+    <meta name="author" content="The Reading Elf">
+    <link rel="icon" href="/assets/images/logo.webp">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Shared header/footer component -->
+    <script src="./js/components.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[#F8F9FA] text-gray-800">
+
+    <div id="site-header"></div>
+
+    <main class="pt-[100px] lg:pt-[120px]">
+        <!-- Banner -->
+        <section class="bg-[#FF8C00] py-16 text-center text-white">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">New Arrivals</h1>
+                <p class="text-lg md:text-xl font-medium">Discover our latest handpicked stories that spark imagination.</p>
+            </div>
+        </section>
+
+        <!-- Books List -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Book 1 -->
+                    <div class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center transition-transform hover:-translate-y-2 hover:shadow-lg">
+                        <img src="/assets/images/book-1.webp" alt="New Book 1" class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
+                        <h3 class="text-xl font-bold text-[#2C3E50] mb-2 text-center">✨ The Magic of Stories</h3>
+                        <p class="text-gray-500 font-medium mb-4 text-center">By Shwetha</p>
+                        <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow text-center">A magical journey into the world of stories and imagination for kids of all ages.</p>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center transition-transform hover:-translate-y-2 hover:shadow-lg">
+                        <img src="/assets/images/lewis/book.jpeg" alt="New Book 2" class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
+                        <h3 class="text-xl font-bold text-[#2C3E50] mb-2 text-center">🗺️ Adventure Awaits</h3>
+                        <p class="text-gray-500 font-medium mb-4 text-center">By C.S. Lewis</p>
+                        <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow text-center">Join the adventure as we explore new worlds and discover hidden treasures.</p>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center transition-transform hover:-translate-y-2 hover:shadow-lg">
+                        <img src="/assets/images/eric/book-month.webp" alt="New Book 3" class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
+                        <h3 class="text-xl font-bold text-[#2C3E50] mb-2 text-center">🌿 The Tiny Explorer</h3>
+                        <p class="text-gray-500 font-medium mb-4 text-center">By Eric Carle</p>
+                        <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow text-center">Follow the tiny explorer on a big journey across the garden.</p>
+                    </div>
+
+                    <!-- Book 4 -->
+                    <div class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center transition-transform hover:-translate-y-2 hover:shadow-lg">
+                        <img src="/assets/images/flags-book.webp" alt="New Book 4" class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
+                        <h3 class="text-xl font-bold text-[#2C3E50] mb-2 text-center">💡 Fascinating Flags</h3>
+                        <p class="text-gray-500 font-medium mb-4 text-center">By Adhruth</p>
+                        <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow text-center">Learn about flags from around the world in a fun way.</p>
+                    </div>
+
+                    <!-- Book 5 -->
+                    <div class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center transition-transform hover:-translate-y-2 hover:shadow-lg">
+                        <img src="/assets/images/book-2.webp" alt="New Book 5" class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
+                        <h3 class="text-xl font-bold text-[#2C3E50] mb-2 text-center">✨ Discovering Magic</h3>
+                        <p class="text-gray-500 font-medium mb-4 text-center">By The Reading Elf</p>
+                        <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow text-center">A beautiful story about finding magic in everyday life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+</body>
+
+</html>

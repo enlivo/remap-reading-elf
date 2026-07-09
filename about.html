@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | The Reading Elf – Where Stories Begin With Love</title>
+    <meta name="description"
+        content="Learn the story behind The Reading Elf — a magical children's bookstore born from a mother's love and a child's imagination. Chennai's first reading experience studio.">
+    <meta name="keywords"
+        content="about The Reading Elf, children bookstore Chennai, reading experience studio, kids books India">
+    <meta name="author" content="The Reading Elf">
+
+    <link rel="icon" href="/assets/images/logo.webp">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Shared header/footer + Book of Month widget -->
+    <script src="./js/components.js" defer></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ── YouTube background video cover trick ── */
+        .yt-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .yt-bg-wrapper iframe {
+            position: absolute;
+            /* Centre & over-scale so it covers any viewport ratio */
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            /* 16:9 ratio */
+            min-height: 100%;
+            min-width: 177.78vh;
+            /* 16:9 ratio inverted */
+            transform: translate(-50%, -50%);
+            border: 0;
+        }
+
+        /* Dark gradient overlay */
+        .yt-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.45) 60%,
+                    rgba(0, 0, 0, 0.65) 100%);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-[#FEFFE0] text-gray-800">
+
+    <!-- Shared Header (injected by js/components.js) -->
+    <div id="site-header"></div>
+
+    <main>
+
+        <!-- ═══════════════════════════════════════════════════
+             HERO BANNER — YouTube Video Background
+        ════════════════════════════════════════════════════ -->
+        <section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
+
+            <!-- YouTube background (autoplay, muted, loop, no controls) -->
+            <div class="yt-bg-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/pfuB_IEo40c?autoplay=1&mute=1&loop=1&playlist=pfuB_IEo40c&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+                    title="The Reading Elf – Store Tour" allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Dark overlay -->
+            <div class="yt-overlay"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+
+                <!-- Badge -->
+                <div
+                    class="inline-block bg-[#008BED] text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 tracking-wide">
+                    About Us
+                </div>
+
+                <!-- Main heading — uses Kindbond (h1/h2 in style.css) -->
+                <h1 class="text-4xl md:text-6xl text-white leading-tight mb-3">
+                    Where Stories Begin
+                </h1>
+                <h2 class="text-3xl md:text-5xl text-orange-500 mb-6">
+                    With Love
+                </h2>
+
+                <!-- Subtitle -->
+                <p class="text-white/80 text-base md:text-xl font-light leading-relaxed max-w-xl mx-auto mb-10">
+                    A mother. A child. And one little drawing that became a world.
+                </p>
+
+
+            </div>
+
+            <!-- Scroll hint -->
+            <div
+                class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/60 text-xs">
+                <span>Scroll</span>
+                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             OUR STORY SECTION
+        ════════════════════════════════════════════════════ -->
+        <section id="our-story" class="bg-[#F3E8D0] py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+                    <!-- ── LEFT: Text ── -->
+                    <div class="flex-1 order-2 md:order-1 text-center md:text-left">
+
+                        <!-- Heading — Kindbond via style.css h1/h2 rule -->
+                        <h2 class="text-4xl md:text-5xl text-[#6B3E2E] mb-6">
+                            Our Story
+                        </h2>
+
+                        <!-- Quote -->
+                        <blockquote class="border-l-4 border-[#6B3E2E]/30 pl-4 mb-6">
+                            <p class="italic text-gray-700 text-base md:text-lg leading-relaxed">
+                                "If the bookstore we imagine doesn't exist yet
+                            </p>
+                            <p class="italic text-green-700 font-semibold text-base md:text-lg">
+                                then let's build it."
+                            </p>
+                        </blockquote>
+
+                        <!-- Body -->
+                        <p class="text-[#333] text-base md:text-lg leading-relaxed mb-5">
+                            The Reading Elf was born from a tender moment — a mother searching for magic
+                            for her little boy. We spent afternoons wandering bookshops, but he always
+                            imagined somewhere more alive. Somewhere to curl up under a glowing lamp,
+                            open a book, and feel the world shimmer.
+                        </p>
+
+                        <p class="text-[#333] text-base md:text-lg leading-relaxed">
+                            A place where children could giggle, wander, sit on the floor, and simply
+                            be themselves between pages.
+                        </p>
+
+                    </div>
+
+                    <!-- ── RIGHT: Image ── -->
+                    <div class="flex-1 order-1 md:order-2 flex justify-center">
+                        <!-- Yellow border frame matching the design -->
+                        <div class="relative">
+                            <div class="overflow-hidden
+                                        w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
+                                <img src="/assets/images/about/story.webp"
+                                    alt="Mother and child — the heart of The Reading Elf"
+                                    class="w-full h-full object-cover block">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             ABOUT THE MOTHER SECTION
+        ════════════════════════════════════════════════════ -->
+        <section id="about-the-mother" class="bg-white py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+                    <!-- ── LEFT: Image with name caption ── -->
+                    <div class="flex-1 order-1 flex justify-center">
+                        <div class="relative">
+                            <div class=" overflow-hidden
+                                        w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
+                                <img src="/assets/images/about/mother.webp"
+                                    alt="Shwetha Subbiah Balakrishnan — Founder of The Reading Elf"
+                                    class="w-full object-cover block">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── RIGHT: Text ── -->
+                    <div class="flex-1 order-2 text-center md:text-left">
+
+                        <h2 class="text-4xl md:text-5xl text-[#6B3E2E] mb-3 leading-tight">
+                            About the <span class="text-orange-500">Mother</span>
+                        </h2>
+
+                        <p class="text-gray-500 text-base mb-6 font-medium">The Builder of Dreams</p>
+
+                        <div class="space-y-4 text-[#333] text-base md:text-lg leading-relaxed">
+                            <p>She saw more than just a drawing. She saw a world waiting to be created.</p>
+                            <p>Instead of letting it remain a sketch, she turned it into a real space for children.</p>
+                            <p>She believes reading should feel joyful, not something children are forced to do.</p>
+                            <p>Through The Reading Elf, she created a place where imagination feels real.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════
+             ABOUT THE SON SECTION
+        ════════════════════════════════════════════════════ -->
+    <section id="about-the-son" class="bg-[#2F6B4F] py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+
+                <!-- ── LEFT: Text ── -->
+                <div class="flex-1 order-2 md:order-1 text-center md:text-left">
+
+                    <h2 class="text-4xl md:text-5xl text-white mb-3 leading-tight">
+                        About the <span class="text-orange-400">Son</span>
+                    </h2>
+
+                    <p class="text-orange-300 text-base mb-6 font-medium">Chief Book Explorer</p>
+
+                    <div class="space-y-4 text-white/85 text-base md:text-lg leading-relaxed">
+                        <p>The Reading Elf began with him.</p>
+                        <p>His imagination. His love for stories. His endless curiosity.</p>
+                        <p>He drew the mushroom house that became our identity.</p>
+                        <p>Today, he is still part of the store, helping kids discover books they love.</p>
+                        <p>Look out for his picks around the store.</p>
+                    </div>
+
+                </div>
+
+                <!-- ── RIGHT: Image ── -->
+                <div class="flex-1 order-1 md:order-2 flex justify-center">
+                    <div class="relative">
+                        <div class="overflow-hidden
+                                        w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
+                            <img src="/assets/images/about/son.webp"
+                                alt="Adhruth Subbiah Balakrishnan — Chief Book Explorer at The Reading Elf"
+                                class="w-full object-cover block">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+             OUTRO: MORE THAN JUST A BOOKSTORE
+        ════════════════════════════════════════════════════ -->
+    <section id="more-than-bookstore" class="bg-[#E67A6B] py-20 md:py-32 text-center relative overflow-hidden">
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+
+            <!-- Mushroom Logo -->
+            <div class="flex justify-center mb-8">
+                <img src="/assets/images/logo.webp" alt="The Reading Elf logo" class="w-32 md:w-40 object-contain">
+            </div>
+
+            <!-- Main Heading (Kindbond) -->
+            <h2 class="text-4xl md:text-6xl text-white mb-6 leading-tight">
+                More Than Just a <span class="text-[#F5C842] italic">Bookstore</span>
+            </h2>
+
+            <!-- Story Text -->
+            <p class="text-white/90 text-lg md:text-2xl mb-8 font-medium">
+                The Reading Elf is a story of love, imagination, and belief.
+            </p>
+
+            <!-- Core Pillars -->
+            <div class="space-y-3 mb-16">
+                <p class="text-white/80 text-base md:text-xl font-light italic">A mother who believed.</p>
+                <p class="text-white/80 text-base md:text-xl font-light italic">A child who imagined.</p>
+                <p class="text-white/80 text-base md:text-xl font-light italic">And a space where stories come alive.
+                </p>
+            </div>
+
+            <!-- Ending Lines -->
+            <div class="space-y-2 mt-12">
+                <p class="text-white text-2xl md:text-4xl font-semibold tracking-tight">From one drawing...</p>
+                <p class="text-white text-2xl md:text-4xl font-semibold tracking-tight">to a world full of stories.</p>
+            </div>
+
+        </div>
+        <div class="absolute left-0 right-0 bottom-0 h-[357px] w-full z-[1]">
+            <img src="./assets/images/book-bg.webp" alt="Bookshelf background" class="w-full h-[357px] object-cover" />
+
+        </div>
+
+    </section>
+
+    </main>
+
+    <!-- Shared Footer (injected by js/components.js) -->
+    <div id="site-footer"></div>
+
+</body>
+
+</html>

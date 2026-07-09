@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Book of the Month: The Very Hungry Caterpillar | The Reading Elf</title>
+
+    <meta name="description"
+        content="Explore this month's featured book: The Very Hungry Caterpillar by Eric Carle. Learn about the story, life cycles, and counting in a fun, interactive way.">
+    <meta name="keywords"
+        content="The Very Hungry Caterpillar, Eric Carle, kids books, book of the month, reading for children">
+    <meta name="author" content="The Reading Elf">
+
+    <link rel="icon" href="/assets/images/logo.webp">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Shared header/footer component -->
+    <script src="./js/components.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --caterpillar-green: #3B7A57;
+            --caterpillar-red: #DC4920;
+            --caterpillar-yellow: #FFD23D;
+            --pastel-sky: #E0F2FE;
+            --pastel-grass: #DCFCE7;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(180deg, var(--pastel-sky) 0%, var(--pastel-sky) 60%, var(--pastel-grass) 60%, var(--pastel-grass) 100%);
+        }
+
+        .tilted-book {
+            transform: rotate(-8deg) translateY(0);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(20px 20px 40px rgba(0, 0, 0, 0.15));
+        }
+
+        .tilted-book:hover {
+            transform: rotate(-5deg) translateY(-10px) scale(1.02);
+        }
+
+        .life-cycle-line {
+            position: relative;
+        }
+
+        .life-cycle-line::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: dashed #CBD5E1;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 1;
+            background: white;
+            border: 4px solid #F1F5F9;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-step:hover {
+            border-color: var(--caterpillar-green);
+            transform: scale(1.1);
+        }
+
+        .learning-card {
+            background: #ffffff;
+            border: 2px solid #F1F5F9;
+            transition: all 0.3s ease;
+        }
+
+        .learning-card:hover {
+            border-color: var(--caterpillar-yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .author-section {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+        }
+
+        .collage-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66 3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm14-46c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-37-40c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-19 8c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-6 20c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm21 22c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm24 35c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-30-53c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-7 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-24-28c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm4-3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm66 66c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-11-20c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm20-11c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-21-7c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM61 5c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z' fill='%236B3E2E' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Shared Header (injected by js/components.js) -->
+    <div id="site-header"></div>
+
+    <main>
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="hero-gradient relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
+
+                <!-- Left: Book Cover -->
+                <div class="flex justify-center md:justify-start order-2 md:order-1">
+                    <div class="relative w-[300px] md:w-[450px]">
+                        <img src="/assets/images/eric/book-month.webp" alt="The Very Hungry Caterpillar cover"
+                            class="tilted-book w-full h-auto rounded-lg shadow-2xl">
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="text-center md:text-left order-1 md:order-2">
+                    <div
+                        class="inline-block bg-[#008BED] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase">
+                        📚 Book of the Month
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl font-bold text-[#6B3E2E] leading-tight mb-4">
+                        The Very <br>
+                        <span class="text-green-600">Hungry</span> <br>
+                        Caterpillar
+                    </h1>
+
+                    <p class="text-gray-500 text-lg md:text-xl font-medium mb-6">By Eric Carle</p>
+
+                    <p class="text-gray-700 text-base md:text-lg max-w-lg mb-10 leading-relaxed">
+                        A simple, colorful story about a tiny caterpillar who eats, grows, and transforms into a
+                        beautiful butterfly. A worldwide favorite for over 50 years!
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Sun decoration -->
+            <div class="absolute top-10 right-10 w-32 h-32 bg-yellow-300 rounded-full blur-xl opacity-30 animate-pulse">
+            </div>
+        </section>
+
+        <!-- 2. ABOUT THE BOOK (Timeline) -->
+        <section id="about" class="py-24 bg-white collage-bg">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl text-[#6B3E2E] mb-4">The Life of a Caterpillar</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Follow the magical journey of growth and transformation
+                        through Eric Carle's iconic life cycle.</p>
+                </div>
+
+                <div class="relative">
+                    <!-- Progress Line -->
+                    <div class="hidden md:block absolute top-[60px] left-0 right-0 h-1 bg-dashed bg-gray-200 z-0"></div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+
+                        <!-- Step 1: Egg -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="timeline-step w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                                <span class="text-4xl">🥚</span>
+                            </div>
+                            <h3 class="font-bold text-[#6B3E2E] mb-2">The Egg</h3>
+                            <p class="text-sm text-gray-500">In the light of the moon, a little egg lay on a leaf.</p>
+                        </div>
+
+                        <!-- Step 2: Caterpillar -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="timeline-step w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                                <span class="text-4xl">🐛</span>
+                            </div>
+                            <h3 class="font-bold text-[#6B3E2E] mb-2">Hatching</h3>
+                            <p class="text-sm text-gray-500">One Sunday morning, a tiny caterpillar popped out.</p>
+                        </div>
+
+                        <!-- Step 3: Eating -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="timeline-step w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                                <span class="text-4xl">🍎</span>
+                            </div>
+                            <h3 class="font-bold text-[#6B3E2E] mb-2">Eating</h3>
+                            <p class="text-sm text-gray-500">He started to look for some food. He was very hungry!</p>
+                        </div>
+
+                        <!-- Step 4: Cocoon -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="timeline-step w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                                <span class="text-4xl">🏠</span>
+                            </div>
+                            <h3 class="font-bold text-[#6B3E2E] mb-2">The Cocoon</h3>
+                            <p class="text-sm text-gray-500">He built a small house, called a cocoon, around himself.
+                            </p>
+                        </div>
+
+                        <!-- Step 5: Butterfly -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="timeline-step w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                                <span class="text-4xl">🦋</span>
+                            </div>
+                            <h3 class="font-bold text-[#6B3E2E] mb-2">Butterfly</h3>
+                            <p class="text-sm text-gray-500">He nibbled a hole... and he was a beautiful butterfly!</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. WHY KIDS LOVE THIS BOOK -->
+        <section class="py-24 bg-[#FEFFE0]">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <h2 class="text-4xl md:text-5xl text-[#6B3E2E] text-center mb-16">Why Kids Love This Book</h2>
+
+                <div class="grid md:grid-cols-4 gap-8">
+
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm text-center card-hover border border-gray-100">
+                        <div
+                            class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                            🍎</div>
+                        <h3 class="font-bold text-[#6B3E2E] mb-3 text-xl">Learning</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Teaches counting, days of the week, and simple
+                            science in a natural way.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm text-center card-hover border border-gray-100">
+                        <div
+                            class="w-16 h-16 bg-green-50 text-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                            🎨</div>
+                        <h3 class="font-bold text-[#6B3E2E] mb-3 text-xl">Visuals</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Iconic collage art with bright, vibrant colors
+                            that capture attention instantly.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm text-center card-hover border border-gray-100">
+                        <div
+                            class="w-16 h-16 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                            🔁</div>
+                        <h3 class="font-bold text-[#6B3E2E] mb-3 text-xl">Repetition</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Predictable patterns help kids remember the
+                            story and participate while reading.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white p-8 rounded-[32px] shadow-sm text-center card-hover border border-gray-100">
+                        <div
+                            class="w-16 h-16 bg-purple-50 text-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                            🦋</div>
+                        <h3 class="font-bold text-[#6B3E2E] mb-3 text-xl">Transformation</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">A magical life cycle story that inspires wonder
+                            about the natural world.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WHAT CHILDREN LEARN -->
+        <section class="py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-6">
+
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl text-[#6B3E2E] mb-4">What Children Learn</h2>
+                    <p class="text-gray-600">More than just a story, it's a foundation for early learning.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-8">
+
+                    <!-- Outcome 1 -->
+                    <div class="learning-card p-10 rounded-[40px] flex gap-6 items-start">
+                        <div class="text-4xl">🔢</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#6B3E2E] mb-3">Counting (1 to 5+)</h3>
+                            <p class="text-gray-600 leading-relaxed">Kids learn to count as the caterpillar eats through
+                                different numbers of fruits each day.</p>
+                        </div>
+                    </div>
+
+                    <!-- Outcome 2 -->
+                    <div class="learning-card p-10 rounded-[40px] flex gap-6 items-start">
+                        <div class="text-4xl">📅</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#6B3E2E] mb-3">Days of the Week</h3>
+                            <p class="text-gray-600 leading-relaxed">The story follows a weekly cycle, helping children
+                                understand Monday through Sunday.</p>
+                        </div>
+                    </div>
+
+                    <!-- Outcome 3 -->
+                    <div class="learning-card p-10 rounded-[40px] flex gap-6 items-start">
+                        <div class="text-4xl">🍓</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#6B3E2E] mb-3">Healthy Habits</h3>
+                            <p class="text-gray-600 leading-relaxed">Differentiates between healthy fruits and "junk"
+                                food that gives the caterpillar a stomachache.</p>
+                        </div>
+                    </div>
+
+                    <!-- Outcome 4 -->
+                    <div class="learning-card p-10 rounded-[40px] flex gap-6 items-start">
+                        <div class="text-4xl">🌱</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#6B3E2E] mb-3">Life Cycles</h3>
+                            <p class="text-gray-600 leading-relaxed">A perfect introduction to biological growth, from
+                                egg to caterpillar to butterfly.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. ABOUT THE AUTHOR -->
+        <section id="author" class="author-section py-24 mb-16 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div
+                    class="bg-white rounded-[48px] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 shadow-sm border border-orange-100">
+
+                    <!-- Left: Author Image -->
+                    <div
+                        class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-8 border-orange-50 flex-shrink-0">
+                        <img src="/assets/images/eric/profile.jpg" alt="Eric Carle - Author"
+                            class="w-full h-full object-cover grayscale">
+                        <!-- Note: Using existing asset as placeholder for Author for now, but will style it -->
+                    </div>
+
+                    <!-- Right: Bio -->
+                    <div class="text-center md:text-left">
+                        <h2 class="text-4xl font-bold text-[#6B3E2E] mb-4">Meet Eric Carle</h2>
+                        <p class="text-orange-500 font-bold tracking-widest text-xs uppercase mb-6">Master of Collage
+                        </p>
+
+                        <div class="space-y-4 text-gray-700 leading-relaxed max-w-2xl">
+                            <p>Eric Carle was an American designer, illustrator, and writer of children's books. He is
+                                most famous for <strong>The Very Hungry Caterpillar</strong>, which has been translated
+                                into more than 66 languages.</p>
+                            <p>His art style is unique, created using <strong>hand-painted tissue paper</strong> which
+                                he cut and layered into beautiful, textured collages. This technique gives his books
+                                their unmistakable, vibrant look.</p>
+                        </div>
+
+                        <div class="mt-8 flex justify-center md:justify-start gap-4">
+                            <span
+                                class="bg-orange-50 text-orange-700 px-4 py-2 rounded-full text-sm font-bold">1929–2021</span>
+                            <span class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-bold">Award
+                                Winning</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. COLLECTION / SERIES SECTION -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-xl">
+                        <h2 class="text-4xl md:text-5xl text-[#6B3E2E] mb-4">Start a Reading Habit</h2>
+                        <p class="text-gray-600">The Very Hungry Caterpillar is just the beginning. Explore more early
+                            learning favorites for ages 2–6.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+                    <!-- Book 1 -->
+                    <div class="group ">
+                        <div
+                            class="bg-gray-100 rounded-2xl p-6 aspect-[4/5] mb-4 overflow-hidden transition-all group-hover:shadow-lg">
+                            <img src="./assets/images/eric/bown-bear.jpg" alt="Similar book"
+                                class="w-full h-full object-contain  transition-all duration-500">
+                        </div>
+                        <h4 class="font-bold text-[#6B3E2E]">Brown Bear, Brown Bear</h4>
+                        <p class="text-xs text-gray-400">Eric Carle Classic</p>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="group ">
+                        <div
+                            class="bg-gray-100 rounded-2xl p-6 aspect-[4/5] mb-4 overflow-hidden transition-all group-hover:shadow-lg">
+                            <img src="./assets/images/eric/spider.jpg" alt="Similar book"
+                                class="w-full h-full object-contain  transition-all duration-500">
+                        </div>
+                        <h4 class="font-bold text-[#6B3E2E]">The Very Busy Spider</h4>
+                        <p class="text-xs text-gray-400">Eric Carle Classic</p>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="group ">
+                        <div
+                            class="bg-gray-100 rounded-2xl p-6 aspect-[4/5] mb-4 overflow-hidden transition-all group-hover:shadow-lg">
+                            <img src="./assets/images/eric/polar-bear.jpg" alt="Similar book"
+                                class="w-full h-full object-contain  transition-all duration-500">
+                        </div>
+                        <h4 class="font-bold text-[#6B3E2E]">Polar Bear, Polar Bear</h4>
+                        <p class="text-xs text-gray-400">Early Learning</p>
+                    </div>
+
+                    <!-- Book 4 -->
+                    <div class="group ">
+                        <div
+                            class="bg-gray-100 rounded-2xl p-6 aspect-[4/5] mb-4 overflow-hidden transition-all group-hover:shadow-lg">
+                            <img src="./assets/images/eric/goodnight.jpg" alt="Similar book"
+                                class="w-full h-full object-contain  transition-all duration-500">
+                        </div>
+                        <h4 class="font-bold text-[#6B3E2E]">Goodnight Moon</h4>
+                        <p class="text-xs text-gray-400">Bedtime Favorite</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 7. CALL TO ACTION -->
+        <section class="relative py-24 bg-[#2F6B4F] text-white text-center overflow-hidden">
+
+            <div class="max-w-3xl mx-auto px-6 relative z-10">
+                <h2 class="text-5xl md:text-6xl font-normal mb-8">Start Your Child's <br> <span
+                        class="italic text-orange-400">Reading Journey</span> Today</h2>
+                <p class="text-lg text-green-100 mb-12 opacity-80">Whether for bedtime, the classroom, or a gift — this
+                    book is a treasure every child deserves.</p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="https://wa.me/919500056482" target="_blank"
+                        class="btn-primary !bg-orange-500 !border-white text-white">
+                        GET THIS BOOK VIA WHATSAPP →
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Background Decoration -->
+            <div class="absolute left-0 right-0 bottom-0 h-[357px] w-full z-[1]">
+                <img src="./assets/images/book-bg.webp" alt="Bookshelf background"
+                    class="w-full h-[357px] object-cover" />
+            </div>
+
+            <!-- Floating Caterpillar (Emoji) -->
+            <div class="absolute top-10 left-10 text-6xl opacity-10 animate-bounce">🐛</div>
+            <div class="absolute bottom-10 right-10 text-6xl opacity-10 animate-bounce" style="animation-delay: 1s;">🦋
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Shared Footer (injected by js/components.js) -->
+    <div id="site-header"></div>
+    <div id="site-footer"></div>
+
+</body>
+
+</html>
