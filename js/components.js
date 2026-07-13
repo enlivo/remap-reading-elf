@@ -298,11 +298,11 @@
     <div id="botm-card-body">
       <img id="botm-book-img" src="" alt="Book cover" style="display:none;">
       <span id="botm-book-fallback">
-        <img src="/assets/images/frances/book.jpeg" alt="Book cover">
+        <img src="/assets/images/margery/book.webp" alt="Book cover">
       </span>
       <div id="botm-card-text">
-        <h4 style="font-size: 12.5px;">The Secret Garden</h4>
-        <p>Book by Frances Hodgson Burnett</p>
+        <h4 style="font-size: 12.5px;">The Velveteen Rabbit</h4>
+        <p>Book by Margery Williams</p>
       </div>
     </div>
 
@@ -339,7 +339,7 @@
         card.addEventListener('click', (e) => {
           // Don't navigate if clicking the close button
           if (e.target.id === 'botm-close') return;
-          window.location.href = '/the-secret-garden.html';
+          window.location.href = '/velveteen-rabbit.html';
         });
 
         closeBtn.addEventListener('click', (e) => {
