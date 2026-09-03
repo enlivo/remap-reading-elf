@@ -115,191 +115,376 @@
 <body class="bg-white text-gray-800">
 
     <!-- Shared Header (injected by js/components.js) -->
-    <div id="site-header"></div>
+    <!-- Wrapped in a hidden parent: components.js replaces #site-header's outerHTML at
+         runtime, which wipes any class/style applied directly to it. This wrapper
+         survives that replacement, keeping the old sitewide header from ever showing
+         behind the new hero nav pill. -->
+    <div class="hidden">
+        <div id="site-header"></div>
+    </div>
 
     <main>
 
         <section id="hero"
-            class="relative bg-[url('/assets/images/banner.webp')] bg-cover bg-center min-h-[100dvh] flex items-center">
+            class="relative bg-[url('/assets/images/hero-illustration.png')] bg-cover bg-center min-h-screen">
 
-            <div class="max-w-4xl mx-auto px-6 text-center">
+            <style>
+                /* Baloo 2 isn't linked in <head>; imported here, scoped to #hero, so head stays untouched. */
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                #hero .font-display {
+                    font-family: 'Baloo 2', 'Nunito', sans-serif;
+                }
+                /* Old sitewide floating widget from components.js — superseded by the
+                   Monthly Best card in this hero. Hidden on the homepage only. */
+                #botm-widget {
+                    display: none !important;
+                }
+            </style>
 
-                <!-- Top Badge -->
-                <div class="inline-block bg-[#008BED] text-white p-[8px_16px] rounded-full text-[16px] italic mb-6">
-                    Chennai's first reading experience store studio
-                </div>
+            <!-- New Events pill -->
+            <div class="absolute top-10 left-10 z-20 hidden md:flex items-start gap-4 bg-[#fccdb2]/75 rounded-full px-6 py-3 shadow-md">
+                <span class="font-['Nunito'] font-extrabold text-[16px] text-[#c8452e] whitespace-nowrap pt-0.5">New Events</span>
+                <ol class="font-['Nunito'] font-medium text-[14px] text-[#2f6b4f] leading-snug list-decimal list-inside">
+                    <li>Interactive Story Telling Session</li>
+                    <li>Textured Art workshop</li>
+                </ol>
+            </div>
 
-                <!-- Main Heading -->
-                <h1 class="text-4xl md:text-6xl font-bold text-[#6B3E2E] leading-tight mb-4">
-                    Where Children
+            <!-- Nav pill -->
+            <nav aria-label="Hero navigation"
+                class="absolute top-10 right-10 z-20 hidden md:flex items-center bg-[#f6c35b] rounded-full px-6 py-3 shadow-md">
+                <a href="books.html" class="px-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Books</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="story-box.html" class="px-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Story Box</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="experience.html" class="px-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Experience</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="events.html" class="px-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Events</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="our-story.html" class="px-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Our Story</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="blog.html" class="pl-4 font-['Nunito'] font-semibold text-[16px] text-[#7a4e35] hover:opacity-70 transition">Blog</a>
+            </nav>
+
+            <!-- Headline + subtext, vertically centered -->
+            <div class="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6 pb-24">
+                <h1 class="font-display font-bold text-[40px] md:text-[56px] leading-tight">
+                    <span class="block text-[#7a4e35]">Where Children</span>
+                    <span class="block text-[#c8452e]">Fall in love with Reading</span>
                 </h1>
 
-                <h2 class="text-3xl md:text-5xl font-bold text-orange-500 mb-6">
-                    Fall in love with Reading
-                </h2>
-
-                <!-- Description -->
-                <p class="text-[#333] max-w-3xl mx-auto text-[14px] md:text-[20px] font-normal mb-10">
-                    A magical bookstore designed to help kids discover the right books,
-                    build lifelong reading habits, and experience stories in ways they'll
-                    never forget.
+                <p class="mt-6 max-w-2xl font-['Nunito'] font-normal text-[16px] md:text-[18px] text-[#333] leading-relaxed">
+                    A magical bookstore designed to<br>
+                    help kids discover the right books,<br>
+                    build lifelong reading habits,<br>
+                    and experience stories in ways they'll never forget.
                 </p>
+            </div>
 
-                <!-- CTA Button -->
-                <a href="#book" class="btn-primary">
-                    FINDING YOUR CHILD’S READING PERSONALITY →
+            <!-- Monthly Best floating card — reuses the current book-of-month title and
+                 cover already wired up in the #book-of-month section below. -->
+            <div class="absolute top-1/2 -translate-y-1/2 right-6 md:right-16 z-20 hidden md:flex items-center gap-4 bg-[#2f6b4f] text-white rounded-2xl px-5 py-4 shadow-lg max-w-[260px]">
+                <div>
+                    <p class="font-['Nunito'] font-extrabold text-[16px] leading-tight">Monthly Best</p>
+                    <p class="font-['Nunito'] font-normal text-[14px] leading-tight mt-1">Malgudi Schooldays</p>
+                </div>
+                <img src="/assets/images/narayan/book.jpeg" alt="Malgudi Schooldays book cover"
+                    class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+            </div>
+
+        </section>
+
+        <!-- Feature cards -->
+        <section id="feature-cards" class="bg-[#fccdb2] pt-16 md:pt-20">
+
+            <style>
+                /* Baloo 2 isn't linked in <head>; imported here too since this section sits
+                   outside #hero, whose own Baloo 2 import doesn't reach this scope. */
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                #feature-cards .font-display {
+                    font-family: 'Baloo 2', 'Nunito', sans-serif;
+                }
+            </style>
+
+            <div class="px-6 md:px-16 lg:px-20 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+                <!-- Card 1: Books -->
+                <a href="books.html" class="flex rounded-[24px] overflow-hidden bg-[#c8452e] min-h-[300px] md:min-h-[340px]">
+                    <div class="w-[55%] p-6 md:p-8 flex flex-col justify-center">
+                        <h3 class="font-display font-bold text-[28px] md:text-[32px] leading-tight text-white">
+                            Books you won't find just anywhere.</h3>
+                        <p class="mt-4 font-['Nunito'] font-normal text-[15px] md:text-[16px] leading-relaxed text-white/90">
+                            Every book on our shelves was handpicked before it was stocked. Curated for every child,
+                            every story, every stage.</p>
+                    </div>
+                    <div class="w-[45%]">
+                        <img src="/assets/images/card-books-photo.png" alt="Curated children's books on display"
+                            class="w-full h-full object-cover">
+                    </div>
+                </a>
+
+                <!-- Card 2: Story Box -->
+                <a href="story-box.html" class="flex rounded-[24px] overflow-hidden bg-[#7a4e35] min-h-[300px] md:min-h-[340px]">
+                    <div class="w-[55%] p-6 md:p-8 flex flex-col justify-center">
+                        <h3 class="font-display font-bold text-[28px] md:text-[32px] leading-tight text-white">
+                            Their next story starts here.</h3>
+                        <p class="mt-4 font-['Nunito'] font-normal text-[15px] md:text-[16px] leading-relaxed text-white/90">
+                            Every child has their own way of reading. Take our quiz and discover a Story Box curated
+                            around who they are and what they love.</p>
+                    </div>
+                    <div class="w-[45%]">
+                        <img src="/assets/images/card-storybox-photo.png" alt="A curated Story Box for kids"
+                            class="w-full h-full object-cover">
+                    </div>
+                </a>
+
+                <!-- Card 3: Experience -->
+                <a href="experience.html" class="flex rounded-[24px] overflow-hidden bg-[#f6c35b] min-h-[300px] md:min-h-[340px]">
+                    <div class="w-[55%] p-6 md:p-8 flex flex-col justify-center">
+                        <h3 class="font-display font-bold text-[28px] md:text-[32px] leading-tight text-[#c8452e]">
+                            More than a bookstore. A place to belong.</h3>
+                        <p class="mt-4 font-['Nunito'] font-normal text-[15px] md:text-[16px] leading-relaxed text-[#c8452e]">
+                            Reading clubs, workshops, and programmes built around the belief that reading grows
+                            better together.</p>
+                    </div>
+                    <div class="w-[45%]">
+                        <img src="/assets/images/card-experience-photo.png" alt="Kids at a Reading Elf workshop"
+                            class="w-full h-full object-cover">
+                    </div>
+                </a>
+
+                <!-- Card 4: Events -->
+                <a href="events.html" class="flex rounded-[24px] overflow-hidden bg-[#f3e8d0] min-h-[300px] md:min-h-[340px]">
+                    <div class="w-[55%] p-6 md:p-8 flex flex-col justify-center">
+                        <h3 class="font-display font-bold text-[28px] md:text-[32px] leading-tight text-[#ef1414]">
+                            Stories don't just live on shelves here.</h3>
+                        <p class="mt-4 font-['Nunito'] font-normal text-[15px] md:text-[16px] leading-relaxed text-[#ef1414]">
+                            Events, author sessions, and one-day experiences. Something to look forward to, always.
+                        </p>
+                    </div>
+                    <div class="w-[45%]">
+                        <img src="/assets/images/card-events-photo.png" alt="A Reading Elf event in progress"
+                            class="w-full h-full object-cover">
+                    </div>
                 </a>
 
             </div>
 
-            <!-- Bottom Bar -->
-            <div class="absolute bottom-6 left-0 w-full bg-[#7B3F00]/80 overflow-hidden py-4">
+        </section>
 
-                <div class="flex whitespace-nowrap animate-marquee gap-8 text-white text-sm md:text-base">
+        <!-- Divider — two stacked copies of gallery-bg-cropped.png (gallery-bg.png with
+             its ~625px of dead transparent top canvas cropped off, same source file,
+             fresh crop) at natural aspect ratio; the second is flipped vertically. No
+             margin/padding exists between this section and #feature-cards — the empty
+             peach gap was the raw file's own dead space rendering at natural height,
+             not spacing; cropping it removes the gap without touching either section's
+             margin/padding. No Gallery pill yet. -->
+        <section class="relative w-full bg-white">
+            <img src="/assets/images/gallery-bg-cropped.png" alt="" aria-hidden="true"
+                class="w-full h-auto block">
+            <img src="/assets/images/gallery-bg-cropped.png" alt="" aria-hidden="true"
+                class="w-full h-auto block" style="transform: scaleY(-1);">
+            <img src="/assets/images/gallery-title.png" alt="Gallery"
+                class="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 w-[160px] md:w-[200px] h-auto">
+        </section>
 
-                    <div class="flex items-center gap-6">
-                        <span>A Reading Experience Studio</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
+        <!-- Featured photo strip — 6 pre-bordered scrapbook-style photos, each
+             independently rotated for a scattered feel. No extra border/shadow/frame
+             styling since the torn-paper border is baked into each PNG. -->
+        <section class="w-full bg-white flex flex-wrap justify-center items-center gap-6 md:gap-8 pt-10 md:pt-14 px-6">
+            <img src="/assets/images/featured/featured-1.png" alt="Featured photo 1"
+                class="-rotate-3 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+            <img src="/assets/images/featured/featured-2.png" alt="Featured photo 2"
+                class="rotate-2 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+            <img src="/assets/images/featured/featured-3.png" alt="Featured photo 3"
+                class="-rotate-2 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+            <img src="/assets/images/featured/featured-4.png" alt="Featured photo 4"
+                class="rotate-3 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+            <img src="/assets/images/featured/featured-5.png" alt="Featured photo 5"
+                class="-rotate-1 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+            <img src="/assets/images/featured/featured-6.png" alt="Featured photo 6"
+                class="rotate-2 w-[140px] sm:w-[160px] md:w-[180px] h-auto">
+        </section>
+
+        <!-- Gallery block closer — gallery-bottom-cropped.png (gallery-bottom.png with
+             its ~625px of dead transparent top canvas cropped off, same technique used
+             on gallery-bg-cropped.png earlier, since this file is byte-identical to
+             gallery-bg.png and has the same dead space). Right-side up, no mirroring,
+             natural aspect ratio, full width. No margin/padding exists between this
+             section and the featured strip — the empty gap was the raw file's own dead
+             space rendering at natural height, not spacing. Note: gallery-bottom.png
+             is still byte-identical to gallery-bg.png, so the mirrored-artifact flagged
+             earlier in this build is still present in the cropped result. -->
+        <section class="w-full bg-white">
+            <img src="/assets/images/gallery-bottom-cropped.png" alt="" aria-hidden="true"
+                class="w-full h-auto block">
+        </section>
+
+        <!-- About Us -->
+        <section id="about-us" class="w-full bg-[#fccdb2] py-8 md:py-12 px-6 md:px-16 lg:px-20">
+
+            <style>
+                /* Baloo 2 isn't linked in <head>; imported here too since this section sits
+                   outside #hero/#feature-cards, whose own Baloo 2 imports don't reach this
+                   scope. */
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                #about-us .font-display {
+                    font-family: 'Baloo 2', 'Nunito', sans-serif;
+                }
+            </style>
+
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8">
+
+                <!-- Left column -->
+                <div class="w-full md:w-[62%]">
+
+                    <div class="relative inline-block mb-6">
+                        <h2 class="font-display font-bold text-[32px] md:text-[40px] text-[#7a4e35]">About Us</h2>
+                        <!-- Decorative blobs, near top-right of the heading -->
+                        <span aria-hidden="true" class="absolute -top-3 -right-8 w-6 h-6 bg-[#A8D5E8]"
+                            style="border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;"></span>
+                        <span aria-hidden="true" class="absolute -top-6 right-9 w-10 h-10 bg-[#f3e8d0]"
+                            style="border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;"></span>
                     </div>
 
-                    <!-- Duplicate for seamless loop -->
-                    <div class="flex items-center gap-6">
-                        <span>A Reading Experience Studio</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="flex items-center gap-6">
-                        <span>A Reading Experience Studio</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="flex items-center gap-6">
-                        <span>A Reading Experience Studio</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                        <span>•</span>
-                        <span>Where stories come alive</span>
-                    </div>
+                    <p class="font-['Nunito'] font-normal text-[16px] md:text-[18px] text-[#333] leading-relaxed mb-5">
+                        The Reading Elf was born from a mother’s search for a little more magic for her son
+                    </p>
+                    <p class="font-['Nunito'] font-normal text-[16px] md:text-[18px] text-[#333] leading-relaxed">
+                        —a place where children could wander, giggle, sit on the floor, and simply be
+                        themselves among stories. When that place didn’t exist, we decided to build it.
+                    </p>
 
+                </div>
+
+                <!-- Right column — about-mother-son.png, no outer frame/box at all.
+                     scale(1.12): just under the hard ceiling (774/692 ≈ 1.1185) where a
+                     square object-fit: cover window (~691px native) can still contain the
+                     full bbox height (692px, measured y:0-692 of a 774-tall canvas) — full
+                     border, no clipping. transform-origin recalculated for this scale
+                     (origin does not scale linearly with zoom level; re-solved
+                     algebraically both axes, not just reused from the scale(1.35) values):
+                     origin-Y = 0.6% (near-top — at this tight a window there's almost no
+                     vertical slack to distribute, so the origin must sit close to the
+                     canvas's own top edge, unlike the 29.6% needed at 1.35). origin-X =
+                     6.0% (bbox sits left-of-canvas-center, and with ~187px of horizontal
+                     slack at this scale, that's what centers the window on the bbox rather
+                     than the canvas — very different from the 45.4% used at 1.35, since
+                     the amount of horizontal "pull" needed scales with how far the window
+                     overshoots the container). Verified: resulting window leaves <1px of
+                     slack top/bottom (negligible/rounding-level) and ~93.5px slack on both
+                     left and right. Bleed margin stays on this container since the outer
+                     frame that used to carry it is gone. -->
+                <div class="w-full md:w-[38%] flex justify-center md:justify-end">
+                    <div class="w-full aspect-square rounded-[24px] overflow-hidden -my-5 md:-my-7">
+                        <img src="/assets/images/about-mother-son.png"
+                            alt="A mother and son reading together at The Reading Elf"
+                            class="w-full h-full object-cover"
+                            style="transform: scale(1.12); transform-origin: 6.0% 0.6%;">
+                    </div>
                 </div>
 
             </div>
 
         </section>
 
-        <section id="story" class="w-full">
+        <!-- Thin white gap/divider before the next section -->
+        <div class="w-full h-2 md:h-3 bg-white"></div>
 
-            <div class="flex flex-col md:flex-row w-full min-h-[650px]">
+        <!-- Come See Us in Chennai -->
+        <section id="visit-us" class="relative w-full bg-[#7a4e35] py-16 md:py-20 px-6 md:px-16 lg:px-20 overflow-hidden">
 
-                <!-- LEFT SIDE -->
-                <div class="md:w-[60%] bg-[#FEFFE0] py-16 md:py-28">
+            <style>
+                /* Baloo 2 isn't linked in <head>; imported here too since this section sits
+                   outside #hero/#feature-cards/#about-us, whose own Baloo 2 imports don't
+                   reach this scope. */
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                #visit-us .font-display {
+                    font-family: 'Baloo 2', 'Nunito', sans-serif;
+                }
+            </style>
 
-                    <div class="max-w-7xl mx-auto px-6 md:px-24 lg:px-24">
+            <!-- Dark blue decorative blob, peeking from the section's bottom-right corner,
+                 behind the map image. -->
+            <span aria-hidden="true" class="absolute -bottom-10 -right-10 z-0 w-40 h-40 md:w-56 md:h-56 bg-[#2C4A6E]"
+                style="border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;"></span>
 
-                        <div class="max-w-[720px] text-center md:text-left">
+            <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-14">
 
-                            <!-- Title -->
-                            <div class="flex items-center justify-center md:justify-start gap-3 mb-6 relative">
+                <!-- Left column -->
+                <div class="w-full md:w-[52%]">
 
-                                <img src="/assets/images/book.webp" alt="Decorative open book"
-                                    class="absolute -top-16 left-1/2 -translate-x-1/2 md:left-0 md:-translate-x-10 w-16 md:w-24">
-
-                                <h2 class="text-3xl md:text-5xl lg:text-[60px] font-bold text-[#6B3E2E]">
-                                    Our Story
-                                </h2>
-
-                            </div>
-
-                            <!-- Quote -->
-                            <p class="italic text-gray-700 mb-6 text-lg md:text-xl lg:text-2xl">
-                                "If the bookstore we imagine doesn't exist yet <br>
-                                <span class="text-green-700">then let's build it."</span>
-                            </p>
-
-                            <!-- Paragraph -->
-                            <p class="text-[#333333] mb-6 leading-relaxed text-base md:text-lg lg:text-xl">
-                                The Reading Elf was born from a tender moment a mother
-                                searching for magic for her little boy. We spent afternoons
-                                wandering bookshops, but he always imagined somewhere
-                                more alive.
-                            </p>
-
-                            <p class="text-[#333333] mb-10 leading-relaxed text-base md:text-lg lg:text-xl">
-                                A place where children could giggle, wander, sit on the
-                                floor, and simply be themselves between pages.
-                            </p>
-
-                            <a href="#gallery" class="btn-primary">
-                                SEE WHAT WE BUILT →
-                            </a>
-
-                        </div>
-
+                    <div class="relative inline-block mb-6">
+                        <h2 class="font-display font-bold text-[32px] md:text-[40px] leading-tight text-[#f3e8d0]">
+                            Come See Us<br>in Chennai
+                        </h2>
+                        <!-- Decorative white blob -->
+                        <span aria-hidden="true" class="absolute -top-4 -right-10 w-9 h-9 bg-white/90"
+                            style="border-radius: 55% 45% 60% 40% / 45% 55% 40% 60%;"></span>
                     </div>
+
+                    <p class="font-['Nunito'] font-normal text-[16px] md:text-[18px] text-[#f3e8d0] leading-relaxed mb-6">
+                        A cozy, carefully designed space where books are just the beginning. Drop
+                        in, explore, and let your child wander.
+                    </p>
+
+                    <p class="font-['Nunito'] font-normal text-[14px] md:text-[15px] text-[#f3e8d0]/85 leading-relaxed">
+                        Tuesday – Sunday 10:30 AM – 8:30 PM<br>
+                        Monday - Closed
+                    </p>
 
                 </div>
 
-
-                <!-- RIGHT SIDE -->
-                <div class="md:w-[40%] bg-[#C8452E] relative flex items-center justify-center py-20 md:py-0">
-
-                    <!-- Image Card -->
-                    <div class="md:absolute md:-left-24 z-[2]">
-
-                        <!-- <div class=" rounded-[30px]">
-
-                            <img src="/assets/images/story.webp" alt="Mother and child reading a storybook together"
-                                class="rounded-[25px] w-[260px] sm:w-[300px] md:w-[340px] object-cover">
-
-                        </div> -->
-
-                        <!-- <div class="rounded-[30px] overflow-hidden w-[260px] sm:w-[300px] md:w-[340px]">
-                            <iframe class="rounded-[25px] w-full h-[460px]"
-                                src="https://www.youtube.com/embed/rNrnBXXcFXw" allowfullscreen>
-                            </iframe>
-                        </div> -->
-                        <div class="rounded-[30px] flex justify-center overflow-hidden">
-                            <iframe
-                                class="rounded-[25px] w-[260px] h-[460px] sm:w-[300px] sm:h-[533px] md:w-[340px] md:h-[604px]"
-                                src="https://www.youtube.com/embed/rNrnBXXcFXw?autoplay=1&mute=1&loop=1&playlist=rNrnBXXcFXw&controls=0&modestbranding=1&rel=0&playsinline=1"
-                                title="Magical Visitor Changed This Child’s Life | The Reading Elf" frameborder="0"
-                                allow="autoplay; encrypted-media" allowfullscreen>
-                            </iframe>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Mushroom -->
-                    <div class="absolute right-0 bottom-0 w-[150px] md:w-[220px] z-[1]">
-
-                        <img src="/assets/images/mushroom.webp" alt="Decorative red mushroom" class="w-full">
-
-                    </div>
-
+                <!-- Right column -->
+                <div class="relative z-10 w-full md:w-[48%] flex justify-center md:justify-end">
+                    <img src="/assets/images/chennai-map.png" alt="Map to The Reading Elf in Chennai"
+                        class="w-full h-auto rounded-[24px] shadow-xl">
                 </div>
 
             </div>
 
         </section>
-        <section id="book" class="bg-[#2F6B4F] py-16 md:py-20 relative overflow-hidden">
+
+        <!-- Instagram Page -->
+        <section id="instagram" class="relative w-full bg-white py-20 md:py-28 px-6 md:px-16 lg:px-20 overflow-hidden">
+
+            <style>
+                /* Baloo 2 isn't linked in <head>; imported here too since this section sits
+                   outside #hero/#feature-cards/#about-us/#visit-us, whose own Baloo 2 imports
+                   don't reach this scope. */
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                #instagram .font-display {
+                    font-family: 'Baloo 2', 'Nunito', sans-serif;
+                }
+            </style>
+
+            <!-- Decorative peach/tan blob, near top-left of the heading, subtle -->
+            <span aria-hidden="true" class="absolute top-6 left-6 md:top-10 md:left-16 z-0 w-24 h-24 md:w-32 md:h-32 bg-[#fccdb2] opacity-40"
+                style="border-radius: 55% 45% 60% 40% / 45% 55% 40% 60%;"></span>
+
+            <!-- Decorative dark navy blob, near top-right, above the placeholder box, subtle -->
+            <span aria-hidden="true" class="absolute top-20 right-6 md:top-24 md:right-16 z-0 w-20 h-20 md:w-28 md:h-28 bg-[#2C4A6E] opacity-25"
+                style="border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;"></span>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+
+                <h2 class="font-display font-bold text-[32px] md:text-[40px] text-[#7a4e35] mb-10 md:mb-14">
+                    Instagram Page
+                </h2>
+
+                <!-- Placeholder for future Instagram embed/grid -->
+                <div class="w-full h-[400px] md:h-[480px] bg-[#d9d9d9] rounded-[24px]"></div>
+
+            </div>
+
+        </section>
+
+        <!-- Hidden, not deleted: has a live interactive reading-personality quiz
+             with JS behind it (quizBack(), etc.). Note: the sticky strip whose "Book a
+             Book!" button used to link here (#book) has since been removed from the
+             page — this anchor has no current entry point, kept anyway since the quiz
+             itself may still be reused. -->
+        <section id="book" class="hidden bg-[#2F6B4F] py-16 md:py-20 relative overflow-hidden">
 
             <!-- Heading -->
             <div class="text-center mb-12 md:mb-20 px-4">
@@ -509,756 +694,12 @@
 
         </section>
 
-        <!-- <section id="new-arrivals" class="py-24 bg-[#FFF5E4]">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <div
-                    class="inline-block bg-[#FF8C00] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-4 tracking-wide uppercase">
-                    ✨ Just In
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-[#6B3E2E] mb-12">New Arrivals</h2>
-
-             
-                <div class="relative max-w-5xl mx-auto px-4 md:px-0">
-                   
-                    <div class="embla overflow-hidden" id="new-arrivals-carousel">
-                        <div class="embla__container flex">
-
-                         
-                            <div class="embla__slide flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4 py-4">
-                                <div
-                                    class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
-                                    <img src="/assets/images/book-1.webp" alt="New Book 1"
-                                        class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
-                                    <h3 class="text-xl font-bold text-[#2C3E50] mb-2">✨ The Magic of Stories</h3>
-                                    <p class="text-gray-500 font-medium mb-4">By Shwetha</p>
-                                    <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow">A magical journey into
-                                        the world of stories and imagination for kids of all ages.</p>
-                                </div>
-                            </div>
-
-                           
-                            <div class="embla__slide flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4 py-4">
-                                <div
-                                    class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
-                                    <img src="/assets/images/lewis/book.jpeg" alt="New Book 2"
-                                        class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
-                                    <h3 class="text-xl font-bold text-[#2C3E50] mb-2">🗺️ Adventure Awaits</h3>
-                                    <p class="text-gray-500 font-medium mb-4">By C.S. Lewis</p>
-                                    <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow">Join the adventure as
-                                        we explore new worlds and discover hidden treasures.</p>
-                                </div>
-                            </div>
-
-                           
-                            <div class="embla__slide flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4 py-4">
-                                <div
-                                    class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
-                                    <img src="/assets/images/eric/book-month.webp" alt="New Book 3"
-                                        class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
-                                    <h3 class="text-xl font-bold text-[#2C3E50] mb-2">🌿 The Tiny Explorer</h3>
-                                    <p class="text-gray-500 font-medium mb-4">By Eric Carle</p>
-                                    <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow">Follow the tiny
-                                        explorer on a big journey across the garden.</p>
-                                </div>
-                            </div>
-
-                      
-                            <div class="embla__slide flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4 py-4">
-                                <div
-                                    class="bg-white rounded-[32px] p-8 shadow-sm flex flex-col items-center h-full transition-transform hover:-translate-y-2 hover:shadow-lg">
-                                    <img src="/assets/images/flags-book.webp" alt="New Book 4"
-                                        class="w-[180px] h-[220px] object-contain mb-6 drop-shadow-xl">
-                                    <h3 class="text-xl font-bold text-[#2C3E50] mb-2">💡 Fascinating Flags</h3>
-                                    <p class="text-gray-500 font-medium mb-4">By Adhruth</p>
-                                    <p class="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow">Learn about flags from
-                                        around the world in a fun way.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                  
-                    <button
-                        class="embla__prev absolute top-1/2 -translate-y-1/2 left-0 md:-left-6 lg:-left-12 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-md text-[#6B3E2E] flex items-center justify-center hover:bg-[#FF8C00] hover:text-white transition-colors z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                            stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                        </svg>
-                    </button>
-                    <button
-                        class="embla__next absolute top-1/2 -translate-y-1/2 right-0 md:-right-6 lg:-right-12 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-md text-[#6B3E2E] flex items-center justify-center hover:bg-[#FF8C00] hover:text-white transition-colors z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                            stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="mt-12">
-                    <a href="/new-arrivals.html" class="btn-primary inline-block">VIEW ALL NEW ARRIVALS →</a>
-                </div>
-
-            </div>
-        </section> -->
-
-        <section id="book-of-month" class="py-24 bg-[#E0F2FE]">
-            <div class="max-w-7xl mx-auto px-6">
-
-                <div class="text-center mb-16">
-                    <div
-                        class="inline-block bg-[#008BED] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-4 tracking-wide uppercase">
-                        📚 Featured Reading
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-[#6B3E2E] mb-4">Book of the Month</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">Every month, we handpick magical
-                        stories to spark your child's imagination. Explore our current and past favorites!</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                    <!-- Book 5: Malgudi Schooldays (August) -->
-                    <div
-                        class="bg-white rounded-[32px] p-8 shadow-sm border border-white flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-lg">
-                        <img src="/assets/images/narayan/book.jpeg" alt="Malgudi Schooldays"
-                            class="w-[220px] h-[300px] object-cover rounded-lg shadow-xl mb-8 rotate-1">
-                        <div
-                            class="bg-purple-50 text-purple-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                            August</div>
-                        <h3 class="text-2xl font-bold text-[#2C3E50] mb-2">Malgudi Schooldays</h3>
-                        <p class="text-gray-500 font-medium mb-4">By R.K. Narayan</p>
-                        <p class="text-gray-600 mb-8 line-clamp-3 flex-grow">A joyful journey through Malgudi's
-                            classrooms and playgrounds — R.K. Narayan's timeless tale of childhood, friendship, and
-                            mischief, beautifully illustrated for young readers.</p>
-                        <a href="/malgudi-schooldays.html" class="btn-primary mt-auto">EXPLORE THIS BOOK →</a>
-                    </div>
-
-                    <!-- Book 4: Velveteen Rabbit (July) -->
-                    <div
-                        class="bg-white rounded-[32px] p-8 shadow-sm border border-white flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-lg">
-                        <img src="/assets/images/margery/book.webp" alt="The Velveteen Rabbit"
-                            class="w-[220px] h-[300px] object-cover rounded-lg shadow-xl mb-8 rotate-2">
-                        <div
-                            class="bg-rose-50 text-rose-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                            July</div>
-                        <h3 class="text-2xl font-bold text-[#2C3E50] mb-2">The Velveteen Rabbit</h3>
-                        <p class="text-gray-500 font-medium mb-4">By Margery Williams</p>
-                        <p class="text-gray-600 mb-8 line-clamp-3 flex-grow">A tender classic about a toy rabbit who
-                            discovers that becoming Real is what happens when you are truly loved.</p>
-                        <a href="/velveteen-rabbit.html" class="btn-primary mt-auto">EXPLORE THIS BOOK →</a>
-                    </div>
-
-                    <!-- Book 3: Secret Garden (June) -->
-                    <div
-                        class="bg-white rounded-[32px] p-8 shadow-sm border border-white flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-lg">
-                        <img src="/assets/images/frances/book.jpeg" alt="The Secret Garden"
-                            class="w-[220px] h-[300px] object-cover rounded-lg shadow-xl mb-8 -rotate-2">
-                        <div
-                            class="bg-green-50 text-green-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                            June</div>
-                        <h3 class="text-2xl font-bold text-[#2C3E50] mb-2">The Secret Garden</h3>
-                        <p class="text-gray-500 font-medium mb-4">By Frances Hodgson Burnett</p>
-                        <p class="text-gray-600 mb-8 line-clamp-3 flex-grow">A timeless story about healing, growth, and
-                            the extraordinary power of discovering hidden wonders.</p>
-                        <a href="/the-secret-garden.html" class="btn-primary mt-auto">EXPLORE THIS BOOK →</a>
-                    </div>
-
-                    <!-- Book 2: Narnia (May) -->
-                    <div
-                        class="bg-white rounded-[32px] p-8 shadow-sm border border-white flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-lg">
-                        <img src="/assets/images/lewis/book.jpeg" alt="The Lion, the Witch and the Wardrobe"
-                            class="w-[220px] h-[300px] object-cover rounded-lg shadow-xl mb-8 rotate-3">
-                        <div
-                            class="bg-blue-50 text-blue-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                            May</div>
-                        <h3 class="text-2xl font-bold text-[#2C3E50] mb-2">The Lion, the Witch and the Wardrobe</h3>
-                        <p class="text-gray-500 font-medium mb-4">By C.S. Lewis</p>
-                        <p class="text-gray-600 mb-8 line-clamp-3 flex-grow">A masterpiece of world-building balancing
-                            high-stakes
-                            adventure with deep emotional themes like loyalty, sacrifice, and forgiveness.</p>
-                        <a href="/lion-witch-wardrobe.html" class="btn-primary mt-auto">EXPLORE THIS BOOK →</a>
-                    </div>
-
-                    <!-- Book 1: Caterpillar (April) -->
-                    <div
-                        class="bg-white rounded-[32px] p-8 shadow-sm border border-white flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-lg">
-                        <img src="/assets/images/eric/book-month.webp" alt="The Very Hungry Caterpillar"
-                            class="w-[220px] h-[300px] object-cover rounded-lg shadow-xl mb-8 -rotate-3">
-                        <div
-                            class="bg-orange-50 text-orange-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                            April</div>
-                        <h3 class="text-2xl font-bold text-[#6B3E2E] mb-2">The Very Hungry Caterpillar</h3>
-                        <p class="text-gray-500 font-medium mb-4">By Eric Carle</p>
-                        <p class="text-gray-600 mb-8 line-clamp-3 flex-grow">A simple, colorful story about a tiny
-                            caterpillar who
-                            eats, grows, and transforms into a beautiful butterfly. A worldwide favorite!</p>
-                        <a href="/hungry-caterpillar.html" class="btn-primary mt-auto">EXPLORE THIS BOOK →</a>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <section class="px-6 py-16 bg-[#FEFFE0]" id="experience">
-            <div class="max-w-7xl mx-auto ">
-                <!-- Title -->
-                <div class="mb-12 text-center">
-                    <p class="text-xs tracking-widest text-green-900 mb-3">INSIDE THE STORE</p>
-
-                    <h2 class="text-5xl font-semibold text-green-900 leading-tight">
-                        <h2 class="text-3xl md:text-5xl font-semibold text-green-900 leading-tight">
-                            for <span class="text-orange-500 italic">Experiences</span>
-                        </h2>
-
-                        <p class="text-gray-600 mt-4 ">
-                            Every corner of The Reading Elf is designed to spark curiosity,
-                            not just sell books.
-                        </p>
-                </div>
-
-                <!-- Cards Layout -->
-                <div class="grid md:grid-cols-3 gap-6">
-
-                    <!-- Big Left Card -->
-                    <div
-                        class="bg-[#2F6B4F] text-white rounded-2xl p-8 flex flex-col justify-between md:row-span-2 min-h-[420px]">
-                        <div>
-                            <div class="text-2xl mb-4">🕯️</div>
-
-                            <h3 class="text-xl font-semibold mb-3">
-                                The Story Cave
-                            </h3>
-
-                            <p class="text-sm text-gray-200 leading-relaxed">
-                                A cozy storytelling nook where weekend sessions bring books to life
-                                — dramatic readings, puppet storytelling, author visits. Kids leave
-                                with memories that last longer than any book.
-                            </p>
-
-                            <p class="text-xs mt-4 text-gray-300">
-                                Every Saturday at 11am. Free with store visit.
-                            </p>
-                        </div>
-
-                        <span class="bg-green-800 px-4 py-1 text-xs rounded-full w-fit mt-6">
-                            Weekend Sessions
-                        </span>
-                    </div>
-
-                    <!-- Card 1 -->
-                    <div class="bg-[#e6dcc9] rounded-2xl p-6">
-                        <div class="text-xl mb-3">🧩</div>
-
-                        <h3 class="text-lg font-semibold text-green-900 mb-2">
-                            Discovery Zone
-                        </h3>
-
-                        <p class="text-sm text-gray-600 mb-4">
-                            A 2-minute tablet quiz at the entrance — kids discover their
-                            reading personality before they even pick a book.
-                        </p>
-
-                        <span class="bg-green-200 text-green-800 text-xs px-3 py-1 rounded-full">
-                            Interactive
-                        </span>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-[#dfe6e2] rounded-2xl p-6">
-                        <div class="text-xl mb-3">📦</div>
-
-                        <h3 class="text-lg font-semibold text-green-900 mb-2">
-                            Build Your Library Station
-                        </h3>
-
-                        <p class="text-sm text-gray-600 mb-4">
-                            Curated book bundles for every personality. Take home a whole
-                            starter library in one pick.
-                        </p>
-
-                        <span class="bg-green-200 text-green-800 text-xs px-3 py-1 rounded-full">
-                            Curated Bundles
-                        </span>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-[#f3ead8] rounded-2xl p-6">
-                        <div class="text-xl mb-3">🏆</div>
-
-                        <h3 class="text-lg font-semibold text-green-900 mb-2">
-                            Reading Challenge Wall
-                        </h3>
-
-                        <p class="text-sm text-gray-600 mb-4">
-                            Kids track books, earn badges, and see their name on the Wall
-                            of Readers.
-                        </p>
-
-                        <span class="bg-orange-200 text-orange-700 text-xs px-3 py-1 rounded-full">
-                            Gamification
-                        </span>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="bg-[#c97f2a] text-white rounded-2xl p-6">
-                        <div class="text-xl mb-3">👩‍👦</div>
-
-                        <h3 class="text-lg font-semibold mb-2">
-                            Mom & Me Reading Club
-                        </h3>
-
-                        <p class="text-sm text-orange-100 mb-4">
-                            Weekly parent-child sessions. Read together, discuss,
-                            act it out. Bonding through books, every week.
-                        </p>
-
-                        <span class="bg-orange-200 text-orange-800 text-xs px-3 py-1 rounded-full">
-                            Weekly Club
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-        </section>
-        <section class="px-6 py-24 bg-[#2F6B4F] flex justify-center items-center relative" id="gallery">
-            <div class="relative z-[3]">
-                <img src="./assets/images/gallery.webp" alt="Store interior gallery view">
-            </div>
-            <div class="absolute right-10 bottom-0 hidden md:block">
-                <img src="./assets/images/mushroom.webp" alt="Decorative red mushroom">
-            </div>
-            <div class="absolute left-10 top-0">
-                <img src="./assets/images/book.webp" alt="Decorative open book">
-            </div>
-
-        </section>
-        <section class=" px-6 py-16 bg-[#FEFFE0] " id="events">
-            <div class="max-w-7xl mx-auto">
-
-                <div class="flex justify-center items-end mb-10 flex-wrap gap-4">
-                    <div class="text-center">
-                        <p class="text-xs tracking-widest text-green-900 mb-3">UPCOMING EVENTS</p>
-                        <h2 class="text-4xl md:text-5xl font-semibold text-green-900 leading-tight">
-                            Creativity & Imagination
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center gap-12">
-
-                    <!-- Event 1 -->
-                    <div class="max-w-6xl w-full bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
-                        <div class="w-full overflow-hidden relative">
-                            <img src="./assets/images/event/independence-day-story-competition.jpeg"
-                                class="w-full h-auto md:h-full md:object-cover relative z-10"
-                                alt="Independence Day Story Writing Competition">
-                        </div>
-                        <div class="p-6 md:p-12 flex flex-col justify-center">
-                            <p class="text-xs font-bold text-blue-500 mb-3 uppercase tracking-widest">
-                                Hosted by The Reading Elf 🇮🇳
-                            </p>
-                            <h3 class="text-2xl md:text-3xl font-semibold text-green-900 mb-4">
-                                ✍️ Independence Day Story Writing Competition
-                            </h3>
-                            <div class="text-gray-600 text-sm mb-6 space-y-3 leading-relaxed">
-                                <p><span class="font-semibold text-green-900">Calling Young Storytellers!</span> A
-                                    chance for young writers to turn their ideas, imagination and love for stories
-                                    into something of their own.</p>
-                                <p>Let your words celebrate freedom, dreams and a brighter tomorrow! ❤️📖</p>
-                            </div>
-                            <div class="space-y-4 mb-6 text-sm">
-                                <div class="bg-[#F3E8D0] p-4 rounded-xl border border-gray-100">
-                                    <h4 class="font-bold text-green-900 mb-2">✨ How to Participate</h4>
-                                    <ul class="list-none text-gray-700 space-y-1 text-xs">
-                                        <li>1️⃣ Visit The Reading Elf Bookstore during store hours</li>
-                                        <li>2️⃣ Collect your Story Writing Sheet</li>
-                                        <li>3️⃣ Choose one of the story prompts</li>
-                                        <li>4️⃣ Write an original story of approximately 300–500 words in the
-                                            store</li>
-                                        <li>5️⃣ Submit your completed story before you leave</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="border-t border-gray-100 pt-6 space-y-4">
-                                <div class="flex flex-col gap-3 text-sm">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📅</span>
-                                        <span class="text-gray-700 font-medium">Competition Dates: 11th – 16th
-                                            August</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">👧🏻</span>
-                                        <span class="text-gray-700 font-medium">Age Categories: 8–10 Years | 11–14
-                                            Years</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">🏆</span>
-                                        <span class="text-gray-700 font-medium">Winners Announced: 22nd August —
-                                            Prizes & Certificate</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📍</span>
-                                        <span class="text-gray-700 font-medium">The Reading Elf Bookstore,
-                                            Thoraipakkam, Chennai</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">💳</span>
-                                        <span class="text-gray-700 font-medium">Entry Fee: ₹150 per participant</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs italic text-gray-500 mt-2">💛 Every great writer begins with one
-                                    story.</p>
-                                <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-                                    <a href="https://wa.me/919500056482" target="_blank"
-                                        class="btn-primary w-full sm:w-auto text-center py-3">
-                                        REGISTER NOW VIA WHATSAPP →
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event 2 -->
-                    <div class="max-w-6xl w-full bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
-                        <div class="w-full overflow-hidden relative">
-                            <img src="./assets/images/event/interactive-storytelling-session.jpeg"
-                                class="w-full h-auto md:h-full md:object-cover relative z-10"
-                                alt="Interactive Storytelling Session with Gowri Bhargav">
-                        </div>
-                        <div class="p-6 md:p-12 flex flex-col justify-center">
-                            <p class="text-xs font-bold text-blue-500 mb-3 uppercase tracking-widest">
-                                Hosted by The Reading Elf 💙
-                            </p>
-                            <h3 class="text-2xl md:text-3xl font-semibold text-green-900 mb-4">
-                                📖 Interactive Storytelling Session
-                            </h3>
-                            <div class="text-gray-600 text-sm mb-6 space-y-3 leading-relaxed">
-                                <p>An engaging, playful storytelling experience where little readers listen,
-                                    imagine, interact and become part of the story. ✨📚</p>
-                                <p>With engaging stories, fun activities and plenty of imagination, children get to
-                                    explore new worlds while building confidence, creativity and a love for stories.
-                                    🦋🌈</p>
-                            </div>
-                            <div class="space-y-4 mb-6 text-sm">
-                                <div class="bg-[#F3E8D0] p-4 rounded-xl border border-gray-100">
-                                    <h4 class="font-bold text-green-900 mb-2">🌟 Session Highlights</h4>
-                                    <ul class="list-none text-gray-700 space-y-1 text-xs">
-                                        <li>📖 Engaging Stories</li>
-                                        <li>🎭 Interactive & Playful Fun</li>
-                                        <li>🚀 Boosts Imagination</li>
-                                        <li>💛 Builds Confidence</li>
-                                        <li>✨ A Chance to Listen, Imagine & Join In!</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="border-t border-gray-100 pt-6 space-y-4">
-                                <div class="flex flex-col gap-3 text-sm">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📅</span>
-                                        <span class="text-gray-700 font-medium">22 August 2026 (Saturday) | 🕚 11:00
-                                            AM – 12:00 PM</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">👧🏻</span>
-                                        <span class="text-gray-700 font-medium">For Kids Ages 4–10 Years</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📍</span>
-                                        <span class="text-gray-700 font-medium">The Reading Elf Bookstore,
-                                            Thoraipakkam, Chennai</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">💳</span>
-                                        <span class="text-gray-700 font-medium">Entry Fee: ₹550 per child</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs italic text-gray-500 mt-2">✨ Listen. Imagine. Join in. Be part of
-                                    the story!</p>
-                                <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-                                    <a href="https://wa.me/919500056482" target="_blank"
-                                        class="btn-primary w-full sm:w-auto text-center py-3">
-                                        BOOK YOUR SPOT TODAY →
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event 3 -->
-                    <div class="max-w-6xl w-full bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
-                        <div class="w-full overflow-hidden relative">
-                            <img src="./assets/images/event/salt-of-freedom-workshop.jpeg"
-                                class="w-full h-auto md:h-full md:object-cover relative z-10"
-                                alt="Salt of Freedom Independence Day Textured Art Workshop">
-                        </div>
-                        <div class="p-6 md:p-12 flex flex-col justify-center">
-                            <p class="text-xs font-bold text-blue-500 mb-3 uppercase tracking-widest">
-                                Hosted by The Reading Elf 🇮🇳
-                            </p>
-                            <h3 class="text-2xl md:text-3xl font-semibold text-green-900 mb-4">
-                                🧂 Salt of Freedom
-                            </h3>
-                            <p class="text-xs italic text-gray-500 -mt-3 mb-4">An Independence Day Textured Art
-                                Workshop</p>
-                            <div class="text-gray-600 text-sm mb-6 space-y-3 leading-relaxed">
-                                <p>A fun, hands-on afternoon where children explore the idea of <span
-                                        class="font-semibold text-green-900">freedom through salt, sand, colour &
-                                        texture</span> — and turn it into their very own textured artwork at The
-                                    Reading Elf. 🎨🇮🇳</p>
-                                <p>From sprinkling salt to building sandy textures and adding their own creative
-                                    touches, every child gets to create, explore and take home their finished
-                                    masterpiece. ✨</p>
-                            </div>
-                            <div class="space-y-4 mb-6 text-sm">
-                                <div class="bg-[#F3E8D0] p-4 rounded-xl border border-gray-100">
-                                    <h4 class="font-bold text-green-900 mb-2">🌟 Workshop Highlights</h4>
-                                    <ul class="list-none text-gray-700 space-y-1 text-xs">
-                                        <li>🧂 Create a Textured Artwork Using Salt & Sand</li>
-                                        <li>🎨 Step-by-Step Guided Art Session</li>
-                                        <li>🇮🇳 Explore the Idea of Freedom Through an Independence Day Theme</li>
-                                        <li>🖌️ All Art Materials Included</li>
-                                        <li>🎁 Take Home Your Finished Artwork</li>
-                                        <li>✨ A Fun & Creative Independence Day Experience</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="border-t border-gray-100 pt-6 space-y-4">
-                                <div class="flex flex-col gap-3 text-sm">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📅</span>
-                                        <span class="text-gray-700 font-medium">29 August 2026 (Saturday) | 🕔 5:00
-                                            PM – 6:00 PM</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">👧🏻</span>
-                                        <span class="text-gray-700 font-medium">For Kids Ages 5–10 Years</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">📍</span>
-                                        <span class="text-gray-700 font-medium">The Reading Elf Bookstore, Rooftop,
-                                            Thoraipakkam</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400">💳</span>
-                                        <span class="text-gray-700 font-medium">Workshop Fee: ₹950 per child</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs italic text-gray-500 mt-2">✨ Create. Feel. Explore. Take home a
-                                    little piece of freedom.</p>
-                                <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-                                    <a href="https://wa.me/919500056482" target="_blank"
-                                        class="btn-primary w-full sm:w-auto text-center py-3">
-                                        BOOK YOUR CHILD'S SEAT →
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-
-        <!-- ═══════════════════════════════════════════════════
-             FASCINATING FLAGS SECTION
-        ════════════════════════════════════════════════════ -->
-        <section id="flags-book" class="bg-white py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-
-                    <!-- ── LEFT: Image with Yellow Frame ── -->
-                    <div class="flex-1 order-1 flex justify-center">
-                        <div class="relative">
-                            <div class="overflow-hidden
-                                        w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
-                                <img src="/assets/images/flags-book.webp" alt="Fascinating Flags for Fun Book"
-                                    class="w-full object-cover block">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ── RIGHT: Text & CTA ── -->
-                    <div class="flex-1 order-2 text-center md:text-left">
-
-                        <!-- Main Heading — Colors: Brown text + Blue highlighted words -->
-                        <h2 class="text-4xl md:text-5xl lg:text-[60px] text-[#6B3E2E] mb-2 leading-tight">
-                            Fascinating <span class="text-[#2B4B8E]">Flags</span> <br>
-                            for <span class="text-[#2B4B8E]">Fun</span>
-                        </h2>
-
-                        <!-- Sub-header -->
-                        <p class="text-gray-500 text-base md:text-lg mb-8 font-medium">Book Written By Shwetha</p>
-
-                        <!-- Body Text -->
-                        <div class="space-y-4 text-[#333] text-base md:text-lg leading-relaxed mb-10 max-w-lg">
-                            <p>A book created with the same spirit as The Reading Elf.</p>
-                            <p>It introduces children to flags from around the world in a way that feels fun and
-                                engaging.</p>
-                            <p>Instead of memorizing, children explore, recognize, and enjoy learning.</p>
-                            <p>It's not just a book. It's a playful way to discover the world.</p>
-                        </div>
-
-                        <!-- CTA Button: Using Site-Wide btn-primary style -->
-                        <a href="https://www.amazon.in/Fascinating-Flags-Adhruth-Subbiah-Balakrishnan/dp/9395731044/"
-                            target="_blank" rel="nofollow" class="btn-primary">
-                            BUY IT ON AMAZON →
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-[#FEFFE0] py-16">
-            <div class="max-w-7xl mx-auto px-6">
-
-                <!-- Heading -->
-                <div class="mb-12 text-center text-green-900">
-                    <p class="text-xs tracking-widest  mb-3">COMMUNITY</p>
-
-                    <h2 class="text-3xl md:text-5xl font-semibold  mb-4">
-                        The Reading Elf Community
-                    </h2>
-
-                    <p class=" ">
-                        Parents, kids, and teachers who believe in the magic of books —
-                        sharing stories, reviews, and reading wins.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-
-                    <!-- Card 1 - Priya Krishnan -->
-                    <div class="relative bg-white rounded-2xl shadow-xl  px-7 pt-5 pb-7 overflow-hidden">
-                        <div
-                            class="absolute -right-5 -top-2 w-28 h-28 rounded-full border-[22px] border-gray-200 opacity-30">
-                        </div>
-                        <div
-                            class="absolute right-8 top-10 w-16 h-16 rounded-full border-[14px] border-gray-200 opacity-20">
-                        </div>
-
-                        <div
-                            class="absolute top-0 left-0 bg-orange-500 rounded-tl-2xl rounded-br-2xl px-5 py-2 flex items-center gap-1">
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                        </div>
-
-                        <div class="h-8 mb-4"></div>
-
-                        <p class="text-gray-800 text-sm leading-relaxed mb-6" style="font-family:'DM Sans',sans-serif;">
-                            "Extremely good experience for kids . Fascinated by the mushroom and house shaped reading
-                            nooks for kids . All books are imported from the US and UK . Love their USBORNE collection.
-                            Best for kids from ages 1-14 . Good one stop shop for gifting as well."
-                        </p>
-
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-9 h-9 rounded-full bg-green-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                A</div>
-                            <div>
-                                <p class="text-gray-800 text-sm font-semibold leading-tight"
-                                    style="font-family:'DM Sans',sans-serif;">Anish Ananthasamy</p>
-                                <!-- <p class="text-gray-400 text-xs" style="font-family:'DM Sans',sans-serif;">Father of a
-                                    7-year-old · Chennai</p> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 - Shikha Menon -->
-                    <div class="relative bg-white rounded-2xl shadow-xl  px-7 pt-5 pb-7 overflow-hidden">
-                        <div
-                            class="absolute -right-5 -top-2 w-28 h-28 rounded-full border-[22px] border-gray-200 opacity-30">
-                        </div>
-                        <div
-                            class="absolute right-8 top-10 w-16 h-16 rounded-full border-[14px] border-gray-200 opacity-20">
-                        </div>
-
-                        <div
-                            class="absolute top-0 left-0 bg-orange-500 rounded-tl-2xl rounded-br-2xl px-5 py-2 flex items-center gap-1">
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                        </div>
-
-                        <div class="h-8 mb-4"></div>
-
-                        <p class="text-gray-800 text-sm leading-relaxed mb-6" style="font-family:'DM Sans',sans-serif;">
-                            "Good place for kids. Vast collection of imported picture books and books for children till
-                            12. the mushroom house is good fun the kids loved it.Has a fantastic view of the city."
-                        </p>
-
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-9 h-9 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                P</div>
-                            <div>
-                                <p class="text-gray-800 text-sm font-semibold leading-tight"
-                                    style="font-family:'DM Sans',sans-serif;">Prakash Nandan</p>
-                                <!-- <p class="text-gray-400 text-xs" style="font-family:'DM Sans',sans-serif;">Principal ·
-                                    Shishya School</p> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 - Aarav, Age 9 -->
-                    <div class="relative bg-white rounded-2xl shadow-xl  px-7 pt-5 pb-7 overflow-hidden">
-                        <div
-                            class="absolute -right-5 -top-2 w-28 h-28 rounded-full border-[22px] border-gray-200 opacity-30">
-                        </div>
-                        <div
-                            class="absolute right-8 top-10 w-16 h-16 rounded-full border-[14px] border-gray-200 opacity-20">
-                        </div>
-
-                        <div
-                            class="absolute top-0 left-0 bg-orange-500 rounded-tl-2xl rounded-br-2xl px-5 py-2 flex items-center gap-1">
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                            <span class="text-white text-base">★</span>
-                        </div>
-
-                        <div class="h-8 mb-4"></div>
-
-                        <p class="text-gray-800 text-sm leading-relaxed mb-6" style="font-family:'DM Sans',sans-serif;">
-                            "A wonderful bookstore for kids with a thoughtfully curated collection for all age groups.
-                            The ambience is bright, colorful, and very inviting with cozy reading spots.
-                            They also offer toys, DIY kits, and notebooks, making it more than just a bookstore.
-                            Prices are mostly reasonable, though a few books feel slightly expensive."
-                        </p>
-
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-9 h-9 rounded-full bg-orange-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                P</div>
-                            <div>
-                                <p class="text-gray-800 text-sm font-semibold leading-tight"
-                                    style="font-family:'DM Sans',sans-serif;">
-                                    priyanka saha</p>
-                                <!-- <p class="text-gray-400 text-xs flex items-center gap-1"
-                                    style="font-family:'DM Sans',sans-serif;">Silver Reader 🏆</p> -->
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-[#F3E8D0]" id="contact">
+        <!-- Hidden, not deleted: has a real working Google Maps embed with actual
+             coordinates and address. Note: the sticky strip whose "Find Us" button used
+             to link here (#contact) has since been removed from the page — this anchor
+             has no current entry point, kept anyway since the map/address is real data
+             worth keeping. -->
+        <section class="hidden py-20 bg-[#F3E8D0]" id="contact">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center"> <!-- LEFT CONTENT -->
                     <div>
@@ -1296,7 +737,9 @@
             </div>
         </section>
 
-        <section id="instagram-feed" class="py-20 bg-white">
+        <!-- Hidden, not deleted: has a real working Elfsight Instagram embed
+             widget. -->
+        <section id="instagram-feed" class="hidden py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
                 <!-- Heading -->
                 <div class="mb-12 text-center">
@@ -1317,10 +760,148 @@
             </div>
         </section>
 
+
     </main>
 
-    <!-- Shared Footer (injected by js/components.js) -->
-    <div id="site-footer"></div>
+    <!-- Footer -->
+    <footer id="site-footer-custom" class="relative w-full bg-[#c0503a] pt-24 md:pt-28 pb-10 md:pb-12 px-6 md:px-16 lg:px-20">
+
+        <style>
+            /* Baloo 2 isn't linked in <head>; imported here too since this element sits
+               outside every other section's Baloo 2 scope. */
+            @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+            #site-footer-custom .font-display {
+                font-family: 'Baloo 2', 'Nunito', sans-serif;
+            }
+        </style>
+
+        <!-- Branch/lantern — single image, no JS/animation. Positioned with a large
+             negative top offset so its leafy top portion visually lands in the space
+             occupied by #instagram (which sits directly above with zero gap), while the
+             branch/lantern lower portion stays within this footer's own box. IMPORTANT
+             LIMITATION, flagged rather than silently glossed over: #instagram has
+             overflow-hidden (already did, unchanged), but that only clips an element's
+             OWN descendants — this image is a child of the footer, not of #instagram, so
+             #instagram's overflow-hidden has no effect on it. A single shared image
+             element can't simultaneously be "clipped by Instagram's box" for its top
+             portion AND "shown complete, unclipped" in the Footer for the rest — those
+             two requirements are mutually exclusive for one element with pure CSS
+             overflow (overflow:hidden is a static spatial clip in document coordinates,
+             not a scroll-triggered reveal). This positions the whole image, unclipped,
+             so the Footer's "complete branch + lantern" requirement holds; the "hidden
+             while still in Instagram" half doesn't actually happen — the leafy top is
+             visible for real as soon as it scrolls into the viewport, from either
+             section's screen-space. -->
+        <img id="footer-branch-lantern" src="/assets/images/footer-branch-lantern.png" alt=""
+            aria-hidden="true"
+            class="absolute -top-[115px] md:-top-[180px] right-0 md:right-10 z-0 w-[420px] md:w-[650px] h-auto pointer-events-none">
+
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
+
+            <!-- Left column -->
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <h2 class="font-display font-bold text-[28px] md:text-[32px] text-[#f3e8d0] mb-3">The Reading Elf</h2>
+                <p class="font-['Nunito'] font-normal text-[15px] text-[#f3e8d0] leading-relaxed mb-6">
+                    A magical space where kids discover the joy of books, stories, and
+                    imagination.
+                </p>
+
+                <p class="font-display font-bold text-[16px] text-[#f3e8d0] mb-3">Reach Us</p>
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
+                    <a href="#" aria-label="Instagram"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <!-- WhatsApp: no Feather icon exists for this brand; hand-composed
+                         speech-bubble + handset-curl approximation in the same stroke
+                         style, not a verified pixel-exact brand mark. -->
+                    <a href="#" aria-label="WhatsApp"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21l1.65-4.95A8.5 8.5 0 1 1 8.9 19.4z"></path>
+                            <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <a href="tel:+919500056482"
+                    class="inline-flex items-center gap-2 font-['Nunito'] text-[15px] text-[#f3e8d0] underline hover:opacity-80 transition">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    +91 9500056482
+                </a>
+            </div>
+
+            <!-- Center badge — gold/yellow ring border (border-[#f6c35b]). The sticky
+                 strip that used to have a matching circular badge has since been removed
+                 from the page; this footer badge is now the only one left. -->
+            <div class="flex-shrink-0">
+                <div class="w-[160px] h-[160px] rounded-full bg-white border-4 border-[#f6c35b] shadow-lg flex items-center justify-center text-center overflow-hidden">
+                    <img src="/assets/images/logo.webp" alt="The Reading Elf" class="w-full h-full object-cover rounded-full">
+                </div>
+            </div>
+
+            <!-- Right column -->
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <p class="font-display font-bold text-[18px] text-[#f3e8d0] mb-4">Quick Links</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="books.html" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Discover Books</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="our-story.html" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Story</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="experience.html" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Experiences</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Gallery</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="events.html" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Events</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="relative z-10 max-w-7xl mx-auto mt-14 md:mt-16 pt-6 border-t border-[#f3e8d0]/25 text-center">
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0]">
+                © 2026 The Reading Elf. All rights reserved. |
+                <a href="#" class="underline hover:opacity-80 transition">Privacy Policy</a> •
+                <a href="#" class="underline hover:opacity-80 transition">Terms &amp; Conditions</a>
+            </p>
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0] mt-2">
+                Built by <a href="#" class="underline hover:opacity-80 transition">EastTheory.com</a>
+            </p>
+        </div>
+
+    </footer>
+
+    <!-- Old shared footer (injected by js/components.js) is now superseded by the
+         custom footer above. Wrapped in a hidden parent — same technique used for
+         #site-header earlier in this build — since components.js replaces this div's
+         outerHTML at runtime, which would wipe a class/style applied directly to it. -->
+    <div class="hidden">
+        <div id="site-footer"></div>
+    </div>
 
 
 

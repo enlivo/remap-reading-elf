@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Blog | The Reading Elf — Children's Bookstore in Thoraipakkam, OMR Chennai</title>
+
+    <meta name="description"
+        content="Bookstagram favorites, books that made it to the big screen, our Saturday reading club picks, and books written by our own family — from The Reading Elf, Thoraipakkam, OMR, Chennai.">
+    <meta name="keywords" content="kids book blog, bookstagram books, books turned into movies, reading club Chennai blog, children bookstore blog">
+    <meta name="author" content="The Reading Elf">
+
+    <link rel="icon" href="/assets/images/logo.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Shared header/footer component (used for the hidden legacy header + Book of the Month widget + footer fallback) -->
+    <script src="./js/components.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .font-display {
+            font-family: 'Baloo 2', 'Nunito', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Shared Header (injected by js/components.js) -->
+    <!-- Wrapped in a hidden parent — same fix as books.html / our-story.html. -->
+    <div class="hidden">
+        <div id="site-header"></div>
+    </div>
+
+    <style>
+        #botm-widget {
+            display: none !important;
+        }
+    </style>
+
+    <!-- ============================================================
+         STICKY SITE HEADER — same two-tier component, "Blog" current.
+         ============================================================ -->
+    <header class="sticky top-0 z-50 font-['Nunito']">
+        <!-- Row 1 bg matches the peach hero (was bg-white/95 — didn't match
+             the Figma reference, which carries the hero's peach straight
+             through behind the nav). NOTE: this header markup is currently
+             duplicated as-is across all 7 pages; only blog.html's copy is
+             changed here per this request's scope — flagging in the build
+             summary that the other 6 still use the white version. -->
+        <div class="bg-[#fccdb2]">
+            <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf"
+                        class="w-10 h-10 rounded-full object-cover">
+                </a>
+                <nav aria-label="Main navigation"
+                    class="hidden md:flex items-center bg-[#f6c35b] rounded-full px-6 py-3 shadow-md">
+                    <a href="books.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Books</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="story-box.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Story Box</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="experience.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Experience</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="events.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Events</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="our-story.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Our Story</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="blog.html" class="pl-4 font-semibold text-[15px] text-[#7a4e35] bg-white/40 rounded-full">Blog</a>
+                </nav>
+            </div>
+        </div>
+        <!-- Badge enlarged (64px -> 136px) and pulled up with -mt so it
+             straddles row 1 / row 2, matching the reference's larger,
+             overlapping badge instead of sitting fully inside row 2. -->
+        <div class="bg-[#f3e8d0] border-t border-[#7a4e35]/15 relative flex justify-center py-1.5">
+            <div class="w-[136px] h-[136px] -mt-16 rounded-full bg-white border-4 border-[#7a4e35] shadow-lg overflow-hidden">
+                <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO — confirmed intentional reuse of Experience's hero copy
+             (verified directly against blog-hero-bookstagram.png).
+             ============================================================ -->
+        <section class="relative bg-[#fccdb2] px-6 pt-20 md:pt-28 pb-12 md:pb-16 text-center overflow-hidden">
+            <!-- Yellow swoosh — real asset (deco-swoosh-gold), not a hand-drawn
+                 curve; the earlier flat-line CSS path didn't match Figma. -->
+            <img src="assets/images/blog-page/hero-deco-swoosh-yellow.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute top-20 left-10 w-[150px] pointer-events-none">
+            <!-- Tall vertical green ribbon — was missing entirely; same
+                 twisted-ribbon asset used for other pages' decorations,
+                 rotated upright and stretched tall to match the reference. -->
+            <img src="assets/images/blog-page/hero-deco-ribbon-green.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute top-32 left-6 w-[190px] rotate-90 pointer-events-none">
+            <!-- Blue triangle cluster — real asset (deco-wave-blue), not the
+                 self-intersecting star-shaped SVG path used before. -->
+            <img src="assets/images/blog-page/hero-deco-triangles-blue.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute top-24 right-16 w-[130px] rotate-[20deg] pointer-events-none">
+            <div class="max-w-3xl mx-auto relative z-10">
+                <h1 class="font-display font-extrabold text-[34px] md:text-[46px] leading-tight">
+                    <span class="text-[#7a4e35]">More than a bookstore.</span><br>
+                    <span class="text-[#2f6b4f]">A place to belong.</span>
+                </h1>
+                <p class="mt-5 font-['Nunito'] text-[#7a4e35] text-[15px] md:text-[18px] leading-relaxed max-w-xl mx-auto">
+                    Reading clubs, workshops, and programmes built around the belief that reading grows better together.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FROM BOOKSTAGRAM / REEL TO MOVIES / BLOG — three green post
+             cards sharing the same layout (heading + copy left, photo
+             right) and the same reused illustration as the photo, matching
+             the reference screenshots (all three genuinely reuse one image).
+             ============================================================ -->
+        <!-- overflow-hidden on the section = a hard clipping frame, so the
+             card's hover scale can never bleed past the green strip's edge
+             no matter what. The card itself now carries its own p-6/md:p-10
+             padding (previously it had none of its own — only the section's
+             outer px-*, which wasn't enough inset once content got close to
+             max-w-6xl's width, hence the jammed-left / bleeding-right text
+             and image). Image capped at 320px (was 380px) for extra margin. -->
+        <!-- Figma export, applied 1:1 at md+: this SECTION is the one
+             position:relative parent. Layer 1 (rectangle) and Layer 2 (card)
+             are two independent position:absolute children of it directly —
+             not nested in a wrapper — using the frame's literal px
+             coordinates. z-[1]/z-[2] set explicit paint order so the card
+             renders on top regardless of DOM order. -mt-16/md:-mt-24 (moved
+             here from the old wrapper div) still overlaps the block onto the
+             section above; since both sections share the same bg-[#fccdb2],
+             that's visually seamless. md:h-[994.475px] = 421 + 573.475
+             (card top + card height) — pins the section to exactly the
+             card's footprint so neither layer, both out of flow, adds any
+             height beyond it. Below md both layers fall back to normal
+             static in-flow stacking (this exact pixel frame is desktop-only). -->
+        <section class="bg-[#fccdb2] px-6 md:px-16 lg:px-20 py-16 md:py-20 relative -mt-16 md:-mt-24 md:h-[994.48px]">
+            <svg class="hidden md:block absolute top-10 -left-4 w-8 h-24 text-[#245a41]" viewBox="0 0 20 60" fill="currentColor" aria-hidden="true">
+                <path d="M10 0 C 2 8 2 16 10 24 C 18 32 18 40 10 48 C 2 56 2 60 10 60 L0 60 L0 0 Z" />
+            </svg>
+            <!-- LAYER 1 — flat green strip, no radius, purely decorative. -->
+            <div class="hidden md:block md:absolute md:top-[518px] md:left-[-5px] md:w-[1925px] md:h-[428px] bg-[#2f6b4f] md:z-[1] pointer-events-none"></div>
+            <!-- LAYER 2 — the rounded card, real content, on top of Layer 1.
+                 Node #269:1231 "Card" (408,421, 1112x573.48) wraps the
+                 "Books" instance (#269:1232), whose visible green fill lives
+                 on its child FRAME #I269:1232;220:725 — borderRadius
+                 88.446px (not a round number; taken as-is from Figma), row
+                 padding "57.06 30.67 57.06 634.82" (t/r/b/l). That huge
+                 634.82 left padding is just how Figma insets the image to
+                 the right; the instance's own padding "57.06 37.09" (v/h)
+                 is what insets the sibling "Text" frame (#I269:1232;220:727,
+                 w=597.73) on the left. Both paddings resolve onto ONE flex
+                 row here since 37.09(pl) + 597.73(text w) + 30.67(pr) +
+                 446.51(image w) = 1112.0 exactly — no gap needed, the fixed
+                 widths already abut flush, matching Figma's math precisely. -->
+            <div class="blog-hover-card w-full md:absolute md:top-[421px] md:left-[408px] md:w-[1112px] md:h-[573.48px] flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-0 p-6 md:pt-[57.06px] md:pb-[57.06px] md:pl-[37.09px] md:pr-[30.67px] rounded-[28px] md:rounded-[88.446px] bg-[#2f6b4f] overflow-hidden relative md:z-[2] transition-transform duration-[280ms] ease-out hover:scale-[1.05] cursor-pointer">
+                <!-- Text frame #I269:1232;220:727: fixed 597.73px, column,
+                     97.72px gap between heading and paragraph (Figma's own
+                     number, not a guess) — heading 45.65px, paragraph
+                     28.53px, both Nunito/white, left-aligned. -->
+                <div class="flex-1 md:flex-none md:w-[597.73px] flex flex-col gap-6 md:gap-[97.72px] text-center md:text-left">
+                    <h2 class="font-['Nunito'] font-bold text-white text-[30px] md:text-[45.65px] leading-tight md:whitespace-nowrap">From Bookstagram</h2>
+                    <p class="font-['Nunito'] text-white/90 md:text-white text-[16px] md:text-[28.53px] leading-relaxed max-w-md md:max-w-none mx-auto md:mx-0">
+                        List of Books that are famous in reels,<br>social media and posts!
+                    </p>
+                </div>
+                <!-- Image rectangle #I269:1232;220:723: 446.51 x 459.35 (not
+                     square), borderRadius 77.75px, object-fit cover. -->
+                <img src="assets/images/blog-page/blog-post-photo.png" alt="A boy and girl reading together under a lantern-lit tree by a lake"
+                    class="w-full max-w-[320px] aspect-square md:max-w-none md:w-[446.51px] md:h-[459.35px] md:aspect-auto object-cover rounded-[28px] md:rounded-[77.747px] shrink-0">
+            </div>
+        </section>
+
+        <!-- Figma node #269:1242 "PC Blog 2": same "Books" component as the
+             hero card (identical 573.48-tall / 88.446-radius card, same
+             597.73 text column with a 97.72 gap, same 446.51x459.35 image
+             at 77.747 radius) but its own two rectangles (#302:1370,
+             #302:1372) sit at a different offset than the hero's — much
+             lower and reaching well past each card's own bottom edge (this
+             frame visually bridges the two cards into one continuous green
+             band; we keep each card in its own section instead, per the
+             added inter-section spacing below, so each rectangle is instead
+             contained inside its own section, sized tall enough to hold it
+             in full). mt-16/md:mt-20 = the requested ~64-80px breathing room
+             before this section, replacing the old flush/bordered seam. -->
+        <section class="bg-[#fccdb2] px-6 md:px-16 lg:px-20 py-16 md:py-20 relative mt-16 md:mt-20 md:h-[1218px]">
+            <svg class="hidden md:block absolute top-1/2 -translate-y-1/2 right-4 w-16 h-16 text-[#7a4e35]" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+                <path d="M50 0 L58 38 L92 20 L64 46 L100 50 L64 54 L92 80 L58 62 L50 100 L42 62 L8 80 L36 54 L0 50 L36 46 L8 20 L42 38 Z" />
+            </svg>
+            <!-- LAYER 1 — rect #302:1370: 369px below this card's top, same
+                 as the card below, both now anchored to the hero's own
+                 top-[421px]/left-[408px] baseline: 421+369 = 790px. -->
+            <div class="hidden md:block md:absolute md:top-[790px] md:-left-16 md:-right-16 lg:-left-20 lg:-right-20 md:h-[428px] bg-[#2f6b4f] md:z-[1] pointer-events-none"></div>
+            <!-- LAYER 2 — card #269:1254 "Books" instance, on top of Layer 1.
+                 Byte-identical box model to the working hero card (same
+                 top-[421px]/left-[408px]/w-[1112px]/h-[573.48px]/
+                 rounded-[88.446px]/padding scheme) — only the rectangle's
+                 offset and the copy below differ between cards. -->
+            <div class="blog-hover-card w-full md:absolute md:top-[421px] md:left-[408px] md:w-[1112px] md:h-[573.48px] flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-0 p-6 md:pt-[57.06px] md:pb-[57.06px] md:pl-[37.09px] md:pr-[30.67px] rounded-[28px] md:rounded-[88.446px] bg-[#2f6b4f] overflow-hidden relative md:z-[2] transition-transform duration-[280ms] ease-out hover:scale-[1.05] cursor-pointer">
+                <div class="flex-1 md:flex-none md:w-[597.73px] flex flex-col gap-6 md:gap-[97.72px] text-center md:text-left">
+                    <h2 class="font-['Nunito'] font-bold text-white text-[30px] md:text-[45.65px] leading-tight md:whitespace-nowrap">Reel to Movies</h2>
+                    <p class="font-['Nunito'] text-white/90 md:text-white text-[16px] md:text-[28.53px] leading-relaxed max-w-md md:max-w-none mx-auto md:mx-0">
+                        Some books make it to the big screens — come find out if you can see your favorite characters on big screens!
+                    </p>
+                </div>
+                <img src="assets/images/blog-page/blog-post-photo.png" alt="A boy and girl reading together under a lantern-lit tree by a lake"
+                    class="w-full max-w-[320px] aspect-square md:max-w-none md:w-[446.51px] md:h-[459.35px] md:aspect-auto object-cover rounded-[28px] md:rounded-[77.747px] shrink-0">
+            </div>
+        </section>
+
+        <!-- Same Figma component again; rect #302:1372 sits 359.52px below
+             this card's top (863 - 503.48), matching the ~369px pattern
+             above closely enough to confirm it's intentional, not a
+             coordinate error. -->
+        <section class="bg-[#fccdb2] px-6 md:px-16 lg:px-20 py-16 md:py-20 relative mt-16 md:mt-20 md:h-[1208.52px]">
+            <svg class="hidden md:block absolute top-1/2 -translate-y-1/2 -left-4 w-16 h-16 text-[#c8452e]" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+                <path d="M50 0 L58 38 L92 20 L64 46 L100 50 L64 54 L92 80 L58 62 L50 100 L42 62 L8 80 L36 54 L0 50 L36 46 L8 20 L42 38 Z" />
+            </svg>
+            <!-- LAYER 1 — rect #302:1372: 359.52px below this card's top,
+                 same top-[421px]/left-[408px] baseline as the hero card:
+                 421+359.52 = 780.52px. -->
+            <div class="hidden md:block md:absolute md:top-[780.52px] md:-left-16 md:-right-16 lg:-left-20 lg:-right-20 md:h-[428px] bg-[#2f6b4f] md:z-[1] pointer-events-none"></div>
+            <!-- LAYER 2 — card #269:1256 "Books" instance, on top of Layer 1.
+                 Byte-identical box model to the working hero card. -->
+            <div class="blog-hover-card w-full md:absolute md:top-[421px] md:left-[408px] md:w-[1112px] md:h-[573.48px] flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-0 p-6 md:pt-[57.06px] md:pb-[57.06px] md:pl-[37.09px] md:pr-[30.67px] rounded-[28px] md:rounded-[88.446px] bg-[#2f6b4f] overflow-hidden relative md:z-[2] transition-transform duration-[280ms] ease-out hover:scale-[1.05] cursor-pointer">
+                <div class="flex-1 md:flex-none md:w-[597.73px] flex flex-col gap-6 md:gap-[97.72px] text-center md:text-left">
+                    <h2 class="font-['Nunito'] font-bold text-white text-[30px] md:text-[45.65px] leading-tight md:whitespace-nowrap">Blog</h2>
+                    <p class="font-['Nunito'] text-white/90 md:text-white text-[16px] md:text-[28.53px] leading-relaxed max-w-md md:max-w-none mx-auto md:mx-0">
+                        Saturday reading club for children. One book per month. One session led by Shweta. An experience that only makes sense if you've read it.
+                    </p>
+                </div>
+                <img src="assets/images/blog-page/blog-post-photo.png" alt="A boy and girl reading together under a lantern-lit tree by a lake"
+                    class="w-full max-w-[320px] aspect-square md:max-w-none md:w-[446.51px] md:h-[459.35px] md:aspect-auto object-cover rounded-[28px] md:rounded-[77.747px] shrink-0">
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SHE WRITES TOO — "Fascinating Flags" cover intentionally left
+             as an empty placeholder; no photo has been supplied yet.
+             ============================================================ -->
+        <section class="bg-[#fccdb2] px-6 md:px-16 lg:px-20 py-16 md:py-20 relative overflow-hidden mt-16 md:mt-20">
+            <img src="assets/images/story-box-page/deco-leaf-small.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute top-8 left-6 w-16 pointer-events-none -rotate-45">
+            <img src="assets/images/story-box-page/deco-leaf-large.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute bottom-6 right-10 w-28 pointer-events-none">
+            <svg class="hidden md:block absolute bottom-16 left-16 w-14 h-14 text-[#c8452e]" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+                <path d="M50 0 L58 38 L92 20 L64 46 L100 50 L64 54 L92 80 L58 62 L50 100 L42 62 L8 80 L36 54 L0 50 L36 46 L8 20 L42 38 Z" />
+            </svg>
+            <div class="max-w-4xl mx-auto bg-[#f6c35b] rounded-[32px] p-8 md:p-12 relative z-10">
+                <h2 class="font-display font-bold text-[#7a4e35] text-[26px] md:text-[32px] mb-8">She Writes Too</h2>
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <div class="w-[160px] h-[220px] rounded-xl bg-gray-200 border-2 border-[#7a4e35]/20 shrink-0"
+                        role="img" aria-label="Fascinating Flags — cover not supplied"></div>
+                    <div class="flex-1 flex flex-col justify-between h-[220px] text-center md:text-left">
+                        <h3 class="font-display font-bold text-gray-900 text-[26px] md:text-[32px]">Fascinating Flags</h3>
+                        <a href="https://www.amazon.in/s?k=Fascinating+Flags" target="_blank" rel="noopener noreferrer"
+                            class="self-center md:self-end font-['Nunito'] text-gray-800 underline hover:opacity-80 transition">Buy it on Amazon</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer — reused verbatim from index.html's custom footer (the
+         actual existing red component, not the tan/cream footer shown in
+         blog-footer.png — see build summary). -->
+    <footer id="site-footer-custom" class="relative w-full bg-[#c0503a] pt-24 md:pt-28 pb-10 md:pb-12 px-6 md:px-16 lg:px-20">
+
+        <img id="footer-branch-lantern" src="/assets/images/footer-branch-lantern.png" alt=""
+            aria-hidden="true"
+            class="absolute -top-[115px] md:-top-[180px] right-0 md:right-10 z-0 w-[420px] md:w-[650px] h-auto pointer-events-none">
+
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
+
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <h2 class="font-display font-bold text-[28px] md:text-[32px] text-[#f3e8d0] mb-3">The Reading Elf</h2>
+                <p class="font-['Nunito'] font-normal text-[15px] text-[#f3e8d0] leading-relaxed mb-6">
+                    A magical space where kids discover the joy of books, stories, and
+                    imagination.
+                </p>
+
+                <p class="font-display font-bold text-[16px] text-[#f3e8d0] mb-3">Reach Us</p>
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
+                    <a href="#" aria-label="Instagram"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21l1.65-4.95A8.5 8.5 0 1 1 8.9 19.4z"></path>
+                            <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <a href="tel:+919500056482"
+                    class="inline-flex items-center gap-2 font-['Nunito'] text-[15px] text-[#f3e8d0] underline hover:opacity-80 transition">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    +91 9500056482
+                </a>
+            </div>
+
+            <div class="flex-shrink-0">
+                <div class="w-[160px] h-[160px] rounded-full bg-white border-4 border-[#f6c35b] shadow-lg flex items-center justify-center text-center overflow-hidden">
+                    <img src="/assets/images/logo.webp" alt="The Reading Elf" class="w-full h-full object-cover rounded-full">
+                </div>
+            </div>
+
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <p class="font-display font-bold text-[18px] text-[#f3e8d0] mb-4">Quick Links</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Discover Books</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Story</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Experiences</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Gallery</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Events</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto mt-14 md:mt-16 pt-6 border-t border-[#f3e8d0]/25 text-center">
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0]">
+                © 2026 The Reading Elf. All rights reserved. |
+                <a href="#" class="underline hover:opacity-80 transition">Privacy Policy</a> •
+                <a href="#" class="underline hover:opacity-80 transition">Terms &amp; Conditions</a>
+            </p>
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0] mt-2">
+                Built by <a href="#" class="underline hover:opacity-80 transition">EastTheory.com</a>
+            </p>
+        </div>
+
+    </footer>
+
+    <div class="hidden">
+        <div id="site-footer"></div>
+    </div>
+
+</body>
+
+</html>

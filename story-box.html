@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Story Box | The Reading Elf — Children's Bookstore in Thoraipakkam, OMR Chennai</title>
+
+    <meta name="description"
+        content="Discover your child's Reading Personality with our quick quiz, then join the waitlist for The Reading Elf's Story Box — a monthly subscription box handpicked for your child. Thoraipakkam, OMR, Chennai.">
+    <meta name="keywords" content="reading personality quiz, kids book subscription box, story box Chennai, children reading subscription">
+    <meta name="author" content="The Reading Elf">
+
+    <link rel="icon" href="/assets/images/logo.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Shared header/footer component (used for the hidden legacy header + Book of the Month widget + footer fallback) -->
+    <script src="./js/components.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .font-display {
+            font-family: 'Baloo 2', 'Nunito', sans-serif;
+        }
+
+        /* Quiz option = a checkbox square + label, matching the reference
+           screens (not a bordered card grid like the old #book quiz). */
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .quiz-option .quiz-checkbox {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px solid #fff;
+            transition: border-color .15s ease, background .15s ease;
+        }
+
+        .quiz-option:hover .quiz-checkbox {
+            border-color: #2f6b4f;
+        }
+
+        .quiz-option.selected .quiz-checkbox {
+            background: #2f6b4f;
+            border-color: #2f6b4f;
+        }
+
+        .quiz-progress-seg {
+            flex: 1;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(122, 78, 53, .18);
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            width: 0;
+            background: #c8452e;
+            transition: width .25s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Shared Header (injected by js/components.js) -->
+    <!-- Wrapped in a hidden parent — same fix as books.html / our-story.html. -->
+    <div class="hidden">
+        <div id="site-header"></div>
+    </div>
+
+    <style>
+        #botm-widget {
+            display: none !important;
+        }
+    </style>
+
+    <!-- ============================================================
+         STICKY SITE HEADER — same two-tier component, "Story Box" current.
+         ============================================================ -->
+    <header class="sticky top-0 z-50 font-['Nunito']">
+        <div class="bg-white/95 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf"
+                        class="w-10 h-10 rounded-full object-cover">
+                </a>
+                <nav aria-label="Main navigation"
+                    class="hidden md:flex items-center bg-[#f6c35b] rounded-full px-6 py-3 shadow-md">
+                    <a href="books.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Books</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="story-box.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] bg-white/40 rounded-full">Story Box</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="experience.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Experience</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="events.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Events</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="our-story.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Our Story</a>
+                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                    <a href="blog.html" class="pl-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Blog</a>
+                </nav>
+            </div>
+        </div>
+        <div class="bg-[#f3e8d0] border-t border-[#7a4e35]/15 relative flex justify-center py-1.5">
+            <div class="w-[64px] h-[64px] rounded-full bg-white border-4 border-[#7a4e35] shadow-lg overflow-hidden">
+                <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO — "Stories Stay With You Forever" and the other signage
+             are painted into the illustration itself, same treatment as
+             the Books page hero.
+             ============================================================ -->
+        <section class="relative bg-cover bg-center min-h-[520px] md:min-h-[640px] flex items-center justify-center text-center px-6"
+            style="background-image: url('assets/images/story-box-page/hero-illustration.jpg');">
+            <div class="absolute inset-0 bg-black/35"></div>
+            <div class="relative z-10 max-w-3xl py-24">
+                <h1 class="font-display font-extrabold text-white text-[34px] md:text-[52px] leading-tight drop-shadow-md">
+                    Explore, Don't Just Browse
+                </h1>
+                <p class="mt-4 font-['Nunito'] text-white/90 text-[15px] md:text-[18px] leading-relaxed drop-shadow">
+                    A story box built around who your child is — not just what's on the shelf.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             QUIZ TEASER + QUIZ + RESULT — rebuilt against the 11 real quiz
+             screen exports (question-1..5, quiz-teaser-default, and the 5
+             result-*.png files). The quiz ENGINE (progress bar, option
+             rendering, back button, result computation by tallying the
+             most-picked value) is adapted from the existing #book quiz in
+             index.html (questions[] / answers[] / showResult() tally-the-
+             max pattern) rather than written from scratch — see the
+             <script> at the bottom.
+
+             Simplifications from the reference, noted rather than hidden:
+             - The 5 decorative corner images (stacked books+magnifier,
+               winged book, small leaf, red book, large leaf) are placed
+               consistently on every screen. The source screenshots vary
+               this slightly per screen (e.g. question-2's arrangement
+               differs a little, and the reading-elf-on-a-bench mascot only
+               appears on 2 of 5 questions) — replicating each screen's
+               exact one-off arrangement wasn't worth the added markup for
+               a difference that small.
+             - Result name/description colors vary per character in the
+               source (e.g. Shadow Detective's name is black, its
+               description red; Forest Keeper's name is green). Standardized
+               to terracotta name / warm-brown description across all 5 for
+               a consistent, legible result card rather than per-result
+               one-off colors.
+             ============================================================ -->
+        <section class="bg-[#fccdb2] px-6 py-16 md:py-24">
+            <div class="max-w-4xl mx-auto bg-[#fccdb2] border-2 border-dashed border-[#7a4e35]/40 rounded-[32px] p-8 md:p-16 relative overflow-hidden">
+
+                <!-- Decorative corners — present on every screen (teaser/quiz/result) -->
+                <img src="assets/images/story-box-page/deco-leaf-small.png" alt="" aria-hidden="true"
+                    class="hidden md:block absolute top-6 left-6 w-[70px] pointer-events-none">
+                <img src="assets/images/story-box-page/deco-stacked-books-magnifier.png" alt="" aria-hidden="true"
+                    class="hidden md:block absolute -top-2 -right-2 w-[130px] pointer-events-none">
+                <img src="assets/images/story-box-page/deco-winged-book.png" alt="" aria-hidden="true"
+                    class="hidden md:block absolute top-[42%] right-4 w-[80px] pointer-events-none">
+                <img src="assets/images/story-box-page/deco-red-book.png" alt="" aria-hidden="true"
+                    class="hidden md:block absolute bottom-6 left-6 w-[90px] pointer-events-none">
+                <img src="assets/images/story-box-page/deco-leaf-large.png" alt="" aria-hidden="true"
+                    class="hidden md:block absolute bottom-6 right-10 w-[110px] pointer-events-none">
+
+                <!-- Teaser -->
+                <div id="quiz-teaser" class="relative z-10 text-center">
+                    <h2 class="font-display font-extrabold text-[#c8452e] text-[28px] md:text-[38px] mb-6">Find Your Reading Personality!</h2>
+                    <p class="font-['Nunito'] text-gray-800 text-[16px] md:text-[18px] leading-relaxed max-w-xl mx-auto mb-8">
+                        Every child reads differently.<br>
+                        Take our quick 2-minute quiz to discover your child's unique reading style and get personalized book recommendations.
+                    </p>
+                    <button id="quiz-start-btn"
+                        class="bg-[#c8452e] text-white font-display font-bold text-[18px] px-8 py-3 rounded-xl hover:opacity-90 transition">
+                        Let's Start
+                    </button>
+                </div>
+
+                <!-- Quiz (hidden until started) -->
+                <div id="quiz-body" class="hidden relative z-10 max-w-lg mx-auto">
+                    <div class="flex gap-2 mb-5" id="quiz-progress"></div>
+                    <p class="font-['Nunito'] text-xs text-[#7a4e35]/70 mb-1" id="quiz-counter">Question 1 of 5</p>
+                    <h3 class="font-['Nunito'] font-extrabold text-gray-900 text-[22px] md:text-[26px] mb-6" id="quiz-question">Question text</h3>
+                    <div class="flex flex-col gap-4 mb-6" id="quiz-options"></div>
+                    <button id="quiz-back-btn" class="font-['Nunito'] text-sm text-[#7a4e35] hover:underline">← Back</button>
+                </div>
+
+                <!-- Result (hidden until quiz complete) -->
+                <div id="quiz-result" class="hidden relative z-10 max-w-md mx-auto text-center">
+                    <span class="inline-block bg-[#c0503a] text-white font-display font-bold text-[22px] px-10 py-3 rounded-2xl mb-8">You are</span>
+                    <img id="result-img" src="" alt="" class="w-[220px] h-[220px] object-contain mx-auto mb-4">
+                    <h3 class="font-display font-extrabold text-[#c8452e] text-[26px] mb-2" id="result-name">Result name</h3>
+                    <p class="font-['Nunito'] text-[#5c4033] text-[16px] leading-relaxed mb-6" id="result-desc">Result description</p>
+                    <button id="quiz-retake-btn" class="font-['Nunito'] text-sm text-[#7a4e35] hover:underline">Retake Quiz</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SUBSCRIPTION BOX PITCH
+             ============================================================ -->
+        <section class="bg-[#2f6b4f] px-6 md:px-16 lg:px-20 py-16 md:py-20">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <span class="inline-block border-2 border-[#f6c35b] text-[#f6c35b] font-['Nunito'] font-semibold text-[13px] px-4 py-1.5 rounded-full mb-6">Story Box</span>
+                    <h2 class="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-tight mb-8">
+                        Every child is different.<br>So why should they all get the same books?
+                    </h2>
+                    <p class="font-['Nunito'] text-white/80 text-[14px] md:text-[15px] leading-relaxed mb-8">
+                        No algorithms. No random selections. Every Story Box is handpicked based on your child's age, interests, and Reading Personality — then delivered home every month.
+                    </p>
+                    <a href="https://wa.me/919500056482?text=Hi!%20I'd%20like%20to%20join%20the%20Story%20Box%20waitlist."
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-block border-2 border-[#f6c35b] text-white font-display font-bold text-[16px] px-7 py-3 rounded-xl hover:bg-[#f6c35b] hover:text-[#2f6b4f] transition">
+                        Join the Waitlist
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">3-4 Handpicked Books</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Selected by age, personality & reading level</p>
+                    </div>
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Story Companion Guide</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Experiences, not worksheets</p>
+                    </div>
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Creative Activity</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">STEM, craft, puzzles, journals</p>
+                    </div>
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Reading Passport</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Stamps, achievements, milestones</p>
+                    </div>
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Collectibles</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Bookmarks, character cards, stickers</p>
+                    </div>
+                    <div class="bg-[#fccdb2] rounded-xl p-4">
+                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Mystery Envelope</p>
+                        <p class="font-['Nunito'] text-gray-600 text-[12px]">One surprise. Children open this first.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer — reused verbatim from index.html's custom footer. -->
+    <footer id="site-footer-custom" class="relative w-full bg-[#c0503a] pt-24 md:pt-28 pb-10 md:pb-12 px-6 md:px-16 lg:px-20">
+
+        <img id="footer-branch-lantern" src="/assets/images/footer-branch-lantern.png" alt=""
+            aria-hidden="true"
+            class="absolute -top-[115px] md:-top-[180px] right-0 md:right-10 z-0 w-[420px] md:w-[650px] h-auto pointer-events-none">
+
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
+
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <h2 class="font-display font-bold text-[28px] md:text-[32px] text-[#f3e8d0] mb-3">The Reading Elf</h2>
+                <p class="font-['Nunito'] font-normal text-[15px] text-[#f3e8d0] leading-relaxed mb-6">
+                    A magical space where kids discover the joy of books, stories, and
+                    imagination.
+                </p>
+
+                <p class="font-display font-bold text-[16px] text-[#f3e8d0] mb-3">Reach Us</p>
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
+                    <a href="#" aria-label="Instagram"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp"
+                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21l1.65-4.95A8.5 8.5 0 1 1 8.9 19.4z"></path>
+                            <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <a href="tel:+919500056482"
+                    class="inline-flex items-center gap-2 font-['Nunito'] text-[15px] text-[#f3e8d0] underline hover:opacity-80 transition">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    +91 9500056482
+                </a>
+            </div>
+
+            <div class="flex-shrink-0">
+                <div class="w-[160px] h-[160px] rounded-full bg-white border-4 border-[#f6c35b] shadow-lg flex items-center justify-center text-center overflow-hidden">
+                    <img src="/assets/images/logo.webp" alt="The Reading Elf" class="w-full h-full object-cover rounded-full">
+                </div>
+            </div>
+
+            <div class="w-full md:w-[32%] text-center md:text-left">
+                <p class="font-display font-bold text-[18px] text-[#f3e8d0] mb-4">Quick Links</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Discover Books</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Story</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Experiences</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Gallery</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Events</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto mt-14 md:mt-16 pt-6 border-t border-[#f3e8d0]/25 text-center">
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0]">
+                © 2026 The Reading Elf. All rights reserved. |
+                <a href="#" class="underline hover:opacity-80 transition">Privacy Policy</a> •
+                <a href="#" class="underline hover:opacity-80 transition">Terms &amp; Conditions</a>
+            </p>
+            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0] mt-2">
+                Built by <a href="#" class="underline hover:opacity-80 transition">EastTheory.com</a>
+            </p>
+        </div>
+
+    </footer>
+
+    <div class="hidden">
+        <div id="site-footer"></div>
+    </div>
+
+    <script>
+        // ============================================================
+        // READING PERSONALITY QUIZ
+        //
+        // Engine adapted from index.html's existing #book quiz
+        // (questions[] -> answers[] -> tally the most-picked value ->
+        // look up a result) rather than written from scratch, per your
+        // instruction. Reused pieces: the answers-array + tally-the-max
+        // pattern from showResult(), the progress-bar/counter/question
+        // render loop from renderQuestion(), and the decrement-and-pop
+        // pattern from quizBack().
+        //
+        // Confirmed against the 11 full-resolution quiz screen exports
+        // (question-1..5-*.png, quiz-teaser-default.png, result-*.png) —
+        // 5 questions, not 6. Result images below are the isolated
+        // character illustrations (no baked-in text/frame) from the
+        // original asset export, not the reference screens themselves —
+        // those reference screens are used only as the visual spec for
+        // the layout/colors above, per instruction.
+        // ============================================================
+        const questions = [
+            {
+                q: "What kind of stories do you love most?",
+                options: [
+                    { label: "Magic and monsters", value: "mushroom-wanderer" },
+                    { label: "Space and Science", value: "elfs-apprentice" },
+                    { label: "Animals and Nature", value: "forest-keeper" },
+                    { label: "Funny and Silly", value: "story-trickster" },
+                    { label: "Secrets, Clues and Mysteries", value: "shadow-detective" },
+                ]
+            },
+            {
+                q: "On a rainy day, you would rather...",
+                options: [
+                    { label: "Build a fort and hide inside", value: "mushroom-wanderer" },
+                    { label: "Figure out how rain works", value: "elfs-apprentice" },
+                    { label: "Watch animals outside the window", value: "forest-keeper" },
+                    { label: "Make everyone laugh with jokes", value: "story-trickster" },
+                    { label: "Search the house for hidden clues like a detective", value: "shadow-detective" },
+                ]
+            },
+            {
+                q: "Your dream place to visit is..",
+                options: [
+                    { label: "A hidden forest with talking trees", value: "mushroom-wanderer" },
+                    { label: "A space station orbiting Earth", value: "elfs-apprentice" },
+                    { label: "A farm with every animal ever", value: "forest-keeper" },
+                    { label: "A comedy show where you are on stage", value: "story-trickster" },
+                    { label: "An ancient fort full of secret passages", value: "shadow-detective" },
+                ]
+            },
+            {
+                q: "What would you bring to a desert island?",
+                options: [
+                    { label: "A wand", value: "mushroom-wanderer" },
+                    { label: "A science kit", value: "elfs-apprentice" },
+                    { label: "A puppy", value: "forest-keeper" },
+                    { label: "A prank kit", value: "story-trickster" },
+                    { label: "A magnifying glass and a secret notebook", value: "shadow-detective" },
+                ]
+            },
+            {
+                q: "Your favorite kind of hero is...",
+                options: [
+                    { label: "One who uses magic spells", value: "mushroom-wanderer" },
+                    { label: "One who solves problems with their brain", value: "elfs-apprentice" },
+                    { label: "One who talks to animals", value: "forest-keeper" },
+                    { label: "One who makes everyone smile", value: "story-trickster" },
+                    { label: "One who figures out the truth before anyone else", value: "shadow-detective" },
+                ]
+            },
+        ];
+
+        const results = {
+            "mushroom-wanderer": {
+                name: "The Mushroom Wanderer",
+                desc: "Loves magic, myths and hidden worlds.",
+                img: "assets/images/story-box-page/result-mushroom-wanderer.png",
+            },
+            "elfs-apprentice": {
+                name: "The Elf's Apprentice",
+                desc: "Asks why and never stops. Books are puzzles waiting to be solved.",
+                img: "assets/images/story-box-page/result-elfs-apprentice.png",
+            },
+            "forest-keeper": {
+                name: "The Forest Keeper",
+                desc: "Knows every creature by name. Feels at home in the wild.",
+                img: "assets/images/story-box-page/result-forest-keeper.png",
+            },
+            "story-trickster": {
+                name: "The Story Trickster",
+                desc: "Turns every story into a performance. Laughter guaranteed.",
+                img: "assets/images/story-box-page/result-story-trickster.png",
+            },
+            "shadow-detective": {
+                name: "The Shadow Detective",
+                desc: "Notices everything. Trusts no one. Solves everything.",
+                img: "assets/images/story-box-page/result-shadow-detective.png",
+            },
+        };
+
+        let currentQ = 0;
+        let answers = [];
+
+        const teaserEl = document.getElementById('quiz-teaser');
+        const bodyEl = document.getElementById('quiz-body');
+        const resultEl = document.getElementById('quiz-result');
+        const progressEl = document.getElementById('quiz-progress');
+
+        function buildProgressBar() {
+            progressEl.innerHTML = questions.map((_, i) => `<div class="quiz-progress-seg"><div class="quiz-progress-fill" id="prog-${i}"></div></div>`).join('');
+        }
+
+        function startQuiz() {
+            currentQ = 0;
+            answers = [];
+            buildProgressBar();
+            teaserEl.classList.add('hidden');
+            resultEl.classList.add('hidden');
+            bodyEl.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('quiz-counter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+            document.getElementById('quiz-question').textContent = q.q;
+
+            questions.forEach((_, i) => {
+                document.getElementById(`prog-${i}`).style.width = i < currentQ ? '100%' : '0';
+            });
+
+            const container = document.getElementById('quiz-options');
+            container.innerHTML = '';
+            q.options.forEach(opt => {
+                const div = document.createElement('div');
+                div.className = 'quiz-option';
+                div.innerHTML = `<span class="quiz-checkbox"></span><span class="font-['Nunito'] font-bold text-[#2f6b4f] text-[17px] md:text-[19px]">${opt.label}</span>`;
+                div.onclick = () => selectOption(opt.value, div);
+                container.appendChild(div);
+            });
+        }
+
+        function selectOption(value, el) {
+            document.querySelectorAll('.quiz-option').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            answers.push(value);
+
+            setTimeout(() => {
+                currentQ++;
+                if (currentQ < questions.length) {
+                    renderQuestion();
+                } else {
+                    document.getElementById(`prog-${questions.length - 1}`).style.width = '100%';
+                    setTimeout(showResult, 300);
+                }
+            }, 350);
+        }
+
+        function showResult() {
+            const counts = {};
+            answers.forEach(a => { counts[a] = (counts[a] || 0) + 1; });
+            const best = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+            const result = results[best];
+
+            document.getElementById('result-img').src = result.img;
+            document.getElementById('result-img').alt = result.name;
+            document.getElementById('result-name').textContent = result.name;
+            document.getElementById('result-desc').textContent = result.desc;
+
+            bodyEl.classList.add('hidden');
+            resultEl.classList.remove('hidden');
+        }
+
+        function quizBack() {
+            if (currentQ === 0) {
+                bodyEl.classList.add('hidden');
+                teaserEl.classList.remove('hidden');
+            } else {
+                currentQ--;
+                answers.pop();
+                renderQuestion();
+            }
+        }
+
+        document.getElementById('quiz-start-btn').addEventListener('click', startQuiz);
+        document.getElementById('quiz-back-btn').addEventListener('click', quizBack);
+        document.getElementById('quiz-retake-btn').addEventListener('click', startQuiz);
+    </script>
+
+</body>
+
+</html>
