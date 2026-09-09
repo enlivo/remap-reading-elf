@@ -25,8 +25,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        @font-face {
+            font-family: 'KindBond';
+            src: url('assets/fonts/kind-bond.otf') format('opentype');
+            font-display: swap;
+        }
         .font-display {
-            font-family: 'Baloo 2', 'Nunito', sans-serif;
+            font-family: 'KindBond', 'Baloo 2', sans-serif;
+            font-weight: 400;
         }
 
         /* Quiz option = a checkbox square + label, matching the reference
@@ -89,57 +95,71 @@
     </style>
 
     <!-- ============================================================
-         STICKY SITE HEADER — same two-tier component, "Story Box" current.
+         STICKY HEADER — transparent, overlays the hero photo directly
+         (no white strip above it — same fix as the Books page: the hero
+         is pulled up underneath via -mt on its own section, matching the
+         Figma where the hero art runs to y=0 behind the logo/nav).
          ============================================================ -->
-    <header class="sticky top-0 z-50 font-['Nunito']">
-        <div class="bg-white/95 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-                <a href="index.html" class="flex items-center gap-2">
-                    <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf"
-                        class="w-10 h-10 rounded-full object-cover">
-                </a>
-                <nav aria-label="Main navigation"
-                    class="hidden md:flex items-center bg-[#f6c35b] rounded-full px-6 py-3 shadow-md">
-                    <a href="books.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Books</a>
-                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
-                    <a href="story-box.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] bg-white/40 rounded-full">Story Box</a>
-                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
-                    <a href="experience.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Experience</a>
-                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
-                    <a href="events.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Events</a>
-                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
-                    <a href="our-story.html" class="px-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Our Story</a>
-                    <span class="w-px h-4 bg-[#7a4e35]/30"></span>
-                    <a href="blog.html" class="pl-4 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Blog</a>
-                </nav>
-            </div>
-        </div>
-        <div class="bg-[#f3e8d0] border-t border-[#7a4e35]/15 relative flex justify-center py-1.5">
-            <div class="w-[64px] h-[64px] rounded-full bg-white border-4 border-[#7a4e35] shadow-lg overflow-hidden">
-                <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf" class="w-full h-full object-cover">
-            </div>
+    <header class="sticky top-0 z-50 font-['Nunito'] h-16">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf"
+                    class="w-10 h-10 rounded-full object-cover">
+            </a>
+            <nav aria-label="Main navigation"
+                class="hidden md:flex items-center bg-[#f0b64a] rounded-full p-1.5 shadow-md">
+                <a href="books.html" class="px-4 py-1.5 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Books</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="story-box.html" aria-current="page"
+                    class="px-4 py-1.5 rounded-full bg-[#f6c35b] shadow-sm font-semibold text-[15px] text-[#7a4e35]">Story Box</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30 mx-1"></span>
+                <a href="experience.html" class="px-4 py-1.5 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Experience</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="events.html" class="px-4 py-1.5 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Events</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="our-story.html" class="px-4 py-1.5 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Our Story</a>
+                <span class="w-px h-4 bg-[#7a4e35]/30"></span>
+                <a href="blog.html" class="pl-4 py-1.5 font-semibold text-[15px] text-[#7a4e35] hover:opacity-70 transition">Blog</a>
+            </nav>
         </div>
     </header>
 
     <main>
 
         <!-- ============================================================
-             HERO — "Stories Stay With You Forever" and the other signage
-             are painted into the illustration itself, same treatment as
-             the Books page hero.
+             HERO — full-bleed, sized off the photo's own aspect ratio
+             (1920×1080), pulled up -mt-16 behind the transparent sticky
+             header. "Stories Stay With You Forever", "Read Imagine
+             Explore" etc. are painted into the illustration itself.
              ============================================================ -->
-        <section class="relative bg-cover bg-center min-h-[520px] md:min-h-[640px] flex items-center justify-center text-center px-6"
+        <section class="relative -mt-16 bg-cover bg-center flex items-center justify-center text-center px-6 aspect-auto h-[520px] md:aspect-[1920/1080] md:h-auto"
             style="background-image: url('assets/images/story-box-page/hero-illustration.jpg');">
-            <div class="absolute inset-0 bg-black/35"></div>
-            <div class="relative z-10 max-w-3xl py-24">
-                <h1 class="font-display font-extrabold text-white text-[34px] md:text-[52px] leading-tight drop-shadow-md">
-                    Explore, Don't Just Browse
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative z-10 max-w-3xl">
+                <h1 class="font-display text-[42px] md:text-[68px] leading-[1.05] drop-shadow-md">
+                    <span class="text-[#5c4033]">Explore, Don't</span><br>
+                    <span class="text-[#c8452e]">Just Browse</span>
                 </h1>
-                <p class="mt-4 font-['Nunito'] text-white/90 text-[15px] md:text-[18px] leading-relaxed drop-shadow">
-                    A story box built around who your child is — not just what's on the shelf.
+                <p class="mt-5 md:mt-7 font-['Nunito'] text-white text-[17px] md:text-[21px] leading-relaxed drop-shadow max-w-2xl mx-auto"
+                    style="text-shadow:0 1px 4px rgba(0,0,0,.5)">
+                    Every trail is filled with stories waiting to surprise, inspire, and spark a love of reading.
                 </p>
             </div>
         </section>
+
+        <!-- ============================================================
+             HERO BOTTOM STRIP — the real "Strip Logo…to be fixed
+             throughout the page" asset: cream bar + red accent line +
+             the circular Reading Elf badge overlapping it. Non-sticky
+             here (Story Box has no picks-bar-style second tier the way
+             Books does), just the hero's own closing strip.
+             ============================================================ -->
+        <div class="relative">
+            <img src="assets/images/story-box-page/strip-logo.png" alt="" aria-hidden="true" class="block w-full h-auto">
+            <div class="absolute left-1/2 -translate-x-1/2 rounded-full overflow-hidden shadow-lg" style="top:8%;width:11%;aspect-ratio:1;min-width:64px">
+                <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf" class="w-full h-full object-cover">
+            </div>
+        </div>
 
         <!-- ============================================================
              QUIZ TEASER + QUIZ + RESULT — rebuilt against the 11 real quiz
@@ -167,36 +187,34 @@
                a consistent, legible result card rather than per-result
                one-off colors.
              ============================================================ -->
-        <section class="bg-[#fccdb2] px-6 py-16 md:py-24">
-            <div class="max-w-4xl mx-auto bg-[#fccdb2] border-2 border-dashed border-[#7a4e35]/40 rounded-[32px] p-8 md:p-16 relative overflow-hidden">
+        <!-- ============================================================
+             READING PERSONALITY / QUIZ — the teaser state is the actual
+             designer composition (Reading Personality.png: heading, copy,
+             dashed border, book/leaf/starburst artwork and the "Let's
+             Start" button all baked in as one image), with an invisible
+             button overlaid exactly on the button's drawn position so the
+             real quiz engine still runs. Quiz + result stay hand-built
+             (no source export for every question/answer state exists as
+             one flat image), styled to sit on the same yellow section.
+             ============================================================ -->
+        <section class="relative overflow-hidden bg-[#f6c35b] px-6 py-16 md:py-24">
+            <img src="assets/images/story-box-page/starbursts/starburst-green.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute w-16 opacity-90 pointer-events-none" style="left:4%;top:28%">
+            <img src="assets/images/story-box-page/starbursts/starburst-brown.png" alt="" aria-hidden="true"
+                class="hidden md:block absolute w-20 opacity-90 pointer-events-none" style="right:4%;top:38%">
 
-                <!-- Decorative corners — present on every screen (teaser/quiz/result) -->
-                <img src="assets/images/story-box-page/deco-leaf-small.png" alt="" aria-hidden="true"
-                    class="hidden md:block absolute top-6 left-6 w-[70px] pointer-events-none">
-                <img src="assets/images/story-box-page/deco-stacked-books-magnifier.png" alt="" aria-hidden="true"
-                    class="hidden md:block absolute -top-2 -right-2 w-[130px] pointer-events-none">
-                <img src="assets/images/story-box-page/deco-winged-book.png" alt="" aria-hidden="true"
-                    class="hidden md:block absolute top-[42%] right-4 w-[80px] pointer-events-none">
-                <img src="assets/images/story-box-page/deco-red-book.png" alt="" aria-hidden="true"
-                    class="hidden md:block absolute bottom-6 left-6 w-[90px] pointer-events-none">
-                <img src="assets/images/story-box-page/deco-leaf-large.png" alt="" aria-hidden="true"
-                    class="hidden md:block absolute bottom-6 right-10 w-[110px] pointer-events-none">
+            <div class="max-w-4xl mx-auto">
 
-                <!-- Teaser -->
-                <div id="quiz-teaser" class="relative z-10 text-center">
-                    <h2 class="font-display font-extrabold text-[#c8452e] text-[28px] md:text-[38px] mb-6">Find Your Reading Personality!</h2>
-                    <p class="font-['Nunito'] text-gray-800 text-[16px] md:text-[18px] leading-relaxed max-w-xl mx-auto mb-8">
-                        Every child reads differently.<br>
-                        Take our quick 2-minute quiz to discover your child's unique reading style and get personalized book recommendations.
-                    </p>
-                    <button id="quiz-start-btn"
-                        class="bg-[#c8452e] text-white font-display font-bold text-[18px] px-8 py-3 rounded-xl hover:opacity-90 transition">
-                        Let's Start
-                    </button>
+                <!-- Teaser — the real designer artwork -->
+                <div id="quiz-teaser" class="relative">
+                    <img src="assets/images/story-box-page/reading-personality-panel.png" alt="Find Your Reading Personality! Every child reads differently. Take our quick 2-minute quiz to discover your child's unique reading style and get personalized book recommendations."
+                        class="block w-full h-auto rounded-[32px] shadow-lg">
+                    <button id="quiz-start-btn" aria-label="Let's Start"
+                        class="absolute rounded-xl" style="left:34%;width:32%;top:73%;height:10%"></button>
                 </div>
 
                 <!-- Quiz (hidden until started) -->
-                <div id="quiz-body" class="hidden relative z-10 max-w-lg mx-auto">
+                <div id="quiz-body" class="hidden relative z-10 max-w-lg mx-auto bg-[#fccdb2] rounded-[32px] p-8 md:p-16">
                     <div class="flex gap-2 mb-5" id="quiz-progress"></div>
                     <p class="font-['Nunito'] text-xs text-[#7a4e35]/70 mb-1" id="quiz-counter">Question 1 of 5</p>
                     <h3 class="font-['Nunito'] font-extrabold text-gray-900 text-[22px] md:text-[26px] mb-6" id="quiz-question">Question text</h3>
@@ -205,7 +223,7 @@
                 </div>
 
                 <!-- Result (hidden until quiz complete) -->
-                <div id="quiz-result" class="hidden relative z-10 max-w-md mx-auto text-center">
+                <div id="quiz-result" class="hidden relative z-10 max-w-md mx-auto text-center bg-[#fccdb2] rounded-[32px] p-8 md:p-16">
                     <span class="inline-block bg-[#c0503a] text-white font-display font-bold text-[22px] px-10 py-3 rounded-2xl mb-8">You are</span>
                     <img id="result-img" src="" alt="" class="w-[220px] h-[220px] object-contain mx-auto mb-4">
                     <h3 class="font-display font-extrabold text-[#c8452e] text-[26px] mb-2" id="result-name">Result name</h3>
@@ -217,57 +235,44 @@
         </section>
 
         <!-- ============================================================
-             SUBSCRIPTION BOX PITCH
+             STORY BOX MAIN SECTION — same technique as the Reading
+             Personality panel above: Story Box.png is the designer's own
+             flattened composition (green organic panel, "Story Box"
+             label, the big heading, all 6 feature cards, the "Join the
+             Waitlist" button and the bottom disclaimer paragraph already
+             drawn), used as the section's visual with a single invisible
+             link placed exactly over the drawn button so it still opens
+             WhatsApp.
              ============================================================ -->
-        <section class="bg-[#2f6b4f] px-6 md:px-16 lg:px-20 py-16 md:py-20">
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                    <span class="inline-block border-2 border-[#f6c35b] text-[#f6c35b] font-['Nunito'] font-semibold text-[13px] px-4 py-1.5 rounded-full mb-6">Story Box</span>
-                    <h2 class="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-tight mb-8">
-                        Every child is different.<br>So why should they all get the same books?
-                    </h2>
-                    <p class="font-['Nunito'] text-white/80 text-[14px] md:text-[15px] leading-relaxed mb-8">
-                        No algorithms. No random selections. Every Story Box is handpicked based on your child's age, interests, and Reading Personality — then delivered home every month.
-                    </p>
-                    <a href="https://wa.me/919500056482?text=Hi!%20I'd%20like%20to%20join%20the%20Story%20Box%20waitlist."
-                        target="_blank" rel="noopener noreferrer"
-                        class="inline-block border-2 border-[#f6c35b] text-white font-display font-bold text-[16px] px-7 py-3 rounded-xl hover:bg-[#f6c35b] hover:text-[#2f6b4f] transition">
-                        Join the Waitlist
-                    </a>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">3-4 Handpicked Books</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Selected by age, personality & reading level</p>
-                    </div>
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Story Companion Guide</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Experiences, not worksheets</p>
-                    </div>
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Creative Activity</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">STEM, craft, puzzles, journals</p>
-                    </div>
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Reading Passport</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Stamps, achievements, milestones</p>
-                    </div>
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Collectibles</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">Bookmarks, character cards, stickers</p>
-                    </div>
-                    <div class="bg-[#fccdb2] rounded-xl p-4">
-                        <p class="font-['Nunito'] font-bold text-gray-800 text-[15px] mb-1">Mystery Envelope</p>
-                        <p class="font-['Nunito'] text-gray-600 text-[12px]">One surprise. Children open this first.</p>
-                    </div>
-                </div>
+        <section class="bg-[#f6c35b] px-6 md:px-16 lg:px-20 py-14 md:py-20">
+            <div class="max-w-6xl mx-auto relative">
+                <img src="assets/images/story-box-page/story-box-panel.png"
+                    alt="Story Box. Every child is different. So why should they all get the same books? 3-4 Handpicked Books: selected by age, personality and needs. Story Companion Guide: experiences, reflections and more. Creative Activity: STEAM art, craft, journals. Reading Passport: stamps, adventures, achievements. Collectibles: bookmarks, character cards, stickers. Mystery Envelope: one surprise, children open this first. No algorithms. No random selections. Every Story Box is handpicked based on your child's age, interests, and Reading Personality — then delivered home every month."
+                    class="block w-full h-auto rounded-[32px] shadow-lg">
+                <a href="https://wa.me/919500056482?text=Hi!%20I'd%20like%20to%20join%20the%20Story%20Box%20waitlist."
+                    target="_blank" rel="noopener noreferrer" aria-label="Join the Waitlist"
+                    class="absolute rounded-xl" style="left:62%;width:23%;top:64.5%;height:8%"></a>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer — reused verbatim from index.html's custom footer. -->
-    <footer id="site-footer-custom" class="relative w-full bg-[#c0503a] pt-24 md:pt-28 pb-10 md:pb-12 px-6 md:px-16 lg:px-20">
+    <!-- ============================================================
+         YELLOW-TO-GREEN SEAM — the Figma runs straight from the Story
+         Box section's yellow background into the green footer with just
+         the circular Reading Elf badge straddling the boundary (no
+         "Come See Us" copy on this page, unlike Books).
+         ============================================================ -->
+    <div class="relative bg-[#f6c35b] h-[70px] md:h-[90px]">
+        <div class="absolute left-1/2 -translate-x-1/2 -bottom-[45px] md:-bottom-[60px] rounded-full overflow-hidden border-4 border-[#7a4e35] shadow-lg z-10"
+            style="width:110px;height:110px">
+            <img src="assets/images/books-page/logo-badge.png" alt="The Reading Elf" class="w-full h-full object-cover">
+        </div>
+    </div>
+
+    <!-- Footer — Story Box's Figma keeps the green/gold treatment (not
+         Books' cream/red, and not Home's red/cream). -->
+    <footer id="site-footer-custom" class="relative w-full bg-[#2f6b4f] pt-16 md:pt-20 pb-10 md:pb-12 px-6 md:px-16 lg:px-20">
 
         <img id="footer-branch-lantern" src="/assets/images/footer-branch-lantern.png" alt=""
             aria-hidden="true"
@@ -276,16 +281,16 @@
         <div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
 
             <div class="w-full md:w-[32%] text-center md:text-left">
-                <h2 class="font-display font-bold text-[28px] md:text-[32px] text-[#f3e8d0] mb-3">The Reading Elf</h2>
-                <p class="font-['Nunito'] font-normal text-[15px] text-[#f3e8d0] leading-relaxed mb-6">
+                <h2 class="font-display font-bold text-[28px] md:text-[32px] text-[#f6c35b] mb-3">The Reading Elf</h2>
+                <p class="font-['Nunito'] font-normal text-[15px] text-[#f6c35b] leading-relaxed mb-6">
                     A magical space where kids discover the joy of books, stories, and
                     imagination.
                 </p>
 
-                <p class="font-display font-bold text-[16px] text-[#f3e8d0] mb-3">Reach Us</p>
+                <p class="font-display font-bold text-[16px] text-[#f6c35b] mb-3">Reach Us</p>
                 <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
                     <a href="#" aria-label="Instagram"
-                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        class="w-11 h-11 rounded-full border-2 border-[#f6c35b] flex items-center justify-center text-[#f6c35b] hover:bg-[#f6c35b]/10 transition">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -293,13 +298,13 @@
                         </svg>
                     </a>
                     <a href="#" aria-label="Facebook"
-                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        class="w-11 h-11 rounded-full border-2 border-[#f6c35b] flex items-center justify-center text-[#f6c35b] hover:bg-[#f6c35b]/10 transition">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                         </svg>
                     </a>
                     <a href="#" aria-label="WhatsApp"
-                        class="w-11 h-11 rounded-full border-2 border-[#f3e8d0] flex items-center justify-center text-[#f3e8d0] hover:bg-[#f3e8d0]/10 transition">
+                        class="w-11 h-11 rounded-full border-2 border-[#f6c35b] flex items-center justify-center text-[#f6c35b] hover:bg-[#f6c35b]/10 transition">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 21l1.65-4.95A8.5 8.5 0 1 1 8.9 19.4z"></path>
                             <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5"></path>
@@ -308,7 +313,7 @@
                 </div>
 
                 <a href="tel:+919500056482"
-                    class="inline-flex items-center gap-2 font-['Nunito'] text-[15px] text-[#f3e8d0] underline hover:opacity-80 transition">
+                    class="inline-flex items-center gap-2 font-['Nunito'] text-[15px] text-[#f6c35b] underline hover:opacity-80 transition">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
@@ -316,47 +321,47 @@
                 </a>
             </div>
 
-            <div class="flex-shrink-0">
-                <div class="w-[160px] h-[160px] rounded-full bg-white border-4 border-[#f6c35b] shadow-lg flex items-center justify-center text-center overflow-hidden">
-                    <img src="/assets/images/logo.webp" alt="The Reading Elf" class="w-full h-full object-cover rounded-full">
-                </div>
-            </div>
+            <!-- No third logo column here — the single Reading Elf badge
+                 straddling the yellow/green seam above is the only logo
+                 the Figma footer shows (unlike Books/Home, which give the
+                 footer its own separate centered logo). -->
+            <div class="hidden md:block flex-shrink-0" style="width:160px"></div>
 
             <div class="w-full md:w-[32%] text-center md:text-left">
-                <p class="font-display font-bold text-[18px] text-[#f3e8d0] mb-4">Quick Links</p>
+                <p class="font-display font-bold text-[18px] text-[#f6c35b] mb-4">Quick Links</p>
                 <ul class="space-y-2">
                     <li class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
-                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Discover Books</a>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f6c35b]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f6c35b] hover:opacity-80 transition">Discover Books</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
-                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Story</a>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f6c35b]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f6c35b] hover:opacity-80 transition">Our Story</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
-                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Experiences</a>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f6c35b]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f6c35b] hover:opacity-80 transition">Experiences</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
-                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Our Gallery</a>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f6c35b]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f6c35b] hover:opacity-80 transition">Our Gallery</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#f3e8d0]"></span>
-                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f3e8d0] hover:opacity-80 transition">Events</a>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#f6c35b]"></span>
+                        <a href="#" class="font-['Nunito'] text-[15px] text-[#f6c35b] hover:opacity-80 transition">Events</a>
                     </li>
                 </ul>
             </div>
 
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto mt-14 md:mt-16 pt-6 border-t border-[#f3e8d0]/25 text-center">
-            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0]">
+        <div class="relative z-10 max-w-7xl mx-auto mt-14 md:mt-16 pt-6 border-t border-[#f6c35b]/25 text-center">
+            <p class="font-['Nunito'] text-[13px] text-[#f6c35b]">
                 © 2026 The Reading Elf. All rights reserved. |
                 <a href="#" class="underline hover:opacity-80 transition">Privacy Policy</a> •
                 <a href="#" class="underline hover:opacity-80 transition">Terms &amp; Conditions</a>
             </p>
-            <p class="font-['Nunito'] text-[13px] text-[#f3e8d0] mt-2">
+            <p class="font-['Nunito'] text-[13px] text-[#f6c35b] mt-2">
                 Built by <a href="#" class="underline hover:opacity-80 transition">EastTheory.com</a>
             </p>
         </div>
