@@ -1,0 +1,168 @@
+@media (max-width: 900px) {
+  .landing-hero {
+    aspect-ratio: auto;
+    min-height: 760px;
+  }
+
+  .landing-hero__art {
+    object-position: center top;
+  }
+
+  .landing-hero__upper-tab,
+  .persistent-navigation__tab {
+    display: none;
+  }
+
+  .landing-hero__event {
+    top: 22px;
+    left: 5%;
+    width: 90%;
+  }
+
+  .landing-hero__copy {
+    top: 23%;
+    left: 8%;
+    width: 84%;
+  }
+
+  .landing-hero__copy h1 {
+    font-size: clamp(
+      42px,
+      9vw,
+      68px
+    );
+  }
+
+  .landing-hero__copy p {
+    width: min(
+      100%,
+      390px
+    );
+
+    margin-top: 25px;
+    font-size: 15px;
+  }
+
+  .landing-hero__monthly {
+    top: 57%;
+    right: 7%;
+    width: 86%;
+  }
+
+  .landing-hero__bottom-strip,
+  .persistent-navigation {
+    display: none;
+  }
+
+  .explore-section {
+    padding:
+      42px
+      22px
+      65px;
+  }
+
+  .explore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    display: block;
+
+    min-height: auto;
+
+    padding:
+      70px
+      28px
+      0;
+  }
+
+  .about-section__copy {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .about-section__copy p {
+    font-size: 17px;
+  }
+
+  .about-section__image {
+    width: min(
+      90%,
+      520px
+    );
+
+    margin:
+      40px
+      auto
+      0;
+  }
+
+  .visit-section {
+    display: block;
+
+    min-height: auto;
+
+    padding:
+      65px
+      28px
+      55px;
+  }
+
+  .visit-section__copy {
+    width: 100%;
+  }
+
+  .visit-section__copy p {
+    font-size: 17px;
+  }
+
+  .visit-section__map {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .instagram-section__placeholder {
+    width: 90%;
+    height: 190px;
+  }
+
+  .site-footer {
+    padding:
+      65px
+      28px
+      28px;
+  }
+
+  .site-footer__content {
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+
+    text-align: center;
+  }
+
+  .site-footer__logo {
+    grid-row: 1;
+    width: 190px;
+  }
+
+  .site-footer__socials {
+    justify-content: center;
+  }
+
+  .site-footer__links {
+    justify-self: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .site-footer__tree {
+    width: 95%;
+    right: -42%;
+    opacity: 0.35;
+  }
+
+  .site-footer__leaf {
+    display: none;
+  }
+}

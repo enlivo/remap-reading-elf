@@ -1,0 +1,175 @@
+.site-footer {
+  position: relative;
+
+  min-height: 560px;
+
+  padding:
+    clamp(70px, 6vw, 110px)
+    8%
+    30px;
+
+  overflow: hidden;
+
+  color: #fff2dc;
+  background: var(--elf-red);
+}
+
+.site-footer__content {
+  position: relative;
+  z-index: 3;
+
+  width: min(
+    100%,
+    1380px
+  );
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    300px
+    minmax(0, 1fr);
+
+  align-items: center;
+}
+
+.site-footer h2 {
+  margin: 0;
+
+  font-size: clamp(
+    38px,
+    3vw,
+    58px
+  );
+}
+
+.site-footer h3 {
+  margin:
+    32px
+    0
+    14px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.site-footer p {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.site-footer__logo {
+  width: 250px;
+  justify-self: center;
+}
+
+.site-footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-footer__socials a {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+}
+
+.site-footer__socials img {
+  display: block;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.site-footer__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 26px;
+
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.site-footer__phone img {
+  width: 19px;
+  height: 19px;
+}
+
+.site-footer__links {
+  justify-self: end;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  font-size: 18px;
+}
+
+.site-footer__links h3 {
+  margin:
+    0
+    0
+    10px;
+}
+
+.site-footer__tree {
+  position: absolute;
+
+  z-index: 1;
+
+  width: min(
+    50vw,
+    760px
+  );
+
+  right: -40px;
+  top: 0;
+}
+
+.site-footer__leaf {
+  position: absolute;
+  z-index: 2;
+  width: 130px;
+}
+
+.site-footer__leaf--one {
+  left: 42%;
+  top: 55px;
+}
+
+.site-footer__leaf--two {
+  left: 62%;
+  bottom: 50px;
+  transform: scaleX(-1);
+}
+
+.site-footer__legal {
+  position: relative;
+  z-index: 4;
+
+  margin:
+    45px
+    auto
+    0;
+
+  text-align: center;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.site-footer__legal a {
+  text-decoration: underline;
+}
+

@@ -1,0 +1,40 @@
+.explore-section {
+  position: relative;
+  z-index: 2;
+  background: var(--elf-peach);
+  padding:
+    clamp(32px, 3vw, 58px)
+    7.1%
+    clamp(75px, 6vw, 120px);
+}
+
+.explore-grid {
+  width: min(
+    100%,
+    1648px
+  );
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: clamp(
+    18px,
+    1.5vw,
+    30px
+  );
+}
+
+.explore-card {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.explore-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+

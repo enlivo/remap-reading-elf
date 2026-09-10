@@ -1,0 +1,83 @@
+.upper-tab {
+  position: relative;
+  display: block;
+  width: min(41.42vw, 794px);
+  z-index: 20;
+}
+
+.upper-tab > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.upper-tab__hotspots {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.upper-tab__hotspots a {
+  display: block;
+}
+
+.bottom-strip {
+  position: relative;
+  width: 100%;
+}
+
+.bottom-strip > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bottom-strip__hotspots {
+  position: absolute;
+  inset: 0;
+}
+
+.bottom-strip__hotspots a {
+  position: absolute;
+  top: 48%;
+  height: 30%;
+}
+
+.bottom-strip__find {
+  left: 1.1%;
+  width: 5%;
+}
+
+.bottom-strip__book {
+  left: 7%;
+  width: 8%;
+}
+
+.bottom-strip__quiz {
+  right: 1%;
+  width: 17%;
+}
+
+.persistent-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  margin-top: -0.05vw;
+}
+
+.persistent-navigation .bottom-strip {
+  width: 100%;
+}
+
+.persistent-navigation__tab {
+  position: absolute;
+  top: 0;
+  right: 2.2%;
+  width: min(
+    30vw,
+    650px
+  );
+}
+
