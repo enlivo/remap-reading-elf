@@ -59,25 +59,24 @@
   width: 17%;
 }
 
-.persistent-navigation {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-  margin-top: -0.05vw;
-}
-
-.persistent-navigation .bottom-strip {
-  width: 100%;
-}
-
-.persistent-navigation__tab {
+.landing-navigation {
   position: absolute;
-  top: 0;
-  right: 2.2%;
-  width: min(
-    30vw,
-    650px
-  );
+  inset: 0 0 auto;
+  height: 56.25vw;
+  z-index: 20;
+  pointer-events: none;
 }
-
+.landing-navigation .upper-tab {
+  position: absolute;
+  top: 1.5625vw;
+  right: 2.2%;
+  width: 41.3542%;
+  pointer-events: auto;
+}
+.landing-navigation .bottom-strip {
+  position: absolute;
+  top: 46.3542vw;
+  left: 0;
+  width: 100%;
+}
+.bottom-strip__hotspots a { pointer-events: auto; }

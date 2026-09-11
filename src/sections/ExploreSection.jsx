@@ -28,7 +28,7 @@ const cards = [
   },
 ];
 
-export default function ExploreSection() {
+export default function ExploreSection({ staged = false }) {
   return (
     <section
       className="explore-section"
@@ -40,11 +40,11 @@ export default function ExploreSection() {
             key={card.href}
             href={card.href}
             className="explore-card"
-            initial={{
+            initial={staged ? false : {
               opacity: 0,
               y: 55,
             }}
-            whileInView={{
+            whileInView={staged ? undefined : {
               opacity: 1,
               y: 0,
             }}

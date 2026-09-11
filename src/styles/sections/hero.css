@@ -1,12 +1,12 @@
+.landing-intro { position: relative; }
+.landing-intro__stage { position: sticky; top: 0; display: flow-root; }
 .landing-hero {
   position: relative;
   width: 100%;
-  aspect-ratio: 1917 / 1080;
-  min-height: 640px;
+  aspect-ratio: 1920 / 1080;
   overflow: hidden;
   background: var(--elf-sky);
 }
-
 .landing-hero__art {
   position: absolute;
   inset: 0;
@@ -14,78 +14,52 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform-origin: center center;
 }
-
 .landing-hero__event {
   position: absolute;
   z-index: 5;
-  top: 6.3%;
-  left: 10%;
+  top: 4.6%;
+  left: 2.5%;
   width: 29.7%;
 }
-
 .landing-hero__event img,
-.landing-hero__monthly img {
-  display: block;
-  width: 100%;
-}
-
-.landing-hero__upper-tab {
-  position: absolute;
-  top: 3.1%;
-  right: 2.2%;
-}
-
-.landing-hero__copy {
+.landing-hero__monthly img { display: block; width: 100%; }
+.landing-hero__headline {
   position: absolute;
   z-index: 4;
-  top: 17%;
-  left: 31%;
-  width: 42%;
-  text-align: center;
-}
-
-.landing-hero__copy h1 {
+  top: 17.3%;
+  left: 27%;
+  width: 44%;
   margin: 0;
+  text-align: center;
   color: #74452e;
-  font-size: clamp(
-    38px,
-    4vw,
-    72px
-  );
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-size: 3.125vw;
+  line-height: 1.08;
+  letter-spacing: 0;
 }
-
-.landing-hero__copy h1 span {
-  display: block;
-  color: var(--elf-red);
-}
-
-.landing-hero__copy p {
-  width: min(76%, 460px);
-  margin: 6.2% auto 0;
-  font-size: clamp(
-    13px,
-    1.08vw,
-    21px
-  );
+.landing-hero__headline span { display: block; color: var(--elf-red); white-space: nowrap; }
+.landing-hero__description {
+  position: absolute;
+  z-index: 4;
+  top: 40%;
+  left: 29%;
+  width: 40%;
+  margin: 0;
+  text-align: center;
+  font-size: 1.667vw;
   line-height: 1.4;
+  color: #454a41;
 }
-
 .landing-hero__monthly {
   position: absolute;
   z-index: 5;
-  top: 43.7%;
+  top: 46.3%;
   right: 0;
   width: 34%;
 }
-
-.landing-hero__bottom-strip {
-  position: absolute;
-  z-index: 15;
-  bottom: 0;
-  left: 0;
+.landing-intro__explore {
+  position: relative;
+  z-index: 2;
+  margin-top: -9.375vw;
 }
-
+.landing-intro__explore .explore-section { padding-top: 1.875vw; }

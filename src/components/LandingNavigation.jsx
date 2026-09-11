@@ -1,3 +1,4 @@
+import { motion, useTransform } from "motion/react";
 import upperTab from "../../design-assets/Website/Landing Page/Upper Tab to be fixed throughout.png";
 import bottomStrip from "../../design-assets/Website/Landing Page/Strip that directs to top of the page.png";
 
@@ -28,12 +29,11 @@ const navLinks = [
   },
 ];
 
-export function UpperTab({
-  className = "",
-}) {
+function UpperTab({ style }) {
   return (
-    <nav
-      className={`upper-tab ${className}`}
+    <motion.nav
+      style={style}
+      className="upper-tab"
       aria-label="Primary navigation"
     >
       <img
@@ -51,17 +51,13 @@ export function UpperTab({
           />
         ))}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
-export function BottomStrip({
-  className = "",
-}) {
+function BottomStrip({ style }) {
   return (
-    <div
-      className={`bottom-strip ${className}`}
-    >
+    <motion.div className="bottom-strip" style={style}>
       <img
         src={bottomStrip}
         alt=""
@@ -87,15 +83,19 @@ export function BottomStrip({
           aria-label="Check Your Reading Personality"
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-export default function PersistentNavigation() {
+export default function LandingNavigation({ progress }) {
+  const upperY = useTransform(progress, [0, 1], [0, 0]);
+  const stripY = useTransform(progress, [0, 1], ["0vw", "-9.375vw"]);
+  const stripX = useTransform(progress, [0, 1], ["0.9375vw", "0vw"]);
+
   return (
-    <div className="persistent-navigation">
-      <BottomStrip />
-      <UpperTab className="persistent-navigation__tab" />
+    <div className="landing-navigation" data-landing-navigation>
+      <UpperTab style={{ y: upperY }} />
+      <BottomStrip style={{ x: stripX, y: stripY }} />
     </div>
   );
 }

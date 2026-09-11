@@ -1,58 +1,15 @@
 @media (max-width: 900px) {
-  .landing-hero {
-    aspect-ratio: auto;
-    min-height: 760px;
-  }
-
-  .landing-hero__art {
-    object-position: center top;
-  }
-
-  .landing-hero__upper-tab,
-  .persistent-navigation__tab {
-    display: none;
-  }
-
-  .landing-hero__event {
-    top: 22px;
-    left: 5%;
-    width: 90%;
-  }
-
-  .landing-hero__copy {
-    top: 23%;
-    left: 8%;
-    width: 84%;
-  }
-
-  .landing-hero__copy h1 {
-    font-size: clamp(
-      42px,
-      9vw,
-      68px
-    );
-  }
-
-  .landing-hero__copy p {
-    width: min(
-      100%,
-      390px
-    );
-
-    margin-top: 25px;
-    font-size: 15px;
-  }
-
-  .landing-hero__monthly {
-    top: 57%;
-    right: 7%;
-    width: 86%;
-  }
-
-  .landing-hero__bottom-strip,
-  .persistent-navigation {
-    display: none;
-  }
+  .landing-intro__stage { position: relative; }
+  .landing-intro__explore { margin-top: 0; transform: none !important; }
+  .landing-hero { aspect-ratio: auto; min-height: 760px; }
+  .landing-hero__art { object-position: center top; }
+  .landing-navigation { display: none; }
+  .landing-hero__event { top: 22px; left: 5%; width: 90%; }
+  .landing-hero__headline { top: 23%; left: 8%; width: 84%; font-size: clamp(32px, 7vw, 60px); }
+  .landing-hero__headline span { white-space: normal; }
+  .landing-hero__description { top: 40%; left: 8%; width: 84%; font-size: 15px; }
+  .landing-hero__monthly { top: 57%; right: 7%; width: 86%; }
+  .landing-intro__explore .explore-section { padding-top: 42px; }
 
   .explore-section {
     padding:

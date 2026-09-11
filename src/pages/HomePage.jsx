@@ -1,8 +1,6 @@
-import PersistentNavigation from "../components/LandingNavigation.jsx";
+import LandingIntroScene from "../sections/LandingIntroScene.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 
-import HeroSection from "../sections/HeroSection.jsx";
-import ExploreSection from "../sections/ExploreSection.jsx";
 import GallerySection from "../sections/GallerySection.jsx";
 import AboutSection from "../sections/AboutSection.jsx";
 import VisitSection from "../sections/VisitSection.jsx";
@@ -12,11 +10,7 @@ export default function HomePage() {
   return (
     <>
       <main>
-        <HeroSection />
-
-        <PersistentNavigation />
-
-        <ExploreSection />
+        <LandingIntroScene />
 
         <GallerySection />
 
