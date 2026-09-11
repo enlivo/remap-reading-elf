@@ -1,4 +1,15 @@
-import { motion, useTransform } from "motion/react";
+import {
+  motion,
+  useTransform,
+} from "motion/react";
+
+import {
+  LANDING_STATES,
+  canvasVw,
+  STATE_RANGE,
+  stateValues,
+} from "../sections/landingScrollStates.js";
+
 import upperTab from "../../design-assets/Website/Landing Page/Upper Tab to be fixed throughout.png";
 import bottomStrip from "../../design-assets/Website/Landing Page/Strip that directs to top of the page.png";
 
@@ -57,7 +68,10 @@ function UpperTab({ style }) {
 
 function BottomStrip({ style }) {
   return (
-    <motion.div className="bottom-strip" style={style}>
+    <motion.div
+      className="bottom-strip"
+      style={style}
+    >
       <img
         src={bottomStrip}
         alt=""
@@ -87,15 +101,44 @@ function BottomStrip({ style }) {
   );
 }
 
-export default function LandingNavigation({ progress }) {
-  const upperY = useTransform(progress, [0, 1], [0, 0]);
-  const stripY = useTransform(progress, [0, 1], ["0vw", "-9.375vw"]);
-  const stripX = useTransform(progress, [0, 1], ["0.9375vw", "0vw"]);
+export default function LandingNavigation({
+  progress,
+}) {
+  const upperY = useTransform(
+    progress,
+    STATE_RANGE,
+    stateValues("upperY", 30),
+  );
+
+  const stripY = useTransform(
+    progress,
+    STATE_RANGE,
+    LANDING_STATES.map((state) => canvasVw(state.stripY - 890 - state.stripArtworkInset)),
+  );
+
+  const stripX = useTransform(
+    progress,
+    STATE_RANGE,
+    stateValues("stripX"),
+  );
 
   return (
-    <div className="landing-navigation" data-landing-navigation>
-      <UpperTab style={{ y: upperY }} />
-      <BottomStrip style={{ x: stripX, y: stripY }} />
+    <div
+      className="landing-navigation"
+      data-landing-navigation
+    >
+      <UpperTab
+        style={{
+          y: upperY,
+        }}
+      />
+
+      <BottomStrip
+        style={{
+          x: stripX,
+          y: stripY,
+        }}
+      />
     </div>
   );
 }

@@ -38,3 +38,64 @@
   height: auto;
 }
 
+
+.explore-scenery {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .landing-intro__explore .explore-section {
+    background: #fccdb2;
+    box-shadow: 2vw 0 #fccdb2;
+  }
+
+  .landing-intro__explore .explore-grid {
+    position: relative;
+    z-index: 1;
+    width: calc((1 - var(--card-layout, 0)) * min(85.8vw, 1648px) + var(--card-layout, 0) * 89.375vw);
+    margin-left: 0;
+    column-gap: calc((1 - var(--card-layout, 0)) * clamp(18px, 1.5vw, 30px) + var(--card-layout, 0) * 4.7916667vw);
+    row-gap: calc((1 - var(--card-layout, 0)) * clamp(18px, 1.5vw, 30px) + var(--card-layout, 0) * 4.6354167vw);
+    transform: translate(var(--card-x, 0px), var(--card-y, 0px));
+  }
+
+  .explore-scenery {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--scenery-opacity, 0);
+  }
+
+  /* Exact image crop exported from Figma 91:484. It wraps the cards. */
+  .explore-scenery__foliage {
+    position: absolute;
+    left: var(--foliage-x);
+    top: var(--foliage-y);
+    width: 134.709375vw;
+    height: 40.46875vw;
+    overflow: hidden;
+  }
+
+  .explore-scenery__foliage img,
+  .gallery-section__entry-foliage img {
+    position: absolute;
+    left: 0.031825vw;
+    top: -29.760656vw;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  .explore-scenery__leaf {
+    position: absolute;
+    height: auto;
+    max-width: none;
+  }
+
+  .explore-scenery__leaf--brown {
+    left: var(--brown-x);
+    top: var(--brown-y);
+    width: 5.5671875vw;
+  }
+}

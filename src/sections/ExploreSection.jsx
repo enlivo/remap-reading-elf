@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import foliage from "../../assets/images/landing-elements/foliage-figma.png";
+import brownLeaf from "../../design-assets/Website/Landing Page/Elements of Landing Page/6.png";
 
 import booksCard from "../../assets/images/card-books.png";
 import storyBoxCard from "../../assets/images/card-storybox.png";
@@ -34,6 +36,14 @@ export default function ExploreSection({ staged = false }) {
       className="explore-section"
       aria-label="Explore The Reading Elf"
     >
+      {staged && (
+        <div className="explore-scenery" aria-hidden="true">
+          <div className="explore-scenery__foliage">
+            <img src={foliage} alt="" />
+          </div>
+          <img className="explore-scenery__leaf explore-scenery__leaf--brown" src={brownLeaf} alt="" />
+        </div>
+      )}
       <div className="explore-grid">
         {cards.map((card, index) => (
           <motion.a

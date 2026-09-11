@@ -1,65 +1,206 @@
-.landing-intro { position: relative; }
-.landing-intro__stage { position: sticky; top: 0; display: flow-root; }
+.landing-intro {
+  position: relative;
+}
+
+.landing-intro__stage {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 56.25vw;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.landing-intro__hero-layer {
+  position: absolute;
+  inset: 0 auto auto 0;
+
+  z-index: 1;
+
+  width: 100%;
+}
+
 .landing-hero {
   position: relative;
+
   width: 100%;
   aspect-ratio: 1920 / 1080;
+
   overflow: hidden;
+
   background: var(--elf-sky);
 }
+
 .landing-hero__art {
   position: absolute;
   inset: 0;
+
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
+
 .landing-hero__event {
   position: absolute;
   z-index: 5;
+
   top: 4.6%;
   left: 2.5%;
+
   width: 29.7%;
 }
+
 .landing-hero__event img,
-.landing-hero__monthly img { display: block; width: 100%; }
+.landing-hero__monthly img {
+  display: block;
+  width: 100%;
+}
+
 .landing-hero__headline {
   position: absolute;
   z-index: 4;
+
   top: 17.3%;
   left: 27%;
+
   width: 44%;
+
   margin: 0;
+
   text-align: center;
+
   color: #74452e;
+
   font-size: 3.125vw;
   line-height: 1.08;
   letter-spacing: 0;
 }
-.landing-hero__headline span { display: block; color: var(--elf-red); white-space: nowrap; }
+
+.landing-hero__headline span {
+  display: block;
+
+  color: var(--elf-red);
+
+  white-space: nowrap;
+}
+
 .landing-hero__description {
   position: absolute;
   z-index: 4;
+
   top: 40%;
   left: 29%;
+
   width: 40%;
+
   margin: 0;
+
   text-align: center;
+
   font-size: 1.667vw;
   line-height: 1.4;
+
   color: #454a41;
 }
+
 .landing-hero__monthly {
   position: absolute;
   z-index: 5;
+
   top: 46.3%;
   right: 0;
+
   width: 34%;
 }
-.landing-intro__explore {
-  position: relative;
-  z-index: 2;
-  margin-top: -9.375vw;
+
+.landing-intro__shade {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: #000000;
 }
-.landing-intro__explore .explore-section { padding-top: 1.875vw; }
+
+/*
+ * Explore keeps the exact geometry used by the
+ * already-approved first transition:
+ *
+ * Hero = 1080 design px.
+ * Explore base starts 180 px before Hero ends.
+ * 1080 - 180 = 900px = 46.875vw.
+ *
+ * From here Explore receives its OWN transforms.
+ */
+.landing-intro__explore {
+  position: absolute;
+
+  z-index: 2;
+
+  top: 46.875vw;
+  left: 0;
+
+  width: 100%;
+
+  will-change: transform, opacity;
+}
+
+.landing-intro__explore .explore-section {
+  padding-top: 1.875vw;
+}
+
+/*
+ * Gallery is a separate viewport actor.
+ * It enters from below instead of being reached
+ * by dragging the entire page underneath the nav.
+ */
+.landing-intro__gallery {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  will-change: transform, opacity;
+}
+
+@media (max-width: 900px) {
+  .landing-intro__stage {
+    position: relative;
+
+    height: auto;
+
+    overflow: visible;
+  }
+
+  .landing-intro__hero-layer,
+  .landing-intro__explore,
+  .landing-intro__gallery {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    width: 100%;
+
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .landing-intro__shade {
+    display: none;
+  }
+
+  .landing-intro__explore {
+    margin-top: 0;
+  }
+}
