@@ -102,6 +102,7 @@ function BottomStrip({ style }) {
 }
 
 export default function LandingNavigation({
+  canvasScale = 1,
   progress,
 }) {
   const upperY = useTransform(
@@ -126,6 +127,10 @@ export default function LandingNavigation({
     <div
       className="landing-navigation"
       data-landing-navigation
+      style={{
+        "--landing-canvas-scale":
+          canvasScale,
+      }}
     >
       <UpperTab
         style={{

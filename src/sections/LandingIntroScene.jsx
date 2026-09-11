@@ -86,70 +86,81 @@ export default function LandingIntroScene() {
   );
 
   return (
-    <div
-      ref={sceneRef}
-      className="landing-intro"
-      id="top"
-      style={
-        geometry.height
-          ? {
-              height:
-                geometry.height +
-                geometry.runway,
-            }
-          : undefined
-      }
-    >
+    <>
       <div
-        ref={stageRef}
-        className="landing-intro__stage"
+        ref={sceneRef}
+        className="landing-intro"
+        id="top"
+        style={
+          geometry.height
+            ? {
+                height:
+                  geometry.height +
+                  geometry.runway,
+              }
+            : undefined
+        }
       >
-        <motion.div
-          className="landing-intro__hero-layer"
-          style={{
-            y: heroY,
-            opacity: composition.heroOpacity,
-          }}
+        <div
+          ref={stageRef}
+          className="landing-intro__stage"
         >
-          <HeroSection
-            progress={introProgress}
-          />
-
-          <motion.div
-            className="landing-intro__shade"
+          <div
+            className="landing-intro__canvas"
             style={{
-              opacity: shade,
+              "--landing-canvas-scale":
+                geometry.canvasScale,
             }}
-          />
-        </motion.div>
+          >
+            <motion.div
+              className="landing-intro__hero-layer"
+              style={{
+                y: heroY,
+                opacity: composition.heroOpacity,
+              }}
+            >
+              <HeroSection
+                progress={introProgress}
+              />
 
-        <motion.div
-          className="landing-intro__explore"
-          style={{
-            x: exploreX,
-            y: exploreY,
-            opacity: exploreOpacity,
-            ...composition.explore,
-          }}
-        >
-          <ExploreSection staged />
-        </motion.div>
+              <motion.div
+                className="landing-intro__shade"
+                style={{
+                  opacity: shade,
+                }}
+              />
+            </motion.div>
 
-        <motion.div
-          className="landing-intro__gallery"
-          style={{
-            y: galleryY,
-            opacity: galleryOpacity,
-            ...composition.gallery,
-          }}
-        >
-          <GallerySection staged />
-        </motion.div>
+            <motion.div
+              className="landing-intro__explore"
+              style={{
+                x: exploreX,
+                y: exploreY,
+                opacity: exploreOpacity,
+                ...composition.explore,
+              }}
+            >
+              <ExploreSection staged />
+            </motion.div>
 
-        <LandingNavigation
-          progress={progress}
-        />
+            <motion.div
+              className="landing-intro__gallery"
+              style={{
+                y: galleryY,
+                opacity: galleryOpacity,
+                ...composition.gallery,
+              }}
+            >
+              <GallerySection staged />
+            </motion.div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <LandingNavigation
+        canvasScale={geometry.canvasScale}
+        progress={progress}
+      />
+    </>
   );
 }

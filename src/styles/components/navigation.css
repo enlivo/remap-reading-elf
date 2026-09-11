@@ -60,11 +60,17 @@
 }
 
 .landing-navigation {
-  position: absolute;
-  inset: 0 0 auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
   height: 56.25vw;
-  z-index: 20;
+  width: 100vw;
+  z-index: 100;
   pointer-events: none;
+  transform:
+    translateX(-50%)
+    scale(var(--landing-canvas-scale, 1));
+  transform-origin: top center;
 }
 .landing-navigation .upper-tab {
   position: absolute;

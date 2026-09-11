@@ -18,6 +18,7 @@ export default function useLandingScrollTimeline(
   stageRef,
 ) {
   const [geometry, setGeometry] = useState({
+    canvasScale: 1,
     height: 0,
     runway: 0,
     vh: 0,
@@ -33,11 +34,20 @@ export default function useLandingScrollTimeline(
       const height =
         stageRef.current?.offsetHeight ?? 0;
 
+      const canvasScale = desktop
+        ? Math.max(
+            1,
+            window.innerHeight /
+              (window.innerWidth * 9 / 16),
+          )
+        : 1;
+
       const vh = desktop
         ? window.innerHeight / 100
         : 0;
 
       setGeometry({
+        canvasScale,
         height,
         runway: vh * TOTAL_RUNWAY_VH,
         vh,
