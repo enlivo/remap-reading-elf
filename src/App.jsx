@@ -9,10 +9,12 @@ import {
 
 import BooksPage from "./pages/BooksPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import StoryBoxPage from "./pages/StoryBoxPage.jsx";
 
 const supportedPaths = new Set([
   "/",
   "/books",
+  "/story-box",
 ]);
 
 function normalizePathname(pathname) {
@@ -151,9 +153,9 @@ export default function App() {
        * Only intercept routes that currently
        * exist in our React page switch.
        *
-       * Story Box / Experience / Events /
-       * Our Story / Blog remain untouched
-       * until their actual pages are wired.
+       * Experience / Events / Our Story /
+       * Blog remain untouched until their
+       * actual pages are wired.
        */
       if (
         !supportedPaths.has(
@@ -243,6 +245,10 @@ export default function App() {
 
   if (pathname === "/books") {
     return <BooksPage />;
+  }
+
+  if (pathname === "/story-box") {
+    return <StoryBoxPage />;
   }
 
   return <HomePage />;

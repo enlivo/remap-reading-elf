@@ -19,6 +19,7 @@ import "./styles/components/footer.css";
 import "./styles/pages/books.css";
 import "./styles/responsive.css";
 import "./styles/pages/books-responsive.css";
+import "./styles/pages/story-box.css";
 
 createRoot(
   document.getElementById("root"),
