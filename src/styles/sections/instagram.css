@@ -53,3 +53,111 @@
   left: 8%;
 }
 
+
+
+@media (min-width: 901px) {
+  /*
+   * Desktop staged Instagram composition.
+   *
+   * It fills exactly the same remaining 16:9 viewport area
+   * used by About and Visit:
+   *
+   * 56.25vw - 11.5625vw = 44.6875vw
+   */
+  .instagram-section--staged {
+    position: relative;
+
+    width: 100%;
+    height: 44.6875vw;
+    min-height: 44.6875vw;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: transparent;
+  }
+
+  .instagram-section--staged::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    background: #ffffff;
+
+    opacity: var(--instagram-surface-opacity, 0);
+
+    will-change: opacity;
+  }
+
+  .instagram-section--staged h2 {
+    position: absolute;
+
+    top: 4.166667vw;
+    left: 0;
+
+    z-index: 2;
+
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 4vw;
+
+    opacity: var(--instagram-content-opacity, 0);
+
+    will-change: opacity;
+  }
+
+  .instagram-section--staged .instagram-section__placeholder {
+    position: absolute;
+
+    top: 11.25vw;
+    left: 15vw;
+
+    z-index: 2;
+
+    width: 70vw;
+    height: 19vw;
+
+    margin: 0;
+
+    opacity: var(--instagram-panel-opacity, 0);
+
+    transform:
+      translate(
+        var(--instagram-panel-x, 13.541667vw),
+        var(--instagram-panel-y, 6.770833vw)
+      );
+
+    will-change: transform, opacity;
+  }
+
+  .instagram-section--staged .instagram-section__blob {
+    top: 4.166667vw;
+    left: 8%;
+
+    width: 7.552083vw;
+
+    opacity: var(--instagram-content-opacity, 0);
+
+    will-change: opacity;
+  }
+
+  /*
+   * Desktop uses the staged instance above.
+   * Keep the normal instance only for mobile.
+   */
+  .instagram-section--mobile-fallback {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .instagram-section--staged {
+    display: none;
+  }
+}

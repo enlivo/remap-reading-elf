@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("../../../assets/fonts/nunito-variable.ttf")
+    format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 1000;
+}
+
 .about-section {
   position: relative;
 
@@ -77,3 +86,167 @@
   height: auto;
 }
 
+.about-section__decoration {
+  display: none;
+}
+
+.about-section__desktop-break {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .about-section {
+    z-index: 1;
+
+    display: block;
+
+    height: 30vw;
+    min-height: 0;
+
+    margin-bottom: 2.03125vw;
+    padding: 0;
+
+    background: #fccdb2;
+    overflow: visible;
+  }
+
+  .about-section::after {
+    content: "";
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 2.03125vw;
+
+    background: #ffffff;
+  }
+
+  .about-section__copy {
+    position: absolute;
+    top: 3.75vw;
+    left: 6.666667vw;
+    z-index: 2;
+
+    width: 52.708333vw;
+    padding: 0;
+  }
+
+  .about-section__copy h2 {
+    margin: 0 0 0.416667vw;
+
+    font-size: 3.333333vw;
+    line-height: 1;
+  }
+
+  .about-section__copy p {
+    width: 100%;
+    margin: 0;
+
+    font-family: "Nunito", Arial, sans-serif;
+    font-size: 2.083333vw;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .about-section__copy p + p {
+    margin-top: 2.5vw;
+  }
+
+  .about-section__desktop-break {
+    display: block;
+  }
+
+  .about-section__image {
+    position: absolute;
+    top: -2.34375vw;
+    left: 56.5625vw;
+    z-index: 3;
+
+    width: 41.09375vw;
+
+    line-height: 0;
+  }
+
+  .about-section__decoration {
+    position: absolute;
+    z-index: 1;
+
+    display: block;
+
+    height: auto;
+
+    pointer-events: none;
+  }
+
+  .about-section__decoration--cream {
+    top: 0.520833vw;
+    left: 40.364583vw;
+
+    width: 9.6875vw;
+  }
+
+  .about-section__decoration--blue {
+    top: 1.770833vw;
+    left: 37.239583vw;
+
+    width: 2.65625vw;
+  }
+
+  /*
+   * Desktop landing choreography.
+   *
+   * The mother/son artwork is the lead actor: it rises first.
+   * Peach surface, text and decorative shapes resolve afterwards.
+   */
+  .about-section--staged {
+    /*
+     * Fill the remainder of the 16:9 landing canvas:
+     *
+     * canvas bottom = 56.25vw
+     * About origin  = 11.5625vw
+     * remainder     = 44.6875vw
+     */
+    height: 44.6875vw;
+
+    margin-bottom: 0;
+
+    background: transparent;
+  }
+
+  .about-section--staged::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background: #fccdb2;
+
+    opacity: var(--about-surface-opacity, 0);
+    will-change: opacity;
+  }
+
+  .about-section--staged::after {
+    display: none;
+  }
+
+  .about-section--staged .about-section__copy,
+  .about-section--staged .about-section__decoration {
+    opacity: var(--about-content-opacity, 0);
+    will-change: opacity;
+  }
+
+  .about-section--staged .about-section__image {
+    opacity: var(--about-image-opacity, 0);
+
+    transform: translateY(
+      var(--about-image-y, 44.010417vw)
+    );
+
+    will-change: transform, opacity;
+  }
+
+}

@@ -187,7 +187,67 @@
   will-change: transform, opacity;
 }
 
-@media (max-width: 900px) {
+/*
+ * Gallery -> About prototype handoff.
+ *
+ * About begins below the fixed navigation, at approximately
+ * y=222 on the 1920px design canvas:
+ *
+ * 222 / 19.2 = 11.5625vw
+ */
+.landing-intro__about {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 11.5625vw;
+  left: 0;
+
+  width: 100%;
+
+  pointer-events: none;
+
+  will-change: opacity;
+}
+
+/*
+ * Visit continues the same viewport choreography as About.
+ * It occupies the identical canvas origin and is independently
+ * composited so the map can rise while About fades away.
+ */
+.landing-intro__visit {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 11.5625vw;
+  left: 0;
+
+  width: 100%;
+
+  pointer-events: none;
+
+  will-change: opacity;
+}
+
+/*
+ * Instagram uses the same resolved viewport origin as
+ * About and Visit but sits above them as the next actor.
+ */
+.landing-intro__instagram {
+  position: absolute;
+
+  z-index: 6;
+
+  top: 11.5625vw;
+  left: 0;
+
+  width: 100%;
+
+  pointer-events: none;
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
   .landing-intro__stage {
     position: relative;
 
@@ -209,7 +269,10 @@
 
   .landing-intro__hero-layer,
   .landing-intro__explore,
-  .landing-intro__gallery {
+  .landing-intro__gallery,
+  .landing-intro__about,
+  .landing-intro__visit,
+  .landing-intro__instagram {
     position: relative;
 
     top: auto;

@@ -86,3 +86,251 @@
   width: 100%;
 }
 .bottom-strip__hotspots a { pointer-events: auto; }
+
+
+/* ==========================================================
+   MOBILE LANDING NAVIGATION
+
+   Recreated from the supplied mobile prototype recording.
+
+   Prototype measurements:
+   - drawer width ≈ 59.4% viewport
+   - warm yellow surface ≈ #F5BB50
+   - right-side slide-in
+   - dimmed page underneath
+   ========================================================== */
+
+.mobile-landing-navigation {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-landing-navigation {
+    display: block;
+  }
+
+  .mobile-menu-trigger {
+    position: fixed;
+
+    top: 22px;
+    right: 20px;
+    z-index: 205;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+
+    width: 31px;
+    height: 27px;
+
+    padding: 3px;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-trigger span {
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: #7a4b2a;
+  }
+
+  .mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    background:
+      rgba(26, 24, 18, 0.48);
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-panel {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    z-index: 211;
+
+    width: 59.4vw;
+
+    height: 85vh;
+    height: 85svh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    color: #7a4b2a;
+
+    background: #f5bb50;
+
+    box-shadow:
+      -8px 0 24px
+      rgba(40, 29, 18, 0.1);
+
+    will-change: transform;
+  }
+
+  .mobile-menu-panel__logo {
+    position: absolute;
+
+    top: 14px;
+    left: 16px;
+
+    display: block;
+
+    width: 25.6vw;
+    max-width: 138px;
+    min-width: 92px;
+
+    height: auto;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+
+    top: 17px;
+    right: 15px;
+    z-index: 2;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-close span {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 28px;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: #7a4b2a;
+
+    transform-origin: center;
+  }
+
+  .mobile-menu-close span:first-child {
+    transform:
+      translate(-50%, -50%)
+      rotate(45deg);
+  }
+
+  .mobile-menu-close span:last-child {
+    transform:
+      translate(-50%, -50%)
+      rotate(-45deg);
+  }
+
+  .mobile-menu-links {
+    position: absolute;
+
+    top: 17.1svh;
+    left: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 48%;
+  }
+
+  .mobile-menu-links a {
+    display: block;
+
+    margin: 0 0 4svh;
+    padding: 0 0 2.5svh;
+
+    color: #7a4b2a;
+
+    font-size:
+      clamp(16px, 4.5vw, 24px);
+
+    font-weight: 500;
+    line-height: 1.15;
+
+    text-decoration: none;
+  }
+
+  .mobile-menu-links a > span {
+    display: block;
+
+    padding-left: 4px;
+  }
+
+  .mobile-menu-links a > i {
+    display: block;
+
+    width: 100%;
+
+    margin-top: 2.5svh;
+
+    border-bottom:
+      2px dashed
+      rgba(122, 75, 42, 0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-panel {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE MENU NEUTRAL BACKDROP
+
+   The previous warm-brown 48% overlay strongly shifted the
+   underlying landing artwork toward red/brown.
+
+   Keep the prototype's dimmed-page effect, but use a neutral
+   translucent black so the current scene remains recognizable.
+   ========================================================== */
+
+@media (max-width: 900px) {
+  .mobile-menu-backdrop {
+    background:
+      rgba(
+        0,
+        0,
+        0,
+        0.26
+      );
+
+    backdrop-filter:
+      blur(1px);
+
+    -webkit-backdrop-filter:
+      blur(1px);
+  }
+}

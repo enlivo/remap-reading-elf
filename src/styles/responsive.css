@@ -1,6 +1,4 @@
 @media (max-width: 900px) {
-  .landing-intro__stage { position: relative; }
-  .landing-intro__explore { margin-top: 0; transform: none !important; }
   .landing-hero { aspect-ratio: auto; min-height: 760px; }
   .landing-hero__art { object-position: center top; }
   .landing-navigation { display: none; }
@@ -54,7 +52,14 @@
       0;
   }
 
-  .visit-section {
+  /*
+   * Mobile uses the normal Visit instance rendered by HomePage.
+   *
+   * Do not target every .visit-section here. Doing so overrides
+   * the staged desktop instance's mobile display:none rule and
+   * causes "Come See Us in Chennai" to render twice.
+   */
+  .visit-section--mobile-fallback {
     display: block;
 
     min-height: auto;
@@ -76,6 +81,15 @@
   .visit-section__map {
     width: 100%;
     margin-top: 40px;
+  }
+
+  /*
+   * The desktop white decorative blob crosses the Visit heading
+   * when the composition collapses to the mobile layout.
+   */
+  .visit-section--mobile-fallback
+    .visit-section__blob--white {
+    display: none;
   }
 
   .instagram-section__placeholder {
@@ -121,5 +135,1911 @@
 
   .site-footer__leaf {
     display: none;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE PHONE HERO - FIGMA RECORDING
+
+   Source composition was recorded at 520px wide.
+
+   The Hero resolves at approximately 520 x 624:
+   624 / 520 = 1.2 -> 120vw.
+
+   Keep this phone-specific. Tablet/iPad geometry will receive
+   its own composition instead of inheriting these measurements.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-hero {
+    width: 100%;
+    height: 120vw;
+    min-height: 0;
+
+    aspect-ratio: auto;
+
+    overflow: hidden;
+  }
+
+  .landing-hero__art {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /*
+   * Mobile Figma places Event News on the left and leaves the
+   * hamburger its own clear area on the upper-right.
+   */
+  .landing-hero__event {
+    top: 12.2vw;
+    left: 1.2%;
+
+    width: 68%;
+  }
+
+  /*
+   * Figma phone Hero:
+   *
+   * "Where Children"
+   * "Fall in love with Reading"
+   *
+   * Keep the second line together at normal phone widths.
+   */
+  .landing-hero__headline {
+    top: 27.2%;
+    left: 3%;
+
+    width: 94%;
+
+    font-size:
+      clamp(27px, 6.7vw, 51px);
+
+    line-height: 1;
+  }
+
+  .landing-hero__headline span {
+    white-space: nowrap;
+  }
+
+  /*
+   * Desktop intentionally hides this copy on its first frame.
+   *
+   * For this static mobile-composition pass we render the Figma
+   * resolved state. Mobile scroll choreography will replace this
+   * override when its own timeline is implemented.
+   */
+  .landing-hero__description {
+    top: 50.5%;
+    left: 8%;
+
+    width: 84%;
+
+    font-size:
+      clamp(13px, 3.15vw, 19px);
+
+    line-height: 1.42;
+
+    /*
+     * Motion values now come from HeroSection's phone-local
+     * scroll progress. Keep geometry here, choreography in JS.
+     */
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+  }
+
+  /*
+   * Monthly Best sits inside the lower meadow instead of
+   * occupying most of the phone width.
+   */
+  .landing-hero__monthly {
+    top: 73.8%;
+    right: 6%;
+
+    width: 43%;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE PHONE EXPLORE - FIGMA RECORDING
+
+   The four existing card PNGs already contain the complete
+   mobile panel artwork. On phone they form one continuous
+   edge-to-edge story stack directly below the Hero.
+
+   Tablet/iPad receives its own geometry later.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-intro__explore {
+    width: 100%;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: var(--elf-peach);
+  }
+
+  /*
+   * Remove the generic mobile section gutters.
+   * In the phone Figma the card artwork reaches both edges.
+   */
+  .landing-intro__explore .explore-section {
+    width: 100%;
+
+    /*
+     * Match the spacing between cards so the first and last
+     * panels also have breathing room inside the peach section.
+     */
+    padding:
+      clamp(9px, 2vw, 14px)
+      0;
+
+    background: var(--elf-peach);
+  }
+
+  /*
+   * Do not treat the phone composition as a collapsed
+   * desktop grid. It is a continuous vertical panel stack.
+   */
+  .landing-intro__explore .explore-grid {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+  /*
+   * Keep a small amount of peach visible between the rounded
+   * story panels instead of letting their edges touch.
+   */
+  .landing-intro__explore
+    .explore-card + .explore-card {
+    margin-top: clamp(9px, 2vw, 14px);
+  }
+
+  .landing-intro__explore .explore-card {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    line-height: 0;
+  }
+
+  .landing-intro__explore .explore-card img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+  }
+
+  /*
+   * Desktop-only transition scenery is not part of the
+   * resolved phone Explore composition.
+   */
+  .landing-intro__explore .explore-scenery {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE PHONE GALLERY - FIGMA RECORDING
+
+   Recorded phone composition:
+   - reference viewport width: 520px
+   - Gallery height: ~390px -> ~75vw
+   - existing Images.png naturally resolves to the correct
+     strip height at ~135% viewport width
+
+   Desktop Gallery remains controlled by gallery.css and the
+   shared landing timeline.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-intro__gallery {
+    width: 100%;
+    margin: 0;
+
+    overflow: hidden;
+  }
+
+  .landing-intro__gallery .gallery-section {
+    width: 100%;
+    height: 75vw;
+    min-height: 0;
+
+    aspect-ratio: auto;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  /*
+   * Preserve the Figma grass / flower artwork as the lower
+   * transition into About, but crop it to the compact phone
+   * composition instead of the generic 610px mobile section.
+   */
+  .landing-intro__gallery
+    .gallery-section__background {
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  /*
+   * The asset itself includes its finished red Gallery treatment.
+   * At 520px this resolves to ~122px wide.
+   */
+  .landing-intro__gallery
+    .gallery-section__title {
+    top: 4%;
+    left: 4.2%;
+
+    width: 23.5vw;
+    max-width: none;
+
+    height: auto;
+  }
+
+  /*
+   * Images.png is a single 1849 x 403 composite.
+   * 135vw gives ~702px x 153px at the reference viewport,
+   * matching the recorded phone artwork closely.
+   */
+  .landing-intro__gallery
+    .gallery-section__images-window {
+    top: 24%;
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__images {
+    width: 135%;
+    max-width: none;
+
+    height: auto;
+
+    margin: 0;
+    margin-left: -8%;
+  }
+
+  /*
+   * Entry foliage/leaf belongs to the desktop staged transition.
+   * The phone endpoint already receives its vegetation from the
+   * Gallery background artwork.
+   */
+  .landing-intro__gallery
+    .gallery-section__entry-foliage,
+  .landing-intro__gallery
+    .gallery-section__entry-leaf {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE PHONE ABOUT - FIGMA RECORDING
+
+   The phone composition is not a vertical copy/image stack.
+   Copy stays on the left while the mother/son artwork occupies
+   the right side of one compact peach scene.
+
+   Reference viewport: 520px.
+   About scene resolves to approximately 330px tall.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-intro__about {
+    width: 100%;
+    margin: 0;
+
+    overflow: hidden;
+  }
+
+  .landing-intro__about .about-section {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: clamp(310px, 64vw, 400px);
+    min-height: 0;
+
+    padding: 0;
+    margin: 0;
+
+    background: #fccdb2;
+
+    overflow: hidden;
+  }
+
+  /*
+   * Left-hand copy block from the phone reference.
+   */
+  .landing-intro__about
+    .about-section__copy {
+    position: absolute;
+
+    top: clamp(20px, 4.2vw, 34px);
+    left: 6.5%;
+
+    z-index: 2;
+
+    width: 45.5%;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  .landing-intro__about
+    .about-section__copy h2 {
+    margin:
+      0
+      0
+      clamp(15px, 3.5vw, 27px);
+
+    font-size:
+      clamp(22px, 4.8vw, 34px);
+
+    line-height: 1;
+  }
+
+  .landing-intro__about
+    .about-section__copy p {
+    width: 100%;
+
+    margin: 0;
+
+    font-family:
+      "Nunito",
+      Arial,
+      sans-serif;
+
+    font-size:
+      clamp(13px, 3vw, 17px);
+
+    font-weight: 400;
+    line-height: 1.16;
+  }
+
+  .landing-intro__about
+    .about-section__copy p + p {
+    margin-top:
+      clamp(14px, 3.2vw, 23px);
+  }
+
+  /*
+   * Desktop-authored line breaks would make the narrower phone
+   * copy unnatural. Allow the browser to wrap against the mobile
+   * copy width instead.
+   */
+  .landing-intro__about
+    .about-section__desktop-break {
+    display: none;
+  }
+
+  /*
+   * Mother/son artwork occupies the right side of the scene.
+   * The asset already contains the finished framed artwork.
+   */
+  .landing-intro__about
+    .about-section__image {
+    position: absolute;
+
+    top: clamp(38px, 7.6vw, 54px);
+    right: 5.5%;
+
+    z-index: 3;
+
+    width:
+      clamp(145px, 38vw, 290px);
+
+    margin: 0;
+
+    line-height: 0;
+  }
+
+  .landing-intro__about
+    .about-section__image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+  }
+
+  /*
+   * The small desktop transition blobs are not visible in the
+   * resolved phone About composition.
+   */
+  .landing-intro__about
+    .about-section__decoration {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE PHONE FULL-FRAME LANDING STAGE
+
+   True phone camera:
+   - 100vw wide
+   - 100svh tall
+   - NEVER horizontally scaled
+   - each landing actor occupies the same viewport frame
+
+   Background artwork may crop naturally with object-fit: cover,
+   but text, cards and UI always remain inside 100vw.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-intro__stage {
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  .landing-intro__canvas {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+
+    /*
+     * Critical:
+     * do not scale the phone camera.
+     */
+    transform:
+      translateX(-50%);
+
+    transform-origin:
+      top center;
+  }
+
+  .landing-intro__hero-layer,
+  .landing-intro__explore,
+  .landing-intro__gallery,
+  .landing-intro__about,
+  .landing-intro__visit,
+  .landing-intro__instagram {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    will-change:
+      transform,
+      opacity;
+  }
+
+  /* ----------------------------------------------------------
+     HERO
+     ---------------------------------------------------------- */
+
+  .landing-intro__hero-layer {
+    background:
+      var(--elf-sky);
+  }
+
+  .landing-hero {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+
+    aspect-ratio: auto;
+
+    overflow: hidden;
+
+    background:
+      var(--elf-sky);
+  }
+
+  /*
+   * The illustration is the only Hero element allowed to crop.
+   * Overlay copy/UI is positioned independently below.
+   */
+  .landing-hero__art {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .landing-hero__event {
+    top: 4.5svh;
+    left: 1.5%;
+
+    width: 68%;
+  }
+
+  .landing-hero__headline {
+    top: 13svh;
+    left: 3%;
+
+    width: 94%;
+
+    font-size:
+      clamp(
+        28px,
+        6.7vw,
+        48px
+      );
+
+    line-height: 1;
+  }
+
+  .landing-hero__headline span {
+    white-space: nowrap;
+  }
+
+  .landing-hero__description {
+    top: 31svh;
+    left: 8%;
+
+    width: 84%;
+
+    font-size:
+      clamp(
+        13px,
+        3.15vw,
+        19px
+      );
+
+    line-height: 1.42;
+  }
+
+  .landing-hero__monthly {
+    top: auto;
+    right: 5%;
+    bottom: 5svh;
+
+    width: 43%;
+  }
+
+  /* ----------------------------------------------------------
+     EXPLORE
+     ---------------------------------------------------------- */
+
+  .landing-intro__explore {
+    overflow: visible;
+
+    background:
+      var(--elf-peach);
+  }
+
+  .landing-intro__explore
+    .explore-section {
+    width: 100%;
+
+    min-height: 0;
+
+    padding:
+      clamp(
+        9px,
+        2vw,
+        14px
+      )
+      0;
+
+    margin: 0;
+
+    background:
+      var(--elf-peach);
+  }
+
+  .landing-intro__explore
+    .explore-grid {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+  .landing-intro__explore
+    .explore-card {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    line-height: 0;
+  }
+
+  .landing-intro__explore
+    .explore-card +
+    .explore-card {
+    margin-top:
+      clamp(
+        9px,
+        2vw,
+        14px
+      );
+  }
+
+  .landing-intro__explore
+    .explore-card img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+  }
+
+  .landing-intro__explore
+    .explore-scenery {
+    display: none;
+  }
+
+  /* ----------------------------------------------------------
+     GALLERY
+     ---------------------------------------------------------- */
+
+  .landing-intro__gallery {
+    display: flex;
+
+    align-items: center;
+
+    background: #ffffff;
+  }
+
+  .landing-intro__gallery
+    .gallery-section {
+    flex: 0 0 auto;
+
+    width: 100%;
+    height: 75vw;
+    min-height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  /* ----------------------------------------------------------
+     ABOUT
+     ---------------------------------------------------------- */
+
+  .landing-intro__about {
+    display: flex;
+
+    align-items: center;
+
+    background: #fccdb2;
+  }
+
+  .landing-intro__about
+    .about-section {
+    flex: 0 0 auto;
+
+    width: 100%;
+    height:
+      clamp(
+        310px,
+        64vw,
+        400px
+      );
+    min-height: 0;
+
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------------
+     VISIT
+     ---------------------------------------------------------- */
+
+  .visit-section--mobile-fallback {
+    display: none !important;
+  }
+
+  .landing-intro__visit {
+    background:
+      var(--elf-brown);
+  }
+
+  .landing-intro__visit
+    .visit-section--staged {
+    position: relative;
+
+    display: block !important;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    background:
+      var(--elf-brown);
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy {
+    position: absolute;
+
+    top: 8svh;
+    left: 7%;
+
+    z-index: 2;
+
+    width: 86%;
+
+    margin: 0;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy h2 {
+    margin:
+      0
+      0
+      2.6svh;
+
+    font-size:
+      clamp(
+        28px,
+        7vw,
+        44px
+      );
+
+    line-height: 0.94;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy p {
+    width: 82%;
+
+    margin: 0;
+
+    font-size:
+      clamp(
+        13px,
+        3vw,
+        18px
+      );
+
+    line-height: 1.35;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__hours {
+    margin-top:
+      2.8svh !important;
+
+    font-size:
+      clamp(
+        12px,
+        2.6vw,
+        16px
+      ) !important;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__map {
+    position: absolute;
+
+    top: 43svh;
+    left: 7%;
+
+    z-index: 2;
+
+    width: 86%;
+
+    margin: 0;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__blob--white {
+    display: none;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__blob--blue {
+    right: -2vw;
+    bottom: -1vw;
+
+    width: 15vw;
+
+    opacity: 1;
+  }
+
+  /* ----------------------------------------------------------
+     INSTAGRAM
+     ---------------------------------------------------------- */
+
+  .instagram-section--mobile-fallback {
+    display: none !important;
+  }
+
+  .landing-intro__instagram {
+    background: #ffffff;
+  }
+
+  .landing-intro__instagram
+    .instagram-section--staged {
+    position: relative;
+
+    display: block !important;
+
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  .landing-intro__instagram
+    .instagram-section--staged h2 {
+    position: absolute;
+
+    top: 11svh;
+    left: 0;
+
+    width: 100%;
+
+    margin: 0;
+
+    text-align: center;
+
+    font-size:
+      clamp(
+        28px,
+        7vw,
+        44px
+      );
+
+    opacity: 1;
+  }
+
+  .landing-intro__instagram
+    .instagram-section--staged
+    .instagram-section__placeholder {
+    position: absolute;
+
+    top: 28svh;
+    left: 5%;
+
+    width: 90%;
+    height: 35svh;
+
+    margin: 0;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .landing-intro__instagram
+    .instagram-section--staged
+    .instagram-section__blob {
+    top: 9svh;
+    left: 7%;
+
+    width: 14vw;
+
+    opacity: 1;
+  }
+
+  .landing-intro__shade {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE FULL-FRAME VISUAL BALANCE PASS 1
+
+   Fine-tunes the approved true 100vw x 100svh camera:
+   - Hero description receives stronger visual weight
+   - four Explore panels divide the viewport uniformly
+   - Gallery uses the complete viewport instead of a compact
+     75vw island inside a large white actor
+
+   Transition timing remains untouched in this pass.
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+  /* ----------------------------------------------------------
+     HERO DESCRIPTION
+     ---------------------------------------------------------- */
+
+  .landing-hero__description {
+    left: 5%;
+
+    width: 90%;
+
+    font-size:
+      clamp(
+        17px,
+        4vw,
+        24px
+      );
+
+    line-height: 1.38;
+
+    text-align: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     EXPLORE
+
+     The four finished card assets now divide one complete
+     viewport rather than forming a natural-height stack with
+     unused peach space underneath.
+     ---------------------------------------------------------- */
+
+  .landing-intro__explore {
+    overflow: hidden;
+  }
+
+  .landing-intro__explore
+    .explore-section {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+      clamp(
+        7px,
+        0.65svh,
+        11px
+      )
+      0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background:
+      var(--elf-peach);
+  }
+
+  .landing-intro__explore
+    .explore-grid {
+    display: grid;
+
+    grid-template-columns:
+      1fr;
+
+    grid-template-rows:
+      repeat(
+        4,
+        minmax(0, 1fr)
+      );
+
+    gap:
+      clamp(
+        7px,
+        0.65svh,
+        11px
+      );
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    margin: 0;
+  }
+
+  .landing-intro__explore
+    .explore-card,
+  .landing-intro__explore
+    .explore-card +
+    .explore-card {
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    line-height: 0;
+  }
+
+  .landing-intro__explore
+    .explore-card img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+     * Each source PNG already contains the complete card design.
+     * Fill preserves all copy/artwork rather than cropping its
+     * left/right content with object-fit: cover.
+     */
+    object-fit: fill;
+
+    margin: 0;
+  }
+
+
+  /* ----------------------------------------------------------
+     GALLERY
+
+     The Gallery actor itself is already 100svh. Let the actual
+     Gallery composition use that frame instead of centring the
+     former 75vw static-phone section inside it.
+     ---------------------------------------------------------- */
+
+  .landing-intro__gallery {
+    display: block;
+
+    width: 100vw;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  .landing-intro__gallery
+    .gallery-section {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  /*
+   * Decorative grass / flowers become the full-frame backdrop.
+   * They may crop at the sides, but never affect Gallery copy.
+   */
+  .landing-intro__gallery
+    .gallery-section__background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position:
+      center bottom;
+  }
+
+  /*
+   * Spread the actual Gallery content through the viewport.
+   */
+  .landing-intro__gallery
+    .gallery-section__title {
+    top: 11svh;
+    left: 4.2%;
+
+    width: 25vw;
+    max-width: none;
+
+    height: auto;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__images-window {
+    top: 29svh;
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__images {
+    width: 145%;
+    max-width: none;
+
+    height: auto;
+
+    margin: 0;
+    margin-left: -12%;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE GALLERY PROJECT SLIDER PASS 1
+
+   Keep the approved Gallery environment untouched:
+   - Gallery title stays in its existing position
+   - meadow / tree background stays unchanged
+   - desktop continues using the original Images.png strip
+
+   Phone only:
+   - real individual image cards
+   - horizontal swipe / scroll
+   - snap each card to viewport centre
+   - active centre card scales forward
+   - adjacent cards remain partially visible
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-intro__gallery
+    .gallery-section__images-window {
+    display: none;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__mobile-slider {
+    position: absolute;
+
+    top: 29svh;
+    left: 0;
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4vw;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+      3.5svh
+      17vw
+      4svh;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type:
+      x mandatory;
+
+    scroll-padding-inline:
+      17vw;
+
+    overscroll-behavior-x:
+      contain;
+
+    -webkit-overflow-scrolling:
+      touch;
+
+    scrollbar-width: none;
+
+    touch-action:
+      pan-x pan-y;
+
+    outline: none;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__mobile-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__mobile-card {
+    position: relative;
+
+    flex:
+      0
+      0
+      66vw;
+
+    aspect-ratio:
+      1.34 / 1;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border:
+      clamp(
+        3px,
+        0.8vw,
+        5px
+      )
+      solid
+      #ffffff;
+
+    border-radius:
+      clamp(
+        16px,
+        4vw,
+        26px
+      );
+
+    background:
+      #ffffff;
+
+    box-shadow:
+      0
+      1.5vw
+      4.5vw
+      rgba(
+        82,
+        57,
+        36,
+        0.18
+      );
+
+    scroll-snap-align:
+      center;
+
+    scroll-snap-stop:
+      always;
+
+    transform-origin:
+      center center;
+
+    cursor: pointer;
+
+    will-change:
+      transform,
+      opacity;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__mobile-card[data-active="true"] {
+    z-index: 2;
+  }
+
+  .landing-intro__gallery
+    .gallery-section__mobile-card img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    user-select: none;
+
+    -webkit-user-drag:
+      none;
+  }
+}
+
+
+
+/* ==========================================================
+   MOBILE ABOUT - DESIGN MODEL PASS 1
+
+   Match the supplied 520px-wide reference:
+
+   - compact peach composition
+   - copy on the left
+   - portrait mother/child artwork on the right
+   - strong rounded yellow frame
+   - no decorative desktop blobs
+   - no stacked mobile layout
+
+   Gallery and landing-transition timing remain untouched.
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+  .landing-intro__about
+    .about-section {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height:
+      clamp(
+        320px,
+        64vw,
+        400px
+      );
+
+    min-height: 0;
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    background:
+      #fccdb2;
+  }
+
+  /* --------------------------------------------------------
+     COPY
+     -------------------------------------------------------- */
+
+  .landing-intro__about
+    .about-section__copy {
+    position: absolute;
+
+    top: 4.2vw;
+    left: 6.5%;
+
+    z-index: 2;
+
+    width: 45.5%;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  .landing-intro__about
+    .about-section__copy h2 {
+    margin:
+      0
+      0
+      4.7vw;
+
+    font-size:
+      clamp(
+        18px,
+        3.6vw,
+        24px
+      );
+
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .landing-intro__about
+    .about-section__copy p {
+    width: 100%;
+
+    margin: 0;
+
+    font-family:
+      "Nunito",
+      Arial,
+      sans-serif;
+
+    font-size:
+      clamp(
+        12px,
+        2.4vw,
+        14px
+      );
+
+    font-weight: 400;
+
+    line-height: 1.42;
+  }
+
+  .landing-intro__about
+    .about-section__copy p + p {
+    margin-top:
+      clamp(
+        16px,
+        3.6vw,
+        22px
+      );
+  }
+
+  /*
+   * Let the browser wrap the reference copy naturally on phone.
+   */
+  .landing-intro__about
+    .about-section__desktop-break {
+    display: none;
+  }
+
+  /* --------------------------------------------------------
+     PORTRAIT IMAGE
+     -------------------------------------------------------- */
+
+  .landing-intro__about
+    .about-section__image {
+    position: absolute;
+
+    top: 7.5vw;
+    right: 5.8%;
+
+    z-index: 3;
+
+    width:
+      clamp(
+        165px,
+        37.5vw,
+        288px
+      );
+
+    height:
+      clamp(
+        238px,
+        51.5vw,
+        330px
+      );
+
+    box-sizing:
+      border-box;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border:
+      clamp(
+        5px,
+        1.25vw,
+        9px
+      )
+      solid
+      #ffc92f;
+
+    border-radius:
+      clamp(
+        28px,
+        7vw,
+        48px
+      );
+
+    background:
+      #ffc92f;
+
+    line-height: 0;
+  }
+
+  .landing-intro__about
+    .about-section__image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position:
+      center center;
+  }
+
+  /*
+   * Not present in the supplied resolved phone design.
+   */
+  .landing-intro__about
+    .about-section__decoration {
+    display: none;
+  }
+}
+
+
+
+/* ==========================================================
+   MOBILE ABOUT + VISIT SHARED VIEWPORT PASS 1
+
+   One phone camera now contains both sections:
+
+   TOP:
+   About Us / peach composition
+
+   BOTTOM:
+   Come See Us in Chennai / brown composition
+
+   The existing About design is preserved. Visit fills whatever
+   vertical space remains inside the same 100svh frame.
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+  /*
+   * One source of truth for the boundary between the two panels.
+   * This intentionally matches the approved mobile About height.
+   */
+  .landing-intro__canvas {
+    --phone-about-shared-height:
+      clamp(
+        320px,
+        64vw,
+        400px
+      );
+  }
+
+  /* --------------------------------------------------------
+     ABOUT — TOP PANEL
+     -------------------------------------------------------- */
+
+  .landing-intro__about {
+    display: block;
+
+    background:
+      transparent;
+  }
+
+  .landing-intro__about
+    .about-section {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height:
+      var(
+        --phone-about-shared-height
+      );
+
+    min-height: 0;
+
+    margin: 0;
+
+    background:
+      #fccdb2;
+  }
+
+  /* --------------------------------------------------------
+     VISIT — BOTTOM PANEL
+
+     The actor itself remains full-frame so it can share the
+     same Motion transform as About, but only its lower portion
+     paints brown.
+     -------------------------------------------------------- */
+
+  .landing-intro__visit {
+    display: block;
+
+    background:
+      transparent;
+
+    pointer-events:
+      none;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged {
+    position: absolute;
+
+    top:
+      var(
+        --phone-about-shared-height
+      );
+
+    left: 0;
+
+    display: grid !important;
+
+    grid-template-columns:
+      1fr;
+
+    grid-template-rows:
+      auto
+      minmax(
+        0,
+        1fr
+      );
+
+    row-gap:
+      clamp(
+        10px,
+        1.8svh,
+        24px
+      );
+
+    width: 100%;
+
+    height:
+      calc(
+        100svh -
+        var(
+          --phone-about-shared-height
+        )
+      );
+
+    min-height: 0;
+
+    box-sizing:
+      border-box;
+
+    padding:
+      clamp(
+        18px,
+        2.6svh,
+        34px
+      )
+      7%
+      clamp(
+        16px,
+        2.4svh,
+        30px
+      );
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background:
+      var(--elf-brown);
+
+    pointer-events:
+      auto;
+  }
+
+  /* --------------------------------------------------------
+     VISIT COPY
+     -------------------------------------------------------- */
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    grid-row: 1;
+
+    width: 100%;
+
+    margin: 0;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy h2 {
+    margin:
+      0
+      0
+      clamp(
+        8px,
+        1.2svh,
+        16px
+      );
+
+    font-size:
+      clamp(
+        26px,
+        6.2vw,
+        38px
+      );
+
+    line-height:
+      0.9;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__copy p {
+    width: 100%;
+
+    margin: 0;
+
+    font-size:
+      clamp(
+        12px,
+        2.8vw,
+        16px
+      );
+
+    line-height:
+      1.3;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__hours {
+    margin-top:
+      clamp(
+        10px,
+        1.4svh,
+        18px
+      )
+      !important;
+
+    font-size:
+      clamp(
+        11px,
+        2.5vw,
+        14px
+      )
+      !important;
+
+    line-height:
+      1.35;
+  }
+
+  /* --------------------------------------------------------
+     VISIT MAP
+
+     Let the map consume the remaining height rather than using
+     a fixed svh top offset. This keeps the combined composition
+     inside one viewport on both short and tall phones.
+     -------------------------------------------------------- */
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__map {
+    position: relative;
+
+    top: auto;
+    left: auto;
+
+    grid-row: 2;
+
+    align-self:
+      stretch;
+
+    justify-self:
+      center;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+
+    margin: 0;
+
+    opacity: 1;
+
+    transform: none;
+
+    overflow: hidden;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__map img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit:
+      contain;
+
+    object-position:
+      center top;
+  }
+
+  /*
+   * Keep the clean phone treatment.
+   */
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__blob--white {
+    display: none;
+  }
+
+  .landing-intro__visit
+    .visit-section--staged
+    .visit-section__blob--blue {
+    right: -2vw;
+    bottom: -1vw;
+
+    width: 12vw;
+
+    opacity: 1;
+  }
+}
+
+
+
+/* ==========================================================
+   MOBILE HERO INFO SCALE PASS 1
+
+   Increase only the two informational Hero assets so their
+   contents remain comfortably readable on phone.
+
+   Hero artwork, headline, description, navigation and motion
+   remain untouched.
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+  /*
+   * New Events:
+   * larger than the previous 68%, while preserving clear space
+   * for the hamburger in the upper-right.
+   */
+  .landing-hero__event {
+    left: 1.5%;
+
+    width: 79%;
+
+    max-width: none;
+  }
+
+  /*
+   * Monthly Best:
+   * give the book title / recommendation copy more readable
+   * physical size without overwhelming the meadow composition.
+   */
+  .landing-hero__monthly {
+    right: 4%;
+
+    width: 52%;
+
+    max-width: none;
+  }
+}
+
+
+
+/* ==========================================================
+   MOBILE MONTHLY BEST Y TUNE
+
+   Small upward adjustment only.
+   Size and horizontal placement remain unchanged.
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .landing-hero__monthly {
+    bottom: calc(6.5svh + 150px);
   }
 }

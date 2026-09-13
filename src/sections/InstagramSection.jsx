@@ -2,9 +2,12 @@ import { motion } from "motion/react";
 
 import peachBlob from "../../assets/images/landing-elements/blob-peach.png";
 
-export default function InstagramSection() {
+export default function InstagramSection({ staged = false, mobileFallback = false }) {
   return (
-    <section className="instagram-section">
+    <section
+      className={`instagram-section${staged ? " instagram-section--staged" : ""}${mobileFallback ? " instagram-section--mobile-fallback" : ""}`}
+      aria-hidden={staged || undefined}
+    >
       <img
         className="instagram-section__blob"
         src={peachBlob}
@@ -13,15 +16,15 @@ export default function InstagramSection() {
       />
 
       <motion.h2
-        initial={{
+        initial={staged ? false : {
           opacity: 0,
           y: 25,
         }}
-        whileInView={{
+        whileInView={staged ? undefined : {
           opacity: 1,
           y: 0,
         }}
-        viewport={{
+        viewport={staged ? undefined : {
           once: true,
         }}
       >

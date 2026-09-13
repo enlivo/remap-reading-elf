@@ -2,7 +2,6 @@ import LandingIntroScene from "../sections/LandingIntroScene.jsx";
 
 import SiteFooter from "../components/SiteFooter.jsx";
 
-import AboutSection from "../sections/AboutSection.jsx";
 import VisitSection from "../sections/VisitSection.jsx";
 import InstagramSection from "../sections/InstagramSection.jsx";
 
@@ -11,9 +10,8 @@ export default function HomePage() {
     <>
       <main>
         <LandingIntroScene />
-        <AboutSection />
-        <VisitSection />
-        <InstagramSection />
+        <VisitSection mobileFallback />
+        <InstagramSection mobileFallback />
       </main>
 
       <SiteFooter />
