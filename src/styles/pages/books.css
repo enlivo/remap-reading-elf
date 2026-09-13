@@ -2735,7 +2735,9 @@ button {
   .books-gift-card-section,
   .books-book-passport-section,
   .books-gifts,
-  .books-didnt-find {
+  .books-didnt-find,
+  .books-come-see-us,
+  .site-footer--books {
     scroll-snap-align:
       start;
 
@@ -2958,5 +2960,750 @@ button {
         90vw,
         1541px
       );
+  }
+}
+
+
+/* ==========================================================
+   COME SEE US
+
+   Books-page closing eyebrow before the cream footer.
+   Intentionally no map here.
+   ========================================================== */
+
+.books-didnt-find {
+  padding-bottom:
+    clamp(
+      70px,
+      6vw,
+      112px
+    );
+}
+
+
+.books-come-see-us {
+  position: relative;
+
+  z-index: 4;
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding:
+    clamp(
+      64px,
+      6vw,
+      110px
+    )
+    0
+    clamp(
+      86px,
+      7.5vw,
+      142px
+    );
+
+  background: #c7342e;
+}
+
+
+.books-come-see-us__inner {
+  width:
+    min(
+      80.3vw,
+      1541px
+    );
+
+  margin:
+    0
+    auto;
+
+  text-align: center;
+}
+
+
+.books-come-see-us h2 {
+  margin: 0;
+
+  font-family:
+    "Kind Bond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      44px,
+      4vw,
+      76px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+.books-come-see-us p {
+  margin:
+    clamp(
+      10px,
+      0.8vw,
+      16px
+    )
+    0
+    0;
+
+  font-family:
+    "Kind Bond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      20px,
+      1.55vw,
+      30px
+    );
+
+  font-weight: 400;
+
+  line-height: 1.15;
+}
+
+
+.books-come-see-us__cream {
+  color: #f3e8d0;
+}
+
+
+.books-come-see-us__gold {
+  color: #f6c35b;
+}
+
+
+@media (max-width: 1100px) {
+  .books-come-see-us__inner {
+    width:
+      min(
+        90vw,
+        1541px
+      );
+
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================
+   BOOKS FOOTER - DESKTOP FIGMA COMPOSITION
+
+   Scoped entirely to .site-footer--books so the approved
+   Landing footer keeps its existing presentation.
+   ========================================================== */
+
+
+/* Tight centered red closing chapter */
+
+.books-come-see-us {
+  padding:
+    clamp(
+      54px,
+      4.4vw,
+      72px
+    )
+    0
+    clamp(
+      88px,
+      7vw,
+      112px
+    );
+}
+
+
+.books-come-see-us h2 {
+  font-size:
+    clamp(
+      54px,
+      4.8vw,
+      78px
+    );
+}
+
+
+.books-come-see-us p {
+  margin-top:
+    clamp(
+      14px,
+      1vw,
+      20px
+    );
+
+  font-size:
+    clamp(
+      22px,
+      1.75vw,
+      30px
+    );
+}
+
+
+/*
+ * Cream Books footer.
+ *
+ * Decorations deliberately escape upward into the final red
+ * section, matching the supplied desktop reference.
+ */
+
+.site-footer--books {
+  position: relative;
+
+  z-index: 5;
+
+  box-sizing: border-box;
+
+  min-height:
+    clamp(
+      445px,
+      35vw,
+      525px
+    );
+
+  padding:
+    clamp(
+      24px,
+      2vw,
+      34px
+    )
+    clamp(
+      38px,
+      3.7vw,
+      72px
+    )
+    clamp(
+      14px,
+      1.25vw,
+      24px
+    );
+
+  overflow: visible;
+
+  color: #c7342e;
+
+  background: #f3e8d0;
+}
+
+
+/* Main three-column footer composition */
+
+.site-footer--books
+.site-footer__content {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      100%,
+      1450px
+    );
+
+  min-height:
+    clamp(
+      330px,
+      25vw,
+      385px
+    );
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.15fr
+    )
+    minmax(
+      240px,
+      0.72fr
+    )
+    minmax(
+      0,
+      0.9fr
+    );
+
+  align-items: start;
+
+  column-gap:
+    clamp(
+      28px,
+      3vw,
+      60px
+    );
+}
+
+
+/* Left column */
+
+.site-footer--books
+.site-footer__about {
+  padding-top:
+    clamp(
+      0px,
+      0.5vw,
+      8px
+    );
+}
+
+
+.site-footer--books h2 {
+  color: #c7342e;
+
+  font-size:
+    clamp(
+      34px,
+      2.75vw,
+      46px
+    );
+
+  line-height: 1;
+}
+
+
+.site-footer--books
+.site-footer__about > p {
+  max-width: 470px;
+
+  margin-top:
+    clamp(
+      30px,
+      2.7vw,
+      46px
+    );
+
+  color: #c7342e;
+
+  font-family:
+    "Nunito",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      16px,
+      1.25vw,
+      21px
+    );
+
+  line-height: 1.5;
+}
+
+
+.site-footer--books h3 {
+  color: #c7342e;
+}
+
+
+.site-footer--books
+.site-footer__about h3 {
+  margin-top:
+    clamp(
+      48px,
+      4vw,
+      64px
+    );
+
+  margin-bottom:
+    clamp(
+      16px,
+      1.5vw,
+      24px
+    );
+
+  font-size:
+    clamp(
+      24px,
+      2vw,
+      31px
+    );
+}
+
+
+/* Reach Us icons */
+
+.site-footer--books
+.site-footer__socials {
+  gap:
+    clamp(
+      22px,
+      2.2vw,
+      34px
+    );
+}
+
+
+.site-footer--books
+.site-footer__socials a {
+  width:
+    clamp(
+      38px,
+      3vw,
+      46px
+    );
+
+  height:
+    clamp(
+      38px,
+      3vw,
+      46px
+    );
+}
+
+
+.site-footer--books
+.site-footer__socials img {
+  max-width:
+    clamp(
+      34px,
+      2.7vw,
+      43px
+    );
+
+  max-height:
+    clamp(
+      34px,
+      2.7vw,
+      43px
+    );
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(33%)
+    sepia(72%)
+    saturate(1236%)
+    hue-rotate(338deg)
+    brightness(96%)
+    contrast(91%);
+}
+
+
+.site-footer--books
+.site-footer__phone {
+  margin-top:
+    clamp(
+      28px,
+      2.6vw,
+      42px
+    );
+
+  color: #c7342e;
+
+  font-size:
+    clamp(
+      14px,
+      1.05vw,
+      17px
+    );
+}
+
+
+.site-footer--books
+.site-footer__phone img {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(33%)
+    sepia(72%)
+    saturate(1236%)
+    hue-rotate(338deg)
+    brightness(96%)
+    contrast(91%);
+}
+
+
+/* Circular center badge */
+
+.site-footer--books
+.site-footer__logo {
+  position: relative;
+
+  z-index: 5;
+
+  align-self: start;
+
+  width:
+    clamp(
+      210px,
+      18.5vw,
+      270px
+    );
+
+  max-width: none;
+
+  margin-top:
+    clamp(
+      -88px,
+      -6vw,
+      -58px
+    );
+
+  justify-self: center;
+
+  filter:
+    drop-shadow(
+      0
+      8px
+      9px
+      rgba(
+        88,
+        54,
+        32,
+        0.08
+      )
+    );
+}
+
+
+/* Small leafy sprigs extending out from center badge */
+
+.site-footer--books
+.site-footer__leaf {
+  z-index: 3;
+
+  width:
+    clamp(
+      118px,
+      11vw,
+      170px
+    );
+
+  pointer-events: none;
+}
+
+
+.site-footer--books
+.site-footer__leaf--one {
+  top:
+    clamp(
+      7px,
+      1vw,
+      16px
+    );
+
+  left:
+    calc(
+      50%
+      -
+      clamp(
+        255px,
+        20vw,
+        310px
+      )
+    );
+
+  transform:
+    rotate(14deg);
+}
+
+
+.site-footer--books
+.site-footer__leaf--two {
+  top:
+    clamp(
+      8px,
+      1vw,
+      18px
+    );
+
+  bottom: auto;
+
+  left:
+    calc(
+      50%
+      +
+      clamp(
+        105px,
+        8.5vw,
+        135px
+      )
+    );
+
+  transform:
+    scaleX(-1)
+    rotate(14deg);
+}
+
+
+/* Large upper-right branch and lantern */
+
+.site-footer--books
+.site-footer__tree {
+  z-index: 2;
+
+  top:
+    clamp(
+      -145px,
+      -9.5vw,
+      -108px
+    );
+
+  right: 0;
+
+  width:
+    min(
+      47vw,
+      650px
+    );
+
+  pointer-events: none;
+}
+
+
+/* Right Quick Links column */
+
+.site-footer--books
+.site-footer__links {
+  align-self: start;
+
+  justify-self: end;
+
+  min-width:
+    clamp(
+      210px,
+      17vw,
+      260px
+    );
+
+  margin-top:
+    clamp(
+      145px,
+      11vw,
+      176px
+    );
+
+  gap:
+    clamp(
+      6px,
+      0.5vw,
+      9px
+    );
+
+  color: #c7342e;
+
+  font-family:
+    "Nunito",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      16px,
+      1.35vw,
+      21px
+    );
+
+  line-height: 1.22;
+}
+
+
+.site-footer--books
+.site-footer__links h3 {
+  margin-bottom:
+    clamp(
+      8px,
+      0.75vw,
+      12px
+    );
+
+  font-size:
+    clamp(
+      24px,
+      2vw,
+      31px
+    );
+}
+
+
+.site-footer--books a {
+  color: inherit;
+}
+
+
+/* Bottom divider + legal */
+
+.site-footer--books
+.site-footer__legal {
+  position: relative;
+
+  z-index: 6;
+
+  width:
+    min(
+      100%,
+      1450px
+    );
+
+  margin:
+    clamp(
+      4px,
+      0.6vw,
+      10px
+    )
+    auto
+    0;
+
+  padding-top:
+    clamp(
+      14px,
+      1.2vw,
+      20px
+    );
+
+  border-top:
+    1px
+    solid
+    rgba(
+      199,
+      52,
+      46,
+      0.52
+    );
+
+  color: #c7342e;
+
+  font-family:
+    "Nunito",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      13px,
+      1vw,
+      16px
+    );
+
+  line-height: 1.45;
+}
+
+
+/*
+ * Keep the desktop reference composition intact down to tablet.
+ * The dedicated Books phone layout will be handled separately.
+ */
+@media (max-width: 1100px) {
+
+  .site-footer--books {
+    overflow: hidden;
+  }
+
+  .site-footer--books
+  .site-footer__logo {
+    margin-top: 0;
+  }
+
+  .site-footer--books
+  .site-footer__tree {
+    top: 0;
   }
 }

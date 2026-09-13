@@ -1,14 +1,37 @@
 import logo from "../../assets/images/logo.webp";
 import treeLantern from "../../assets/images/footer-branch-lantern.png";
 import leaf from "../../assets/images/footer-leaf-sprig.png";
+import booksLogoBadge from "../../assets/images/books-page/logo-badge.png";
+import booksLeaf from "../../assets/images/books-page/deco-leaf-sprig.png";
 import instagram from "../../assets/images/instagram.svg";
 import facebook from "../../assets/images/facebook.svg";
 import whatsapp from "../../assets/images/whatsapp.png";
 import phone from "../../assets/images/phone-icon.png";
 
-export default function SiteFooter() {
+export default function SiteFooter({
+  variant = "default",
+}) {
+  const isBooks =
+    variant === "books";
+
+  const footerLogo =
+    isBooks
+      ? booksLogoBadge
+      : logo;
+
+  const footerLeaf =
+    isBooks
+      ? booksLeaf
+      : leaf;
+
   return (
-    <footer className="site-footer">
+    <footer
+      className={
+        isBooks
+          ? "site-footer site-footer--books"
+          : "site-footer"
+      }
+    >
       <img
         className="site-footer__tree"
         src={treeLantern}
@@ -18,14 +41,14 @@ export default function SiteFooter() {
 
       <img
         className="site-footer__leaf site-footer__leaf--one"
-        src={leaf}
+        src={footerLeaf}
         alt=""
         aria-hidden="true"
       />
 
       <img
         className="site-footer__leaf site-footer__leaf--two"
-        src={leaf}
+        src={footerLeaf}
         alt=""
         aria-hidden="true"
       />
@@ -96,7 +119,7 @@ export default function SiteFooter() {
 
         <img
           className="site-footer__logo"
-          src={logo}
+          src={footerLogo}
           alt="The Reading Elf"
         />
 

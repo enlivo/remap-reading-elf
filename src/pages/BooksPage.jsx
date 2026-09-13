@@ -8,6 +8,8 @@ import BooksGiftCardSection from "../sections/books/BooksGiftCardSection.jsx";
 import BooksBookPassportSection from "../sections/books/BooksBookPassportSection.jsx";
 import BooksGiftsCollectiblesSection from "../sections/books/BooksGiftsCollectiblesSection.jsx";
 import BooksDidntFindSection from "../sections/books/BooksDidntFindSection.jsx";
+import BooksComeSeeUsSection from "../sections/books/BooksComeSeeUsSection.jsx";
+import SiteFooter from "../components/SiteFooter.jsx";
 
 export default function BooksPage() {
   const [
@@ -16,7 +18,8 @@ export default function BooksPage() {
   ] = useState("all");
 
   return (
-    <main className="books-page">
+    <>
+      <main className="books-page">
       <BooksHeroScene
         activeFilter={activeFilter}
         onFilterChange={
@@ -38,6 +41,11 @@ export default function BooksPage() {
       <BooksGiftsCollectiblesSection />
 
       <BooksDidntFindSection />
-    </main>
+
+        <BooksComeSeeUsSection />
+      </main>
+
+      <SiteFooter variant="books" />
+    </>
   );
 }
