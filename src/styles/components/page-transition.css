@@ -1,0 +1,102 @@
+/*
+ * Shared page navigation transition.
+ *
+ * Applied through the browser View Transition API.
+ * Unsupported browsers simply navigate without
+ * animation.
+ */
+
+::view-transition-group(root) {
+  animation-duration: 460ms;
+
+  animation-timing-function:
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 460ms;
+
+  animation-timing-function:
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  animation-fill-mode: both;
+
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation-name:
+    reading-elf-page-out;
+}
+
+::view-transition-new(root) {
+  animation-name:
+    reading-elf-page-in;
+}
+
+@keyframes reading-elf-page-out {
+  from {
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      scale(0.992);
+
+    filter:
+      blur(1.5px);
+  }
+}
+
+@keyframes reading-elf-page-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(1.008);
+
+    filter:
+      blur(1.5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+}
