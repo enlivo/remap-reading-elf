@@ -2401,3 +2401,357 @@ button {
     opacity: 0.72;
   }
 }
+
+
+/* ==========================================================
+   GIFTS & COLLECTIBLES
+   ========================================================== */
+
+.books-gifts {
+  position: relative;
+
+  z-index: 4;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  width: 100%;
+
+  padding:
+    clamp(
+      82px,
+      7vw,
+      132px
+    )
+    0
+    clamp(
+      110px,
+      9vw,
+      170px
+    );
+
+  background: #c7342e;
+}
+
+
+.books-gifts__inner {
+  position: relative;
+
+  z-index: 6;
+
+  width:
+    min(
+      80.3vw,
+      1541px
+    );
+
+  margin:
+    0
+    auto;
+}
+
+
+.books-gifts__title {
+  margin:
+    0
+    0
+    clamp(
+      42px,
+      3.8vw,
+      68px
+    );
+
+  color: #fff3df;
+
+  font-family:
+    "Kind Bond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      38px,
+      3vw,
+      58px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  text-align: left;
+}
+
+
+.books-gifts__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  align-items: start;
+
+  gap:
+    clamp(
+      28px,
+      3.5vw,
+      68px
+    );
+}
+
+
+.books-gifts__item {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  min-width: 0;
+
+  text-align: center;
+}
+
+
+.books-gifts__image-wrap {
+  width: 100%;
+
+  max-width: 260px;
+
+  margin:
+    0
+    auto
+    clamp(
+      16px,
+      1.35vw,
+      26px
+    );
+
+  filter:
+    drop-shadow(
+      0
+      12px
+      18px
+      rgba(
+        84,
+        27,
+        19,
+        0.17
+      )
+    );
+}
+
+
+.books-gifts__image-wrap img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
+.books-gifts__item h3 {
+  max-width: 250px;
+
+  margin: 0;
+
+  color: #fff8ea;
+
+  font-family:
+    "Nunito",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      14px,
+      0.95vw,
+      18px
+    );
+
+  font-weight: 800;
+
+  line-height: 1.35;
+}
+
+
+.books-gifts__item p {
+  margin:
+    clamp(
+      5px,
+      0.4vw,
+      8px
+    )
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      243,
+      223,
+      0.82
+    );
+
+  font-family:
+    "Nunito",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      13px,
+      0.82vw,
+      16px
+    );
+
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+/* Decorative props */
+
+.books-gifts__prop {
+  position: absolute;
+
+  z-index: 5;
+
+  display: block;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+.books-gifts__prop--blue {
+  top: 45%;
+
+  left:
+    clamp(
+      18px,
+      4vw,
+      76px
+    );
+
+  width:
+    clamp(
+      68px,
+      5.2vw,
+      100px
+    );
+
+  transform:
+    rotate(34deg);
+}
+
+
+.books-gifts__prop--cream {
+  top: 43%;
+
+  right:
+    clamp(
+      22px,
+      3.6vw,
+      70px
+    );
+
+  width:
+    clamp(
+      104px,
+      8.5vw,
+      164px
+    );
+
+  transform:
+    rotate(18deg);
+}
+
+
+/*
+ * Tablet safety only.
+ * Dedicated Books mobile work comes later.
+ */
+@media (max-width: 1100px) {
+  .books-gifts__inner {
+    width:
+      min(
+        90vw,
+        1541px
+      );
+  }
+
+  .books-gifts__grid {
+    gap:
+      clamp(
+        18px,
+        2.5vw,
+        34px
+      );
+  }
+
+  .books-gifts__prop {
+    opacity: 0.7;
+  }
+}
+
+
+/* ==========================================================
+   POST-COLLECTION SCROLL CADENCE
+
+   The Collection retains its existing custom scroll timeline.
+
+   Once that timeline releases, later Books sections use
+   proximity-based snap points. This is deliberately soft:
+   scrolling remains natural, but each major composition has
+   enough magnetic pull to settle into an intentional viewing
+   position instead of flying freely through the page.
+   ========================================================== */
+
+@media (min-width: 1201px) {
+
+  html:has(.books-page) {
+    scroll-snap-type:
+      y
+      proximity;
+
+    scroll-padding-top:
+      clamp(
+        150px,
+        18svh,
+        205px
+      );
+  }
+
+
+  .books-gift-card-section,
+  .books-book-passport-section,
+  .books-gifts {
+    scroll-snap-align:
+      start;
+
+    scroll-snap-stop:
+      normal;
+  }
+}
+
+
+/*
+ * Do not introduce assisted scroll positioning for users
+ * asking for reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+
+  html:has(.books-page) {
+    scroll-snap-type:
+      none;
+  }
+}
