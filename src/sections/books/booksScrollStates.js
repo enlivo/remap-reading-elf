@@ -102,6 +102,106 @@ export const BOOKS_STATES = [
   },
 ];
 
+/*
+ * Responsive choreography keeps the same four narrative beats as
+ * desktop, with shorter runways and positions calibrated for the
+ * taller tablet and phone cameras. The approved BOOKS_STATES table
+ * above remains the sole desktop source of truth.
+ */
+export const BOOKS_TABLET_STATES = [
+  {
+    name: "Hero",
+    runwayVh: 0,
+    heroOpacity: 1,
+    heroScale: 1,
+    redSurfaceOpacity: 0,
+    stripY: 94,
+    introY: 104,
+    productsY: 112,
+    productsOpacity: 0,
+  },
+  {
+    name: "Collection Reveal",
+    runwayVh: 70,
+    heroOpacity: 1,
+    heroScale: 1.008,
+    redSurfaceOpacity: 0,
+    stripY: 42,
+    introY: 62,
+    productsY: 99,
+    productsOpacity: 0,
+  },
+  {
+    name: "Collection",
+    runwayVh: 70,
+    heroOpacity: 0,
+    heroScale: 1.015,
+    redSurfaceOpacity: 1,
+    stripY: 15,
+    introY: 27,
+    productsY: 64,
+    productsOpacity: 1,
+  },
+  {
+    name: "Collection Resolved",
+    runwayVh: 70,
+    heroOpacity: 0,
+    heroScale: 1.018,
+    redSurfaceOpacity: 1,
+    stripY: 6,
+    introY: 13,
+    productsY: 54,
+    productsOpacity: 1,
+  },
+];
+
+export const BOOKS_PHONE_STATES = [
+  {
+    name: "Hero",
+    runwayVh: 0,
+    heroOpacity: 1,
+    heroScale: 1,
+    redSurfaceOpacity: 0,
+    stripY: 94,
+    introY: 104,
+    productsY: 112,
+    productsOpacity: 0,
+  },
+  {
+    name: "Collection Reveal",
+    runwayVh: 50,
+    heroOpacity: 1,
+    heroScale: 1.006,
+    redSurfaceOpacity: 0,
+    stripY: 50,
+    introY: 70,
+    productsY: 99,
+    productsOpacity: 0,
+  },
+  {
+    name: "Collection",
+    runwayVh: 50,
+    heroOpacity: 0,
+    heroScale: 1.01,
+    redSurfaceOpacity: 1,
+    stripY: 18,
+    introY: 26,
+    productsY: 63,
+    productsOpacity: 1,
+  },
+  {
+    name: "Collection Resolved",
+    runwayVh: 50,
+    heroOpacity: 0,
+    heroScale: 1.012,
+    redSurfaceOpacity: 1,
+    stripY: 8,
+    introY: 10,
+    productsY: 54,
+    productsOpacity: 1,
+  },
+];
+
 export const BOOKS_STATE_RANGE =
   BOOKS_STATES.map(
     (_, index) => index,
@@ -113,6 +213,20 @@ export const BOOKS_TOTAL_RUNWAY_VH =
       total + state.runwayVh,
     0,
   );
+
+export const booksStatesForMode = (
+  mode,
+) => {
+  if (mode === "phone") {
+    return BOOKS_PHONE_STATES;
+  }
+
+  if (mode === "tablet") {
+    return BOOKS_TABLET_STATES;
+  }
+
+  return BOOKS_STATES;
+};
 
 export const stateNumbers = (
   key,

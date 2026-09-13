@@ -18,6 +18,7 @@ import "./styles/sections/instagram.css";
 import "./styles/components/footer.css";
 import "./styles/pages/books.css";
 import "./styles/responsive.css";
+import "./styles/pages/books-responsive.css";
 
 createRoot(
   document.getElementById("root"),

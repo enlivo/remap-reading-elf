@@ -37,25 +37,35 @@ export default function BooksHeroScene({
   const {
     geometry,
     progress,
+    mode,
+    isReducedStatic,
   } =
     useBooksScrollTimeline(
       sceneRef,
       stageRef,
+      prefersReducedMotion,
     );
 
   const composition =
     useBooksComposition(
       progress,
+      mode,
     );
 
   return (
     <>
       <section
         ref={sceneRef}
-        className="books-hero-scene"
+        className={
+          isReducedStatic
+            ? "books-hero-scene books-hero-scene--static"
+            : "books-hero-scene"
+        }
+        data-books-mode={mode}
         aria-label="Discover your next adventure"
         style={
-          geometry.height
+          geometry.height &&
+          !isReducedStatic
             ? {
                 height:
                   geometry.height +
@@ -70,11 +80,15 @@ export default function BooksHeroScene({
         >
           <motion.div
             className="books-hero-scene__hero-layer"
-            style={{
-              opacity:
-                composition
-                  .heroOpacity,
-            }}
+            style={
+              isReducedStatic
+                ? undefined
+                : {
+                    opacity:
+                      composition
+                        .heroOpacity,
+                  }
+            }
           >
             <motion.img
               className="books-hero-scene__background"
@@ -122,21 +136,29 @@ export default function BooksHeroScene({
           <motion.div
             className="books-hero-scene__red-surface"
             aria-hidden="true"
-            style={{
-              opacity:
-                composition
-                  .redSurfaceOpacity,
-            }}
+            style={
+              isReducedStatic
+                ? undefined
+                : {
+                    opacity:
+                      composition
+                        .redSurfaceOpacity,
+                  }
+            }
           />
 
           <motion.section
             id="collection"
             className="books-collection-intro books-collection-intro--staged"
-            style={{
-              y:
-                composition
-                  .introY,
-            }}
+            style={
+              isReducedStatic
+                ? undefined
+                : {
+                    y:
+                      composition
+                        .introY,
+                  }
+            }
           >
             <div className="books-collection-intro__content">
               <div className="books-collection-intro__eyebrow">
@@ -203,15 +225,19 @@ export default function BooksHeroScene({
 
           <motion.div
             className="books-hero-scene__products-layer"
-            style={{
-              y:
-                composition
-                  .productsY,
+            style={
+              isReducedStatic
+                ? undefined
+                : {
+                    y:
+                      composition
+                        .productsY,
 
-              opacity:
-                composition
-                  .productsOpacity,
-            }}
+                    opacity:
+                      composition
+                        .productsOpacity,
+                  }
+            }
           >
             <BooksCollectionBrowser
               activeFilter={

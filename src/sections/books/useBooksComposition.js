@@ -3,20 +3,37 @@ import {
 } from "motion/react";
 
 import {
-  BOOKS_STATE_RANGE,
-  stateNumbers,
-  stateSvh,
+  booksStatesForMode,
 } from "./booksScrollStates.js";
 
 export default function useBooksComposition(
   progress,
+  mode = "desktop",
 ) {
+  const states =
+    booksStatesForMode(mode);
+
+  const range = states.map(
+    (_, index) => index,
+  );
+
+  const numbers = (key) =>
+    states.map(
+      (state) => state[key],
+    );
+
+  const svh = (key) =>
+    states.map(
+      (state) =>
+        `${state[key]}svh`,
+    );
+
   return {
     heroOpacity:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateNumbers(
+        range,
+        numbers(
           "heroOpacity",
         ),
       ),
@@ -24,8 +41,8 @@ export default function useBooksComposition(
     heroScale:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateNumbers(
+        range,
+        numbers(
           "heroScale",
         ),
       ),
@@ -33,8 +50,8 @@ export default function useBooksComposition(
     redSurfaceOpacity:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateNumbers(
+        range,
+        numbers(
           "redSurfaceOpacity",
         ),
       ),
@@ -42,8 +59,8 @@ export default function useBooksComposition(
     stripY:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateSvh(
+        range,
+        svh(
           "stripY",
         ),
       ),
@@ -51,8 +68,8 @@ export default function useBooksComposition(
     introY:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateSvh(
+        range,
+        svh(
           "introY",
         ),
       ),
@@ -60,8 +77,8 @@ export default function useBooksComposition(
     productsY:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateSvh(
+        range,
+        svh(
           "productsY",
         ),
       ),
@@ -69,8 +86,8 @@ export default function useBooksComposition(
     productsOpacity:
       useTransform(
         progress,
-        BOOKS_STATE_RANGE,
-        stateNumbers(
+        range,
+        numbers(
           "productsOpacity",
         ),
       ),

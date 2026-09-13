@@ -9,14 +9,17 @@ import {
 } from "motion/react";
 
 import {
-  BOOKS_STATES,
-  BOOKS_TOTAL_RUNWAY_VH,
+  booksStatesForMode,
 } from "./booksScrollStates.js";
 
 export default function useBooksScrollTimeline(
   sceneRef,
   stageRef,
+  prefersReducedMotion = false,
 ) {
+  const [mode, setMode] =
+    useState("desktop");
+
   const [geometry, setGeometry] =
     useState({
       height: 0,
@@ -31,7 +34,62 @@ export default function useBooksScrollTimeline(
   } = useScroll();
 
   useLayoutEffect(() => {
+    const desktopQuery =
+      window.matchMedia(
+        "(min-width: 1201px)",
+      );
+
+    const phoneQuery =
+      window.matchMedia(
+        "(max-width: 767px)",
+      );
+
+    const updateMode = () => {
+      if (desktopQuery.matches) {
+        setMode("desktop");
+      } else if (phoneQuery.matches) {
+        setMode("phone");
+      } else {
+        setMode("tablet");
+      }
+    };
+
+    desktopQuery.addEventListener(
+      "change",
+      updateMode,
+    );
+
+    phoneQuery.addEventListener(
+      "change",
+      updateMode,
+    );
+
+    updateMode();
+
+    return () => {
+      desktopQuery.removeEventListener(
+        "change",
+        updateMode,
+      );
+
+      phoneQuery.removeEventListener(
+        "change",
+        updateMode,
+      );
+    };
+  }, []);
+
+  const isReducedStatic =
+    Boolean(
+      prefersReducedMotion &&
+      mode !== "desktop",
+    );
+
+  useLayoutEffect(() => {
     const measure = () => {
+      const states =
+        booksStatesForMode(mode);
+
       const height =
         stageRef.current
           ?.offsetHeight ?? 0;
@@ -52,13 +110,22 @@ export default function useBooksScrollTimeline(
       setGeometry({
         height,
         runway:
-          vh *
-          BOOKS_TOTAL_RUNWAY_VH,
+          isReducedStatic
+            ? 0
+            : vh *
+              states.reduce(
+                (total, state) =>
+                  total +
+                  state.runwayVh,
+                0,
+              ),
         runwaySegments:
-          BOOKS_STATES.map(
-            (state) =>
-              state.runwayVh,
-          ),
+          isReducedStatic
+            ? []
+            : states.map(
+                (state) =>
+                  state.runwayVh,
+              ),
         start,
         vh,
       });
@@ -93,6 +160,8 @@ export default function useBooksScrollTimeline(
   }, [
     sceneRef,
     stageRef,
+    mode,
+    isReducedStatic,
   ]);
 
   const progress =
@@ -157,5 +226,7 @@ export default function useBooksScrollTimeline(
   return {
     geometry,
     progress,
+    mode,
+    isReducedStatic,
   };
 }
