@@ -1,5 +1,3 @@
-import { motion } from "motion/react";
-
 import motherAndSon from "../../assets/images/about-mother-son.png";
 
 export default function AboutSection() {
@@ -8,24 +6,7 @@ export default function AboutSection() {
       className="about-section"
       id="our-story"
     >
-      <motion.div
-        className="about-section__copy"
-        initial={{
-          opacity: 0,
-          x: -45,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: 0.75,
-        }}
-      >
+      <div className="about-section__copy">
         <h2>About Us</h2>
 
         <p>
@@ -41,31 +22,14 @@ export default function AboutSection() {
           When that place didn't exist,
           we decided to build it.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="about-section__image"
-        initial={{
-          opacity: 0,
-          y: 50,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
-        transition={{
-          duration: 0.8,
-        }}
-      >
+      <div className="about-section__image">
         <img
           src={motherAndSon}
           alt="A mother and child reading together"
         />
-      </motion.div>
+      </div>
     </section>
   );
 }
