@@ -1,4 +1,10 @@
+import {
+  motion,
+} from "motion/react";
+
 import upperTab from "../../../design-assets/Website/Books Page/Upper Tab to be fixed throughout.png";
+import stripLogo from "../../../design-assets/Website/Books Page/Strip Logo To be fixed throughout the page at top.png";
+
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 
 const navLinks = [
@@ -28,7 +34,9 @@ const navLinks = [
   },
 ];
 
-export default function BooksNavigation() {
+export default function BooksNavigation({
+  stripY,
+}) {
   return (
     <div
       className="books-navigation"
@@ -56,15 +64,34 @@ export default function BooksNavigation() {
         />
 
         <div className="books-navigation__hotspots">
-          {navLinks.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              aria-label={item.label}
-            />
-          ))}
+          {navLinks.map(
+            (item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                aria-label={
+                  item.label
+                }
+              />
+            ),
+          )}
         </div>
       </nav>
+
+      <motion.a
+        className="books-navigation__strip"
+        href="#collection"
+        aria-label="Browse Reading Elf picks"
+        style={{
+          y: stripY,
+        }}
+      >
+        <img
+          src={stripLogo}
+          alt=""
+          aria-hidden="true"
+        />
+      </motion.a>
     </div>
   );
 }

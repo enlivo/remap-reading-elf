@@ -1,157 +1,142 @@
-import { useRef } from "react";
+import {
+  useRef,
+} from "react";
 
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
 } from "motion/react";
 
 import BooksNavigation from "../../components/books/BooksNavigation.jsx";
 
+import BooksCollectionBrowser from "./BooksCollectionBrowser.jsx";
+
+import {
+  BOOK_FILTERS,
+} from "./booksCollectionData.js";
+
+import useBooksComposition from "./useBooksComposition.js";
+import useBooksScrollTimeline from "./useBooksScrollTimeline.js";
+
 import heroIllustration from "../../../assets/images/books-page/hero-bookstore-illustration.jpg";
-import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
 
-const collectionFilters = [
-  "All",
-  "Fan Favorites",
-  "Book by Month",
-  "For Grown-Ups",
-  "Store Exclusive",
-  "Hardcover",
-  "Collections",
-  "Story Companion",
-];
+export default function BooksHeroScene({
+  activeFilter,
+  onFilterChange,
+}) {
+  const sceneRef =
+    useRef(null);
 
-export default function BooksHeroScene() {
-  const sceneRef = useRef(null);
-  const prefersReducedMotion = useReducedMotion();
+  const stageRef =
+    useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sceneRef,
-    offset: [
-      "start start",
-      "end end",
-    ],
-  });
+  const prefersReducedMotion =
+    useReducedMotion();
 
-  const sheetY = useTransform(
-    scrollYProgress,
-    [
-      0,
-      0.16,
-      0.72,
-      1,
-    ],
-    [
-      "94svh",
-      "94svh",
-      "48svh",
-      "48svh",
-    ],
-  );
+  const {
+    geometry,
+    progress,
+  } =
+    useBooksScrollTimeline(
+      sceneRef,
+      stageRef,
+    );
 
-  const heroScale = useTransform(
-    scrollYProgress,
-    [
-      0,
-      1,
-    ],
-    [
-      1,
-      1.025,
-    ],
-  );
+  const composition =
+    useBooksComposition(
+      progress,
+    );
 
   return (
-    <section
-      ref={sceneRef}
-      className="books-hero-scene"
-      aria-label="Discover your next adventure"
-    >
-      <div className="books-hero-scene__sticky">
-        <motion.img
-          className="books-hero-scene__background"
-          src={heroIllustration}
-          alt=""
-          aria-hidden="true"
-          style={{
-            scale:
-              prefersReducedMotion
-                ? 1
-                : heroScale,
-          }}
-        />
-
+    <>
+      <section
+        ref={sceneRef}
+        className="books-hero-scene"
+        aria-label="Discover your next adventure"
+        style={
+          geometry.height
+            ? {
+                height:
+                  geometry.height +
+                  geometry.runway,
+              }
+            : undefined
+        }
+      >
         <div
-          className="books-hero-scene__shade"
-          aria-hidden="true"
-        />
-
-        <BooksNavigation />
-
-        <div className="books-hero-scene__heading">
-          <h1>
-            <span>Discover Your</span>
-            <strong>Next Adventure</strong>
-          </h1>
-        </div>
-
-        <div
-          className="books-hero-scene__copy-band"
-          aria-hidden="true"
-        />
-
-        <p className="books-hero-scene__description">
-          From curious beginners to confident readers,
-          <br />
-          find books that inspire imagination and create lasting memories.
-        </p>
-
-        <motion.div
-          className="books-collection-reveal"
-          style={{
-            y:
-              prefersReducedMotion
-                ? "48svh"
-                : sheetY,
-          }}
+          ref={stageRef}
+          className="books-hero-scene__sticky"
         >
-          <div className="books-picks-strip">
-            <div className="books-picks-strip__items">
-              <a
-                className="books-pick books-pick--adhruth"
-                href="#collection"
-              >
-                Adhruth's Picks
-              </a>
+          <motion.div
+            className="books-hero-scene__hero-layer"
+            style={{
+              opacity:
+                composition
+                  .heroOpacity,
+            }}
+          >
+            <motion.img
+              className="books-hero-scene__background"
+              src={heroIllustration}
+              alt=""
+              aria-hidden="true"
+              style={{
+                scale:
+                  prefersReducedMotion
+                    ? 1
+                    : composition
+                        .heroScale,
+              }}
+            />
 
-              <a
-                className="books-pick books-pick--shweta"
-                href="#collection"
-              >
-                Shweta's Picks
-              </a>
+            <div
+              className="books-hero-scene__shade"
+              aria-hidden="true"
+            />
 
-              <a
-                className="books-pick books-pick--sanu"
-                href="#collection"
-              >
-                Sanu's Picks
-              </a>
+            <div className="books-hero-scene__heading">
+              <h1>
+                <span>
+                  Discover Your
+                </span>
+
+                <strong>
+                  Next Adventure
+                </strong>
+              </h1>
             </div>
 
-            <img
-              className="books-picks-strip__badge"
-              src={logoBadge}
-              alt="The Reading Elf"
+            <div
+              className="books-hero-scene__copy-band"
+              aria-hidden="true"
             />
-          </div>
 
-          <section
+            <p className="books-hero-scene__description">
+              From curious beginners to confident readers,
+              <br />
+              find books that inspire imagination and create lasting memories.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="books-hero-scene__red-surface"
+            aria-hidden="true"
+            style={{
+              opacity:
+                composition
+                  .redSurfaceOpacity,
+            }}
+          />
+
+          <motion.section
             id="collection"
-            className="books-collection-intro"
+            className="books-collection-intro books-collection-intro--staged"
+            style={{
+              y:
+                composition
+                  .introY,
+            }}
           >
             <div className="books-collection-intro__content">
               <div className="books-collection-intro__eyebrow">
@@ -161,7 +146,9 @@ export default function BooksHeroScene() {
                   aria-hidden="true"
                 />
 
-                <span>The Collection</span>
+                <span>
+                  The Collection
+                </span>
 
                 <img
                   src={leafSprig}
@@ -183,21 +170,64 @@ export default function BooksHeroScene() {
 
               <div
                 className="books-collection-intro__filters"
+                role="tablist"
                 aria-label="Book collection categories"
               >
-                {collectionFilters.map((filter) => (
-                  <button
-                    key={filter}
-                    type="button"
-                  >
-                    {filter}
-                  </button>
-                ))}
+                {BOOK_FILTERS.map(
+                  (filter) => (
+                    <button
+                      key={filter.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={
+                        activeFilter ===
+                        filter.id
+                      }
+                      aria-pressed={
+                        activeFilter ===
+                        filter.id
+                      }
+                      onClick={() =>
+                        onFilterChange(
+                          filter.id,
+                        )
+                      }
+                    >
+                      {filter.label}
+                    </button>
+                  ),
+                )}
               </div>
             </div>
-          </section>
-        </motion.div>
-      </div>
-    </section>
+          </motion.section>
+
+          <motion.div
+            className="books-hero-scene__products-layer"
+            style={{
+              y:
+                composition
+                  .productsY,
+
+              opacity:
+                composition
+                  .productsOpacity,
+            }}
+          >
+            <BooksCollectionBrowser
+              activeFilter={
+                activeFilter
+              }
+              staged
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      <BooksNavigation
+        stripY={
+          composition.stripY
+        }
+      />
+    </>
   );
 }

@@ -561,3 +561,1094 @@
     will-change: auto;
   }
 }
+
+
+/* ==========================================================
+   BOOKS COLLECTION RESULTS
+   ========================================================== */
+
+.books-collection-intro__filters
+button[aria-pressed="true"] {
+  color: #805436;
+
+  border-color: #fac64f;
+
+  background: #fac64f;
+
+  box-shadow:
+    0 2px 0
+    rgba(91, 49, 29, 0.18);
+}
+
+.books-collection-browser {
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+
+  min-height: 44svh;
+
+  padding:
+    clamp(
+      42px,
+      5vw,
+      92px
+    )
+    clamp(
+      28px,
+      4vw,
+      78px
+    )
+    clamp(
+      80px,
+      7vw,
+      136px
+    );
+
+  color: #fff3df;
+
+  background: #c7342e;
+}
+
+.books-collection-browser__inner {
+  position: relative;
+
+  width: min(
+    100%,
+    1680px
+  );
+
+  margin: 0 auto;
+}
+
+.books-product-grid {
+  position: relative;
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+  align-items: start;
+
+  gap:
+    clamp(
+      30px,
+      3.2vw,
+      62px
+    );
+}
+
+.books-product-card {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.books-product-card__art {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 auto 14px;
+}
+
+.books-product-card__art img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 300px;
+
+  margin: 0 auto;
+
+  filter:
+    drop-shadow(
+      0 12px 12px
+      rgba(73, 24, 15, 0.18)
+    );
+}
+
+.books-product-card__copy {
+  width: min(
+    100%,
+    290px
+  );
+
+  margin: 0 auto;
+}
+
+.books-product-card h3 {
+  margin: 0;
+
+  color: #fff3df;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      14px,
+      1.05vw,
+      20px
+    );
+
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.books-product-card__author {
+  margin: 5px 0 0;
+
+  color:
+    rgba(
+      255,
+      243,
+      223,
+      0.72
+    );
+
+  font-size:
+    clamp(
+      12px,
+      0.82vw,
+      16px
+    );
+
+  line-height: 1.3;
+}
+
+.books-product-card__price {
+  margin: 6px 0 0;
+
+  color:
+    rgba(
+      255,
+      243,
+      223,
+      0.85
+    );
+
+  font-size:
+    clamp(
+      13px,
+      0.9vw,
+      17px
+    );
+
+  line-height: 1;
+}
+
+.books-product-card__badge {
+  margin: 6px 0 0;
+
+  color: #fac64f;
+
+  font-size:
+    clamp(
+      13px,
+      0.95vw,
+      18px
+    );
+
+  font-weight: 700;
+  line-height: 1;
+}
+
+.books-collection-empty {
+  position: relative;
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+
+  min-height: 32svh;
+
+  text-align: center;
+}
+
+.books-collection-empty p {
+  max-width: 600px;
+
+  margin: 0;
+
+  color:
+    rgba(
+      255,
+      243,
+      223,
+      0.88
+    );
+
+  font-size:
+    clamp(
+      18px,
+      1.4vw,
+      27px
+    );
+
+  line-height: 1.35;
+}
+
+.books-collection-deco {
+  position: absolute;
+  z-index: 1;
+
+  max-width: none;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.books-collection-deco--wave-blue {
+  top: 22%;
+  left: 37%;
+
+  width:
+    clamp(
+      50px,
+      4vw,
+      78px
+    );
+
+  transform:
+    rotate(90deg);
+}
+
+.books-collection-deco--gold {
+  top: 61%;
+  left: 0;
+
+  width:
+    clamp(
+      92px,
+      8vw,
+      154px
+    );
+
+  transform:
+    rotate(28deg);
+}
+
+.books-collection-deco--cream {
+  top: 54%;
+  left: 61%;
+
+  width:
+    clamp(
+      110px,
+      10vw,
+      192px
+    );
+
+  transform:
+    rotate(-20deg);
+}
+
+.books-collection-deco--wave-green {
+  top: 48%;
+  right: -2%;
+
+  width:
+    clamp(
+      56px,
+      4.5vw,
+      86px
+    );
+
+  transform:
+    rotate(90deg);
+}
+
+@media (max-width: 1100px) {
+  .books-product-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
+  .books-collection-deco {
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 700px) {
+  .books-product-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap:
+      30px
+      18px;
+  }
+
+  .books-collection-deco {
+    display: none;
+  }
+
+  .books-product-card__art img {
+    max-width: 230px;
+  }
+}
+
+
+/* ==========================================================
+   BOOKS DESKTOP PINNED-CAMERA TIMELINE — PASS 1
+   Hero -> Reveal -> Collection -> Books
+   ========================================================== */
+
+.books-hero-scene {
+  height: auto;
+}
+
+.books-hero-scene__sticky {
+  position: sticky;
+  top: 0;
+
+  height: 100svh;
+
+  overflow: hidden;
+}
+
+.books-hero-scene__hero-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.books-hero-scene__red-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+
+  pointer-events: none;
+
+  background: #c7342e;
+}
+
+.books-collection-intro--staged {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+
+  width: 100%;
+
+  will-change:
+    transform;
+}
+
+.books-hero-scene__products-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+
+  width: 100%;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.books-collection-browser--staged {
+  min-height: 100svh;
+
+  padding-top: 0;
+  padding-bottom: 10svh;
+
+  background: transparent;
+}
+
+.books-navigation {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+
+  pointer-events: none;
+}
+
+.books-navigation__logo,
+.books-navigation__tab {
+  pointer-events: auto;
+}
+
+.books-navigation__strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 61;
+
+  display: block;
+
+  width: 100vw;
+
+  pointer-events: auto;
+
+  will-change:
+    transform;
+}
+
+.books-navigation__strip img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  /*
+   * Desktop choreography only.
+   * Books mobile will get a separate timeline after
+   * the desktop composition is locked.
+   */
+  .books-navigation__strip {
+    display: none;
+  }
+}
+
+
+/* ==========================================================
+   BOOKS COLLECTION PROPORTION REFINEMENT
+
+   Figma 1920px reference:
+   - filter region is roughly 1519px wide
+   - month-card row is roughly 1759px wide
+   - month cards read as tall portrait cards, not square tiles
+   ========================================================== */
+
+.books-collection-intro__content {
+  box-sizing: border-box;
+
+  width:
+    min(
+      91.5vw,
+      1755px
+    );
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.books-collection-intro__filters {
+  width:
+    min(
+      79.2vw,
+      1520px
+    );
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.books-collection-browser__inner {
+  width:
+    min(
+      91.6vw,
+      1760px
+    );
+}
+
+.books-product-grid {
+  width: 100%;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  gap:
+    clamp(
+      22px,
+      2.4vw,
+      46px
+    );
+}
+
+.books-product-card {
+  width: 100%;
+  max-width: 315px;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+ * Book-by-month cards in the Figma are approximately
+ * 315 x 448 portrait cards, with a 246 x 310 cover region.
+ *
+ * The supplied cover exports are slightly squatter, so the
+ * wrapper supplies the missing portrait proportion instead of
+ * stretching or cropping the artwork.
+ */
+.books-product-card--month {
+  box-sizing: border-box;
+
+  min-height:
+    clamp(
+      350px,
+      23.3vw,
+      448px
+    );
+
+  padding:
+    clamp(
+      18px,
+      1.45vw,
+      28px
+    )
+    clamp(
+      18px,
+      1.85vw,
+      36px
+    )
+    clamp(
+      16px,
+      1.25vw,
+      24px
+    );
+
+  border-radius:
+    clamp(
+      14px,
+      1vw,
+      20px
+    );
+
+  background: #fffdf7;
+
+  box-shadow:
+    0 8px 0
+    rgba(
+      109,
+      53,
+      32,
+      0.14
+    );
+}
+
+.books-product-card--month
+.books-product-card__art {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  /*
+   * Figma cover region:
+   * 246 wide x 310 tall.
+   */
+  aspect-ratio: 246 / 310;
+
+  margin-bottom:
+    clamp(
+      10px,
+      0.8vw,
+      15px
+    );
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+.books-product-card--month
+.books-product-card__art img {
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  margin: 0;
+
+  object-fit: contain;
+
+  filter: none;
+}
+
+.books-product-card--month
+.books-product-card__copy {
+  width: 100%;
+}
+
+.books-product-card--month
+h3 {
+  color: #805436;
+
+  font-size:
+    clamp(
+      13px,
+      0.92vw,
+      18px
+    );
+}
+
+.books-product-card--month
+.books-product-card__author {
+  color:
+    rgba(
+      128,
+      84,
+      54,
+      0.76
+    );
+
+  font-size:
+    clamp(
+      11px,
+      0.73vw,
+      14px
+    );
+}
+
+.books-product-card--month
+.books-product-card__badge {
+  margin-top: 7px;
+
+  color: #d7a80f;
+
+  font-size:
+    clamp(
+      14px,
+      0.9vw,
+      18px
+    );
+}
+
+/*
+ * Keep the normal Collection / Hardcover / Companion cards
+ * portrait-oriented as well without forcing their artwork to
+ * crop.
+ */
+.books-product-card:not(
+  .books-product-card--month
+)
+.books-product-card__art {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  min-height:
+    clamp(
+      250px,
+      18vw,
+      345px
+    );
+
+  overflow: visible;
+}
+
+.books-product-card:not(
+  .books-product-card--month
+)
+.books-product-card__art img {
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height:
+    clamp(
+      250px,
+      18vw,
+      345px
+    );
+
+  object-fit: contain;
+}
+
+
+/* ==========================================================
+   SAFE POST-HERO BOOK CATALOG
+
+   This section begins only after the approved pinned Hero /
+   Collection scene has completed.
+
+   No negative margin.
+   No camera overlap.
+   No changes to the Hero timeline.
+
+   The pinned Collection scene contains no product row.
+   The normal catalog owns every row and begins with
+   Book by Month.
+   ========================================================== */
+
+.books-collection-browser--catalog {
+  /*
+   * Sticky children must not be trapped by the generic
+   * collection browser overflow rule.
+   */
+  overflow: visible;
+
+  padding-top: 0;
+}
+
+
+/* ----------------------------------------------------------
+   STICKY CATEGORY CONTROLS
+   ---------------------------------------------------------- */
+
+.books-catalog-filter-dock {
+  position: sticky;
+
+  /*
+   * Clears the persistent upper menu + peach Picks strip and
+   * its central circular badge at the desktop reference size.
+   */
+  top:
+    clamp(
+      182px,
+      18.5svh,
+      205px
+    );
+
+  z-index: 30;
+
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding:
+    clamp(
+      10px,
+      1svh,
+      14px
+    )
+    0
+    clamp(
+      14px,
+      1.3svh,
+      20px
+    );
+
+  background: transparent;
+}
+
+.books-catalog-filter-dock__filters {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: nowrap;
+
+  width:
+    min(
+      91.5vw,
+      1755px
+    );
+
+  margin:
+    0
+    auto;
+
+  gap:
+    clamp(
+      8px,
+      0.7vw,
+      14px
+    );
+}
+
+.books-catalog-filter-dock__filters
+button {
+  flex:
+    0
+    1
+    auto;
+
+  min-width: 0;
+
+  padding:
+    clamp(
+      7px,
+      0.45vw,
+      9px
+    )
+    clamp(
+      12px,
+      0.9vw,
+      18px
+    );
+
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      12px,
+      0.8vw,
+      16px
+    );
+
+  line-height: 1.08;
+}
+
+
+/* ----------------------------------------------------------
+   CATALOG CONTENT
+   ---------------------------------------------------------- */
+
+.books-collection-browser__inner--catalog {
+  padding-top:
+    clamp(
+      54px,
+      5svh,
+      74px
+    );
+
+  padding-bottom:
+    clamp(
+      100px,
+      10svh,
+      160px
+    );
+}
+
+.books-all-groups {
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap:
+    clamp(
+      92px,
+      9vw,
+      160px
+    );
+}
+
+.books-all-group {
+  position: relative;
+}
+
+.books-all-group__title {
+  margin:
+    0
+    0
+    clamp(
+      26px,
+      2.3vw,
+      44px
+    );
+
+  color: #fff3df;
+
+  font-family:
+    "Kind Bond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      30px,
+      2.35vw,
+      46px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  text-align: left;
+}
+
+.books-collection-browser--catalog
+.books-product-grid--four {
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  width: 82%;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+/* ----------------------------------------------------------
+   DESKTOP SAFETY
+
+   Books mobile receives its own layout later.
+   ---------------------------------------------------------- */
+
+@media (
+  max-width: 1200px
+) {
+  .books-catalog-filter-dock {
+    top:
+      clamp(
+        160px,
+        18svh,
+        190px
+      );
+  }
+
+  .books-catalog-filter-dock__filters {
+    flex-wrap: wrap;
+  }
+
+  .books-collection-browser--catalog
+  .books-product-grid--four {
+    width: 100%;
+  }
+}
+
+
+/* CTA GLASS POLISH */
+
+.books-catalog-filter-dock__filters {
+  box-sizing: border-box;
+
+  padding:
+    clamp(
+      8px,
+      0.65vw,
+      12px
+    )
+    clamp(
+      10px,
+      1vw,
+      18px
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+
+  border-radius:
+    clamp(
+      18px,
+      1.4vw,
+      28px
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  box-shadow:
+    0
+    8px
+    24px
+    rgba(
+      84,
+      28,
+      19,
+      0.08
+    );
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+/* ==========================================================
+   SINGLE MOVING CATALOG CTA
+
+   There is now only one visible filter row on desktop.
+
+   The CTA row built into the pinned Collection intro keeps
+   its layout space but becomes invisible.
+
+   The real catalog CTA is pulled upward so it enters around
+   the same visual region. It then naturally travels upward
+   with the document until its existing sticky top is reached.
+   ========================================================== */
+
+@media (min-width: 1201px) {
+
+  /*
+   * Remove the duplicate CTA row from the pinned Collection
+   * composition without changing the dimensions / positioning
+   * of the approved Collection animation.
+   */
+  .books-collection-intro--staged
+  .books-collection-intro__filters {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+  }
+
+
+  /*
+   * Let the catalog CTA protrude above the normal catalog
+   * boundary during the final Collection handoff.
+   *
+   * This moves only the catalog content layer. None of the
+   * pinned-camera timeline files are involved.
+   */
+  .books-collection-browser--catalog {
+    z-index: 20;
+  }
+
+
+  /*
+   * The current catalog CTA begins near the bottom of the
+   * viewport when the pinned scene releases.
+   *
+   * Pull it upward by roughly the distance visible in the
+   * reference screenshots so it initially replaces the CTA
+   * row that was removed above.
+   *
+   * Because this element is already position:sticky with the
+   * existing top constraint, subsequent scrolling causes the
+   * SAME CTA row to rise and then remain docked.
+   */
+  .books-catalog-filter-dock {
+    margin-top: -48svh;
+  }
+
+
+  /*
+   * The negative CTA margin also brings following flow content
+   * upward. Restore most — but deliberately not all — of that
+   * space.
+   *
+   * Result:
+   * - Book by Month stays safely below the CTA.
+   * - The oversized empty distance is reduced.
+   */
+  .books-collection-browser__inner--catalog {
+    padding-top:
+      clamp(
+        96px,
+        11svh,
+        128px
+      );
+  }
+}
