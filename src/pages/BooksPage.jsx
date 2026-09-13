@@ -7,6 +7,7 @@ import BooksCollectionBrowser from "../sections/books/BooksCollectionBrowser.jsx
 import BooksGiftCardSection from "../sections/books/BooksGiftCardSection.jsx";
 import BooksBookPassportSection from "../sections/books/BooksBookPassportSection.jsx";
 import BooksGiftsCollectiblesSection from "../sections/books/BooksGiftsCollectiblesSection.jsx";
+import BooksDidntFindSection from "../sections/books/BooksDidntFindSection.jsx";
 
 export default function BooksPage() {
   const [
@@ -35,6 +36,8 @@ export default function BooksPage() {
       <BooksBookPassportSection />
 
       <BooksGiftsCollectiblesSection />
+
+      <BooksDidntFindSection />
     </main>
   );
 }
