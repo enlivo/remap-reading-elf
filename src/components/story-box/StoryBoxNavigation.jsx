@@ -1,5 +1,4 @@
 import upperTab from "../../../assets/images/story-box-page/upper-tab.png";
-import stripLogo from "../../../assets/images/story-box-page/strip-logo.png";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 
 const navLinks = [
@@ -79,15 +78,6 @@ export default function StoryBoxNavigation() {
         </div>
       </nav>
 
-      <div
-        className="story-box-navigation__strip"
-        aria-hidden="true"
-      >
-        <img
-          src={stripLogo}
-          alt=""
-        />
-      </div>
     </div>
   );
 }

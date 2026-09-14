@@ -1,0 +1,230 @@
+/* ==========================================================
+   STORY BOX HERO -> READING PERSONALITY TRANSITION
+
+   The first desktop pass kept the Story Box strip fixed to
+   the bottom of the viewport.
+
+   In the approved prototype the strip is instead the physical
+   seam between the forest hero and the yellow Reading
+   Personality world:
+
+   1. it begins across the section boundary,
+   2. travels upward as that boundary is scrolled,
+   3. then sticks to the top of the viewport.
+
+   The provisional fixed-bottom strip was removed from the
+   navigation component so this is the only strip actor.
+   ========================================================== */
+
+.story-box-transition-seam__marker {
+  display: block;
+
+  width: 0;
+  height: 0;
+
+  pointer-events: none;
+}
+
+.story-box-transition-seam {
+  position: sticky;
+  top: 9vh;
+
+  /*
+   * The seam first catches at 9vh so the incoming teaser can
+   * overtake its badge. Motion then moves the same sticky actor
+   * to top: 0 and raises it above the teaser for the resolved nav.
+   */
+  z-index: 1;
+
+  width: 100vw;
+  height: 12.083333vw;
+
+  /*
+   * Half of the transparent 1920 x 232 artwork sits on each
+   * side of the Hero / Reading Personality boundary.
+   *
+   * Equal negative top/bottom margins give the seam zero
+   * net document height while still allowing the artwork to
+   * physically overlap both sections.
+   */
+  margin-top: -6.041667vw;
+  margin-bottom: -6.041667vw;
+
+  pointer-events: none;
+}
+
+.story-box-transition-seam img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: contain;
+}
+
+/* ==========================================================
+   READING PERSONALITY OUTER PROP FIELD
+
+   These decorations belong to the yellow page world rather
+   than to the flattened peach teaser panel.
+
+   Different props naturally enter and leave as the user
+   scrolls through the section, matching the prototype.
+   ========================================================== */
+
+.story-box-reading-personality {
+  /*
+   * Keep the section background below the travelling seam while
+   * allowing the positioned teaser to temporarily pass above it.
+   */
+  isolation: auto;
+}
+
+.story-box-reading-personality__inner {
+  z-index: 2;
+}
+
+.story-box-reading-personality__scene-props {
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.reading-personality-scene-prop {
+  position: absolute;
+
+  display: block;
+
+  height: auto;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+ * Early transition:
+ * brown burst appears directly below the moving seam.
+ */
+.reading-personality-scene-prop--brown-top {
+  top: -1.5%;
+  left: 34%;
+
+  width:
+    clamp(
+      108px,
+      10.9vw,
+      220px
+    );
+
+  transform:
+    rotate(-8deg);
+}
+
+/*
+ * Early transition:
+ * red burst sits behind the teaser's upper-right corner.
+ */
+.reading-personality-scene-prop--red-top {
+  top: 2.5%;
+  right: 3.5%;
+
+  width:
+    clamp(
+      82px,
+      8.4vw,
+      170px
+    );
+
+  transform:
+    rotate(8deg);
+}
+
+/*
+ * Mid-section pair:
+ * green enters from the left while brown enters from the
+ * right as the teaser becomes centered in the viewport.
+ */
+.reading-personality-scene-prop--green-mid {
+  top: 42%;
+  left: -3.8%;
+
+  width:
+    clamp(
+      112px,
+      11.6vw,
+      230px
+    );
+
+  transform:
+    rotate(-10deg);
+}
+
+.reading-personality-scene-prop--brown-mid {
+  top: 47%;
+  right: -2.8%;
+
+  width:
+    clamp(
+      108px,
+      10.9vw,
+      220px
+    );
+
+  transform:
+    rotate(7deg);
+}
+
+/*
+ * Lower transition props become visible as the bottom of the
+ * teaser approaches the viewport.
+ */
+.reading-personality-scene-prop--red-lower {
+  top: 77%;
+  left: 8.5%;
+
+  width:
+    clamp(
+      82px,
+      8.4vw,
+      170px
+    );
+
+  transform:
+    rotate(21deg);
+}
+
+.reading-personality-scene-prop--peach-lower {
+  top: 76%;
+  left: 49%;
+
+  width:
+    clamp(
+      98px,
+      10.2vw,
+      205px
+    );
+
+  opacity: 0.42;
+
+  transform:
+    translateX(-50%)
+    rotate(-8deg);
+}
+
+@media (max-width: 900px) {
+  /*
+   * Story Box mobile receives its own transition composition
+   * during the responsive milestone.
+   */
+  .story-box-transition-seam,
+  .story-box-reading-personality__scene-props {
+    display: none;
+  }
+}

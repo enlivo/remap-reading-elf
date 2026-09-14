@@ -20,6 +20,9 @@ import "./styles/pages/books.css";
 import "./styles/responsive.css";
 import "./styles/pages/books-responsive.css";
 import "./styles/pages/story-box.css";
+import "./styles/sections/story-box-reading-personality.css";
+import "./styles/sections/story-box-reading-personality-result.css";
+import "./styles/sections/story-box-transition.css";
 
 createRoot(
   document.getElementById("root"),
