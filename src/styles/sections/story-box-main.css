@@ -1,0 +1,137 @@
+/* ==========================================================
+   STORY BOX MAIN
+
+   Settled desktop geometry follows the 1920 x 1080 Figma
+   frame. Motion adds a reversible visual entrance while the
+   section and panel remain in normal document flow.
+   ========================================================== */
+
+.story-box-main-scroll {
+  position: relative;
+
+  height: 175vh;
+  height: 175svh;
+
+  background: #f6c35b;
+}
+
+.story-box-main {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+  height: 100svh;
+
+  padding-top: 7.12963svh;
+
+  overflow: hidden;
+
+  background: #f6c35b;
+}
+
+.story-box-main__panel {
+  position: relative;
+
+  z-index: 2;
+
+  width: 94.6875vw;
+
+  margin-left: 3.229167vw;
+
+  will-change: transform;
+}
+
+.story-box-main__panel-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.story-box-main__waitlist-link {
+  position: absolute;
+
+  top: 64.544052%;
+  left: 61.826183%;
+
+  width: 23.571507%;
+  height: 8.928956%;
+
+  border-radius: 15px;
+
+  background: transparent;
+}
+
+.story-box-main__waitlist-link:focus-visible {
+  outline: 4px solid #fff3df;
+  outline-offset: 5px;
+}
+
+.story-box-main__green-burst {
+  position: absolute;
+
+  top: 29.166667%;
+  left: -5.677083vw;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 11.5625vw;
+  height: auto;
+
+  pointer-events: none;
+  user-select: none;
+
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .story-box-main-scroll {
+    height: auto;
+  }
+
+  .story-box-main {
+    position: relative;
+    top: auto;
+
+    height: auto;
+    min-height: auto;
+
+    padding:
+      clamp(40px, 8vw, 72px)
+      clamp(18px, 4vw, 36px);
+
+    overflow-x: hidden;
+  }
+
+  .story-box-main__panel {
+    width: 100%;
+
+    margin: 0;
+
+    transform: none !important;
+  }
+
+  .story-box-main__green-burst {
+    display: none;
+  }
+}
+
+@media (
+  min-width: 901px
+) and (
+  prefers-reduced-motion: reduce
+) {
+  .story-box-main-scroll {
+    height: 150vh;
+    height: 150svh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-box-main__panel,
+  .story-box-main__green-burst {
+    transform: none !important;
+  }
+}
