@@ -1,5 +1,6 @@
 import upperTab from "../../../assets/images/story-box-page/upper-tab.png";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
+import StoryBoxMobileNavigation from "./StoryBoxMobileNavigation.jsx";
 
 const navLinks = [
   {
@@ -77,6 +78,8 @@ export default function StoryBoxNavigation() {
           ))}
         </div>
       </nav>
+
+      <StoryBoxMobileNavigation />
 
     </div>
   );

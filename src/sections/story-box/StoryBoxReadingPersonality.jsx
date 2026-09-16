@@ -147,6 +147,7 @@ export default function StoryBoxReadingPersonality() {
   return (
     <section
       className="story-box-reading-personality"
+      data-phase={phase}
       id="reading-personality"
       aria-labelledby="reading-personality-title"
     >
