@@ -1,0 +1,520 @@
+.experience-page {
+  min-height: 100svh;
+  color: #f6c35b;
+  background: #2f6b4f;
+}
+
+.experience-stage-runway {
+  position: relative;
+  height: 500svh;
+  background: #2f6b4f;
+}
+
+.experience-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #2f6b4f;
+}
+
+.experience-navigation {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.experience-navigation__logo {
+  position: absolute;
+  top: clamp(16px, 1.35vw, 28px);
+  left: clamp(18px, 2vw, 40px);
+  z-index: 84;
+  display: block;
+  width: clamp(78px, 7.2vw, 126px);
+  pointer-events: auto;
+}
+
+.experience-navigation__logo img,
+.experience-navigation__tab > img,
+.experience-navigation__strip > img,
+.experience-card > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.experience-navigation__tab {
+  position: absolute;
+  top: clamp(14px, 1.25vw, 26px);
+  right: clamp(28px, 4.2vw, 86px);
+  z-index: 84;
+  width: min(41.5vw, 794px);
+  pointer-events: auto;
+}
+
+.experience-navigation__hotspots {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.experience-navigation__hotspots a {
+  display: block;
+}
+
+.experience-navigation__hotspots a:focus-visible {
+  outline: 3px solid #fff3df;
+  outline-offset: 3px;
+}
+
+.experience-navigation__strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 81;
+  width: 100%;
+  will-change: opacity;
+}
+
+.experience-stage__intro {
+  position: absolute;
+  top: 23svh;
+  left: 50%;
+  z-index: 22;
+  width: min(70vw, 1340px);
+  text-align: center;
+  transform: translateX(-50%);
+  will-change: opacity;
+}
+
+.experience-stage__intro h1 {
+  margin: 0;
+  color: #fff3df;
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(42px, 4vw, 76px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.experience-stage__intro p {
+  margin: clamp(14px, 1.35svh, 20px) 0 0;
+  color: #fff3df;
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: clamp(17px, 1.25vw, 24px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.experience-card {
+  position: absolute;
+  left: 50%;
+  z-index: 25;
+  width: min(65vw, 1248px);
+  translate: -50% 0;
+  will-change: transform, opacity;
+}
+
+.experience-card--wednesday {
+  top: 45.5svh;
+}
+
+.experience-card--parent,
+.experience-card--story {
+  top: 29.7svh;
+}
+
+.experience-card--parent::before,
+.experience-card--story::before {
+  position: absolute;
+  top: -30svh;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  height: 30svh;
+  background: #2f6b4f;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.experience-card > img {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 18px 30px rgba(19, 47, 34, 0.22));
+}
+
+.experience-card__mobile-decor {
+  display: none;
+}
+
+.experience-decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.experience-burst {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.experience-burst--wednesday-left {
+  bottom: -1.5%;
+  left: 3.2%;
+  width: clamp(116px, 8.4vw, 161px);
+}
+
+.experience-burst--wednesday-right {
+  top: 44%;
+  right: 4.3%;
+  width: clamp(148px, 10.7vw, 205px);
+}
+
+.experience-burst--parent-cream {
+  top: 27%;
+  left: 3.5%;
+  width: clamp(120px, 10.2vw, 195px);
+  transform: rotate(-12deg);
+}
+
+.experience-burst--parent-left {
+  bottom: 5%;
+  left: 8%;
+  width: clamp(100px, 8.4vw, 161px);
+  transform: rotate(17deg);
+}
+
+.experience-burst--parent-right {
+  top: 49%;
+  right: 4.2%;
+  width: clamp(100px, 8.4vw, 161px);
+  transform: rotate(-13deg);
+}
+
+.experience-burst--story-left {
+  bottom: 4%;
+  left: 7%;
+  width: clamp(100px, 8.4vw, 161px);
+  transform: rotate(19deg);
+}
+
+.experience-burst--story-cream {
+  right: 25%;
+  bottom: 3%;
+  width: clamp(120px, 10.2vw, 195px);
+  transform: rotate(8deg);
+}
+
+.experience-burst--story-right {
+  top: 50%;
+  right: 4%;
+  width: clamp(112px, 10.9vw, 209px);
+  transform: rotate(-9deg);
+}
+
+.experience-stage__foliage {
+  position: absolute;
+  right: -1.2%;
+  bottom: -3%;
+  display: block;
+  width: min(18vw, 345px);
+  height: auto;
+  transform: rotate(-31deg);
+  transform-origin: bottom right;
+  will-change: transform;
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .experience-card--wednesday[data-exited="true"],
+  .experience-decorations--wednesday[data-exited="true"] {
+    visibility: hidden;
+    opacity: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .experience-stage-runway {
+    height: auto;
+  }
+
+  .experience-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(48px, 7vw, 72px);
+    height: auto;
+    min-height: 100svh;
+    padding: clamp(150px, 18vw, 184px) 0 0;
+    overflow: clip;
+  }
+
+  .experience-navigation {
+    position: absolute;
+    height: 112px;
+  }
+
+  .experience-navigation__tab,
+  .experience-navigation__strip {
+    display: none;
+  }
+
+  .experience-navigation__logo {
+    top: 16px;
+    left: 18px;
+    width: clamp(74px, 11vw, 92px);
+  }
+
+  .experience-navigation .experience-mobile-navigation {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .experience-mobile-navigation .mobile-menu-trigger {
+    top: 17px;
+    right: 18px;
+    width: 48px;
+    height: 44px;
+    padding: 12px 5px;
+    gap: 4px;
+  }
+
+  .experience-mobile-navigation .mobile-menu-trigger span {
+    height: 3px;
+    background: #fff3df;
+    box-shadow: 0 1px 2px rgba(45, 33, 24, 0.35);
+  }
+
+  .experience-mobile-navigation .mobile-menu-panel {
+    width: min(82vw, 380px);
+    height: 100svh;
+  }
+
+  .experience-mobile-navigation .mobile-menu-close {
+    top: 12px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .experience-mobile-navigation .mobile-menu-links a[aria-current="page"] > span {
+    font-weight: 800;
+  }
+
+  .experience-mobile-navigation .mobile-menu-links a[aria-current="page"] > i {
+    border-bottom-style: solid;
+  }
+
+  .experience-stage__intro,
+  .experience-card,
+  .experience-footer {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .experience-card {
+    visibility: visible !important;
+    z-index: 2;
+    translate: none;
+  }
+
+  .experience-card::before {
+    display: none;
+  }
+
+  .experience-stage__intro {
+    width: min(84vw, 720px);
+    margin: 0 auto 6px;
+  }
+
+  .experience-stage__intro h1 {
+    font-size: clamp(48px, 7.4vw, 66px);
+    line-height: 1;
+  }
+
+  .experience-stage__intro p {
+    font-size: clamp(17px, 2.2vw, 20px);
+  }
+
+  .experience-card {
+    width: min(91vw, 820px);
+    margin: 0 auto;
+  }
+
+  .experience-decorations {
+    display: none;
+  }
+
+  .experience-card__mobile-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    pointer-events: none;
+  }
+
+  .experience-card__mobile-decor img {
+    position: absolute;
+    display: block;
+    max-width: none;
+    height: auto;
+  }
+
+  .experience-card__mobile-decor--wednesday img:first-child {
+    bottom: -24px;
+    left: 2%;
+    width: clamp(58px, 10vw, 90px);
+    transform: translate(-42%, 34%);
+  }
+
+  .experience-card__mobile-decor--wednesday img:last-child {
+    top: 0;
+    right: 2%;
+    width: clamp(72px, 12vw, 104px);
+    transform: translate(42%, -42%);
+  }
+
+  .experience-card__mobile-decor--parent img:first-child {
+    top: 4%;
+    left: 1%;
+    width: clamp(72px, 12vw, 110px);
+    transform: translate(-38%, -52%);
+  }
+
+  .experience-card__mobile-decor--parent img:last-child {
+    right: 2%;
+    bottom: 0;
+    width: clamp(60px, 10vw, 92px);
+    transform: translate(42%, 42%);
+  }
+
+  .experience-card__mobile-decor--story img:nth-child(1) {
+    bottom: 0;
+    left: 2%;
+    width: clamp(58px, 10vw, 88px);
+    transform: translate(-42%, 42%);
+  }
+
+  .experience-card__mobile-decor--story img:nth-child(2) {
+    right: 24%;
+    bottom: 0;
+    width: clamp(70px, 12vw, 108px);
+    transform: translateY(55%);
+  }
+
+  .experience-card__mobile-decor--story img:nth-child(3) {
+    right: 0;
+    bottom: 0;
+    width: clamp(110px, 20vw, 180px);
+    transform: translate(24%, 54%) rotate(-22deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-stage {
+    gap: clamp(42px, 13vw, 58px);
+    padding-top: 126px;
+  }
+
+  .experience-navigation__logo {
+    width: 76px;
+  }
+
+  .experience-stage__intro {
+    width: 91vw;
+  }
+
+  .experience-stage__intro h1 {
+    font-size: clamp(38px, 10.8vw, 48px);
+    line-height: 0.98;
+  }
+
+  .experience-stage__intro p {
+    margin-top: 16px;
+    font-size: clamp(15px, 4.1vw, 17px);
+    line-height: 1.42;
+  }
+
+  .experience-stage__intro p br {
+    display: none;
+  }
+
+  .experience-card {
+    width: 95vw;
+  }
+
+  .experience-mobile-navigation .mobile-menu-panel {
+    width: min(86vw, 360px);
+  }
+
+  .experience-mobile-navigation .mobile-menu-links {
+    width: 58%;
+  }
+
+  .experience-mobile-navigation .mobile-menu-links a {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-stage-runway {
+    height: auto;
+  }
+
+  .experience-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5svh;
+    height: auto;
+    min-height: 100svh;
+    padding-top: 24svh;
+    overflow: clip;
+  }
+
+  .experience-stage__intro,
+  .experience-card,
+  .experience-footer {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .experience-card {
+    translate: none;
+  }
+
+  .experience-card::before {
+    display: none;
+  }
+
+  .experience-stage__intro,
+  .experience-card {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .experience-card--wednesday,
+  .experience-decorations--wednesday {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .experience-decorations {
+    display: none;
+  }
+}

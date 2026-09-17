@@ -8,12 +8,14 @@ import {
 } from "react-dom";
 
 import BooksPage from "./pages/BooksPage.jsx";
+import ExperiencePage from "./pages/ExperiencePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import StoryBoxPage from "./pages/StoryBoxPage.jsx";
 
 const supportedPaths = new Set([
   "/",
   "/books",
+  "/experience",
   "/story-box",
 ]);
 
@@ -249,6 +251,10 @@ export default function App() {
 
   if (pathname === "/story-box") {
     return <StoryBoxPage />;
+  }
+
+  if (pathname === "/experience") {
+    return <ExperiencePage />;
   }
 
   return <HomePage />;

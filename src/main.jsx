@@ -28,6 +28,8 @@ import "./styles/sections/story-box-footer.css";
 import "./styles/responsive/story-box-responsive.css";
 import "./styles/responsive/story-box-reading-personality.css";
 import "./styles/responsive/story-box-footer.css";
+import "./styles/pages/experience.css";
+import "./styles/sections/experience-footer.css";
 
 createRoot(
   document.getElementById("root"),
