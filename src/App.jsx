@@ -8,6 +8,7 @@ import {
 } from "react-dom";
 
 import BooksPage from "./pages/BooksPage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
 import EventsPage from "./pages/EventsPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -17,6 +18,7 @@ import StoryBoxPage from "./pages/StoryBoxPage.jsx";
 const supportedPaths = new Set([
   "/",
   "/books",
+  "/blog",
   "/events",
   "/experience",
   "/our-story",
@@ -159,9 +161,8 @@ export default function App() {
        * Only intercept routes that currently
        * exist in our React page switch.
        *
-       * Experience / Events / Our Story /
-       * Blog remain untouched until their
-       * actual pages are wired.
+       * Only routes represented by the page
+       * switch below are intercepted.
        */
       if (
         !supportedPaths.has(
@@ -267,6 +268,10 @@ export default function App() {
 
   if (pathname === "/our-story") {
     return <OurStoryPage />;
+  }
+
+  if (pathname === "/blog") {
+    return <BlogPage />;
   }
 
   return <HomePage />;
