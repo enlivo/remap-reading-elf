@@ -20,9 +20,7 @@ import familyPicks from "../../../design-assets/Website/Our Story/family-books-c
 import shwetaPortrait from "../../../assets/images/our-story-page/shweta-portrait.png";
 import sunainaPortrait from "../../../assets/images/our-story-page/sunaina-portrait.png";
 import adhruthPortrait from "../../../assets/images/our-story-page/adhruth-portrait.png";
-import blueStreak from "../../../assets/images/our-story-page/deco-blue-streak.png";
-import goldStreak from "../../../assets/images/our-story-page/deco-gold-streak.png";
-import peachStreak from "../../../assets/images/our-story-page/deco-peach-streak.png";
+import introBlueMark from "../../../assets/images/blog-page/hero-deco-triangles-blue.png";
 
 import shwetaOutlander from "../../../assets/images/our-story-page/shweta-pick-outlander.png";
 import shwetaKane from "../../../assets/images/our-story-page/shweta-pick-kane-and-abel.png";
@@ -151,28 +149,27 @@ export default function OurStoryStage() {
 
   const shwetaOpacity = useTransform(
     scrollYProgress,
-    [0, 0.24, 0.36, 1],
+    [0, 0.48, 0.62, 1],
     [1, 1, 0, 0],
-  );
-  const sunainaOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.24, 0.36, 0.6, 0.72, 1],
-    [0, 0, 1, 1, 0, 0],
   );
   const adhruthOpacity = useTransform(
     scrollYProgress,
-    [0, 0.6, 0.72, 1],
+    [0, 0.48, 0.62, 1],
     [0, 0, 1, 1],
+  );
+  const shwetaIntroOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.18, 0.36, 1],
+    [1, 1, 0, 0],
+  );
+  const shwetaContentY = useTransform(
+    scrollYProgress,
+    [0, 0.18, 0.4, 1],
+    ["16svh", "16svh", "-5svh", "-5svh"],
   );
   const profileOpacities = {
     shweta: shwetaOpacity,
-    sunaina: sunainaOpacity,
     adhruth: adhruthOpacity,
-  };
-  const profileDecorations = {
-    shweta: blueStreak,
-    sunaina: goldStreak,
-    adhruth: peachStreak,
   };
 
   return (
@@ -195,20 +192,39 @@ export default function OurStoryStage() {
               className={`our-story-person our-story-person--${person.key}`}
               key={person.key}
               style={
-                prefersReducedMotion
+                prefersReducedMotion || !profileOpacities[person.key]
                   ? undefined
                   : { opacity: profileOpacities[person.key] }
               }
             >
               <h2 className="sr-only">{person.name}</h2>
-              <img
-                className={`our-story-person__decor our-story-person__decor--${person.key}`}
-                src={profileDecorations[person.key]}
-                alt=""
-                aria-hidden="true"
-              />
 
-              <div className="our-story-person__desktop-state">
+              {person.key === "shweta" && (
+                <motion.div
+                  className="our-story-person__intro"
+                  style={
+                    prefersReducedMotion
+                      ? undefined
+                      : { opacity: shwetaIntroOpacity }
+                  }
+                >
+                  <p>
+                    A little boy drew a bookstore.
+                    <br />
+                    His mother built it.
+                  </p>
+                  <img src={introBlueMark} alt="" aria-hidden="true" />
+                </motion.div>
+              )}
+
+              <motion.div
+                className="our-story-person__desktop-state"
+                style={
+                  person.key === "shweta" && !prefersReducedMotion
+                    ? { y: shwetaContentY }
+                    : undefined
+                }
+              >
                 <img
                   className="our-story-person__desktop-about"
                   src={person.about}
@@ -219,7 +235,7 @@ export default function OurStoryStage() {
                   src={person.picks}
                   alt={`${person.name}'s book picks`}
                 />
-              </div>
+              </motion.div>
 
               <div className="our-story-person__mobile-about">
                 <img

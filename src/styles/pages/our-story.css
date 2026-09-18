@@ -48,14 +48,23 @@
   outline-offset: 3px;
 }
 
-.our-story-navigation__mobile-logo,
 .our-story-mobile-navigation {
   display: none;
 }
 
+.our-story-navigation__mobile-logo {
+  position: absolute;
+  top: clamp(12px, 1.2vw, 24px);
+  left: clamp(18px, 2vw, 42px);
+  z-index: 201;
+  display: block;
+  width: clamp(82px, 5.6vw, 112px);
+  pointer-events: auto;
+}
+
 .our-story-strip {
   position: fixed;
-  top: 55px;
+  top: 22px;
   left: 0;
   z-index: 190;
   width: 100%;
@@ -64,7 +73,7 @@
 
 .our-story-profile-runway {
   position: relative;
-  height: 300svh;
+  height: 220svh;
   overflow: clip;
   background: #f3e8d0;
 }
@@ -91,9 +100,51 @@
 
 .our-story-person__desktop-state {
   position: absolute;
-  top: clamp(190px, 23svh, 248px);
   left: 0;
   width: 100%;
+}
+
+.our-story-person--shweta .our-story-person__desktop-state {
+  top: clamp(210px, 23svh, 248px);
+}
+
+.our-story-person--adhruth .our-story-person__desktop-state {
+  top: clamp(176px, 17svh, 194px);
+}
+
+.our-story-person--sunaina {
+  display: none;
+}
+
+.our-story-person__intro {
+  position: absolute;
+  top: clamp(210px, 22svh, 282px);
+  left: 50%;
+  z-index: 4;
+  width: min(64vw, 1220px);
+  color: #c74831;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.our-story-person__intro p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(44px, 3.25vw, 66px);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.our-story-person__intro img {
+  position: absolute;
+  bottom: -34px;
+  left: 27%;
+  z-index: 1;
+  display: block;
+  width: clamp(110px, 9vw, 180px);
+  height: auto;
 }
 
 .our-story-person__desktop-about,
@@ -116,33 +167,6 @@
 .our-story-person__mobile-picks,
 .our-story-family__mobile {
   display: none;
-}
-
-.our-story-person__decor {
-  position: absolute;
-  z-index: 1;
-  display: block;
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-}
-
-.our-story-person__decor--shweta {
-  top: 30%;
-  left: -2%;
-  width: clamp(130px, 11vw, 220px);
-}
-
-.our-story-person__decor--sunaina {
-  top: 47%;
-  right: -2.5%;
-  width: clamp(150px, 14vw, 280px);
-}
-
-.our-story-person__decor--adhruth {
-  top: 42%;
-  left: -2.5%;
-  width: clamp(110px, 9.8vw, 190px);
 }
 
 .our-story-family {
@@ -191,10 +215,21 @@
   .our-story-person__desktop-state {
     position: relative;
     top: auto;
+    transform: none !important;
   }
 
-  .our-story-person__decor {
-    display: none;
+  .our-story-person--shweta .our-story-person__desktop-state,
+  .our-story-person--adhruth .our-story-person__desktop-state {
+    top: auto;
+  }
+
+  .our-story-person__intro {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(88vw, 1100px);
+    margin: 0 auto 42px;
+    transform: none;
   }
 }
 
@@ -244,8 +279,12 @@
     will-change: auto;
   }
 
+  .our-story-person--sunaina {
+    display: block;
+  }
+
   .our-story-person__desktop-state,
-  .our-story-person__decor {
+  .our-story-person__intro {
     display: none;
   }
 
