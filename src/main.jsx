@@ -32,6 +32,8 @@ import "./styles/pages/experience.css";
 import "./styles/sections/experience-footer.css";
 import "./styles/pages/events.css";
 import "./styles/sections/events-footer.css";
+import "./styles/pages/our-story.css";
+import "./styles/sections/our-story-footer.css";
 
 createRoot(
   document.getElementById("root"),
