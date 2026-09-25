@@ -35,6 +35,15 @@
   align-items: center;
 }
 
+.site-footer__visit {
+  margin: 0 0 10px;
+
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(20px, 1.6vw, 30px);
+  line-height: 1.15;
+  color: #fff2dc;
+}
+
 .site-footer h2 {
   margin: 0;
 
@@ -152,6 +161,20 @@
   left: 62%;
   bottom: 50px;
   transform: scaleX(-1);
+}
+
+.site-footer:not(.site-footer--books) .site-footer__leaf--one {
+  left: calc(50% - 260px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(14deg);
+}
+
+.site-footer:not(.site-footer--books) .site-footer__leaf--two {
+  left: calc(50% + 130px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) scaleX(-1) rotate(14deg);
 }
 
 .site-footer__legal {

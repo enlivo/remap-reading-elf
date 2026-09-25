@@ -167,7 +167,7 @@
     height: 100%;
 
     object-fit: cover;
-    object-position: center top;
+    object-position: 18% top;
   }
 
   /*
@@ -685,7 +685,7 @@
     height: 100%;
 
     object-fit: cover;
-    object-position: center center;
+    object-position: 18% center;
   }
 
   .landing-hero__event {
@@ -696,7 +696,7 @@
   }
 
   .landing-hero__headline {
-    top: 13svh;
+    top: 9.5svh;
     left: 3%;
 
     width: 94%;

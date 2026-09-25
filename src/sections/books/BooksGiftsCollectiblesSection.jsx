@@ -4,6 +4,12 @@ import pocketJournal from "../../../assets/images/books-page/gifts-collectibles-
 import spotsGoodnight from "../../../assets/images/books-page/gifts-collectibles-spots-says-goodnight.png";
 import greenElf from "../../../assets/images/books-page/gifts-collectibles-green-elf.png";
 import rabbitHeadphones from "../../../assets/images/books-page/gifts-collectibles-rabbit-with-headphones.png";
+import peterRabbit from "../../../assets/images/books-page/gifts-collectibles-peter-rabbit.jpg";
+import dearZoo from "../../../assets/images/books-page/gifts-collectibles-dear-zoo.jpg";
+import hungryCaterpillar from "../../../assets/images/books-page/gifts-collectibles-hungry-caterpillar.jpg";
+import wheresSpot from "../../../assets/images/books-page/gifts-collectibles-wheres-spot.jpg";
+import spotsGoodnight2 from "../../../assets/images/books-page/gifts-collectibles-spot-says-goodnight-2.jpg";
+import llamaRedPajama from "../../../assets/images/books-page/gifts-collectibles-llama-red-pajama.jpg";
 import decoSwooshBlue from "../../../assets/images/books-page/deco-swoosh-blue.png";
 import decoSwooshCream from "../../../assets/images/books-page/deco-swoosh-cream.png";
 
@@ -35,6 +41,48 @@ const GIFTS = [
     price: "Rs.895",
     image: rabbitHeadphones,
     alt: "Rabbit With Headphones crochet doll",
+  },
+  {
+    id: "peter-rabbit",
+    title: "Night, Night, Peter Rabbit",
+    price: "Rs.799",
+    image: peterRabbit,
+    alt: "Night, Night, Peter Rabbit crinkly cloth book with plush rabbit head",
+  },
+  {
+    id: "dear-zoo",
+    title: "Dear Zoo",
+    price: "Rs.750",
+    image: dearZoo,
+    alt: "Dear Zoo book and lift-the-flap jigsaw by Rod Campbell",
+  },
+  {
+    id: "hungry-caterpillar",
+    title: "The Very Hungry Caterpillar",
+    price: "Rs.899",
+    image: hungryCaterpillar,
+    alt: "The Very Hungry Caterpillar book and toy gift set by Eric Carle",
+  },
+  {
+    id: "wheres-spot",
+    title: "Where's Spot?",
+    price: "Rs.899",
+    image: wheresSpot,
+    alt: "Where's Spot? book and toy gift set by Eric Hill",
+  },
+  {
+    id: "spot-says-goodnight-2",
+    title: "Spot Says Goodnight",
+    price: "Rs.899",
+    image: spotsGoodnight2,
+    alt: "Spot Says Goodnight book and toy gift set by Eric Hill",
+  },
+  {
+    id: "llama-red-pajama",
+    title: "Llama Llama Red Pajama",
+    price: "Rs.1399",
+    image: llamaRedPajama,
+    alt: "Llama Llama Red Pajama book and toy set by Anna Dewdney",
   },
 ];
 

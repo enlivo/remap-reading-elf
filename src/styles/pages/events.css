@@ -235,6 +235,7 @@
 
   .events-mobile-navigation {
     display: block;
+    pointer-events: auto;
   }
 
   .events-main__intro {

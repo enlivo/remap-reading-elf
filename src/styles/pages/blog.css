@@ -7,7 +7,7 @@
 
 .blog-stage-runway {
   position: relative;
-  height: 330svh;
+  height: 165svh;
   background: #facbb1;
 }
 
@@ -64,9 +64,9 @@
 .blog-navigation__tab {
   position: absolute;
   top: clamp(14px, 1.25vw, 26px);
-  right: clamp(28px, 4.2vw, 86px);
+  right: clamp(10px, 1.8vw, 40px);
   z-index: 202;
-  width: min(41.5vw, 794px);
+  width: min(35vw, 794px);
   aspect-ratio: 794 / 77;
   pointer-events: auto;
 }
@@ -129,6 +129,10 @@
   pointer-events: none;
 }
 
+.blog-navigation__strip img {
+  pointer-events: auto;
+}
+
 .blog-mobile-navigation { display: none; }
 
 .blog-mobile-cards,
@@ -176,12 +180,25 @@
 }
 
 .blog-hero__feature {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   position: absolute;
   top: 48.05%;
   right: 0;
   left: 0;
   height: 39.65%;
   background: #2f6b4f;
+}
+
+.blog-hero__feature:focus-visible {
+  outline: 3px solid #fac64f;
+  outline-offset: -6px;
+}
+
+.blog-hero__feature:hover .blog-hero__photo {
+  filter: brightness(1.05);
 }
 
 .blog-hero__feature::before {
@@ -505,5 +522,68 @@
     aspect-ratio: 16 / 9;
     opacity: 1 !important;
     will-change: auto;
+  }
+}
+
+/* ---------- blog page in normal flow (hero + footer) ---------- */
+
+.blog-stage-runway--flow {
+  height: auto;
+}
+
+.blog-stage-runway--flow .blog-stage {
+  position: relative;
+  top: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.blog-stage-runway--flow .blog-state {
+  position: relative;
+  inset: auto;
+  opacity: 1;
+  will-change: auto;
+}
+
+/* nav pinned to the viewport, with peach painted behind the transparent top
+   of the strip so the page doesn't show through while scrolling */
+.blog-page__chrome {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 200;
+  height: calc(22px + 9.12vw);
+  background: #facbb1;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .blog-page__chrome {
+    height: 96px;
+  }
+}
+
+/* Footer artwork is a full 1920x1080 frame with its own copy of the header
+   baked into the top ~107px. In normal flow we sit it below the fixed nav
+   and crop that baked header off. */
+@media (min-width: 901px) {
+  .blog-stage-runway--flow .blog-state--footer {
+    height: auto;
+    padding-top: calc(22px + 9.12vw);
+  }
+
+  /* clip on the inner wrapper: the section's own padding area would
+     otherwise still show the part pulled up by the negative margin */
+  .blog-stage-runway--flow .blog-footer {
+    height: auto;
+    overflow: clip;
+  }
+
+  .blog-stage-runway--flow .blog-state--footer .blog-state__canvas {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-top: -5.6vw;
+    transform: none;
   }
 }

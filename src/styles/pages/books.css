@@ -267,10 +267,26 @@
     );
 }
 
+.books-picks-dock {
+  position: fixed;
+  top: clamp(88px, 8.6vw, 152px);
+  left: 0;
+  z-index: 190;
+  width: 100%;
+  pointer-events: none;
+}
+
+.books-picks-dock .books-picks-strip {
+  pointer-events: auto;
+}
+
 .books-pick {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  text-decoration: none;
+  cursor: pointer;
 
   min-width:
     clamp(

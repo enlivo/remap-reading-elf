@@ -1,6 +1,5 @@
 import logo from "../../assets/images/logo.webp";
 import treeLantern from "../../assets/images/footer-branch-lantern.png";
-import leaf from "../../assets/images/footer-leaf-sprig.png";
 import booksLogoBadge from "../../assets/images/books-page/logo-badge.png";
 import booksLeaf from "../../assets/images/books-page/deco-leaf-sprig.png";
 import instagram from "../../assets/images/instagram.svg";
@@ -19,10 +18,7 @@ export default function SiteFooter({
       ? booksLogoBadge
       : logo;
 
-  const footerLeaf =
-    isBooks
-      ? booksLeaf
-      : leaf;
+  const footerLeaf = booksLeaf;
 
   return (
     <footer
@@ -55,6 +51,12 @@ export default function SiteFooter({
 
       <div className="site-footer__content">
         <section className="site-footer__about">
+          <p className="site-footer__visit">
+            Come <strong>See Us!</strong>
+            <br />
+            Thoraipakkam, <strong>Chennai</strong>
+          </p>
+
           <h2>The Reading Elf</h2>
 
           <p>
@@ -141,7 +143,7 @@ export default function SiteFooter({
             • Experiences
           </a>
 
-          <a href="#gallery">
+          <a href="/#gallery">
             • Our Gallery
           </a>
 

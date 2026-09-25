@@ -1,9 +1,26 @@
+/* Our Story page
+   Desktop measurements are taken from the 1920px Figma frames, so most
+   sizes are written in vw (1vw = 19.2px at 1920). */
+
 .our-story-page {
+  --os-cream: #f3e8d0;
+  --os-brown: #7a4a33;
+  --os-red: #c7432e;
+  --os-plum: #4d1e4c;
+  --os-ink: #2b211c;
+  --os-shweta: #c7432e;
+  --os-adhruth: #7b4f35;
+  --os-sunaina: #2f6b4f;
+  /* bottom edge of the fixed strip band (22px offset + 175/1920 of width) */
+  --os-strip-bottom: calc(22px + 9.12vw);
+
   min-height: 100svh;
   overflow-x: clip;
   color: #70412d;
-  background: #f3e8d0;
+  background: var(--os-cream);
 }
+
+/* ---------- fixed navigation + strip ---------- */
 
 .our-story-navigation {
   position: fixed;
@@ -24,8 +41,6 @@
 .our-story-navigation__tab > img,
 .our-story-strip > img,
 .our-story-navigation__mobile-logo img,
-.our-story-person__desktop-about,
-.our-story-person__desktop-picks,
 .our-story-family__desktop {
   display: block;
   width: 100%;
@@ -62,109 +77,289 @@
   pointer-events: auto;
 }
 
+/* The strip PNG is transparent above its band, which let page content show
+   through behind the nav while scrolling. Paint cream down to the band's
+   bottom edge; below that the logo circle still overhangs transparently. */
 .our-story-strip {
   position: fixed;
-  top: 22px;
+  top: 0;
   left: 0;
   z-index: 190;
   width: 100%;
+  padding-top: 22px;
+  background: linear-gradient(
+    to bottom,
+    var(--os-cream) 0,
+    var(--os-cream) var(--os-strip-bottom),
+    transparent var(--os-strip-bottom)
+  );
   pointer-events: none;
 }
 
-.our-story-profile-runway {
-  position: relative;
-  height: 220svh;
-  overflow: clip;
-  background: #f3e8d0;
+.our-story-strip__link {
+  pointer-events: auto;
 }
 
-.our-story-profile-stage {
-  position: sticky;
-  top: 0;
-  isolation: isolate;
-  width: 100%;
-  height: 100svh;
-  overflow: hidden;
-  background: #f3e8d0;
+/* ---------- page content ---------- */
+
+.our-story-content {
+  position: relative;
+  padding-top: var(--os-strip-bottom);
+}
+
+.our-story-intro {
+  padding: clamp(40px, 4.2vw, 80px) 6vw clamp(34px, 3.4vw, 64px);
+  text-align: center;
+}
+
+.our-story-intro p {
+  margin: 0;
+  color: var(--os-red);
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(38px, 3.25vw, 66px);
+  line-height: 1.05;
 }
 
 .our-story-person {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  will-change: opacity;
+  position: relative;
+  scroll-margin-top: var(--os-strip-bottom);
 }
 
-.our-story-person__desktop-state {
-  position: absolute;
-  left: 0;
-  width: 100%;
+/* cream gap above each bio (Figma: ~60px), the portrait pokes up into it */
+.our-story-person + .our-story-person {
+  padding-top: 3.2vw;
 }
 
-.our-story-person--shweta .our-story-person__desktop-state {
-  top: clamp(210px, 23svh, 248px);
-}
-
-.our-story-person--adhruth .our-story-person__desktop-state {
-  top: clamp(176px, 17svh, 194px);
-}
-
-.our-story-person--sunaina {
-  display: none;
-}
-
-.our-story-person__intro {
-  position: absolute;
-  top: clamp(210px, 22svh, 282px);
-  left: 50%;
-  z-index: 4;
-  width: min(64vw, 1220px);
-  color: #c74831;
-  text-align: center;
-  transform: translateX(-50%);
-}
-
-.our-story-person__intro p {
+.our-story-bio {
   position: relative;
   z-index: 2;
-  margin: 0;
-  font-family: "Kind Bond", Georgia, serif;
-  font-size: clamp(44px, 3.25vw, 66px);
-  font-weight: 400;
-  line-height: 0.98;
+  display: grid;
+  align-items: start;
+  padding: 0.4vw 0 2vw;
+  background: #fff;
 }
 
-.our-story-person__intro img {
-  position: absolute;
-  bottom: -34px;
-  left: 27%;
-  z-index: 1;
+.our-story-bio--portrait-left {
+  grid-template-columns: 22.3vw minmax(0, 40vw);
+  column-gap: 16.2vw;
+  padding-left: 13vw;
+}
+
+.our-story-bio--portrait-right {
+  grid-template-columns: minmax(0, 40.5vw) 22.5vw;
+  column-gap: 14.3vw;
+  padding-left: 6.6vw;
+}
+
+.our-story-bio--portrait-right .our-story-bio__copy {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.our-story-bio--portrait-right .our-story-bio__portrait {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.our-story-bio__portrait {
+  position: relative;
+  z-index: 3;
+  margin-top: -3vw;
+}
+
+.our-story-bio__portrait img {
   display: block;
-  width: clamp(110px, 9vw, 180px);
+  width: 100%;
   height: auto;
 }
 
-.our-story-person__desktop-about,
-.our-story-person__desktop-picks,
-.our-story-family__desktop {
+/* Shweta: text column is a little narrower, portrait a little larger and it
+   hangs over the top of her picks panel */
+.our-story-person--shweta .our-story-bio {
+  grid-template-columns: minmax(0, 41vw) 23.6vw;
+  column-gap: 9.4vw;
+  padding-left: 6.9vw;
+  padding-bottom: 0;
+}
+
+.our-story-person--shweta .our-story-bio__portrait {
+  margin-top: 0.3vw;
+  margin-bottom: -1.7vw;
+}
+
+.our-story-bio__copy {
+  position: relative;
+  z-index: 4;
+  color: var(--os-ink);
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: clamp(16px, 1.15vw, 22px);
+  line-height: 1.5;
+}
+
+.our-story-bio__copy p {
+  margin: 0.2em 0 0;
+}
+
+.our-story-bio__copy .our-story-bio__spaced {
+  margin-top: 1.6em;
+}
+
+.our-story-bio__title {
+  margin: 0;
+  color: var(--os-brown);
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(34px, 3.1vw, 60px);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.our-story-bio__title--quote {
+  margin-top: 1.5vw;
+  color: var(--os-plum);
+  font-size: clamp(36px, 3.35vw, 64px);
+}
+
+.our-story-bio__quote {
+  font-style: italic;
+}
+
+.our-story-bio__copy .our-story-bio__quote {
+  margin-top: 1.9em;
+}
+
+/* role tag: grey block with a red rule, pulled out to the left of the text */
+.our-story-bio__copy .our-story-bio__role {
+  display: inline-block;
+  margin: 1.7vw 0 0 -2.3vw;
+  padding: 0.7vw 1.3vw 0.8vw 2.3vw;
+  color: var(--os-red);
+  border-left: 4px solid var(--os-red);
+  background: #ececec;
+  font-size: clamp(24px, 2.05vw, 40px);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* ---------- decorations (desktop only) ---------- */
+
+.our-story-deco {
+  position: absolute;
+  z-index: 5;
+  display: block;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.our-story-deco--green-ribbon {
+  top: 4.6vw;
+  left: 79.9vw;
+  width: 15.6vw;
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
+.our-story-deco--green-wave {
+  bottom: 7.3vw;
+  left: 1.3vw;
+  width: 19vw;
+  height: 4.4vw;
+  transform: rotate(90deg);
+  z-index: 1;
+}
+
+.our-story-person--sunaina .our-story-deco--green-wave {
+  left: -6.9vw;
+}
+
+.our-story-deco--peach-streak {
+  top: 3vw;
+  left: 26.1vw;
+  width: 12.1vw;
+}
+
+/* Sunaina's streak sits beside the text, so keep it under the copy */
+.our-story-person--sunaina .our-story-deco--peach-streak {
+  z-index: 3;
+}
+
+.our-story-person--sunaina .our-story-deco--peach-streak {
+  left: 43.4vw;
+  top: 2.8vw;
+}
+
+.our-story-deco--blue-triangles {
+  top: 3.8vw;
+  left: 64vw;
+  width: 10.4vw;
+  transform: rotate(-48deg);
+}
+
+.our-story-deco--yellow-swoosh {
+  top: 12.2vw;
+  left: 85.6vw;
+  width: 13.5vw;
+  transform: scaleX(-1);
+  z-index: 1;
+}
+
+.our-story-deco--navy-line {
+  bottom: 0.4vw;
+  left: 89.3vw;
+  width: 6vw;
+  transform: scaleX(-1) rotate(-22deg);
+  z-index: 1;
+}
+
+/* ---------- picks ---------- */
+
+.our-story-picks {
+  position: relative;
+  z-index: 1;
+  padding: 2.4vw 0 5.5vw;
+  text-align: center;
+  scroll-margin-top: var(--os-strip-bottom);
+}
+
+.our-story-person--shweta .our-story-picks {
+  background: var(--os-shweta);
+}
+
+.our-story-person--adhruth .our-story-picks {
+  background: var(--os-adhruth);
+}
+
+.our-story-person--sunaina .our-story-picks {
+  background: var(--os-sunaina);
+}
+
+.our-story-picks h3 {
+  margin: 0 0 3.6vw;
+  color: #fff;
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(32px, 3.15vw, 60px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.our-story-cover-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 16.56vw);
+  justify-content: center;
+  gap: 4.3vw;
+  align-items: start;
+}
+
+.our-story-cover-grid img {
+  display: block;
   width: 100%;
-  max-width: 1920px;
-  margin-inline: auto;
+  aspect-ratio: 318 / 479;
+  height: auto;
+  object-fit: cover;
 }
 
-.our-story-person__desktop-about {
-  filter: drop-shadow(0 15px 24px rgba(92, 57, 33, 0.06));
-}
+/* ---------- books written by the family ---------- */
 
-.our-story-person__desktop-picks {
-  margin-top: 0;
-}
-
-.our-story-person__mobile-about,
-.our-story-person__mobile-picks,
 .our-story-family__mobile {
   display: none;
 }
@@ -174,7 +369,42 @@
   z-index: 2;
   padding: clamp(58px, 6vw, 116px) 0;
   overflow: clip;
-  background: #f3e8d0;
+  background: var(--os-cream);
+}
+
+.our-story-family__desktop {
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.our-story-family__desktop-wrap {
+  position: relative;
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.our-story-family__hotspots {
+  position: absolute;
+  inset: 0;
+}
+
+.our-story-family__hotspots a {
+  position: absolute;
+  top: 14%;
+  height: 82%;
+  width: 22%;
+}
+
+.our-story-family__hotspots a:nth-child(1) {
+  left: 11.5%;
+}
+
+.our-story-family__hotspots a:nth-child(2) {
+  left: 41.5%;
+}
+
+.our-story-family__hotspots a:nth-child(3) {
+  left: 71.5%;
 }
 
 .sr-only {
@@ -189,172 +419,84 @@
   border: 0;
 }
 
-@media (min-width: 901px) and (prefers-reduced-motion: reduce) {
-  .our-story-profile-runway {
-    height: auto;
-    padding: clamp(218px, 13vw, 250px) 0 80px;
-  }
-
-  .our-story-profile-stage {
-    position: relative;
-    top: auto;
-    height: auto;
-    overflow: visible;
-  }
-
-  .our-story-person {
-    position: relative;
-    inset: auto;
-    height: auto;
-    margin-bottom: 64px;
-    overflow: visible;
-    opacity: 1 !important;
-    will-change: auto;
-  }
-
-  .our-story-person__desktop-state {
-    position: relative;
-    top: auto;
-    transform: none !important;
-  }
-
-  .our-story-person--shweta .our-story-person__desktop-state,
-  .our-story-person--adhruth .our-story-person__desktop-state {
-    top: auto;
-  }
-
-  .our-story-person__intro {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: min(88vw, 1100px);
-    margin: 0 auto 42px;
-    transform: none;
-  }
-}
+/* ---------- tablet / mobile ---------- */
 
 @media (max-width: 900px) {
+  .our-story-page {
+    --os-strip-bottom: 108px;
+  }
+
   .our-story-navigation {
     height: 108px;
   }
 
   .our-story-navigation__tab,
-  .our-story-strip {
+  .our-story-strip,
+  .our-story-deco {
     display: none;
   }
 
   .our-story-navigation__mobile-logo {
-    position: absolute;
     top: 18px;
     left: 18px;
-    display: block;
     width: 82px;
-    pointer-events: auto;
   }
 
   .our-story-mobile-navigation {
     display: block;
+    pointer-events: auto;
   }
 
-  .our-story-profile-runway {
-    height: auto;
-    padding: 128px 0 92px;
-    overflow: clip;
+  .our-story-intro {
+    padding: 28px 6vw 12px;
   }
 
-  .our-story-profile-stage {
-    position: relative;
-    top: auto;
-    height: auto;
-    overflow: visible;
+  .our-story-person,
+  .our-story-person + .our-story-person {
+    padding-top: 0;
+    margin-bottom: 64px;
   }
 
-  .our-story-person {
-    position: relative;
-    inset: auto;
-    height: auto;
-    margin-bottom: 70px;
-    overflow: visible;
-    opacity: 1 !important;
-    will-change: auto;
-  }
-
-  .our-story-person--sunaina {
+  .our-story-bio,
+  .our-story-bio--portrait-left,
+  .our-story-bio--portrait-right,
+  .our-story-person--shweta .our-story-bio {
     display: block;
-  }
-
-  .our-story-person__desktop-state,
-  .our-story-person__intro {
-    display: none;
-  }
-
-  .our-story-person__desktop-about,
-  .our-story-person__desktop-picks,
-  .our-story-family__desktop {
-    display: none;
-  }
-
-  .our-story-person__mobile-about,
-  .our-story-person__mobile-picks,
-  .our-story-family__mobile {
-    display: block;
-  }
-
-  .our-story-person__mobile-about {
-    position: relative;
     width: min(88vw, 680px);
     margin: 0 auto;
-    padding-top: 34px;
+    padding: 0;
+    background: none;
   }
 
-  .our-story-person__portrait {
-    position: relative;
-    z-index: 2;
-    display: block;
+  .our-story-bio__portrait,
+  .our-story-person--shweta .our-story-bio__portrait {
     width: min(43vw, 315px);
-    max-height: 390px;
-    margin: 0 auto -20px;
-    object-fit: contain;
+    margin: 24px auto -20px;
     filter: drop-shadow(0 14px 20px rgba(84, 49, 31, 0.12));
   }
 
-  .our-story-person__mobile-copy {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    margin-top: 0;
+  .our-story-bio__copy {
     padding: clamp(30px, 5vw, 48px);
     border-radius: 14px;
     background: #fff;
     box-shadow: 0 14px 28px rgba(84, 49, 31, 0.08);
-  }
-
-  .our-story-person__mobile-copy h3 {
-    margin: 0;
-    font-family: "Kind Bond", Georgia, serif;
-    font-size: clamp(34px, 5.5vw, 48px);
-    font-weight: 400;
-    line-height: 1.04;
-  }
-
-  .our-story-person__mobile-copy p {
-    margin: 18px 0 0;
-    font-family: "Nunito", Arial, sans-serif;
     font-size: clamp(16px, 2.35vw, 20px);
-    line-height: 1.5;
   }
 
-  .our-story-person__mobile-copy .our-story-person__role {
+  .our-story-bio__title,
+  .our-story-bio__title--quote {
+    margin-top: 0;
+    font-size: clamp(32px, 5.5vw, 48px);
+  }
+
+  .our-story-bio__copy .our-story-bio__role {
+    margin: 18px 0 0;
     padding: 10px 14px;
-    color: #c7432e;
-    border-left: 2px solid #c7432e;
-    background: #f3e8d0;
-    font-family: "Kind Bond", Georgia, serif;
+    border-left-width: 3px;
     font-size: clamp(22px, 3.8vw, 30px);
-    line-height: 1.1;
   }
 
-  .our-story-person__mobile-picks,
+  .our-story-picks,
   .our-story-family__mobile {
     width: min(88vw, 700px);
     margin: 26px auto 0;
@@ -363,41 +505,23 @@
     box-shadow: 0 16px 28px rgba(78, 46, 29, 0.1);
   }
 
-  .our-story-person__mobile-picks h3,
+  .our-story-picks h3,
   .our-story-family__mobile h2 {
     margin: 0 0 26px;
     color: #fff;
     font-family: "Kind Bond", Georgia, serif;
-    font-size: clamp(32px, 5.4vw, 46px);
+    font-size: clamp(30px, 5.4vw, 46px);
     font-weight: 400;
     line-height: 1;
     text-align: center;
   }
 
-  .our-story-person--shweta .our-story-person__mobile-picks {
-    background: #c7432e;
-  }
-
-  .our-story-person--sunaina .our-story-person__mobile-picks,
-  .our-story-family__mobile {
-    background: #2f6b4f;
-  }
-
-  .our-story-person--adhruth .our-story-person__mobile-picks {
-    background: #805436;
-  }
-
   .our-story-cover-grid {
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(16px, 3.4vw, 30px);
-    align-items: end;
   }
 
   .our-story-cover-grid img {
-    display: block;
-    width: 100%;
-    height: auto;
     filter: drop-shadow(0 10px 12px rgba(38, 20, 12, 0.18));
   }
 
@@ -405,17 +529,54 @@
     padding: 0 0 92px;
   }
 
+  .our-story-family__desktop {
+    display: none;
+  }
+
+  .our-story-family__desktop-wrap {
+    display: none;
+  }
+
   .our-story-family__mobile {
+    display: block;
     margin-top: 0;
+    background: var(--os-sunaina);
   }
 
   .our-story-cover-grid--family {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .our-story-family__mobile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .our-story-family__mobile-card span {
+    margin-top: 10px;
+    font-family: "Nunito", Arial, sans-serif;
+    font-size: clamp(13px, 1.8vw, 16px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .our-story-family__mobile-link {
+    margin-top: 4px !important;
+    font-weight: 400 !important;
+    text-decoration: underline;
+    opacity: 0.85;
+  }
 }
 
 @media (max-width: 600px) {
+  .our-story-page {
+    --os-strip-bottom: 94px;
+  }
+
   .our-story-navigation {
     height: 94px;
   }
@@ -431,44 +592,40 @@
     height: 54px;
   }
 
-  .our-story-profile-runway {
-    padding: 102px 0 64px;
-  }
-
-  .our-story-person {
+  .our-story-person,
+  .our-story-person + .our-story-person {
     margin-bottom: 54px;
   }
 
-  .our-story-person__mobile-about {
+  .our-story-bio,
+  .our-story-bio--portrait-left,
+  .our-story-bio--portrait-right,
+  .our-story-person--shweta .our-story-bio {
     width: 92vw;
-    padding-top: 20px;
   }
 
-  .our-story-person__portrait {
+  .our-story-bio__portrait,
+  .our-story-person--shweta .our-story-bio__portrait {
     width: min(56vw, 230px);
-    max-height: 290px;
     margin-bottom: -14px;
   }
 
-  .our-story-person__mobile-copy {
+  .our-story-bio__copy {
     padding: 30px 24px;
     border-radius: 12px;
-  }
-
-  .our-story-person__mobile-copy h3 {
-    font-size: clamp(31px, 8.5vw, 40px);
-  }
-
-  .our-story-person__mobile-copy p {
     font-size: 15px;
-    line-height: 1.48;
   }
 
-  .our-story-person__mobile-copy .our-story-person__role {
+  .our-story-bio__title,
+  .our-story-bio__title--quote {
+    font-size: clamp(30px, 8.5vw, 40px);
+  }
+
+  .our-story-bio__copy .our-story-bio__role {
     font-size: 22px;
   }
 
-  .our-story-person__mobile-picks,
+  .our-story-picks,
   .our-story-family__mobile {
     width: 92vw;
     margin-top: 20px;
@@ -476,13 +633,8 @@
     border-radius: 14px;
   }
 
-  .our-story-person__mobile-picks h3,
-  .our-story-family__mobile h2 {
-    margin-bottom: 24px;
-    font-size: clamp(30px, 9vw, 40px);
-  }
-
-  .our-story-cover-grid {
+  .our-story-cover-grid,
+  .our-story-cover-grid--family {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 20px;
   }
@@ -490,10 +642,6 @@
   .our-story-cover-grid img {
     width: min(100%, 142px);
     margin-inline: auto;
-  }
-
-  .our-story-cover-grid--family {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .our-story-cover-grid--family img:last-child {

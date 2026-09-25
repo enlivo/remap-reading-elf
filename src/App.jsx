@@ -9,6 +9,9 @@ import {
 
 import BooksPage from "./pages/BooksPage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
+import BlogPostPage, {
+  READING_VS_SCREEN_TIME_PATH,
+} from "./pages/BlogPostPage.jsx";
 import EventsPage from "./pages/EventsPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -19,6 +22,7 @@ const supportedPaths = new Set([
   "/",
   "/books",
   "/blog",
+  READING_VS_SCREEN_TIME_PATH,
   "/events",
   "/experience",
   "/our-story",
@@ -54,6 +58,53 @@ export default function App() {
     pathname,
     setPathname,
   ] = useState(getCurrentPathname);
+
+  useEffect(() => {
+    const hash = window.location.hash?.slice(1);
+
+    if (!hash) {
+      return;
+    }
+
+    // The target only exists once the new page's content has rendered
+    // (and, for image-heavy pages, begun laying out), so a plain
+    // scrollIntoView right after commitRoute can miss it or land in the
+    // wrong spot. Retry briefly until the element is present and its
+    // position has stopped shifting between checks.
+    let attempts = 0;
+    let lastTop = null;
+    let rafId = null;
+
+    const tryScroll = () => {
+      const target = document.getElementById(hash);
+      attempts += 1;
+
+      if (target) {
+        const top = target.getBoundingClientRect().top;
+
+        if (top === lastTop || attempts > 30) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        lastTop = top;
+      }
+
+      if (attempts < 30) {
+        rafId = window.requestAnimationFrame(() =>
+          window.setTimeout(tryScroll, 60),
+        );
+      }
+    };
+
+    tryScroll();
+
+    return () => {
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, [pathname]);
 
   useEffect(() => {
     function commitRoute(
@@ -216,7 +267,7 @@ export default function App() {
         {
           url: nextUrl,
           updateHistory: true,
-          scrollToTop: true,
+          scrollToTop: !destination.hash,
         },
       );
     }
@@ -272,6 +323,10 @@ export default function App() {
 
   if (pathname === "/blog") {
     return <BlogPage />;
+  }
+
+  if (pathname === READING_VS_SCREEN_TIME_PATH) {
+    return <BlogPostPage />;
   }
 
   return <HomePage />;

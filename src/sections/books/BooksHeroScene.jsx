@@ -5,6 +5,7 @@ import {
 import {
   motion,
   useReducedMotion,
+  useTransform,
 } from "motion/react";
 
 import BooksNavigation from "../../components/books/BooksNavigation.jsx";
@@ -51,6 +52,11 @@ export default function BooksHeroScene({
       progress,
       mode,
     );
+
+  const picksDockPointerEvents = useTransform(
+    composition.redSurfaceOpacity,
+    (value) => (value > 0.5 ? "auto" : "none"),
+  );
 
   return (
     <>
@@ -254,6 +260,32 @@ export default function BooksHeroScene({
           composition.stripY
         }
       />
+
+      <motion.div
+        className="books-picks-dock"
+        style={
+          isReducedStatic
+            ? undefined
+            : {
+                opacity: composition.redSurfaceOpacity,
+                pointerEvents: picksDockPointerEvents,
+              }
+        }
+      >
+        <div className="books-picks-strip">
+          <div className="books-picks-strip__items">
+            <a className="books-pick books-pick--adhruth" href="/our-story#adhruth-picks">
+              Adhruth&apos;s Picks
+            </a>
+            <a className="books-pick books-pick--shweta" href="/our-story#shweta-picks">
+              Shweta&apos;s Picks
+            </a>
+            <a className="books-pick books-pick--sanu" href="/our-story#sunaina-picks">
+              Sunaina&apos;s Picks
+            </a>
+          </div>
+        </div>
+      </motion.div>
     </>
   );
 }

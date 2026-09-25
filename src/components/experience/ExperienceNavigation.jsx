@@ -40,13 +40,14 @@ export default function ExperienceNavigation({ stripOpacity }) {
         </div>
       </nav>
 
-      <motion.div
+      <motion.a
         className="experience-navigation__strip"
         style={{ opacity: stripOpacity }}
-        aria-hidden="true"
+        href="/"
+        aria-label="The Reading Elf home"
       >
-        <img src={stripLogo} alt="" />
-      </motion.div>
+        <img src={stripLogo} alt="The Reading Elf" />
+      </motion.a>
 
       <ExperienceMobileNavigation />
     </div>

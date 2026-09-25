@@ -79,6 +79,11 @@
   z-index: 81;
   width: 100%;
   will-change: opacity;
+  pointer-events: none;
+}
+
+.experience-navigation__strip img {
+  pointer-events: auto;
 }
 
 .experience-stage__intro {

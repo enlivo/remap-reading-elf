@@ -1,26 +1,18 @@
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { useRef } from "react";
-
 import OurStoryNavigation from "../../components/our-story/OurStoryNavigation.jsx";
 import OurStoryFooter from "./OurStoryFooter.jsx";
 
 import stripLogo from "../../../assets/images/our-story-page/strip-logo.png";
-import aboutShweta from "../../../assets/images/our-story-page/about-shweta-panel.png";
-import aboutSunaina from "../../../assets/images/our-story-page/about-sunaina-panel.png";
-import aboutAdhruth from "../../../assets/images/our-story-page/about-adhruth-panel.png";
-import shwetaPicks from "../../../assets/images/our-story-page/shweta-picks-panel.png";
-import sunainaPicks from "../../../assets/images/our-story-page/sunaina-picks-panel.png";
-import adhruthPicks from "../../../assets/images/our-story-page/adhruth-picks-panel.png";
 import familyPicks from "../../../design-assets/Website/Our Story/family-books-covers.png";
 import shwetaPortrait from "../../../assets/images/our-story-page/shweta-portrait.png";
 import sunainaPortrait from "../../../assets/images/our-story-page/sunaina-portrait.png";
 import adhruthPortrait from "../../../assets/images/our-story-page/adhruth-portrait.png";
-import introBlueMark from "../../../assets/images/blog-page/hero-deco-triangles-blue.png";
+
+import decoGreenRibbon from "../../../design-assets/Website/Books Page/Elements of Book Page/1.png";
+import decoBlueTriangles from "../../../design-assets/Website/Books Page/Elements of Book Page/2.png";
+import decoYellowSwoosh from "../../../design-assets/Website/Books Page/Elements of Book Page/3.png";
+import decoGreenWave from "../../../design-assets/Website/Books Page/Elements of Book Page/5.png";
+import decoNavyLine from "../../../design-assets/Website/Books Page/Elements of Book Page/6.png";
+import decoPeachStreak from "../../../assets/images/our-story-page/deco-peach-streak.png";
 
 import shwetaOutlander from "../../../assets/images/our-story-page/shweta-pick-outlander.png";
 import shwetaKane from "../../../assets/images/our-story-page/shweta-pick-kane-and-abel.png";
@@ -38,82 +30,110 @@ import familyPromises from "../../../assets/images/our-story-page/family-book-pr
 import familyFlags from "../../../assets/images/our-story-page/family-book-fascinating-flags-for-fun.png";
 import familyTravel from "../../../assets/images/our-story-page/family-book-travel-tales-of-a-cop.png";
 
+const familyBooks = [
+  [familyPromises, "Promises Kept", "https://www.amazon.in/PROMISES-KEPT-SHWETA-SUBBAIH-BALAKRISHNAN/dp/9394693009"],
+  [familyFlags, "Fascinating Flags for Fun", "https://www.zerodegreepublishing.com/products/fascinating-flags-for-fun-adhruth-subbiah-balakrishnan-shweta-subbiah-balakrishnan"],
+  [familyTravel, "Travel Tales of a Cop", "https://www.amazon.in/dp/939522214X"],
+];
+
 const people = [
   {
     key: "shweta",
     name: "Shweta",
+    fullName: "Shweta Subbiah Balakrishnan",
     portrait: shwetaPortrait,
-    about: aboutShweta,
-    aboutAlt: "Shweta Subbiah Balakrishnan and the story behind The Reading Elf.",
-    picks: shwetaPicks,
+    portraitSide: "right",
     covers: [
       [shwetaOutlander, "Outlander"],
       [shwetaKane, "Kane and Abel"],
       [shwetaEye, "Eye of the Needle"],
       [shwetaMalgudi, "Malgudi Days"],
     ],
-  },
-  {
-    key: "sunaina",
-    name: "Sunaina",
-    portrait: sunainaPortrait,
-    about: aboutSunaina,
-    aboutAlt: "Sunaina, The Reading Elf's Story Scout.",
-    picks: sunainaPicks,
-    covers: [
-      [sunainaInheritance, "The Inheritance Games"],
-      [sunainaIronFlame, "Iron Flame"],
-      [sunainaRachel, "The Reappearance of Rachel Price"],
-      [sunainaNineMoons, "The Nine Moons of Han Yu and Luli"],
-    ],
+    decorations: [["green-ribbon", decoGreenRibbon]],
+    bio: (
+      <>
+        <h2 className="our-story-bio__title our-story-bio__title--quote">
+          &ldquo;Every bookstore in Chennai.
+          <br />
+          None felt like enough.&rdquo;
+        </h2>
+        <p className="our-story-bio__quote">
+          &ldquo;If the bookstore we imagine doesn&apos;t exist yet
+          <br />
+          then let&apos;s build it.&rdquo;
+        </p>
+        <p className="our-story-bio__spaced">
+          The Reading Elf was born from a tender moment a mother searching for magic for her
+          little boy. We spent afternoons wandering bookshops, but he always imagined somewhere
+          more alive.
+          <br />
+          A place where children could giggle, wander, sit on the floor, and simply be
+          themselves between pages.
+        </p>
+      </>
+    ),
   },
   {
     key: "adhruth",
     name: "Adhruth",
+    fullName: "Adhruth Subbiah Balakrishnan",
     portrait: adhruthPortrait,
-    about: aboutAdhruth,
-    aboutAlt: "Adhruth Subbiah Balakrishnan, Chief Book Explorer.",
-    picks: adhruthPicks,
+    portraitSide: "left",
     covers: [
       [adhruthTwits, "The Twits"],
       [adhruthMummy, "The Mummy with No Name"],
       [adhruthHarry, "Harry Potter and the Philosopher's Stone"],
       [adhruthNoah, "Noah's Gold"],
     ],
+    decorations: [
+      ["green-wave", decoGreenWave],
+      ["peach-streak", decoPeachStreak],
+      ["blue-triangles", decoBlueTriangles],
+      ["yellow-swoosh", decoYellowSwoosh],
+      ["navy-line", decoNavyLine],
+    ],
+    bio: (
+      <>
+        <h2 className="our-story-bio__title">The Reading Elf began with him.</h2>
+        <p className="our-story-bio__role">Chief Book Explorer</p>
+        <p className="our-story-bio__spaced">
+          At 9, his imagination, love for stories and endless curiosity still find their way
+          into the store.
+        </p>
+        <p>
+          He drew the mushroom house that became our identity.
+          <br />
+          Today, he is still part of the store, helping kids discover books he loves and
+          sharing his favourites with fellow young readers.
+          <br />
+          Look out for his picks around the store. <span aria-hidden="true">✨</span>
+        </p>
+      </>
+    ),
   },
-];
-
-const familyBooks = [
-  [familyPromises, "Promises Kept"],
-  [familyFlags, "Fascinating Flags for Fun"],
-  [familyTravel, "Travel Tales of a Cop"],
-];
-
-function MobileBiography({ personKey }) {
-  if (personKey === "shweta") {
-    return (
-      <div className="our-story-person__mobile-copy">
-        <h3>&ldquo;Every bookstore in Chennai.<br />None felt like enough.&rdquo;</h3>
-        <p><em>&ldquo;If the bookstore we imagine doesn&apos;t exist yet then let&apos;s build it.&rdquo;</em></p>
-        <p>
-          The Reading Elf was born from a tender moment a mother searching for magic for her
-          little boy. We spent afternoons wandering bookshops, but he always imagined somewhere
-          more alive.
-        </p>
-        <p>
-          A place where children could giggle, wander, sit on the floor, and simply be themselves
-          between pages.
-        </p>
-      </div>
-    );
-  }
-
-  if (personKey === "sunaina") {
-    return (
-      <div className="our-story-person__mobile-copy">
-        <h3>The Story Scout</h3>
-        <p className="our-story-person__role">Curious. Avid. Always Reading.</p>
-        <p>
+  {
+    key: "sunaina",
+    name: "Sunaina",
+    fullName: "Sunaina",
+    portrait: sunainaPortrait,
+    portraitSide: "right",
+    covers: [
+      [sunainaInheritance, "The Inheritance Games"],
+      [sunainaIronFlame, "Iron Flame"],
+      [sunainaRachel, "The Reappearance of Rachel Price"],
+      [sunainaNineMoons, "The Nine Moons of Han Yu and Luli"],
+    ],
+    decorations: [
+      ["green-wave", decoGreenWave],
+      ["peach-streak", decoPeachStreak],
+      ["yellow-swoosh", decoYellowSwoosh],
+      ["navy-line", decoNavyLine],
+    ],
+    bio: (
+      <>
+        <h2 className="our-story-bio__title">The Story Scout</h2>
+        <p className="our-story-bio__role">Curious. Avid. Always Reading.</p>
+        <p className="our-story-bio__spaced">
           At 15, Sanu brings her own perspective to the shelves - discovering new stories,
           exploring books, and finding the ones worth talking about.
         </p>
@@ -121,158 +141,122 @@ function MobileBiography({ personKey }) {
           She loves helping around The Reading Elf, sharing her latest reads, and recommending
           stories she thinks other young readers will love.
         </p>
-        <p>Her rule?<br />If a book is worth reading, it&apos;s worth recommending.</p>
-        <p>Look out for Sanu&apos;s Picks around the store.</p>
-      </div>
-    );
-  }
+        <p>
+          Her rule?
+          <br />
+          If a book is worth reading, it&apos;s worth recommending.
+        </p>
+        <p className="our-story-bio__spaced">
+          Look out for Sanu&apos;s Picks around the store. <span aria-hidden="true">✨</span>
+        </p>
+      </>
+    ),
+  },
+];
 
+function PersonSection({ person }) {
   return (
-    <div className="our-story-person__mobile-copy">
-      <h3>The Reading Elf began with him.</h3>
-      <p className="our-story-person__role">Chief Book Explorer</p>
-      <p>
-        At 9, his imagination, love for stories and endless curiosity still find their way into
-        the store.
-      </p>
-    </div>
+    <section
+      id={person.key}
+      className={`our-story-person our-story-person--${person.key}`}
+      aria-labelledby={`${person.key}-picks-title`}
+    >
+      <div
+        className={`our-story-bio our-story-bio--portrait-${person.portraitSide}`}
+      >
+        {person.decorations.map(([name, src]) => (
+          <img
+            key={name}
+            className={`our-story-deco our-story-deco--${name}`}
+            src={src}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+        ))}
+
+        <div className="our-story-bio__portrait">
+          <img src={person.portrait} alt={person.fullName} loading="lazy" />
+        </div>
+
+        <div className="our-story-bio__copy">{person.bio}</div>
+      </div>
+
+      <div className="our-story-picks" id={`${person.key}-picks`}>
+        <h3 id={`${person.key}-picks-title`}>{person.name}&apos;s Picks</h3>
+        <div className="our-story-cover-grid">
+          {person.covers.map(([cover, title]) => (
+            <img key={title} src={cover} alt={title} loading="lazy" />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
 export default function OurStoryStage() {
-  const runwayRef = useRef(null);
-  const prefersReducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: runwayRef,
-    offset: ["start start", "end end"],
-  });
-
-  const shwetaOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.48, 0.62, 1],
-    [1, 1, 0, 0],
-  );
-  const adhruthOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.48, 0.62, 1],
-    [0, 0, 1, 1],
-  );
-  const shwetaIntroOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.36, 1],
-    [1, 1, 0, 0],
-  );
-  const shwetaContentY = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.4, 1],
-    ["16svh", "16svh", "-5svh", "-5svh"],
-  );
-  const profileOpacities = {
-    shweta: shwetaOpacity,
-    adhruth: adhruthOpacity,
-  };
-
   return (
     <>
       <OurStoryNavigation />
-      <div className="our-story-strip" aria-hidden="true">
-        <img src={stripLogo} alt="" />
+      <div className="our-story-strip">
+        <a className="our-story-strip__link" href="/" aria-label="The Reading Elf home">
+          <img src={stripLogo} alt="The Reading Elf" />
+        </a>
       </div>
 
-      <section
-        ref={runwayRef}
-        className="our-story-profile-runway"
-        aria-label="Our Story"
-      >
-        <div className="our-story-profile-stage">
-          <h1 className="sr-only">Our Story</h1>
+      <div className="our-story-content">
+        <h1 className="sr-only">Our Story</h1>
 
-          {people.map((person) => (
-            <motion.section
-              className={`our-story-person our-story-person--${person.key}`}
-              key={person.key}
-              style={
-                prefersReducedMotion || !profileOpacities[person.key]
-                  ? undefined
-                  : { opacity: profileOpacities[person.key] }
-              }
-            >
-              <h2 className="sr-only">{person.name}</h2>
+        <header className="our-story-intro">
+          <p>
+            A little boy drew a bookstore.
+            <br />
+            His mother built it.
+          </p>
+        </header>
 
-              {person.key === "shweta" && (
-                <motion.div
-                  className="our-story-person__intro"
-                  style={
-                    prefersReducedMotion
-                      ? undefined
-                      : { opacity: shwetaIntroOpacity }
-                  }
-                >
-                  <p>
-                    A little boy drew a bookstore.
-                    <br />
-                    His mother built it.
-                  </p>
-                  <img src={introBlueMark} alt="" aria-hidden="true" />
-                </motion.div>
-              )}
-
-              <motion.div
-                className="our-story-person__desktop-state"
-                style={
-                  person.key === "shweta" && !prefersReducedMotion
-                    ? { y: shwetaContentY }
-                    : undefined
-                }
-              >
-                <img
-                  className="our-story-person__desktop-about"
-                  src={person.about}
-                  alt={person.aboutAlt}
-                />
-                <img
-                  className="our-story-person__desktop-picks"
-                  src={person.picks}
-                  alt={`${person.name}'s book picks`}
-                />
-              </motion.div>
-
-              <div className="our-story-person__mobile-about">
-                <img
-                  className="our-story-person__portrait"
-                  src={person.portrait}
-                  alt={person.name}
-                />
-                <MobileBiography personKey={person.key} />
-              </div>
-
-              <section
-                className="our-story-person__mobile-picks"
-                aria-label={`${person.name}'s picks`}
-              >
-                <h3>{person.name}&apos;s Picks</h3>
-                <div className="our-story-cover-grid">
-                  {person.covers.map(([cover, title]) => (
-                    <img key={title} src={cover} alt={title} />
-                  ))}
-                </div>
-              </section>
-            </motion.section>
-          ))}
-        </div>
-      </section>
+        {people.map((person) => (
+          <PersonSection key={person.key} person={person} />
+        ))}
+      </div>
 
       <section className="our-story-family">
-        <img
-          className="our-story-family__desktop"
-          src={familyPicks}
-          alt="Books written by the family: Promises Kept, Fascinating Flags for Fun, and Travel Tales of a Cop."
-        />
+        <div className="our-story-family__desktop-wrap">
+          <img
+            className="our-story-family__desktop"
+            src={familyPicks}
+            alt="Books written by the family: Promises Kept, Fascinating Flags for Fun, and Travel Tales of a Cop."
+            loading="lazy"
+          />
+          <div className="our-story-family__hotspots" aria-hidden="true">
+            {familyBooks.map(([, title, url]) => (
+              <a
+                key={title}
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Buy ${title} on Amazon`}
+              />
+            ))}
+          </div>
+        </div>
         <div className="our-story-family__mobile">
           <h2>Books written by the family</h2>
           <div className="our-story-cover-grid our-story-cover-grid--family">
-            {familyBooks.map(([cover, title]) => (
-              <img key={title} src={cover} alt={title} />
+            {familyBooks.map(([cover, title, url]) => (
+              <a
+                key={title}
+                className="our-story-family__mobile-card"
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={cover} alt={title} loading="lazy" />
+                <span>{title}</span>
+                <span className="our-story-family__mobile-link">
+                  Check it on Amazon→
+                </span>
+              </a>
             ))}
           </div>
         </div>

@@ -314,16 +314,15 @@ export default function BooksNavigation({
 
       <motion.a
         className="books-navigation__strip"
-        href="#collection"
-        aria-label="Browse Reading Elf picks"
+        href="/"
+        aria-label="The Reading Elf home"
         style={{
           y: stripY,
         }}
       >
         <img
           src={stripLogo}
-          alt=""
-          aria-hidden="true"
+          alt="The Reading Elf"
         />
       </motion.a>
 

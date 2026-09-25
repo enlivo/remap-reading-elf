@@ -41,13 +41,14 @@ export default function BlogNavigation({ chromeOpacity }) {
         </div>
       </nav>
 
-      <motion.div
+      <motion.a
         className="blog-navigation__strip"
         style={{ opacity: chromeOpacity }}
-        aria-hidden="true"
+        href="/"
+        aria-label="The Reading Elf home"
       >
-        <img src={stripLogo} alt="" />
-      </motion.div>
+        <img src={stripLogo} alt="The Reading Elf" />
+      </motion.a>
 
       <BlogMobileNavigation />
     </div>

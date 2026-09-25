@@ -89,6 +89,12 @@ function BottomStrip({ style }) {
 
       <div className="bottom-strip__hotspots">
         <a
+          className="bottom-strip__logo"
+          href="/"
+          aria-label="The Reading Elf home"
+        />
+
+        <a
           className="bottom-strip__find"
           href="#find-us"
           aria-label="Find Us"

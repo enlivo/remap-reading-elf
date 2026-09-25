@@ -15,11 +15,36 @@ import hardcoverGandhi from "../../../assets/images/books-page/collection-hardco
 import hardcoverSapiens from "../../../assets/images/books-page/collection-hardcover-sapiens-vol-2.png";
 import hardcoverStarWars from "../../../assets/images/books-page/collection-hardcover-star-wars-dawn-of-rebellion.png";
 import hardcoverDorianGray from "../../../assets/images/books-page/collection-hardcover-the-picture-of-dorian-gray.png";
+import uniqueAlphabetStreet from "../../../assets/images/books-page/collection-unique-alphabet-street.jpg";
+import uniqueSolarSystem from "../../../assets/images/books-page/collection-unique-explore-solar-system.jpg";
+import uniqueButterfly from "../../../assets/images/books-page/collection-unique-inside-out-butterfly.jpg";
+import uniqueEarth from "../../../assets/images/books-page/collection-unique-inside-out-earth.jpg";
+import uniqueSapiensVol3 from "../../../assets/images/books-page/collection-unique-sapiens-vol-3.jpg";
+import uniqueHarryPotterIdeasBook from "../../../assets/images/books-page/collection-unique-harry-potter-ideas-book.jpg";
+import uniqueHarryPotterPhoenix from "../../../assets/images/books-page/collection-unique-harry-potter-order-of-phoenix.jpg";
+import uniqueAlice from "../../../assets/images/books-page/collection-unique-alice.jpg";
+import uniqueNehru from "../../../assets/images/books-page/collection-unique-jawaharlal-nehru.jpg";
+import uniqueWarhammerEncyclopedia from "../../../assets/images/books-page/collection-unique-warhammer-character-encyclopedia.jpg";
 
 import companionSpiderMan from "../../../assets/images/books-page/story-companion-amazing-spider-man.png";
 import companionGingerbread from "../../../assets/images/books-page/story-companion-gingerbread-man.png";
 import companionHulk from "../../../assets/images/books-page/story-companion-hulk.png";
 import companionMermaid from "../../../assets/images/books-page/story-companion-little-mermaid.png";
+import boxsetMagicTreeHouse from "../../../assets/images/books-page/collection-boxset-magic-tree-house.jpg";
+import boxsetBoxcar1to4 from "../../../assets/images/books-page/collection-boxset-boxcar-children-1-4.jpg";
+import boxsetBoxcar13to16 from "../../../assets/images/books-page/collection-boxset-boxcar-children-13-16.jpg";
+import boxsetAruShah from "../../../assets/images/books-page/collection-boxset-aru-shah.jpg";
+import journalGratitude from "../../../assets/images/books-page/collection-journal-my-first-gratitude-journal.jpg";
+import journalFiveMinute from "../../../assets/images/books-page/collection-journal-5-minute-journal.jpg";
+import journalMiserable from "../../../assets/images/books-page/collection-journal-perfectly-miserable-journal.jpg";
+import journalAliceMiranda from "../../../assets/images/books-page/collection-journal-alice-miranda-friends-forever.jpg";
+import journalNotebook from "../../../assets/images/books-page/collection-journal-notebook.jpg";
+import journalPocketJournal from "../../../assets/images/books-page/gifts-collectibles-pocket-journal.png";
+import companionGingerbreadV2 from "../../../assets/images/books-page/story-companion-gingerbread-man-v2.jpg";
+import companionGreenElf from "../../../assets/images/books-page/gifts-collectibles-green-elf.png";
+import companionReadingElfBluePink from "../../../assets/images/books-page/story-companion-reading-elf-blue-pink.jpg";
+import companionHeidi from "../../../assets/images/books-page/story-companion-heidi.jpg";
+import companionRabbitHeadphones from "../../../assets/images/books-page/gifts-collectibles-rabbit-with-headphones.png";
 
 export const BOOK_FILTERS = [
   {
@@ -27,28 +52,20 @@ export const BOOK_FILTERS = [
     label: "All",
   },
   {
-    id: "fan-favorites",
-    label: "Fan Favorites",
-  },
-  {
     id: "book-by-month",
     label: "Book by Month",
   },
   {
     id: "for-grown-ups",
-    label: "For Grown-Ups",
-  },
-  {
-    id: "store-exclusive",
-    label: "Store Exclusive",
+    label: "Journals & Diaries",
   },
   {
     id: "hardcover",
-    label: "Hardcover",
+    label: "Unique Books",
   },
   {
     id: "collections",
-    label: "Collections",
+    label: "Box Set Collections",
   },
   {
     id: "story-companion",
@@ -179,6 +196,86 @@ export const BOOK_COLLECTION = [
     image: hardcoverDorianGray,
     categories: ["hardcover"],
   },
+  {
+    id: "unique-alphabet-street",
+    title: "Alphabet Street",
+    author: "Jonathan Emmett & Ingela P Arrhenius",
+    price: 999,
+    image: uniqueAlphabetStreet,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-solar-system",
+    title: "Explore the Solar System",
+    author: "DK & ESA",
+    price: 1999,
+    image: uniqueSolarSystem,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-earth",
+    title: "Inside Out: Earth",
+    author: "DK",
+    price: 799,
+    image: uniqueEarth,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-butterfly",
+    title: "Inside Out: Butterfly",
+    author: "DK",
+    price: 799,
+    image: uniqueButterfly,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-warhammer-encyclopedia",
+    title: "Warhammer 40,000: Character Encyclopedia",
+    author: "DK",
+    price: 2499,
+    image: uniqueWarhammerEncyclopedia,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-sapiens-volume-3",
+    title: "Sapiens: A Graphic History, Vol. 3",
+    author: "Yuval Noah Harari",
+    price: 1250,
+    image: uniqueSapiensVol3,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-harry-potter-ideas-book",
+    title: "LEGO Harry Potter Ideas Book",
+    author: "DK",
+    price: 950,
+    image: uniqueHarryPotterIdeasBook,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-jawaharlal-nehru",
+    title: "The Discovery of India",
+    author: "Jawaharlal Nehru",
+    price: 899,
+    image: uniqueNehru,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-alice",
+    title: "The Complete Alice",
+    author: "Lewis Carroll",
+    price: 2399,
+    image: uniqueAlice,
+    categories: ["hardcover"],
+  },
+  {
+    id: "unique-harry-potter-phoenix",
+    title: "Harry Potter and the Order of the Phoenix",
+    author: "J.K. Rowling, illustrated by Jim Kay",
+    price: 2599,
+    image: uniqueHarryPotterPhoenix,
+    categories: ["hardcover"],
+  },
 
   {
     id: "companion-hulk",
@@ -209,8 +306,115 @@ export const BOOK_COLLECTION = [
     title: "Gingerbread Man",
     type: "product",
     price: 375,
-    image: companionGingerbread,
+    image: companionGingerbreadV2,
     categories: ["story-companion"],
+  },
+  {
+    id: "companion-green-elf",
+    title: "Green Elf",
+    type: "product",
+    price: 942,
+    image: companionGreenElf,
+    categories: ["story-companion"],
+  },
+  {
+    id: "companion-reading-elf-blue-pink",
+    title: "Reading Elf (Blue & Pink)",
+    type: "product",
+    price: 985,
+    image: companionReadingElfBluePink,
+    categories: ["story-companion"],
+  },
+  {
+    id: "companion-heidi",
+    title: "Heidi",
+    type: "product",
+    price: 999,
+    image: companionHeidi,
+    categories: ["story-companion"],
+  },
+  {
+    id: "companion-rabbit-headphones",
+    title: "Rabbit With Headphones",
+    type: "product",
+    price: 895,
+    image: companionRabbitHeadphones,
+    categories: ["story-companion"],
+  },
+  {
+    id: "boxset-magic-tree-house",
+    title: "Magic Tree House: The Graphic Novel Starter Set",
+    author: "Mary Pope Osborne",
+    price: 1999,
+    image: boxsetMagicTreeHouse,
+    categories: ["collections"],
+  },
+  {
+    id: "boxset-boxcar-children-1-4",
+    title: "The Boxcar Children: Books 1–4",
+    author: "Gertrude Chandler Warner",
+    price: 2350,
+    image: boxsetBoxcar1to4,
+    categories: ["collections"],
+  },
+  {
+    id: "boxset-boxcar-children-13-16",
+    title: "The Boxcar Children: Books 13–16",
+    author: "Gertrude Chandler Warner",
+    price: 1825,
+    image: boxsetBoxcar13to16,
+    categories: ["collections"],
+  },
+  {
+    id: "boxset-aru-shah",
+    title: "Aru Shah: Set of 4 Books",
+    author: "Roshani Chokshi",
+    price: 1799,
+    image: boxsetAruShah,
+    categories: ["collections"],
+  },
+  {
+    id: "journal-gratitude",
+    title: "My First Gratitude Journal",
+    price: 499,
+    image: journalGratitude,
+    categories: ["for-grown-ups"],
+  },
+  {
+    id: "journal-five-minute",
+    title: "Your 5-Minute Journal",
+    author: "Amy Birch",
+    price: 799,
+    image: journalFiveMinute,
+    categories: ["for-grown-ups"],
+  },
+  {
+    id: "journal-miserable",
+    title: "My Perfectly Miserable Journal",
+    price: 599,
+    image: journalMiserable,
+    categories: ["for-grown-ups"],
+  },
+  {
+    id: "journal-alice-miranda",
+    title: "Alice-Miranda Friends Forever Journal",
+    price: 450,
+    image: journalAliceMiranda,
+    categories: ["for-grown-ups"],
+  },
+  {
+    id: "journal-notebook",
+    title: "Notebook",
+    price: 450,
+    image: journalNotebook,
+    categories: ["for-grown-ups"],
+  },
+  {
+    id: "journal-pocket-journal",
+    title: "The Reading Elf Pocket Journal",
+    price: 125,
+    image: journalPocketJournal,
+    categories: ["for-grown-ups"],
   },
 ];
 
@@ -237,12 +441,16 @@ export const BOOK_COLLECTION_GROUPS = [
     label: "Book by Month",
   },
   {
+    id: "for-grown-ups",
+    label: "Journals & Diaries",
+  },
+  {
     id: "hardcover",
-    label: "Hardcover",
+    label: "Unique Books",
   },
   {
     id: "collections",
-    label: "Collections",
+    label: "Box Set Collections",
   },
   {
     id: "story-companion",

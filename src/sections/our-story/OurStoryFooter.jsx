@@ -1,6 +1,6 @@
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
-import leafSprig from "../../../assets/images/footer-leaf-sprig.png";
+import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
 import goldStreak from "../../../assets/images/our-story-page/deco-gold-streak.png";
 import blueStreak from "../../../assets/images/our-story-page/deco-blue-streak.png";
 import facebookIcon from "../../../design-assets/Website/Common Through Out/Socials/Facebook.png";

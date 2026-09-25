@@ -36,6 +36,7 @@ import "./styles/pages/our-story.css";
 import "./styles/sections/our-story-footer.css";
 import "./styles/pages/blog.css";
 import "./styles/sections/blog-footer.css";
+import "./styles/pages/blog-post.css";
 
 createRoot(
   document.getElementById("root"),

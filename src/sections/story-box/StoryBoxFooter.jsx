@@ -5,6 +5,7 @@ import {
 
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
+import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
 import phoneIcon from "../../../design-assets/Website/Common Through Out/Phone No.png";
 import facebookIcon from "../../../design-assets/Website/Common Through Out/Socials/Facebook.png";
 import instagramIcon from "../../../design-assets/Website/Common Through Out/Socials/Instagram.png";
@@ -100,6 +101,20 @@ export default function StoryBoxFooter() {
       <img
         className="story-box-footer__branch"
         src={branchLantern}
+        alt=""
+        aria-hidden="true"
+      />
+
+      <img
+        className="story-box-footer__leaf story-box-footer__leaf--left"
+        src={leafSprig}
+        alt=""
+        aria-hidden="true"
+      />
+
+      <img
+        className="story-box-footer__leaf story-box-footer__leaf--right"
+        src={leafSprig}
         alt=""
         aria-hidden="true"
       />
