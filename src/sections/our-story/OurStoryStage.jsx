@@ -2,7 +2,7 @@ import OurStoryNavigation from "../../components/our-story/OurStoryNavigation.js
 import OurStoryFooter from "./OurStoryFooter.jsx";
 
 import stripLogo from "../../../assets/images/our-story-page/strip-logo.png";
-import familyPicks from "../../../design-assets/Website/Our Story/family-books-covers.png";
+import familyPicks from "../../../design-assets/Website/Our Story/family-books-covers.jpg";
 import shwetaPortrait from "../../../assets/images/our-story-page/shweta-portrait.png";
 import sunainaPortrait from "../../../assets/images/our-story-page/sunaina-portrait.png";
 import adhruthPortrait from "../../../assets/images/our-story-page/adhruth-portrait.png";

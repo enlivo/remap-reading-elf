@@ -4,7 +4,7 @@ import {
   useTransform,
 } from "motion/react";
 
-import heroIllustration from "../../assets/images/hero-illustration.png";
+import heroIllustration from "../../assets/images/hero-illustration.jpg";
 import eventNews from "../../design-assets/Website/Landing Page/Event News.png";
 import monthlyBest from "../../design-assets/Website/Landing Page/Monthly Best Quick Link.png";
 

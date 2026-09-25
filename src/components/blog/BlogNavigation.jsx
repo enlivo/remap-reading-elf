@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-import blogHeroArtwork from "../../../design-assets/Website/blog/blog-hero-bookstagram.png";
+import blogHeroArtwork from "../../../design-assets/Website/blog/blog-hero-bookstagram.jpg";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import stripLogo from "../../../assets/images/our-story-page/strip-logo.png";
 import BlogMobileNavigation from "./BlogMobileNavigation.jsx";

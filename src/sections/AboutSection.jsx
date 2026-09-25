@@ -1,4 +1,4 @@
-import motherAndSon from "../../assets/images/about-mother-son.png";
+import motherAndSon from "../../assets/images/about-mother-son.webp";
 import aboutCream from "../../assets/images/about-decoration-cream.svg";
 import aboutBlue from "../../assets/images/about-decoration-blue.svg";
 

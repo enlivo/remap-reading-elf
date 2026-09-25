@@ -12,14 +12,14 @@ import {
 } from "react";
 
 import greenLeaf from "../../design-assets/Website/Landing Page/Elements of Landing Page/5.png";
-import entryFoliage from "../../assets/images/landing-elements/foliage-figma.png";
+import entryFoliage from "../../assets/images/landing-elements/foliage-figma.webp";
 
-import galleryBackground from "../../design-assets/Website/Landing Page/Background For Gallery.png";
-import galleryImages from "../../design-assets/Website/Landing Page/Images.png";
+import galleryBackground from "../../design-assets/Website/Landing Page/Background For Gallery.webp";
+import galleryImages from "../../design-assets/Website/Landing Page/Images.webp";
 import galleryTitle from "../../design-assets/Website/Landing Page/Gallery Title.png";
 
 import mobileGallery01 from "../../design-assets/Website/Landing Page/Images For Gallery/Books Collections.jpeg";
-import mobileGallery02 from "../../design-assets/Website/Landing Page/Images For Gallery/0c1b1716-2de3-4440-ad15-f88ff7e256c6.png";
+import mobileGallery02 from "../../design-assets/Website/Landing Page/Images For Gallery/0c1b1716-2de3-4440-ad15-f88ff7e256c6.jpg";
 import mobileGallery03 from "../../design-assets/Website/Landing Page/Images For Gallery/WhatsApp Image 2026-07-17 at 14.30.18.jpeg";
 import mobileGallery04 from "../../design-assets/Website/Landing Page/Images For Gallery/WhatsApp Image 2026-07-17 at 14.30.19 (1).jpeg";
 import mobileGallery05 from "../../design-assets/Website/Landing Page/Images For Gallery/WhatsApp Image 2026-07-17 at 14.30.19 (2).jpeg";

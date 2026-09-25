@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import foliage from "../../assets/images/landing-elements/foliage-figma.png";
+import foliage from "../../assets/images/landing-elements/foliage-figma.webp";
 import brownLeaf from "../../design-assets/Website/Landing Page/Elements of Landing Page/6.png";
 
 import booksCard from "../../assets/images/card-books.png";

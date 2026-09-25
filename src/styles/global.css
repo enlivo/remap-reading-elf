@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Kind Bond";
-  src: url("../../assets/fonts/kind-bond.otf")
-    format("opentype");
+  src: url("../../assets/fonts/kind-bond-subset.woff2")
+    format("woff2");
   font-display: swap;
   font-style: normal;
   font-weight: 400;

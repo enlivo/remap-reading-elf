@@ -10,7 +10,7 @@ import EventsNavigation from "../../components/events/EventsNavigation.jsx";
 import EventsFooter from "./EventsFooter.jsx";
 
 import stripLogo from "../../../assets/images/events-page/strip-logo.png";
-import eventPanel from "../../../design-assets/Website/Events/Salt of Freedom.png";
+import eventPanel from "../../../design-assets/Website/Events/Salt of Freedom.webp";
 
 import greenBurst from "../../../design-assets/Website/Events/Elements of Events/2.png";
 import peachBurst from "../../../design-assets/Website/Events/Elements of Events/1.png";

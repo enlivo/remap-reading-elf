@@ -10,9 +10,9 @@ import { useRef, useState } from "react";
 import ExperienceNavigation from "../../components/experience/ExperienceNavigation.jsx";
 import ExperienceFooter from "./ExperienceFooter.jsx";
 
-import wednesdayPanel from "../../../assets/images/experience-page/wednesday-returns-panel.png";
-import parentPanel from "../../../assets/images/experience-page/parent-child-panel.png";
-import storyPanel from "../../../assets/images/experience-page/story-keepers-panel.png";
+import wednesdayPanel from "../../../assets/images/experience-page/wednesday-returns-panel.webp";
+import parentPanel from "../../../assets/images/experience-page/parent-child-panel.webp";
+import storyPanel from "../../../assets/images/experience-page/story-keepers-panel.webp";
 import creamBurst from "../../../design-assets/Website/Experience/Elements of Experience/1.png";
 import redBurstLeft from "../../../design-assets/Website/Experience/Elements of Experience/3.png";
 import brownBurst from "../../../design-assets/Website/Experience/Elements of Experience/4.png";
