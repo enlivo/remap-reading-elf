@@ -4,15 +4,8 @@ import OurStoryFooter from "../sections/our-story/OurStoryFooter.jsx";
 import screenTimePhoto from "../../assets/images/blog-page/blog-post-photo-screentime.png";
 import moorsPhotoOne from "../../assets/images/blog-page/blog-post-moors-1.png";
 import moorsPhotoTwo from "../../assets/images/blog-page/blog-post-moors-2.png";
-import readMorePhoto from "../../assets/images/blog-page/blog-post-photo.png";
 
 export const READING_VS_SCREEN_TIME_PATH = "/blog/reading-vs-screen-time";
-
-const readMore = [
-  { title: "From Bookstagram!", href: "/blog" },
-  { title: "From Bookstagram!", href: "/blog" },
-  { title: "From Bookstagram!", href: "/blog" },
-];
 
 export default function BlogPostPage() {
   return (
@@ -193,18 +186,6 @@ export default function BlogPostPage() {
           And I don&apos;t think we should ever underestimate the power of that.
         </p>
       </article>
-
-      <section className="blog-read-more" aria-labelledby="blog-read-more-title">
-        <h2 id="blog-read-more-title">Read More</h2>
-        <div className="blog-read-more__grid">
-          {readMore.map(({ title, href }, index) => (
-            <a className="blog-read-more__card" href={href} key={index}>
-              <img src={readMorePhoto} alt="" />
-              <span>{title}</span>
-            </a>
-          ))}
-        </div>
-      </section>
 
       <OurStoryFooter />
     </main>
