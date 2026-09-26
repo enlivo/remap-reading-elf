@@ -16,6 +16,21 @@
   --elf-ink: #19130f;
   --elf-cream: #fff3df;
 
+  /*
+   * The persistent corner logo badge in every subpage's own
+   * navigation component (Books/Experience/Events/StoryBox/
+   * OurStory/Blog - each is a separate component, there is no
+   * single shared nav component to hang this off) - see
+   * .books-navigation__logo, .experience-navigation__logo,
+   * .events-navigation__logo, .story-box-navigation__logo,
+   * .our-story-navigation__mobile-logo,
+   * .blog-navigation__mobile-logo. Two of those six had drifted
+   * onto their own smaller clamp. Set the size once, here, and
+   * have every page's rule reference this token instead of its
+   * own literal clamp, so they can't drift apart again.
+   */
+  --nav-logo-width: clamp(78px, 7.2vw, 126px);
+
   font-family:
     Arial,
     Helvetica,

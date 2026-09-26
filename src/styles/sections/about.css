@@ -134,10 +134,15 @@
     padding: 0;
   }
 
+  /*
+   * Type here is kept in step with the Visit ("Come See Us")
+   * block further down the landing scroll - see
+   * .visit-section--staged .visit-section__copy in visit.css.
+   */
   .about-section__copy h2 {
     margin: 0 0 0.416667vw;
 
-    font-size: 3.333333vw;
+    font-size: 3.125vw;
     line-height: 1;
   }
 
@@ -146,9 +151,15 @@
     margin: 0;
 
     font-family: "Nunito", Arial, sans-serif;
-    font-size: 2.083333vw;
+
+    /*
+     * Matches the Figma reference (refs/about-us-chennai-1.png) and
+     * the Hero description's body-copy size on this same page - see
+     * .landing-hero__description in hero.css.
+     */
+    font-size: 1.667vw;
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.42;
   }
 
   .about-section__copy p + p {

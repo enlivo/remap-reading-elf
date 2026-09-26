@@ -59,13 +59,6 @@
 
   .story-box-footer__socials {
     justify-content: flex-start;
-    gap: clamp(16px, 3vw, 26px);
-  }
-
-  .story-box-footer__socials a {
-    width: 44px;
-    height: 44px;
-    padding: 5px;
   }
 
   .story-box-footer__phone {
@@ -140,16 +133,7 @@
   }
 
   .story-box-footer__socials {
-    gap: 2.9vw;
     margin-top: 2.2vw;
-  }
-
-  .story-box-footer__socials a {
-    width: 10.68vw;
-    height: 10.68vw;
-    min-width: 44px;
-    min-height: 44px;
-    padding: 2.1vw;
   }
 
   .story-box-footer__phone {

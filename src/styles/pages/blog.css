@@ -109,7 +109,14 @@
   left: clamp(18px, 2vw, 42px);
   z-index: 203;
   display: block;
-  width: clamp(82px, 5.6vw, 112px);
+
+  /*
+   * Matches the corner logo on every other page - see
+   * --nav-logo-width in global.css. This one had drifted onto its
+   * own, smaller clamp.
+   */
+  width: var(--nav-logo-width);
+
   pointer-events: auto;
 }
 

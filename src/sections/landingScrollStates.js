@@ -210,6 +210,31 @@ export const TOTAL_RUNWAY_VH = LANDING_STATES.reduce(
   0,
 );
 
+/*
+ * Cumulative runway (in vh units) needed to reach a named state -
+ * the same running sum useLandingScrollTimeline.js's `progress`
+ * uses, just inverted. Lets a click handler compute the scrollY
+ * for e.g. "Visit" instead of only being able to read progress
+ * that scrollY already produced.
+ */
+export function runwayVhToState(states, name) {
+  const index = states.findIndex(
+    (state) => state.name === name,
+  );
+
+  if (index <= 0) {
+    return 0;
+  }
+
+  let total = 0;
+
+  for (let i = 1; i <= index; i += 1) {
+    total += states[i].runwayVh;
+  }
+
+  return total;
+}
+
 
 /* ==========================================================
    PHONE FULL-FRAME LANDING STATES

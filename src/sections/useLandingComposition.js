@@ -149,6 +149,42 @@ export default function useLandingComposition(progress) {
     [0, 0, 1, 1],
   );
 
+  /*
+   * Instagram's panel is deliberately the lead visual: it reaches
+   * full opacity almost immediately at progress 6 (see
+   * instagramPanelOpacity above), while Visit is still fully
+   * active, and its bounding box genuinely overlaps
+   * .visit-section__map on screen during that window. Both
+   * elements previously had pointer-events: auto at all times,
+   * so whichever sat on top by z-index (Instagram, stacked above
+   * Visit) could silently intercept clicks meant for the map -
+   * confirmed by clicking the map's direction-icon area and
+   * landing on Instagram's <h2> instead of Google Maps.
+   *
+   * Gate each one's pointer-events on its own fully-resolved
+   * content opacity (not the early "panel"/entrance opacity used
+   * for the crossfade), so the visual lead-in still plays but
+   * neither becomes interactive until it has genuinely arrived.
+   * There's a short dead zone between them (map goes inert before
+   * Instagram's content is ready) - a click doing nothing there is
+   * far safer than a click landing on the wrong destination.
+   */
+  const visitMapPointerEvents = useTransform(
+    [visitExitOpacity, visitMapOpacity],
+    ([exitOpacity, mapOpacity]) =>
+      exitOpacity > 0.5 && mapOpacity > 0.5
+        ? "auto"
+        : "none",
+  );
+
+  const instagramLinkPointerEvents = useTransform(
+    instagramContentOpacity,
+    (contentOpacity) =>
+      contentOpacity > 0.5
+        ? "auto"
+        : "none",
+  );
+
   const heroOpacity = useTransform(progress, [2, 3], [1, 0]);
 
   return {
@@ -184,6 +220,7 @@ export default function useLandingComposition(progress) {
       "--visit-map-y": visitMapY,
       "--visit-surface-opacity": visitSurfaceOpacity,
       "--visit-content-opacity": visitContentOpacity,
+      "--visit-map-pointer-events": visitMapPointerEvents,
     },
 
     instagram: {
@@ -192,6 +229,7 @@ export default function useLandingComposition(progress) {
       "--instagram-panel-opacity": instagramPanelOpacity,
       "--instagram-surface-opacity": instagramSurfaceOpacity,
       "--instagram-content-opacity": instagramContentOpacity,
+      "--instagram-link-pointer-events": instagramLinkPointerEvents,
     },
   };
 }

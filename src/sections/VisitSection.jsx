@@ -4,6 +4,13 @@ import chennaiMap from "../../assets/images/chennai-map.png";
 import whiteBlob from "../../assets/images/landing-elements/blob-white.png";
 import blueBlob from "../../assets/images/landing-elements/blob-blue.png";
 
+/*
+ * Google's CID for The Reading Elf's verified Maps listing (5.0★, 60
+ * reviews, "Book store in Tamil Nadu") - resolves to the exact
+ * pin/listing every time, unlike an address-based search.
+ */
+const MAPS_URL = "https://www.google.com/maps?cid=1501219082819024713";
+
 export default function VisitSection({ staged = false, mobileFallback = false }) {
   return (
     <section
@@ -57,8 +64,12 @@ export default function VisitSection({ staged = false, mobileFallback = false })
         </p>
       </motion.div>
 
-      <motion.div
+      <motion.a
         className="visit-section__map"
+        href={MAPS_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Open The Reading Elf's location in Google Maps"
         initial={staged ? false : {
           opacity: 0,
           scale: 0.96,
@@ -79,7 +90,7 @@ export default function VisitSection({ staged = false, mobileFallback = false })
           src={chennaiMap}
           alt="Map showing The Reading Elf location in Chennai"
         />
-      </motion.div>
+      </motion.a>
 
       <img
         className="visit-section__blob visit-section__blob--blue"

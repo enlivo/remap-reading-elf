@@ -439,6 +439,7 @@ export default function LandingIntroScene() {
         canvasScale={
           geometry.canvasScale
         }
+        geometry={geometry}
         progress={progress}
       />
     </>

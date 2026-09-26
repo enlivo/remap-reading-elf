@@ -2,7 +2,6 @@
   .landing-hero { aspect-ratio: auto; min-height: 760px; }
   .landing-hero__art { object-position: center top; }
   .landing-navigation { display: none; }
-  .landing-hero__event { top: 22px; left: 5%; width: 90%; }
   .landing-hero__headline { top: 23%; left: 8%; width: 84%; font-size: clamp(32px, 7vw, 60px); }
   .landing-hero__headline span { white-space: normal; }
   .landing-hero__description { top: 40%; left: 8%; width: 84%; font-size: 15px; }
@@ -37,7 +36,18 @@
   }
 
   .about-section__copy p {
-    font-size: 17px;
+    /*
+     * Matches Come See Us's body font in this same tablet gap -
+     * see .visit-section__copy p font-family in visit.css (applies
+     * everywhere, including here). Without this, About falls back
+     * to the page's default Arial in the 768-900px range only,
+     * since the Nunito override below only covers >= 901px and
+     * <= 767px.
+     */
+    font-family: "Nunito", Arial, sans-serif;
+
+    /* Scaled up to match the desktop Figma-reference size below. */
+    font-size: 23px;
   }
 
   .about-section__image {
@@ -75,7 +85,8 @@
   }
 
   .visit-section__copy p {
-    font-size: 17px;
+    /* Scaled up to match the desktop Figma-reference size. */
+    font-size: 23px;
   }
 
   .visit-section__map {
@@ -168,17 +179,6 @@
 
     object-fit: cover;
     object-position: 18% top;
-  }
-
-  /*
-   * Mobile Figma places Event News on the left and leaves the
-   * hamburger its own clear area on the upper-right.
-   */
-  .landing-hero__event {
-    top: 12.2vw;
-    left: 1.2%;
-
-    width: 68%;
   }
 
   /*
@@ -401,9 +401,8 @@
   }
 
   /*
-   * Images.png is a single 1849 x 403 composite.
-   * 135vw gives ~702px x 153px at the reference viewport,
-   * matching the recorded phone artwork closely.
+   * Overridden by the PHONE GALLERY - RUNNING BOARD block
+   * further down this file; kept as the base phone band.
    */
   .landing-intro__gallery
     .gallery-section__images-window {
@@ -412,17 +411,6 @@
     width: 100%;
 
     overflow: hidden;
-  }
-
-  .landing-intro__gallery
-    .gallery-section__images {
-    width: 135%;
-    max-width: none;
-
-    height: auto;
-
-    margin: 0;
-    margin-left: -8%;
   }
 
   /*
@@ -686,13 +674,6 @@
 
     object-fit: cover;
     object-position: 18% center;
-  }
-
-  .landing-hero__event {
-    top: 4.5svh;
-    left: 1.5%;
-
-    width: 68%;
   }
 
   .landing-hero__headline {
@@ -1301,176 +1282,60 @@
     top: 29svh;
 
     width: 100%;
+    height: 34svh;
 
     overflow: hidden;
-  }
-
-  .landing-intro__gallery
-    .gallery-section__images {
-    width: 145%;
-    max-width: none;
-
-    height: auto;
-
-    margin: 0;
-    margin-left: -12%;
   }
 }
 
 
 /* ==========================================================
-   MOBILE GALLERY PROJECT SLIDER PASS 1
+   PHONE GALLERY - RUNNING BOARD
 
    Keep the approved Gallery environment untouched:
    - Gallery title stays in its existing position
    - meadow / tree background stays unchanged
-   - desktop continues using the original Images.png strip
 
    Phone only:
-   - real individual image cards
-   - horizontal swipe / scroll
-   - snap each card to viewport centre
-   - active centre card scales forward
-   - adjacent cards remain partially visible
+   - the same auto-scrolling strip as desktop, sized for the
+     narrower band
+   - NOTE: this block is the LAST one to touch
+     .gallery-section__images-window, so it wins over the
+     earlier max-width: 767px block above.
    ========================================================== */
 
 @media (max-width: 767px) {
   .landing-intro__gallery
     .gallery-section__images-window {
-    display: none;
-  }
-
-  .landing-intro__gallery
-    .gallery-section__mobile-slider {
-    position: absolute;
-
     top: 29svh;
-    left: 0;
 
     z-index: 3;
 
-    display: flex;
-    align-items: center;
+    height: 34svh;
+  }
 
-    gap: 4vw;
+  .landing-intro__gallery
+    .gallery-section__marquee-track {
+    --gallery-card-gap: 3.2vw;
 
-    width: 100%;
+    padding: 2svh 0;
 
     box-sizing: border-box;
-
-    padding:
-      3.5svh
-      17vw
-      4svh;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scroll-snap-type:
-      x mandatory;
-
-    scroll-padding-inline:
-      17vw;
-
-    overscroll-behavior-x:
-      contain;
-
-    -webkit-overflow-scrolling:
-      touch;
-
-    scrollbar-width: none;
-
-    touch-action:
-      pan-x pan-y;
-
-    outline: none;
   }
 
   .landing-intro__gallery
-    .gallery-section__mobile-slider::-webkit-scrollbar {
-    display: none;
-  }
+    .gallery-section__marquee-card {
+    aspect-ratio: 4 / 5;
 
-  .landing-intro__gallery
-    .gallery-section__mobile-card {
-    position: relative;
+    border-width: clamp(3px, 0.8vw, 5px);
 
-    flex:
-      0
-      0
-      66vw;
-
-    aspect-ratio:
-      1.34 / 1;
-
-    margin: 0;
-
-    overflow: hidden;
-
-    border:
-      clamp(
-        3px,
-        0.8vw,
-        5px
-      )
-      solid
-      #ffffff;
-
-    border-radius:
-      clamp(
-        16px,
-        4vw,
-        26px
-      );
-
-    background:
-      #ffffff;
+    border-radius: clamp(14px, 3.4vw, 22px);
 
     box-shadow:
       0
       1.5vw
       4.5vw
-      rgba(
-        82,
-        57,
-        36,
-        0.18
-      );
-
-    scroll-snap-align:
-      center;
-
-    scroll-snap-stop:
-      always;
-
-    transform-origin:
-      center center;
-
-    cursor: pointer;
-
-    will-change:
-      transform,
-      opacity;
-  }
-
-  .landing-intro__gallery
-    .gallery-section__mobile-card[data-active="true"] {
-    z-index: 2;
-  }
-
-  .landing-intro__gallery
-    .gallery-section__mobile-card img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    user-select: none;
-
-    -webkit-user-drag:
-      none;
+      rgba(82, 57, 36, 0.18);
   }
 }
 
@@ -1567,6 +1432,20 @@
       Arial,
       sans-serif;
 
+    /*
+     * This selector is the one that actually wins the cascade (see
+     * the two earlier, now-stale .landing-intro__about
+     * .about-section__copy p passes above it in this file) - edit
+     * here, not those.
+     *
+     * Already matches Come See Us's real mobile size: the visible
+     * "Come See Us" instance at this width is
+     * .landing-intro__visit .visit-section--staged .visit-section__copy p
+     * (clamp(12px, 2.8vw, 16px) - see visit.css) - not
+     * .visit-section--mobile-fallback, which is display:none below
+     * 768px (see the max-width: 767px VISIT block further down).
+     * Both floor at 12px through most of the phone range.
+     */
     font-size:
       clamp(
         12px,
@@ -2001,19 +1880,6 @@
    ========================================================== */
 
 @media (max-width: 767px) {
-
-  /*
-   * New Events:
-   * larger than the previous 68%, while preserving clear space
-   * for the hamburger in the upper-right.
-   */
-  .landing-hero__event {
-    left: 1.5%;
-
-    width: 79%;
-
-    max-width: none;
-  }
 
   /*
    * Monthly Best:

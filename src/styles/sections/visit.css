@@ -55,6 +55,13 @@
 .visit-section__copy p {
   margin: 0;
 
+  /*
+   * Matches About Us's body font - see .about-section__copy p in
+   * about.css. Set once here so every context (desktop staged,
+   * mobile fallback) inherits it without repeating the rule.
+   */
+  font-family: "Nunito", Arial, sans-serif;
+
   font-size: clamp(
     17px,
     1.45vw,
@@ -77,10 +84,42 @@
   position: relative;
   z-index: 2;
 
+  display: block;
+
   width: min(
     44vw,
     753px
   );
+
+  cursor: pointer;
+
+  /*
+   * The staged (desktop landing) and phone-canvas ancestors
+   * (.landing-intro__visit) set pointer-events: none on themselves
+   * so inactive/crossfading layers don't steal clicks from
+   * whichever staged layer is actually visible - see
+   * .landing-intro__visit in hero.css. That disables clicks on
+   * this link too, since pointer-events is inherited, so it needs
+   * re-enabling here specifically (not on the whole staged section).
+   * Same pattern as the mobile nav pointer-events fix on
+   * Events/Our Story.
+   *
+   * Plain auto here (mobile fallback, tablet gap, phone canvas).
+   * Desktop gets a narrower, scroll-progress-driven value instead -
+   * see the min-width: 901px override below, and read its comment
+   * before changing either one: --visit-map-pointer-events is only
+   * ever set on the desktop (non-phone) render branch in
+   * LandingIntroScene.jsx, but React/Framer Motion can leave it as a
+   * stale custom property on this same DOM node from the transient
+   * first render (before the phone/desktop mode is measured) even
+   * once the phone branch takes over - so this rule must NOT read
+   * that var unconditionally, or phone silently inherits a leftover
+   * "none" instead of falling back to auto. Every other composition
+   * property (opacity, position) has the same stale-leftover
+   * behavior; they're harmless only because their consuming rules
+   * already live inside this same min-width: 901px boundary.
+   */
+  pointer-events: auto;
 }
 
 .visit-section__map img {
@@ -176,9 +215,14 @@
   }
 
   .visit-section--staged .visit-section__copy p {
-    width: 29vw;
+    width: 36.5vw;
 
-    font-size: 1.25vw;
+    /*
+     * Matches the Figma reference (refs/about-us-chennai-2.png) and
+     * the Hero description's body-copy size on this same page - see
+     * .landing-hero__description in hero.css.
+     */
+    font-size: 1.667vw;
     line-height: 1.42;
   }
 
@@ -205,6 +249,25 @@
     );
 
     will-change: transform, opacity;
+
+    /*
+     * Instagram's panel is a deliberate early "lead visual" (see
+     * instagramPanelOpacity in useLandingComposition.js) that
+     * becomes fully opaque - and genuinely overlaps this map on
+     * screen - well before Visit itself starts exiting, and it sits
+     * at a higher z-index (.landing-intro__instagram vs
+     * .landing-intro__visit). Plain auto at all times meant
+     * Instagram's (invisible but still hit-testable) heading could
+     * steal clicks meant for the map's direction-icon area -
+     * confirmed by clicking it and landing on Instagram instead of
+     * Google Maps. This only goes "auto" once Visit is genuinely the
+     * foreground layer; --visit-map-pointer-events is safe to read
+     * here specifically because this rule only matches at
+     * min-width: 901px, where the var is always freshly set by the
+     * desktop composition (see the base rule above for why it can't
+     * be read unconditionally).
+     */
+    pointer-events: var(--visit-map-pointer-events, auto);
   }
 
   .visit-section--staged .visit-section__blob--white {

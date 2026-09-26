@@ -71,7 +71,7 @@
 
   display: block;
 
-  width: clamp(78px, 7.2vw, 126px);
+  width: var(--nav-logo-width);
 
   pointer-events: auto;
 }
@@ -3344,51 +3344,14 @@ button {
 
 /* Reach Us icons */
 
-.site-footer--books
-.site-footer__socials {
-  gap:
-    clamp(
-      22px,
-      2.2vw,
-      34px
-    );
-}
-
-
-.site-footer--books
-.site-footer__socials a {
-  width:
-    clamp(
-      38px,
-      3vw,
-      46px
-    );
-
-  height:
-    clamp(
-      38px,
-      3vw,
-      46px
-    );
-}
-
-
+/*
+ * Size/gap intentionally NOT overridden here - the Books footer
+ * uses the same 44px / 20px gap every other footer uses, set once
+ * in components/footer.css. Only the icon colour (filter) is
+ * Books-specific.
+ */
 .site-footer--books
 .site-footer__socials img {
-  max-width:
-    clamp(
-      34px,
-      2.7vw,
-      43px
-    );
-
-  max-height:
-    clamp(
-      34px,
-      2.7vw,
-      43px
-    );
-
   filter:
     brightness(0)
     saturate(100%)

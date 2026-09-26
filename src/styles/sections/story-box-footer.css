@@ -192,16 +192,12 @@
 .story-box-footer__socials {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 1.666667vw, 32px);
 
   margin-top: 1.851852vh;
 }
 
 .story-box-footer__socials a {
   display: block;
-
-  width: clamp(34px, 3.020833vw, 58px);
-  height: clamp(34px, 3.020833vw, 58px);
 }
 
 .story-box-footer__socials img {

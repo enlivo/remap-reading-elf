@@ -49,21 +49,114 @@
   left: 0;
 
   width: 100%;
+  height: clamp(
+    200px,
+    27vw,
+    380px
+  );
 
   overflow: hidden;
 }
 
-.gallery-section__images {
-  display: block;
+/*
+ * Running gallery board.
+ *
+ * The track holds two identical copies of the photo list and the
+ * keyframe travels exactly one copy, so the loop has no seam. The
+ * card gap lives on the card as margin-right (not as flex `gap`),
+ * otherwise the trailing gap would make the two halves unequal and
+ * the seam would drift on every lap.
+ */
+.gallery-section__marquee-track {
+  --gallery-card-gap: clamp(
+    10px,
+    1.1vw,
+    22px
+  );
 
-  width: 96.3%;
-  max-width: none;
+  display: flex;
+  align-items: center;
 
-  margin: 0 auto;
-
-  height: auto;
+  width: max-content;
+  height: 100%;
 
   will-change: transform;
+
+  animation:
+    gallery-marquee-scroll
+    var(--gallery-marquee-duration, 420s)
+    linear
+    infinite;
+}
+
+.gallery-section__images-window:hover
+  .gallery-section__marquee-track {
+  animation-play-state: paused;
+}
+
+.gallery-section__marquee-card {
+  flex: 0 0 auto;
+
+  height: 100%;
+  aspect-ratio: 4 / 5;
+
+  margin: 0 var(--gallery-card-gap) 0 0;
+
+  overflow: hidden;
+
+  border: clamp(3px, 0.35vw, 6px) solid #ffffff;
+
+  border-radius: clamp(
+    12px,
+    1.1vw,
+    22px
+  );
+
+  background: #ffffff;
+
+  box-shadow:
+    0
+    0.6vw
+    1.8vw
+    rgba(82, 57, 36, 0.18);
+}
+
+.gallery-section__marquee-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+@keyframes gallery-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-section__images-window {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .gallery-section__images-window::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-section__marquee-track {
+    animation: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -89,11 +182,11 @@
 
   .gallery-section__images-window {
     top: 33%;
-  }
-
-  .gallery-section__images {
-    width: 135%;
-    margin-left: -8%;
+    height: clamp(
+      190px,
+      44vw,
+      280px
+    );
   }
 }
 
@@ -115,13 +208,11 @@
 
   .landing-intro__gallery .gallery-section__images-window {
     top: 19.1145833vw;
+
+    /* Same 403px photo band the original composite strip occupied. */
+    height: 20.989583vw;
+
     opacity: var(--resolved-opacity, 1);
-  }
-
-  .landing-intro__gallery .gallery-section__images {
-    width: 96.3020833%;
-    margin-left: 3.6458333%;
-
   }
 
   .landing-intro__gallery .gallery-section__background {

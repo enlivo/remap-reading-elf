@@ -79,24 +79,86 @@
   justify-self: center;
 }
 
+/*
+ * One consistent outer ring colour for the circular logo badge in
+ * every footer (Home + Books use .site-footer__logo above; every
+ * other page has its own footer component/stylesheet - see the
+ * WhatsApp/Instagram/Facebook icon-sizing fix above for why that
+ * split exists). Some of these badges rendered with no ring at all,
+ * making the plain footer background colour behind them (which
+ * differs per page - red, green, brown, yellow/green...) read as an
+ * inconsistent ring colour depending on the page. Brown matches the
+ * ring already baked into the header's circular logo everywhere it
+ * appears (Strip Logo assets) - #805436 is that same brown, sampled
+ * from the artwork, and is also this site's --elf-brown token.
+ * Do not add a border/ring colour for these selectors in a
+ * page-specific footer stylesheet again - it will win the cascade
+ * (equal specificity, loaded later) and reintroduce the drift.
+ */
+.site-footer__logo,
+.experience-footer__badge,
+.our-story-footer__badge,
+.story-box-footer__badge,
+.blog-footer__badge,
+.events-footer__badge {
+  box-sizing: border-box;
+  border: 4px solid var(--elf-brown);
+  border-radius: 50%;
+}
+
 .site-footer__socials {
   display: flex;
   align-items: center;
-  gap: 20px;
 }
 
 .site-footer__socials a {
-  width: 38px;
-  height: 38px;
-
   display: grid;
   place-items: center;
 }
 
 .site-footer__socials img {
   display: block;
-  max-width: 36px;
-  max-height: 36px;
+}
+
+/*
+ * One consistent WhatsApp / Instagram / Facebook icon size and gap
+ * for every footer on the site (Home + Books use .site-footer
+ * above; every other page has its own footer component/stylesheet
+ * - experience-footer.css, our-story-footer.css, story-box-footer.css,
+ * blog-footer.css, events-footer.css). These used to each set their
+ * own width/height/gap - sometimes more than once, at different
+ * breakpoints - and drifted out of sync. Set once, here, at every
+ * width. Do not add width/height/gap for these selectors in a
+ * page-specific footer stylesheet again - it will win the cascade
+ * (equal specificity, loaded later) and reintroduce the drift.
+ */
+.site-footer__socials a,
+.experience-footer__socials a,
+.our-story-footer__socials a,
+.story-box-footer__socials a,
+.blog-footer__socials a,
+.events-footer__socials a {
+  width: 44px;
+  height: 44px;
+}
+
+.site-footer__socials img,
+.experience-footer__socials img,
+.our-story-footer__socials img,
+.story-box-footer__socials img,
+.blog-footer__socials img,
+.events-footer__socials img {
+  width: 100%;
+  height: 100%;
+}
+
+.site-footer__socials,
+.experience-footer__socials,
+.our-story-footer__socials,
+.story-box-footer__socials,
+.blog-footer__socials,
+.events-footer__socials {
+  gap: 20px;
 }
 
 .site-footer__phone {

@@ -14,6 +14,7 @@ import "./styles/sections/gallery.css";
 import "./styles/sections/about.css";
 import "./styles/sections/visit.css";
 import "./styles/sections/instagram.css";
+import "./styles/sections/growing-tree.css";
 
 import "./styles/components/footer.css";
 import "./styles/pages/books.css";

@@ -36,7 +36,7 @@
 
   display: block;
 
-  width: clamp(78px, 7.2vw, 126px);
+  width: var(--nav-logo-width);
 
   pointer-events: auto;
 }

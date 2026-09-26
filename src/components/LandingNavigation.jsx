@@ -14,6 +14,7 @@ import {
 import {
   LANDING_STATES,
   canvasVw,
+  runwayVhToState,
   STATE_RANGE,
   stateValues,
 } from "../sections/landingScrollStates.js";
@@ -75,7 +76,7 @@ function UpperTab({ style }) {
   );
 }
 
-function BottomStrip({ style }) {
+function BottomStrip({ style, onFindUs }) {
   return (
     <motion.div
       className="bottom-strip"
@@ -98,6 +99,7 @@ function BottomStrip({ style }) {
           className="bottom-strip__find"
           href="#find-us"
           aria-label="Find Us"
+          onClick={onFindUs}
         />
 
         <a
@@ -289,8 +291,40 @@ function MobileNavigation() {
 
 export default function LandingNavigation({
   canvasScale = 1,
+  geometry,
   progress,
 }) {
+  /*
+   * "Find Us" can't be a plain #find-us anchor: every staged
+   * section (About/Visit/Instagram/...) is position: absolute
+   * inside the same pinned .landing-intro__stage, so they all
+   * report the same on-screen rect regardless of scroll position -
+   * scrollIntoView on any of them is a no-op (see the existing
+   * /#gallery links for the same, pre-existing limitation). Compute
+   * the real scrollY for the Visit state instead, using the same
+   * runway math useLandingScrollTimeline.js derives progress from.
+   */
+  const handleFindUs = (event) => {
+    if (!geometry?.vh) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const targetY =
+      geometry.start +
+      runwayVhToState(
+        LANDING_STATES,
+        "Visit",
+      ) *
+        geometry.vh;
+
+    window.scrollTo({
+      top: targetY,
+      behavior: "smooth",
+    });
+  };
+
   const upperY = useTransform(
     progress,
     STATE_RANGE,
@@ -330,6 +364,7 @@ export default function LandingNavigation({
             x: stripX,
             y: stripY,
           }}
+          onFindUs={handleFindUs}
         />
       </div>
 

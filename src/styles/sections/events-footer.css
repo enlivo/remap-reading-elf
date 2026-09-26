@@ -161,15 +161,12 @@
 .events-footer__socials {
   display: flex;
   align-items: center;
-  gap: clamp(24px, 2.3vw, 46px);
   margin-top: clamp(18px, 2svh, 26px);
 }
 
 .events-footer__socials a {
   display: grid;
   place-items: center;
-  width: clamp(46px, 3.2vw, 68px);
-  height: clamp(46px, 3.2vw, 68px);
 }
 
 .events-footer__socials img {
@@ -372,11 +369,6 @@
     font-size: clamp(16px, 2.2vw, 20px);
   }
 
-  .events-footer__socials a {
-    width: 48px;
-    height: 48px;
-  }
-
   .events-footer__phone {
     font-size: 16px;
   }
@@ -472,15 +464,6 @@
   .events-footer__about > p,
   .events-footer__links {
     font-size: 17px;
-  }
-
-  .events-footer__socials {
-    gap: 20px;
-  }
-
-  .events-footer__socials a {
-    width: 48px;
-    height: 48px;
   }
 
   .events-footer__legal {

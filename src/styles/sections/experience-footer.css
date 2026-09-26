@@ -135,15 +135,12 @@
 .experience-footer__socials {
   display: flex;
   align-items: center;
-  gap: clamp(24px, 2.3vw, 46px);
   margin-top: clamp(18px, 2svh, 26px);
 }
 
 .experience-footer__socials a {
   display: grid;
   place-items: center;
-  width: clamp(46px, 3.2vw, 68px);
-  height: clamp(46px, 3.2vw, 68px);
 }
 
 .experience-footer__socials img {
@@ -302,11 +299,6 @@
     font-size: clamp(16px, 2.2vw, 20px);
   }
 
-  .experience-footer__socials a {
-    width: 48px;
-    height: 48px;
-  }
-
   .experience-footer__phone {
     min-height: 44px;
     font-size: 16px;
@@ -388,15 +380,6 @@
   .experience-footer__about > p,
   .experience-footer__links {
     font-size: 17px;
-  }
-
-  .experience-footer__socials {
-    gap: 20px;
-  }
-
-  .experience-footer__socials a {
-    width: 48px;
-    height: 48px;
   }
 
   .experience-footer__legal {

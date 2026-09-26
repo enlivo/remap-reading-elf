@@ -148,15 +148,12 @@
 
   .blog-footer__socials {
     display: flex;
-    gap: 20px;
     margin-top: 16px;
   }
 
   .blog-footer__socials a {
     display: grid;
     place-items: center;
-    width: 48px;
-    height: 48px;
   }
 
   .blog-footer__socials img,

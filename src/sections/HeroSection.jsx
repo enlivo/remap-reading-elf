@@ -5,7 +5,6 @@ import {
 } from "motion/react";
 
 import heroIllustration from "../../assets/images/hero-illustration.jpg";
-import eventNews from "../../design-assets/Website/Landing Page/Event News.png";
 import monthlyBest from "../../design-assets/Website/Landing Page/Monthly Best Quick Link.png";
 
 import usePhoneLandingViewport from "./usePhoneLandingViewport.js";
@@ -289,22 +288,6 @@ export default function HeroSection({
         alt=""
         aria-hidden="true"
       />
-
-      <motion.a
-        href="/events"
-        className="landing-hero__event"
-        style={{
-          opacity:
-            promotionOpacity,
-          visibility:
-            promotionVisibility,
-        }}
-      >
-        <img
-          src={eventNews}
-          alt="Event News"
-        />
-      </motion.a>
 
       <motion.h1
         className="landing-hero__headline"
