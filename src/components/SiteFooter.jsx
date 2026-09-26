@@ -1,7 +1,7 @@
-import logo from "../../assets/images/logo.webp";
+import logoBadge from "../../assets/images/books-page/logo-badge.png";
 import treeLantern from "../../assets/images/footer-branch-lantern.png";
-import booksLogoBadge from "../../assets/images/books-page/logo-badge.png";
 import booksLeaf from "../../assets/images/books-page/deco-leaf-sprig.png";
+import blogFooterLeaf from "../../design-assets/Website/Common Through Out/Leaf.png";
 import instagram from "../../assets/images/instagram.svg";
 import facebook from "../../assets/images/facebook.svg";
 import whatsapp from "../../assets/images/whatsapp.png";
@@ -12,11 +12,6 @@ export default function SiteFooter({
 }) {
   const isBooks =
     variant === "books";
-
-  const footerLogo =
-    isBooks
-      ? booksLogoBadge
-      : logo;
 
   const footerLeaf = booksLeaf;
 
@@ -35,19 +30,23 @@ export default function SiteFooter({
         aria-hidden="true"
       />
 
-      <img
-        className="site-footer__leaf site-footer__leaf--one"
-        src={footerLeaf}
-        alt=""
-        aria-hidden="true"
-      />
+      {!isBooks && (
+        <>
+          <img
+            className="site-footer__leaf site-footer__leaf--one"
+            src={footerLeaf}
+            alt=""
+            aria-hidden="true"
+          />
 
-      <img
-        className="site-footer__leaf site-footer__leaf--two"
-        src={footerLeaf}
-        alt=""
-        aria-hidden="true"
-      />
+          <img
+            className="site-footer__leaf site-footer__leaf--two"
+            src={footerLeaf}
+            alt=""
+            aria-hidden="true"
+          />
+        </>
+      )}
 
       <div className="site-footer__content">
         <section className="site-footer__about">
@@ -70,7 +69,7 @@ export default function SiteFooter({
 
           <div className="site-footer__socials">
             <a
-              href="https://www.instagram.com/thereadingelf_hub/"
+              href="https://www.instagram.com/the_reading_elf?stkn=MWc3b3V0aTdnNHg4eg=="
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -119,11 +118,33 @@ export default function SiteFooter({
           </a>
         </section>
 
-        <img
-          className="site-footer__logo"
-          src={footerLogo}
-          alt="The Reading Elf"
-        />
+        {isBooks ? (
+          <div className="site-footer__badge-composition">
+            <img
+              className="site-footer__badge-leaf site-footer__badge-leaf--left"
+              src={blogFooterLeaf}
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              className="site-footer__badge-leaf site-footer__badge-leaf--right"
+              src={blogFooterLeaf}
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              className="site-footer__logo"
+              src={logoBadge}
+              alt="The Reading Elf"
+            />
+          </div>
+        ) : (
+          <img
+            className="site-footer__logo"
+            src={logoBadge}
+            alt="The Reading Elf"
+          />
+        )}
 
         <nav
           className="site-footer__links"

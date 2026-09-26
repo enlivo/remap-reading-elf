@@ -1011,10 +1011,52 @@ button[aria-pressed="true"] {
 
   width: 100vw;
 
-  pointer-events: auto;
+  pointer-events: none;
 
   will-change:
     transform;
+}
+
+.books-navigation__strip-hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.books-navigation__strip-hotspot {
+  position: absolute;
+  top: 36%;
+  height: 42%;
+  border-radius: 999px;
+  pointer-events: auto;
+}
+
+.books-navigation__strip-hotspot:focus-visible {
+  outline: 3px solid #805436;
+  outline-offset: 3px;
+}
+
+.books-navigation__strip-hotspot--adhruth {
+  left: 4.9%;
+  width: 10.5%;
+}
+
+.books-navigation__strip-hotspot--shweta {
+  left: 17.2%;
+  width: 10.6%;
+}
+
+.books-navigation__strip-hotspot--sunaina {
+  left: 30.2%;
+  width: 10.5%;
+}
+
+.books-navigation__strip-hotspot--home {
+  top: 0;
+  left: 46.3%;
+  width: 10.2%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .books-navigation__strip img {
@@ -3398,33 +3440,44 @@ button {
 }
 
 
-/* Circular center badge */
+/* Blog-style badge and leaf composition, centered independently of the columns. */
+
+.site-footer--books
+.site-footer__badge-composition {
+  position: absolute;
+  top:
+    clamp(
+      -14px,
+      -0.8vw,
+      -8px
+    );
+  left: 50%;
+  z-index: 5;
+
+  width: 0;
+  height: 0;
+}
+
 
 .site-footer--books
 .site-footer__logo {
-  position: relative;
+  position: absolute;
 
-  z-index: 5;
+  top: 0;
+  left: 0;
 
-  align-self: start;
+  z-index: 2;
 
   width:
     clamp(
-      210px,
-      18.5vw,
-      270px
+      244px,
+      18.75vw,
+      266px
     );
 
   max-width: none;
 
-  margin-top:
-    clamp(
-      -88px,
-      -6vw,
-      -58px
-    );
-
-  justify-self: center;
+  transform: translate(-50%, -50%);
 
   filter:
     drop-shadow(
@@ -3441,73 +3494,51 @@ button {
 }
 
 
-/* Small leafy sprigs extending out from center badge */
-
 .site-footer--books
-.site-footer__leaf {
-  z-index: 3;
+.site-footer__badge-leaf {
+  position: absolute;
+
+  top: 0;
+
+  z-index: 1;
 
   width:
     clamp(
-      118px,
-      11vw,
-      170px
+      112px,
+      8.8vw,
+      128px
     );
+
+  height: auto;
+  max-width: none;
 
   pointer-events: none;
 }
 
 
 .site-footer--books
-.site-footer__leaf--one {
-  top:
+.site-footer__badge-leaf--left {
+  right:
     clamp(
-      7px,
-      1vw,
-      16px
+      124px,
+      9.5vw,
+      136px
     );
 
-  left:
-    calc(
-      50%
-      -
-      clamp(
-        255px,
-        20vw,
-        310px
-      )
-    );
-
-  transform:
-    rotate(14deg);
+  transform: translateY(-50%) rotate(-90deg);
 }
 
 
 .site-footer--books
-.site-footer__leaf--two {
-  top:
-    clamp(
-      8px,
-      1vw,
-      18px
-    );
-
-  bottom: auto;
-
+.site-footer__badge-leaf--right {
   left:
-    calc(
-      50%
-      +
-      clamp(
-        105px,
-        8.5vw,
-        135px
-      )
+    clamp(
+      124px,
+      9.5vw,
+      136px
     );
 
-  transform:
-    scaleX(-1)
-    rotate(14deg);
+  transform: translateY(-50%) scaleX(-1) rotate(-90deg);
 }
 
 
@@ -3677,8 +3708,10 @@ button {
   }
 
   .site-footer--books
-  .site-footer__logo {
-    margin-top: 0;
+  .site-footer__badge-composition {
+    position: relative;
+    top: auto;
+    left: auto;
   }
 
   .site-footer--books

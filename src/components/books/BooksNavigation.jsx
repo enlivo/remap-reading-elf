@@ -312,19 +312,44 @@ export default function BooksNavigation({
         </div>
       </nav>
 
-      <motion.a
+      <motion.div
         className="books-navigation__strip"
-        href="/"
-        aria-label="The Reading Elf home"
         style={{
           y: stripY,
         }}
       >
         <img
           src={stripLogo}
-          alt="The Reading Elf"
+          alt=""
+          aria-hidden="true"
         />
-      </motion.a>
+
+        <nav
+          className="books-navigation__strip-hotspots"
+          aria-label="Reading picks"
+        >
+          <a
+            className="books-navigation__strip-hotspot books-navigation__strip-hotspot--adhruth"
+            href="/our-story#adhruth-picks"
+            aria-label="Adhruth's Picks"
+          />
+          <a
+            className="books-navigation__strip-hotspot books-navigation__strip-hotspot--shweta"
+            href="/our-story#shweta-picks"
+            aria-label="Shweta's Picks"
+          />
+          <a
+            className="books-navigation__strip-hotspot books-navigation__strip-hotspot--sunaina"
+            href="/our-story#sunaina-picks"
+            aria-label="Sunaina's Picks"
+          />
+          <a
+            className="books-navigation__strip-hotspot books-navigation__strip-hotspot--home"
+            href="#top"
+            aria-label="The Reading Elf, back to page top"
+          />
+        </nav>
+      </motion.div>
 
       <BooksMobileNavigation />
     </div>

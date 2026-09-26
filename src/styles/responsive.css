@@ -103,9 +103,9 @@
     display: none;
   }
 
-  .instagram-section__placeholder {
+  .instagram-section__embed {
     width: 90%;
-    height: 190px;
+    height: min(620px, 72svh);
   }
 
   .site-footer {
@@ -125,7 +125,7 @@
 
   .site-footer__logo {
     grid-row: 1;
-    width: 190px;
+    width: 168px;
   }
 
   .site-footer__socials {
@@ -1042,14 +1042,14 @@
 
   .landing-intro__instagram
     .instagram-section--staged
-    .instagram-section__placeholder {
+    .instagram-section__embed {
     position: absolute;
 
-    top: 28svh;
+    top: 24svh;
     left: 5%;
 
     width: 90%;
-    height: 35svh;
+    height: 56svh;
 
     margin: 0;
 

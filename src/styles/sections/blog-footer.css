@@ -8,6 +8,10 @@
   display: none;
 }
 
+.blog-footer__leaf {
+  display: none;
+}
+
 .blog-footer__quick-links {
   position: absolute;
   right: 4.3%;
@@ -30,6 +34,27 @@
   z-index: 2;
   width: 13%;
   height: 4%;
+}
+
+@media (min-width: 901px) {
+  .blog-post-page--footer-visible .blog-post-page__chrome {
+    visibility: hidden;
+  }
+
+  .blog-footer--standalone {
+    z-index: 201;
+    height: auto;
+    overflow: clip;
+  }
+
+  .blog-footer--standalone .blog-footer__canvas {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    transform: none;
+  }
 }
 
 .blog-footer__quick-links a:focus-visible,
@@ -115,6 +140,26 @@
     width: clamp(154px, 43vw, 205px);
     height: auto;
     transform: translateX(-50%);
+  }
+
+  .blog-footer__leaf {
+    position: absolute;
+    top: 240px;
+    z-index: 3;
+    display: block;
+    width: clamp(70px, 18vw, 96px);
+    height: auto;
+    pointer-events: none;
+  }
+
+  .blog-footer__leaf--left {
+    right: calc(50% + clamp(53px, 14vw, 72px));
+    transform: scaleX(-1) rotate(-4deg);
+  }
+
+  .blog-footer__leaf--right {
+    left: calc(50% + clamp(53px, 14vw, 72px));
+    transform: rotate(-4deg);
   }
 
   .blog-footer__about,

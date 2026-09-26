@@ -41,7 +41,7 @@
 .story-box-reading-personality__inner {
   position: relative;
 
-  width: min(82.5vw, 1584px);
+  width: min(72.5vw, 1392px);
 
   margin: 0 auto;
 }
@@ -104,9 +104,9 @@
 
   min-height:
     clamp(
-      650px,
-      58vw,
-      930px
+      620px,
+      50.5vw,
+      820px
     );
 
   overflow: hidden;

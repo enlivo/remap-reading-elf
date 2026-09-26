@@ -13,10 +13,8 @@
 }
 
 /*
- * The link wraps h2 + placeholder but stays display: contents, so
- * it takes no box of its own and doesn't disturb their existing
- * position/margin rules below (they lay out exactly as if they
- * were still direct children of .instagram-section).
+ * The heading remains the existing profile link while the native
+ * Instagram profile embed occupies the former placeholder panel.
  */
 /*
  * .landing-intro__instagram (the staged ancestor - see hero.css)
@@ -67,27 +65,59 @@
   pointer-events: auto;
 }
 
-.instagram-section__placeholder {
+.instagram-section__embed {
   position: relative;
   z-index: 2;
 
   width: min(
-    70%,
-    760px
+    92%,
+    920px
   );
-
-  height: 270px;
+  height: min(480px, 50svh);
 
   margin:
     clamp(35px, 4vw, 70px)
     auto
     0;
 
-  background: #d9d9d9;
+  overflow: hidden;
+
+  border: 1px solid #dbdbdb;
+  border-radius: 14px;
+
+  background: #fff;
+
+  box-shadow: 0 16px 36px rgba(80, 50, 30, 0.12);
 
   cursor: pointer;
 
   pointer-events: auto;
+}
+
+.instagram-section__embed iframe {
+  display: block;
+  width: 100%;
+  height: calc(100% - 48px);
+  border: 0;
+  background: #fff;
+}
+
+.instagram-section__profile-link {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  padding: 8px 20px;
+  color: #70412d;
+  background: #fff3df;
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.instagram-section__profile-link:focus-visible {
+  outline: 3px solid #c7432e;
+  outline-offset: -5px;
 }
 
 .instagram-section__blob {
@@ -177,16 +207,16 @@
     pointer-events: var(--instagram-link-pointer-events, auto);
   }
 
-  .instagram-section--staged .instagram-section__placeholder {
+  .instagram-section--staged .instagram-section__embed {
     position: absolute;
 
-    top: 11.25vw;
-    left: 15vw;
+    top: 9.75vw;
+    left: 18vw;
 
     z-index: 2;
 
-    width: 70vw;
-    height: 19vw;
+    width: 64vw;
+    height: min(30vw, 49svh);
 
     margin: 0;
 
@@ -227,5 +257,16 @@
 @media (max-width: 900px) {
   .instagram-section--staged {
     display: none;
+  }
+
+  .instagram-section--mobile-fallback {
+    min-height: 0;
+    padding: 64px 18px 52px;
+  }
+
+  .instagram-section__embed {
+    width: min(100%, 540px);
+    height: min(620px, 72svh);
+    margin-top: 34px;
   }
 }

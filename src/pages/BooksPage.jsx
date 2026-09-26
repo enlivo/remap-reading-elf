@@ -19,7 +19,7 @@ export default function BooksPage() {
 
   return (
     <>
-      <main className="books-page">
+      <main id="top" className="books-page">
       <BooksHeroScene
         activeFilter={activeFilter}
         onFilterChange={

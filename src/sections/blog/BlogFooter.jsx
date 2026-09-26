@@ -1,5 +1,8 @@
+import { useEffect, useRef } from "react";
+
 import footerArtwork from "../../../design-assets/Website/blog/blog-footer.png";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
+import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
 import facebookIcon from "../../../design-assets/Website/Common Through Out/Socials/Facebook.png";
 import instagramIcon from "../../../design-assets/Website/Common Through Out/Socials/Instagram.png";
@@ -7,7 +10,7 @@ import whatsappIcon from "../../../design-assets/Website/Common Through Out/Soci
 import phoneIcon from "../../../design-assets/Website/Common Through Out/Phone No.png";
 
 const socialLinks = [
-  ["Instagram", "https://www.instagram.com/thereadingelf_hub/", instagramIcon],
+  ["Instagram", "https://www.instagram.com/the_reading_elf?stkn=MWc3b3V0aTdnNHg4eg==", instagramIcon],
   ["Facebook", "https://www.facebook.com/people/The-Reading-Elf-Hub/61583765232952/", facebookIcon],
   ["WhatsApp", "https://wa.me/919500056482", whatsappIcon],
 ];
@@ -20,9 +23,35 @@ const quickLinks = [
   ["Events", "/events"],
 ];
 
-export default function BlogFooter() {
+export default function BlogFooter({ standalone = false }) {
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const footer = footerRef.current;
+    const page = footer?.closest(".blog-post-page");
+
+    if (!standalone || !footer || !page) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      page.classList.toggle("blog-post-page--footer-visible", entry.isIntersecting);
+    });
+
+    observer.observe(footer);
+
+    return () => {
+      observer.disconnect();
+      page.classList.remove("blog-post-page--footer-visible");
+    };
+  }, [standalone]);
+
   return (
-    <div className="blog-footer" aria-label="The Reading Elf footer">
+    <div
+      ref={footerRef}
+      className={standalone ? "blog-footer blog-footer--standalone" : "blog-footer"}
+      aria-label="The Reading Elf footer"
+    >
       <div className="blog-state__canvas blog-footer__canvas blog-footer__desktop">
         <img
           className="blog-state__artwork"
@@ -51,6 +80,18 @@ export default function BlogFooter() {
           <p>Thoraipakkam, <strong>Chennai</strong></p>
         </div>
         <img className="blog-footer__branch" src={branchLantern} alt="" />
+        <img
+          className="blog-footer__leaf blog-footer__leaf--left"
+          src={leafSprig}
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          className="blog-footer__leaf blog-footer__leaf--right"
+          src={leafSprig}
+          alt=""
+          aria-hidden="true"
+        />
         <img className="blog-footer__badge" src={logoBadge} alt="The Reading Elf" />
 
         <section className="blog-footer__about">

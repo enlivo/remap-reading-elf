@@ -2,14 +2,14 @@ import { motion } from "motion/react";
 
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
-import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
+import leafSprig from "../../../design-assets/Website/Common Through Out/Leaf.png";
 import facebookIcon from "../../../design-assets/Website/Common Through Out/Socials/Facebook.png";
 import instagramIcon from "../../../design-assets/Website/Common Through Out/Socials/Instagram.png";
 import whatsappIcon from "../../../design-assets/Website/Common Through Out/Socials/Whatsapp.png";
 import phoneIcon from "../../../design-assets/Website/Common Through Out/Phone No.png";
 
 const socialLinks = [
-  ["Instagram", "https://www.instagram.com/thereadingelf_hub/", instagramIcon],
+  ["Instagram", "https://www.instagram.com/the_reading_elf?stkn=MWc3b3V0aTdnNHg4eg==", instagramIcon],
   ["Facebook", "https://www.facebook.com/people/The-Reading-Elf-Hub/61583765232952/", facebookIcon],
   ["WhatsApp", "https://wa.me/919500056482", whatsappIcon],
 ];

@@ -10,7 +10,6 @@ import EventsNavigation from "../../components/events/EventsNavigation.jsx";
 import EventsFooter from "./EventsFooter.jsx";
 
 import stripLogo from "../../../assets/images/events-page/strip-logo.png";
-import eventPanel from "../../../design-assets/Website/Events/Salt of Freedom.webp";
 
 import greenBurst from "../../../design-assets/Website/Events/Elements of Events/2.png";
 import peachBurst from "../../../design-assets/Website/Events/Elements of Events/1.png";
@@ -99,24 +98,14 @@ export default function EventsStage() {
           </div>
 
           <header className="events-main__intro">
-            <h1>
-              Stories don’t just
-              <br />
-              live on shelves here.
-            </h1>
+            <h1>Coming Soon</h1>
 
             <p>
-              Workshops, author sessions, and one-day experiences.
-              Something to look forward to, always.
+              Our previous events have wrapped up.
+              <br />
+              New events are on the way.
             </p>
           </header>
-
-          <article className="events-main__card">
-            <img
-              src={eventPanel}
-              alt="Salt of Freedom by Divya Ravi. A joyful experience designed to let young minds create, feel, explore and take home their own masterpiece. 29 August, 5 PM, ages 5 to 10, Rs. 950."
-            />
-          </article>
         </motion.section>
 
         <motion.section

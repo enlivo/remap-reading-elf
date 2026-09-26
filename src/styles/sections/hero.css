@@ -11,7 +11,7 @@
 
   overflow: hidden;
 
-  background: #ffffff;
+  background: var(--elf-sky);
 }
 
 .landing-intro__canvas {

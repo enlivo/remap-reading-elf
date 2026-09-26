@@ -59,8 +59,7 @@
 
 .events-navigation__logo img,
 .events-navigation__tab > img,
-.events-main__strip > img,
-.events-main__card > img {
+.events-main__strip > img {
   display: block;
   width: 100%;
   height: auto;
@@ -106,7 +105,7 @@
 
 .events-main__intro {
   position: absolute;
-  top: 27.4svh;
+  top: 36svh;
   left: 50%;
   z-index: 30;
   width: min(72vw, 1380px);
@@ -118,33 +117,18 @@
   margin: 0;
   color: #fac64f;
   font-family: "Kind Bond", Georgia, serif;
-  font-size: clamp(43px, 3.55vw, 70px);
+  font-size: clamp(72px, 7vw, 134px);
   font-weight: 400;
   line-height: 0.98;
 }
 
 .events-main__intro p {
-  margin: clamp(9px, 1svh, 15px) 0 0;
+  margin: clamp(18px, 2.2svh, 28px) 0 0;
   color: #f3e8d0;
   font-family: "Nunito", Arial, sans-serif;
-  font-size: clamp(14px, 1vw, 19px);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.events-main__card {
-  position: absolute;
-  top: 43.7svh;
-  left: 50%;
-  z-index: 25;
-  width: min(68.5vw, 1315px);
-  transform: translateX(-50%);
-}
-
-.events-main__card > img {
-  filter: drop-shadow(
-    0 16px 28px rgba(48, 24, 15, 0.16)
-  );
+  font-size: clamp(18px, 1.35vw, 25px);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .events-main__decorations {
@@ -205,7 +189,7 @@
   }
 
   .events-main-screen {
-    min-height: 100svh;
+    min-height: clamp(520px, 72svh, 660px);
     padding: 128px 0 72px;
   }
 
@@ -243,27 +227,18 @@
     top: auto;
     left: auto;
     width: min(88vw, 720px);
-    margin: 34px auto 0;
+    margin: 52px auto 0;
     transform: none;
   }
 
   .events-main__intro h1 {
-    font-size: clamp(44px, 7.5vw, 66px);
+    font-size: clamp(64px, 10vw, 88px);
   }
 
   .events-main__intro p {
     width: min(82vw, 640px);
-    margin: 18px auto 0;
+    margin: 24px auto 0;
     font-size: clamp(17px, 2.5vw, 21px);
-  }
-
-  .events-main__card {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: min(92vw, 820px);
-    margin: 38px auto 0;
-    transform: none;
   }
 
   .events-main__burst--green {
@@ -298,11 +273,11 @@
 
   .events-main__intro {
     width: 90vw;
-    margin-top: 38px;
+    margin-top: 46px;
   }
 
   .events-main__intro h1 {
-    font-size: clamp(39px, 11vw, 52px);
+    font-size: clamp(58px, 17vw, 72px);
     line-height: 0.98;
   }
 
@@ -310,11 +285,6 @@
     width: 88vw;
     font-size: 16px;
     line-height: 1.42;
-  }
-
-  .events-main__card {
-    width: 94vw;
-    margin-top: 30px;
   }
 
   .events-main__burst--green {

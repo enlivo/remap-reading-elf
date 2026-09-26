@@ -20,6 +20,12 @@ import wednesdayBrownBurst from "../../../design-assets/Website/Experience/Eleme
 import redBurstRight from "../../../design-assets/Website/Experience/Elements of Experience/6.png";
 import foliage from "../../../assets/images/footer-leaf-sprig.png";
 
+const whatsappWaitlistUrl = (experience) => (
+  `https://wa.me/919500056482?text=${encodeURIComponent(
+    `Hi The Reading Elf, I'd like to join the waitlist for ${experience}.`,
+  )}`
+);
+
 export default function ExperienceStage() {
   const sceneRef = useRef(null);
   const [wednesdayExited, setWednesdayExited] = useState(false);
@@ -99,6 +105,15 @@ export default function ExperienceStage() {
             src={wednesdayPanel}
             alt="The Wednesday Returns, a reading club for mothers at The Reading Elf in Thoraipakkam."
           />
+          <a
+            className="experience-card__waitlist"
+            href={whatsappWaitlistUrl("The Wednesday Returns")}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Join the waitlist for The Wednesday Returns on WhatsApp"
+          >
+            Join the Waitlist
+          </a>
           <div className="experience-card__mobile-decor experience-card__mobile-decor--wednesday" aria-hidden="true">
             <img src={redBurstLeft} alt="" />
             <img src={wednesdayBrownBurst} alt="" />
@@ -133,6 +148,15 @@ export default function ExperienceStage() {
             src={parentPanel}
             alt="Parent Child Experience, a weekly story-together session for ages two to six."
           />
+          <a
+            className="experience-card__waitlist"
+            href={whatsappWaitlistUrl("the Parent Child Experience")}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Join the waitlist for the Parent Child Experience on WhatsApp"
+          >
+            Join the Waitlist
+          </a>
           <div className="experience-card__mobile-decor experience-card__mobile-decor--parent" aria-hidden="true">
             <img src={creamBurst} alt="" />
             <img src={redBurstRight} alt="" />
@@ -163,6 +187,15 @@ export default function ExperienceStage() {
             src={storyPanel}
             alt="Story Keepers, a Saturday reading club for children ages six to fourteen."
           />
+          <a
+            className="experience-card__waitlist"
+            href={whatsappWaitlistUrl("Story Keepers")}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Join the waitlist for Story Keepers on WhatsApp"
+          >
+            Join the Waitlist
+          </a>
           <div className="experience-card__mobile-decor experience-card__mobile-decor--story" aria-hidden="true">
             <img src={redBurstLeft} alt="" />
             <img src={creamBurst} alt="" />

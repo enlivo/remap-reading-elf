@@ -152,6 +152,55 @@
   filter: drop-shadow(0 18px 30px rgba(19, 47, 34, 0.22));
 }
 
+.experience-card__waitlist {
+  position: absolute;
+  right: 6%;
+  bottom: 3%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px clamp(18px, 1.45vw, 28px);
+  border: 2px solid rgba(255, 243, 223, 0.9);
+  border-radius: 999px;
+  color: #fff3df;
+  background: #2f6b4f;
+  box-shadow: 0 8px 20px rgba(19, 47, 34, 0.24);
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: clamp(14px, 1.05vw, 19px);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.experience-card--wednesday .experience-card__waitlist {
+  right: 5.8%;
+  bottom: 3.2%;
+}
+
+.experience-card--parent .experience-card__waitlist {
+  right: 5.6%;
+  bottom: 3.1%;
+}
+
+.experience-card--story .experience-card__waitlist {
+  right: 5.9%;
+  bottom: 3.2%;
+}
+
+.experience-card__waitlist:hover {
+  background: #255c41;
+  box-shadow: 0 10px 24px rgba(19, 47, 34, 0.32);
+  transform: translateY(-2px);
+}
+
+.experience-card__waitlist:focus-visible {
+  outline: 3px solid #f6c35b;
+  outline-offset: 3px;
+}
+
 .experience-card__mobile-decor {
   display: none;
 }
@@ -358,6 +407,21 @@
     margin: 0 auto;
   }
 
+  .experience-card__waitlist {
+    right: 4.5%;
+    bottom: 3%;
+    min-height: 44px;
+    padding: 9px clamp(14px, 2.4vw, 22px);
+    font-size: clamp(13px, 2vw, 16px);
+  }
+
+  .experience-card--wednesday .experience-card__waitlist,
+  .experience-card--parent .experience-card__waitlist,
+  .experience-card--story .experience-card__waitlist {
+    right: 4.5%;
+    bottom: 3%;
+  }
+
   .experience-decorations {
     display: none;
   }
@@ -458,6 +522,16 @@
 
   .experience-card {
     width: 95vw;
+  }
+
+  .experience-card__waitlist,
+  .experience-card--wednesday .experience-card__waitlist,
+  .experience-card--parent .experience-card__waitlist,
+  .experience-card--story .experience-card__waitlist {
+    right: 4%;
+    bottom: 3.5%;
+    padding-inline: 13px;
+    font-size: 13px;
   }
 
   .experience-mobile-navigation .mobile-menu-panel {

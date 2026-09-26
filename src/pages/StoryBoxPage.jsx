@@ -7,7 +7,7 @@ import StoryBoxFooter from "../sections/story-box/StoryBoxFooter.jsx";
 
 export default function StoryBoxPage() {
   return (
-    <div className="story-box-page">
+    <div id="top" className="story-box-page">
       <StoryBoxNavigation />
 
       <main>

@@ -199,7 +199,7 @@ export default function OurStoryStage() {
     <>
       <OurStoryNavigation />
       <div className="our-story-strip">
-        <a className="our-story-strip__link" href="/" aria-label="The Reading Elf home">
+        <a className="our-story-strip__link" href="#top" aria-label="The Reading Elf, back to page top">
           <img src={stripLogo} alt="The Reading Elf" />
         </a>
       </div>

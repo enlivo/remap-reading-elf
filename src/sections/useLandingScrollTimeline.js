@@ -56,7 +56,7 @@ export default function useLandingScrollTimeline(
         0;
 
       const desktopScale =
-        Math.max(
+        Math.min(
           1,
           window.innerHeight /
             (
@@ -67,7 +67,8 @@ export default function useLandingScrollTimeline(
         );
 
       /*
-       * Desktop scales its 16:9 design canvas when required.
+       * Desktop contains its 16:9 foreground canvas when a wide,
+       * short viewport cannot accommodate the width-derived height.
        *
        * Phone must NOT scale the whole composition. Doing so
        * makes a tall viewport widen the 100vw canvas and clips

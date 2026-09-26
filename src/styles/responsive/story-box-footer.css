@@ -2,15 +2,14 @@
   .story-box-footer {
     height: auto;
     min-height: 560px;
-    padding: 52px clamp(28px, 7vw, 68px) 30px;
+    padding: 275px clamp(28px, 7vw, 68px) 30px;
     overflow: hidden;
     background: #2f6b4f;
   }
 
   .story-box-footer::before,
   .story-box-footer__green-field,
-  .story-box-footer__branch,
-  .story-box-footer__badge {
+  .story-box-footer__branch {
     display: none;
   }
 
@@ -89,7 +88,12 @@
 @media (max-width: 599px) {
   .story-box-footer {
     min-height: 89.806vw;
-    padding: 7.039vw 4.612vw 3.8vw;
+    padding: 240px 4.612vw 3.8vw;
+  }
+
+  .story-box-footer__badge {
+    top: 54px;
+    width: 168px;
   }
 
   .story-box-footer__intro {

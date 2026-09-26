@@ -217,12 +217,24 @@
     text-align: left;
   }
 
-  .site-footer--books .site-footer__logo {
+  .site-footer--books .site-footer__badge-composition {
+    position: relative;
+    top: auto;
+    left: auto;
     grid-row: 1;
     grid-column: 1 / -1;
-    width: 210px;
-    margin: -154px auto 8px;
+    width: 168px;
+    height: 168px;
+    margin: 0 auto 8px;
     justify-self: center;
+  }
+
+  .site-footer--books .site-footer__logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 168px;
+    transform: none;
   }
 
   .site-footer--books .site-footer__about {
@@ -259,7 +271,7 @@
     opacity: 0.7;
   }
 
-  .site-footer--books .site-footer__leaf {
+  .site-footer--books .site-footer__badge-leaf {
     display: none;
   }
 
@@ -516,11 +528,12 @@
     text-align: center;
   }
 
-  .site-footer--books .site-footer__logo {
+  .site-footer--books .site-footer__badge-composition {
     grid-row: 1;
     grid-column: 1;
-    width: clamp(170px, 46vw, 205px);
-    margin: -148px auto 8px;
+    width: 168px;
+    height: 168px;
+    margin: 0 auto 8px;
   }
 
   .site-footer--books .site-footer__about {

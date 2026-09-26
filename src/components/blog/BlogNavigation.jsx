@@ -44,8 +44,8 @@ export default function BlogNavigation({ chromeOpacity }) {
       <motion.a
         className="blog-navigation__strip"
         style={{ opacity: chromeOpacity }}
-        href="/"
-        aria-label="The Reading Elf home"
+        href="#top"
+        aria-label="The Reading Elf, back to page top"
       >
         <img src={stripLogo} alt="The Reading Elf" />
       </motion.a>

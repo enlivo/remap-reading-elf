@@ -91,8 +91,8 @@ function BottomStrip({ style, onFindUs }) {
       <div className="bottom-strip__hotspots">
         <a
           className="bottom-strip__logo"
-          href="/"
-          aria-label="The Reading Elf home"
+          href="#top"
+          aria-label="The Reading Elf, back to page top"
         />
 
         <a
@@ -311,11 +311,21 @@ export default function LandingNavigation({
 
     event.preventDefault();
 
+    /*
+     * Stop just before the Visit -> Instagram handoff.
+     *
+     * At the exact Visit endpoint (progress 6), Instagram's
+     * lead panel begins entering. Roughly 5vh before that point,
+     * Visit's map, surface, and content are already fully resolved
+     * while Instagram has not started appearing yet.
+     */
     const targetY =
       geometry.start +
-      runwayVhToState(
-        LANDING_STATES,
-        "Visit",
+      (
+        runwayVhToState(
+          LANDING_STATES,
+          "Visit",
+        ) - 5
       ) *
         geometry.vh;
 

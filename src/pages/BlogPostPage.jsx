@@ -1,5 +1,5 @@
 import BlogNavigation from "../components/blog/BlogNavigation.jsx";
-import OurStoryFooter from "../sections/our-story/OurStoryFooter.jsx";
+import BlogFooter from "../sections/blog/BlogFooter.jsx";
 
 import screenTimePhoto from "../../assets/images/blog-page/blog-post-photo-screentime.png";
 import moorsPhotoOne from "../../assets/images/blog-page/blog-post-moors-1.png";
@@ -9,7 +9,7 @@ export const READING_VS_SCREEN_TIME_PATH = "/blog/reading-vs-screen-time";
 
 export default function BlogPostPage() {
   return (
-    <main className="blog-post-page">
+    <main id="top" className="blog-post-page">
       <div className="blog-post-page__chrome">
         <BlogNavigation chromeOpacity={1} />
       </div>
@@ -187,7 +187,7 @@ export default function BlogPostPage() {
         </p>
       </article>
 
-      <OurStoryFooter />
+      <BlogFooter standalone />
     </main>
   );
 }

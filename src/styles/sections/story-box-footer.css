@@ -73,19 +73,19 @@
 
 .story-box-footer__badge {
   position: absolute;
-  top: 11.018519%;
-  left: 36.71875%;
+  top: 26%;
+  left: 50%;
 
   z-index: 4;
 
   display: block;
 
-  width: 26.354167%;
-  height: 44.226852%;
+  width: clamp(244px, 18.75vw, 266px);
+  height: auto;
 
   max-width: none;
 
-  object-fit: fill;
+  transform: translateX(-50%);
 
   pointer-events: none;
   user-select: none;
@@ -93,22 +93,23 @@
 
 .story-box-footer__leaf {
   position: absolute;
-  top: 33.1%;
+  top: 42.8%;
   z-index: 4;
   display: block;
-  width: clamp(110px, 9vw, 170px);
+  width: clamp(112px, 8.8vw, 128px);
   height: auto;
+  max-width: none;
   pointer-events: none;
 }
 
 .story-box-footer__leaf--left {
-  right: calc(50% + 10.5vw);
-  transform: scaleX(-1) rotate(-4deg);
+  right: calc(50% + clamp(124px, 9.5vw, 136px));
+  transform: translateY(-50%) rotate(-90deg);
 }
 
 .story-box-footer__leaf--right {
-  left: calc(50% + 10.5vw);
-  transform: rotate(-4deg);
+  left: calc(50% + clamp(124px, 9.5vw, 136px));
+  transform: translateY(-50%) scaleX(-1) rotate(-90deg);
 }
 
 .story-box-footer__intro {
@@ -351,8 +352,8 @@
     top: 60px;
     left: 50%;
 
-    width: 210px;
-    height: 198px;
+    width: 180px;
+    height: auto;
 
     transform: translateX(-50%);
   }

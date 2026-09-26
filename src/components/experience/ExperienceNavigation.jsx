@@ -43,8 +43,8 @@ export default function ExperienceNavigation({ stripOpacity }) {
       <motion.a
         className="experience-navigation__strip"
         style={{ opacity: stripOpacity }}
-        href="/"
-        aria-label="The Reading Elf home"
+        href="#top"
+        aria-label="The Reading Elf, back to page top"
       >
         <img src={stripLogo} alt="The Reading Elf" />
       </motion.a>

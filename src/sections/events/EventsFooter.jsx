@@ -1,6 +1,6 @@
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
-import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
+import leafSprig from "../../../design-assets/Website/Common Through Out/Leaf.png";
 
 import redBurst from "../../../design-assets/Website/Events/Elements of Events/6.png";
 import brownBurst from "../../../design-assets/Website/Events/Elements of Events/4.png";
@@ -13,7 +13,7 @@ import phoneIcon from "../../../design-assets/Website/Common Through Out/Phone N
 const socialLinks = [
   [
     "Instagram",
-    "https://www.instagram.com/thereadingelf_hub/",
+    "https://www.instagram.com/the_reading_elf?stkn=MWc3b3V0aTdnNHg4eg==",
     instagramIcon,
   ],
   [
