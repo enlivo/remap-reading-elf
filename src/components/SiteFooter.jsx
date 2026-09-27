@@ -1,7 +1,6 @@
 import logoBadge from "../../assets/images/books-page/logo-badge.png";
 import treeLantern from "../../assets/images/footer-branch-lantern.png";
-import booksLeaf from "../../assets/images/books-page/deco-leaf-sprig.png";
-import blogFooterLeaf from "../../design-assets/Website/Common Through Out/Leaf.png";
+import footerLeaf from "../../design-assets/Website/Common Through Out/Leaf.png";
 import instagram from "../../assets/images/instagram.svg";
 import facebook from "../../assets/images/facebook.svg";
 import whatsapp from "../../assets/images/whatsapp.png";
@@ -12,8 +11,6 @@ export default function SiteFooter({
 }) {
   const isBooks =
     variant === "books";
-
-  const footerLeaf = booksLeaf;
 
   return (
     <footer
@@ -29,24 +26,6 @@ export default function SiteFooter({
         alt=""
         aria-hidden="true"
       />
-
-      {!isBooks && (
-        <>
-          <img
-            className="site-footer__leaf site-footer__leaf--one"
-            src={footerLeaf}
-            alt=""
-            aria-hidden="true"
-          />
-
-          <img
-            className="site-footer__leaf site-footer__leaf--two"
-            src={footerLeaf}
-            alt=""
-            aria-hidden="true"
-          />
-        </>
-      )}
 
       <div className="site-footer__content">
         <section className="site-footer__about">
@@ -118,33 +97,25 @@ export default function SiteFooter({
           </a>
         </section>
 
-        {isBooks ? (
-          <div className="site-footer__badge-composition">
-            <img
-              className="site-footer__badge-leaf site-footer__badge-leaf--left"
-              src={blogFooterLeaf}
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              className="site-footer__badge-leaf site-footer__badge-leaf--right"
-              src={blogFooterLeaf}
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              className="site-footer__logo"
-              src={logoBadge}
-              alt="The Reading Elf"
-            />
-          </div>
-        ) : (
+        <div className="site-footer__badge-composition">
+          <img
+            className="site-footer__badge-leaf site-footer__badge-leaf--left"
+            src={footerLeaf}
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            className="site-footer__badge-leaf site-footer__badge-leaf--right"
+            src={footerLeaf}
+            alt=""
+            aria-hidden="true"
+          />
           <img
             className="site-footer__logo"
             src={logoBadge}
             alt="The Reading Elf"
           />
-        )}
+        </div>
 
         <nav
           className="site-footer__links"

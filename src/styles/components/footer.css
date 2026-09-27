@@ -79,6 +79,57 @@
   justify-self: center;
 }
 
+.site-footer:not(.site-footer--books)
+.site-footer__badge-composition {
+  position: relative;
+  z-index: 5;
+
+  width: 0;
+  height: 0;
+
+  justify-self: center;
+}
+
+.site-footer:not(.site-footer--books)
+.site-footer__badge-composition
+.site-footer__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  width: clamp(244px, 18.75vw, 266px);
+  max-width: none;
+
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 8px 9px rgba(88, 54, 32, 0.08));
+}
+
+.site-footer:not(.site-footer--books)
+.site-footer__badge-leaf {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+
+  width: clamp(112px, 8.8vw, 128px);
+  height: auto;
+  max-width: none;
+
+  pointer-events: none;
+}
+
+.site-footer:not(.site-footer--books)
+.site-footer__badge-leaf--left {
+  right: clamp(124px, 9.5vw, 136px);
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.site-footer:not(.site-footer--books)
+.site-footer__badge-leaf--right {
+  left: clamp(124px, 9.5vw, 136px);
+  transform: translateY(-50%) scaleX(-1) rotate(-90deg);
+}
+
 /*
  * One consistent outer ring colour for the circular logo badge in
  * every footer (Home + Books use .site-footer__logo above; every
@@ -206,41 +257,6 @@
 
   right: -40px;
   top: 0;
-}
-
-.site-footer__leaf {
-  position: absolute;
-  z-index: 2;
-  width: clamp(250px, 22vw, 300px);
-  height: auto;
-  pointer-events: none;
-}
-
-.site-footer__leaf--one {
-  top: 50%;
-  right: calc(50% + clamp(18px, calc(9.4vw - 110px), 70px));
-  left: auto;
-  transform: translateY(-50%) scaleX(-1) rotate(-4deg);
-}
-
-.site-footer__leaf--two {
-  top: 50%;
-  right: auto;
-  bottom: auto;
-  left: calc(50% + clamp(18px, calc(9.4vw - 110px), 70px));
-  transform: translateY(-50%) rotate(-4deg);
-}
-
-.site-footer:not(.site-footer--books) .site-footer__leaf--one {
-  right: calc(50% + clamp(18px, calc(9.4vw - 110px), 70px));
-  left: auto;
-  bottom: auto;
-}
-
-.site-footer:not(.site-footer--books) .site-footer__leaf--two {
-  right: auto;
-  left: calc(50% + clamp(18px, calc(9.4vw - 110px), 70px));
-  bottom: auto;
 }
 
 .site-footer__legal {

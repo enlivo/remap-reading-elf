@@ -123,9 +123,22 @@
     text-align: center;
   }
 
-  .site-footer__logo {
+  .site-footer:not(.site-footer--books)
+    .site-footer__badge-composition {
     grid-row: 1;
     width: 168px;
+    height: 168px;
+    justify-self: center;
+  }
+
+  .site-footer:not(.site-footer--books)
+    .site-footer__badge-composition
+    .site-footer__logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 168px;
+    transform: none;
   }
 
   .site-footer__socials {
@@ -144,7 +157,8 @@
     opacity: 0.35;
   }
 
-  .site-footer__leaf {
+  .site-footer:not(.site-footer--books)
+    .site-footer__badge-leaf {
     display: none;
   }
 }
