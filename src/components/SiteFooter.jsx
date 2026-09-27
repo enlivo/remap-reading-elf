@@ -12,6 +12,28 @@ export default function SiteFooter({
   const isBooks =
     variant === "books";
 
+  const badgeComposition = (
+    <div className="site-footer__badge-composition">
+      <img
+        className="site-footer__badge-leaf site-footer__badge-leaf--left"
+        src={footerLeaf}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="site-footer__badge-leaf site-footer__badge-leaf--right"
+        src={footerLeaf}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="site-footer__logo"
+        src={logoBadge}
+        alt="The Reading Elf"
+      />
+    </div>
+  );
+
   return (
     <footer
       className={
@@ -26,6 +48,8 @@ export default function SiteFooter({
         alt=""
         aria-hidden="true"
       />
+
+      {!isBooks && badgeComposition}
 
       <div className="site-footer__content">
         <section className="site-footer__about">
@@ -97,25 +121,7 @@ export default function SiteFooter({
           </a>
         </section>
 
-        <div className="site-footer__badge-composition">
-          <img
-            className="site-footer__badge-leaf site-footer__badge-leaf--left"
-            src={footerLeaf}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="site-footer__badge-leaf site-footer__badge-leaf--right"
-            src={footerLeaf}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className="site-footer__logo"
-            src={logoBadge}
-            alt="The Reading Elf"
-          />
-        </div>
+        {isBooks && badgeComposition}
 
         <nav
           className="site-footer__links"

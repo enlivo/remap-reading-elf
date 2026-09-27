@@ -115,6 +115,10 @@
       28px;
   }
 
+  .site-footer:not(.site-footer--books) {
+    overflow: hidden;
+  }
+
   .site-footer__content {
     grid-template-columns: 1fr;
 
@@ -125,9 +129,12 @@
 
   .site-footer:not(.site-footer--books)
     .site-footer__badge-composition {
-    grid-row: 1;
+    position: relative;
+    top: auto;
+    left: auto;
     width: 168px;
     height: 168px;
+    margin: 0 auto 38px;
     justify-self: center;
   }
 
@@ -149,6 +156,11 @@
     justify-self: center;
     align-items: flex-start;
     text-align: left;
+  }
+
+  .site-footer:not(.site-footer--books)
+    .site-footer__links {
+    grid-column: 1;
   }
 
   .site-footer__tree {

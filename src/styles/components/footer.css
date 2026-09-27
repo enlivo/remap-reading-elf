@@ -14,6 +14,11 @@
   background: var(--elf-red);
 }
 
+.site-footer:not(.site-footer--books) {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 .site-footer__content {
   position: relative;
   z-index: 3;
@@ -81,13 +86,20 @@
 
 .site-footer:not(.site-footer--books)
 .site-footer__badge-composition {
-  position: relative;
+  position: absolute;
+  top: 10%;
+  left: 50%;
   z-index: 5;
 
   width: 0;
   height: 0;
 
   justify-self: center;
+}
+
+.site-footer:not(.site-footer--books)
+.site-footer__links {
+  grid-column: 3;
 }
 
 .site-footer:not(.site-footer--books)
