@@ -75,9 +75,26 @@ export default function useLandingScrollTimeline(
        * text/cards from both sides. Phone instead uses a real
        * 100vw x 100svh camera.
        */
+      /*
+       * Fill the full viewport width whenever the crop is modest
+       * (up to ~22% of the canvas height, i.e. window aspect up to
+       * ~2.3:1). Shrinking the 16:9 canvas to fit the height left
+       * sky-coloured bars on both sides of the page. Only very
+       * ultra-wide windows still scale down, and then only enough to
+       * keep the crop at ~22%.
+       */
+      const MAX_CROP = 0.78;
+
       const canvasScale =
         desktop
-          ? desktopScale
+          ? (
+              desktopScale >= MAX_CROP
+                ? 1
+                : Math.min(
+                    1,
+                    desktopScale / MAX_CROP,
+                  )
+            )
           : 1;
 
       const vh =

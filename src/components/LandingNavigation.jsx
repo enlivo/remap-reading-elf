@@ -341,10 +341,38 @@ export default function LandingNavigation({
     stateValues("upperY", 30),
   );
 
+  /*
+   * The canvas is 100vw wide and 56.25vw tall. On wide, short windows
+   * that is taller than the viewport, so the bottom strip (anchored near
+   * the canvas bottom in the Hero state) would be clipped. Lift it just
+   * enough to stay fully on screen; taller windows are unaffected.
+   */
+  const viewportW =
+    typeof window === "undefined" ? 1920 : window.innerWidth;
+  const viewportH =
+    typeof window === "undefined" ? 1080 : window.innerHeight;
+  const unit = viewportW / 100;
+  const stripHeightPx = unit * (232 / 1920) * 100;
+  /* the badge already overhangs the 16:9 canvas by ~2.2vw in the design */
+  const designOverhangPx = unit * (46.3542 + (232 / 1920) * 100 - 56.25);
+  const scale = canvasScale || 1;
+
+  const stripYValues = LANDING_STATES.map((state) => {
+    const offsetVw =
+      (state.stripY - 890 - state.stripArtworkInset) / 19.2;
+    const topPx = (46.3542 + offsetVw) * unit * scale;
+    const overflow = Math.max(
+      0,
+      topPx + stripHeightPx * scale - (viewportH + designOverhangPx * scale),
+    );
+
+    return offsetVw * unit - overflow / scale;
+  });
+
   const stripY = useTransform(
     progress,
     STATE_RANGE,
-    LANDING_STATES.map((state) => canvasVw(state.stripY - 890 - state.stripArtworkInset)),
+    stripYValues,
   );
 
   const stripX = useTransform(
