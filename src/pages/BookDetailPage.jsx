@@ -1,51 +1,23 @@
 import { useEffect } from "react";
+import { useMotionValue } from "motion/react";
 
+import BooksNavigation from "../components/books/BooksNavigation.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
-import logoBadge from "../../assets/images/books-page/logo-badge.png";
+import leafSprig from "../../assets/images/books-page/deco-leaf-sprig.png";
+import waveGreen from "../../assets/images/books-page/deco-wave-green.png";
 import {
   BOOK_OF_MONTH_CTA_SHELF,
   getBookOfMonth,
 } from "../sections/books/bookOfMonthData.js";
 
-const NAV_LINKS = [
-  ["Books", "/books"],
-  ["Story Box", "/story-box"],
-  ["Experience", "/experience"],
-  ["Events", "/events"],
-  ["Our Story", "/our-story"],
-  ["Blog", "/blog"],
-];
-
 /* per-book colours: accent for the title, which title line gets it, CTA band */
 const THEMES = {
-  "malgudi-schooldays": { accent: "#2f6b4f", line: 1, cta: "#2f6b4f" },
-  "velveteen-rabbit": { accent: "#c7342e", line: 1, cta: "#2f6b4f" },
-  "the-secret-garden": { accent: "#2f6b4f", line: 1, cta: "#2f6b4f" },
-  "lion-witch-wardrobe": { accent: "#2c5aa0", line: 2, cta: "#1e3a8a" },
-  "hungry-caterpillar": { accent: "#2f6b4f", line: 1, cta: "#2f6b4f" },
+  "malgudi-schooldays": { line: 1 },
+  "velveteen-rabbit": { line: 1 },
+  "the-secret-garden": { line: 1 },
+  "lion-witch-wardrobe": { line: 2 },
+  "hungry-caterpillar": { line: 1 },
 };
-
-function BookNav() {
-  return (
-    <header className="book-nav">
-      <a className="book-nav__logo" href="/" aria-label="The Reading Elf home">
-        <img src={logoBadge} alt="The Reading Elf" />
-      </a>
-
-      <nav className="book-nav__links" aria-label="Primary navigation">
-        {NAV_LINKS.map(([label, href]) => (
-          <a
-            key={label}
-            href={href}
-            aria-current={href === "/books" ? "page" : undefined}
-          >
-            {label}
-          </a>
-        ))}
-      </nav>
-    </header>
-  );
-}
 
 function Hero({ book, theme }) {
   const { hero } = book;
@@ -55,12 +27,18 @@ function Hero({ book, theme }) {
       <div className="book-hero__inner">
         <div className="book-hero__cover">
           <img src={hero.cover} alt={`${book.card.title} cover`} />
+          <img
+            className="book-hero__leaf"
+            src={leafSprig}
+            alt=""
+            aria-hidden="true"
+          />
         </div>
 
         <div className="book-hero__copy">
-          <p className="book-pill">📚 {hero.badge}</p>
+          <p className="book-pill">{hero.badge}</p>
 
-          <h1 style={{ "--accent": theme.accent }}>
+          <h1>
             {hero.title.map((line, index) => (
               <span
                 key={line}
@@ -87,10 +65,7 @@ function Hero({ book, theme }) {
             </p>
           ))}
 
-          <a
-            className="book-btn book-btn--ghost"
-            href="/books"
-          >
+          <a className="book-btn book-btn--back" href="/books">
             ← Back to all books
           </a>
         </div>
@@ -108,14 +83,11 @@ function SectionHead({ title, subtitle }) {
   );
 }
 
-function GridSection({ section }) {
+function GridSection({ section, tone }) {
   const { variant, items } = section;
 
   return (
-    <section
-      className="book-section"
-      style={{ background: section.bg }}
-    >
+    <section className={`book-section book-section--${tone}`}>
       <div className="book-section__inner">
         <SectionHead title={section.title} subtitle={section.subtitle} />
 
@@ -148,12 +120,9 @@ function GridSection({ section }) {
   );
 }
 
-function FeatureSection({ section }) {
+function FeatureSection({ section, tone }) {
   return (
-    <section
-      className="book-section book-feature"
-      style={{ background: section.bg }}
-    >
+    <section className={`book-section book-feature book-section--${tone}`}>
       <div className="book-feature__inner">
         <img src={section.image} alt={section.title} />
 
@@ -171,9 +140,9 @@ function FeatureSection({ section }) {
   );
 }
 
-function AuthorSection({ section }) {
+function AuthorSection({ section, tone }) {
   return (
-    <section className="book-section book-author">
+    <section className={`book-section book-author book-section--${tone}`}>
       <div className="book-author__card">
         <img
           className="book-author__photo"
@@ -198,9 +167,9 @@ function AuthorSection({ section }) {
   );
 }
 
-function SeriesSection({ section }) {
+function SeriesSection({ section, tone }) {
   return (
-    <section className="book-section">
+    <section className={`book-section book-section--${tone}`}>
       <div className="book-section__inner">
         <SectionHead title={section.title} subtitle={section.subtitle} />
 
@@ -227,10 +196,13 @@ function SeriesSection({ section }) {
 
 function CtaSection({ section, theme }) {
   return (
-    <section
-      className="book-cta"
-      style={{ background: theme.cta }}
-    >
+    <section className="book-cta">
+      <img
+        className="book-cta__wave"
+        src={waveGreen}
+        alt=""
+        aria-hidden="true"
+      />
       <div className="book-cta__inner">
         <h2>
           {section.title.map((line, index) => (
@@ -263,16 +235,16 @@ function CtaSection({ section, theme }) {
   );
 }
 
-function renderSection(section, index, theme) {
+function renderSection(section, index, theme, tone) {
   switch (section.kind) {
     case "grid":
-      return <GridSection key={index} section={section} />;
+      return <GridSection key={index} section={section} tone={tone} />;
     case "feature":
-      return <FeatureSection key={index} section={section} />;
+      return <FeatureSection key={index} section={section} tone={tone} />;
     case "author":
-      return <AuthorSection key={index} section={section} />;
+      return <AuthorSection key={index} section={section} tone={tone} />;
     case "series":
-      return <SeriesSection key={index} section={section} />;
+      return <SeriesSection key={index} section={section} tone={tone} />;
     case "cta":
       return <CtaSection key={index} section={section} theme={theme} />;
     default:
@@ -283,6 +255,7 @@ function renderSection(section, index, theme) {
 export default function BookDetailPage({ slug }) {
   const book = getBookOfMonth(slug);
   const theme = THEMES[slug] ?? THEMES["malgudi-schooldays"];
+  const stripY = useMotionValue(0);
 
   useEffect(() => {
     if (!book) {
@@ -314,12 +287,17 @@ export default function BookDetailPage({ slug }) {
 
   return (
     <>
-      <BookNav />
-
       <main id="top" className="book-page">
+        <BooksNavigation stripY={stripY} />
+
         <Hero book={book} theme={theme} />
         {book.sections.map((section, index) =>
-          renderSection(section, index, theme),
+          renderSection(
+            section,
+            index,
+            theme,
+            index % 2 === 0 ? "cream" : "peach",
+          ),
         )}
       </main>
 
