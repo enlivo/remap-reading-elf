@@ -8,7 +8,6 @@ import BooksGiftCardSection from "../sections/books/BooksGiftCardSection.jsx";
 import BooksBookPassportSection from "../sections/books/BooksBookPassportSection.jsx";
 import BooksGiftsCollectiblesSection from "../sections/books/BooksGiftsCollectiblesSection.jsx";
 import BooksDidntFindSection from "../sections/books/BooksDidntFindSection.jsx";
-import BooksComeSeeUsSection from "../sections/books/BooksComeSeeUsSection.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 
 export default function BooksPage() {
@@ -41,8 +40,6 @@ export default function BooksPage() {
       <BooksGiftsCollectiblesSection />
 
       <BooksDidntFindSection />
-
-        <BooksComeSeeUsSection />
       </main>
 
       <SiteFooter variant="books" />

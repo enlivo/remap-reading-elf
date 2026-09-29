@@ -54,10 +54,6 @@ export default function BlogFooter({ standalone = false }) {
     >
       <div className="blog-footer__desktop" aria-label="The Reading Elf footer">
         <div className="blog-footer__desktop-top" aria-hidden="true" />
-        <div className="blog-footer__desktop-visit">
-          <h2>Come <strong>See Us!</strong></h2>
-          <p>Thoraipakkam, <strong>Chennai</strong></p>
-        </div>
         <img className="blog-footer__desktop-branch" src={branchLantern} alt="" aria-hidden="true" />
         <img className="blog-footer__desktop-leaf blog-footer__desktop-leaf--left" src={commonLeaf} alt="" aria-hidden="true" />
         <img className="blog-footer__desktop-leaf blog-footer__desktop-leaf--right" src={commonLeaf} alt="" aria-hidden="true" />
@@ -66,7 +62,7 @@ export default function BlogFooter({ standalone = false }) {
         <section className="blog-footer__desktop-about">
           <h2>The Reading Elf</h2>
           <p>
-            A magical space where kids discover
+            A magical space where kids discover{" "}
             <br />
             the joy of books, stories, and imagination.
           </p>
@@ -103,10 +99,6 @@ export default function BlogFooter({ standalone = false }) {
       </div>
 
       <footer className="blog-footer__mobile" aria-labelledby="blog-footer-title">
-        <div className="blog-footer__visit">
-          <h2>Come <strong>See Us!</strong></h2>
-          <p>Thoraipakkam, <strong>Chennai</strong></p>
-        </div>
         <img className="blog-footer__branch" src={branchLantern} alt="" />
         <img
           className="blog-footer__leaf blog-footer__leaf--left"

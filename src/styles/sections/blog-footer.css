@@ -263,10 +263,10 @@
     grid-template-columns: 1fr;
     gap: 28px;
     min-height: 0;
-    padding: 48px 24px 24px;
+    padding: 24px 24px 24px;
     overflow: clip;
     color: #70412d;
-    background: linear-gradient(to bottom, #facbb1 0, #facbb1 244px, #f3e8d0 244px);
+    background: linear-gradient(to bottom, #facbb1 0, #facbb1 100px, #f3e8d0 100px);
   }
 
   .blog-footer__visit {
@@ -305,7 +305,7 @@
 
   .blog-footer__branch {
     position: absolute;
-    top: 144px;
+    top: 0;
     right: -90px;
     z-index: 2;
     width: min(82vw, 440px);
@@ -314,7 +314,7 @@
 
   .blog-footer__badge {
     position: absolute;
-    top: 178px;
+    top: 26px;
     left: 50%;
     z-index: 4;
     width: clamp(154px, 43vw, 205px);
@@ -324,7 +324,7 @@
 
   .blog-footer__leaf {
     position: absolute;
-    top: 240px;
+    top: 88px;
     z-index: 3;
     display: block;
     width: clamp(70px, 18vw, 96px);
@@ -350,7 +350,7 @@
   }
 
   .blog-footer__about {
-    padding-top: 58px;
+    padding-top: 180px;
   }
 
   .blog-footer__about h2 {
@@ -386,7 +386,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: contain;  filter: brightness(0) saturate(100%) invert(24%) sepia(29%) saturate(900%) hue-rotate(340deg) brightness(92%) contrast(90%);
   }
 
   .blog-footer__mobile-phone {

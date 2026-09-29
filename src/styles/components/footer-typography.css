@@ -206,3 +206,9 @@
     border-top: 1px solid rgba(199, 52, 46, 0.52);
   }
 }
+
+/* Books: the big "Come See Us!" band above the footer was removed, so give the
+   WhatsApp button room above the footer badge. */
+.books-page .books-didnt-find {
+  padding-bottom: clamp(110px, 9vw, 160px);
+}

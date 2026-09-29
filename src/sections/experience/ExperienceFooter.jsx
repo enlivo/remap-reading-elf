@@ -29,11 +29,6 @@ export default function ExperienceFooter({ opacity, y }) {
       aria-labelledby="experience-footer-title"
       style={{ opacity, y }}
     >
-      <div className="experience-footer__visit">
-        <h2><span>Come</span> <strong>See Us!</strong></h2>
-        <p><span>Thoraipakkam,</span> <strong>Chennai</strong></p>
-      </div>
-
       <div className="experience-footer__cream" aria-hidden="true" />
 
       <img
@@ -65,7 +60,7 @@ export default function ExperienceFooter({ opacity, y }) {
       <section className="experience-footer__about">
         <h2 id="experience-footer-title">The Reading Elf</h2>
         <p>
-          A magical space where kids discover
+          A magical space where kids discover{" "}
           <br />
           the joy of books, stories, and imagination.
         </p>

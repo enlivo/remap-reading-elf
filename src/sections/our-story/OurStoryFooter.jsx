@@ -25,11 +25,6 @@ const quickLinks = [
 export default function OurStoryFooter() {
   return (
     <footer className="our-story-footer" aria-labelledby="our-story-footer-title">
-      <div className="our-story-footer__visit">
-        <h2>Come <strong>See Us!</strong></h2>
-        <p>Thoraipakkam, <strong>Chennai</strong></p>
-      </div>
-
       <div className="our-story-footer__cream" aria-hidden="true" />
       <img className="our-story-footer__decor our-story-footer__decor--left" src={goldStreak} alt="" />
       <img className="our-story-footer__decor our-story-footer__decor--right" src={blueStreak} alt="" />
@@ -40,7 +35,7 @@ export default function OurStoryFooter() {
 
       <section className="our-story-footer__about">
         <h2 id="our-story-footer-title">The Reading Elf</h2>
-        <p>A magical space where kids discover<br />the joy of books, stories, and imagination.</p>
+        <p>A magical space where kids discover{" "}<br />the joy of books, stories, and imagination.</p>
         <h3>Reach Us</h3>
         <div className="our-story-footer__socials">
           {socialLinks.map(([label, href, icon]) => (

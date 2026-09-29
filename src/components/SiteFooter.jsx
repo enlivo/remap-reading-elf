@@ -54,7 +54,7 @@ export default function SiteFooter({
       <div className="site-footer__content">
         <section className="site-footer__about">
           <p className="site-footer__visit">
-            Come <strong>See Us!</strong>
+            Come <strong>See Us!</strong>{" "}
             <br />
             Thoraipakkam, <strong>Chennai</strong>
           </p>
@@ -62,7 +62,7 @@ export default function SiteFooter({
           <h2>The Reading Elf</h2>
 
           <p>
-            A magical space where kids discover
+            A magical space where kids discover{" "}
             <br />
             the joy of books, stories, and
             imagination.

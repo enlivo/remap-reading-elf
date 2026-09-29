@@ -42,16 +42,6 @@ export default function EventsFooter() {
       className="events-footer"
       aria-labelledby="events-footer-title"
     >
-      <div className="events-footer__visit">
-        <h2>
-          <span>Come</span> <strong>See Us!</strong>
-        </h2>
-
-        <p>
-          <span>Thoraipakkam,</span> <strong>Chennai</strong>
-        </p>
-      </div>
-
       <div className="events-footer__peach" aria-hidden="true" />
 
       <img
@@ -99,7 +89,7 @@ export default function EventsFooter() {
         <h2 id="events-footer-title">The Reading Elf</h2>
 
         <p>
-          A magical space where kids discover
+          A magical space where kids discover{" "}
           <br />
           the joy of books, stories, and imagination.
         </p>

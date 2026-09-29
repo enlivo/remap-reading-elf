@@ -242,8 +242,8 @@
     gap: 34px 48px;
     height: auto;
     min-height: 0;
-    padding: 58px clamp(34px, 6vw, 64px) 28px;
-    background: linear-gradient(to bottom, #2f6b4f 0, #2f6b4f 286px, #f3e8d0 286px, #f3e8d0 100%);
+    padding: 40px clamp(34px, 6vw, 64px) 28px;
+    background: linear-gradient(to bottom, #2f6b4f 0, #2f6b4f 104px, #f3e8d0 104px, #f3e8d0 100%);
   }
 
   .our-story-footer__visit {
@@ -268,12 +268,12 @@
   }
 
   .our-story-footer__badge {
-    top: 205px;
+    top: 24px;
     width: clamp(180px, 25vw, 225px);
   }
 
   .our-story-footer__branch {
-    top: 150px;
+    top: 0;
     width: min(52vw, 430px);
   }
 
@@ -282,13 +282,13 @@
   }
 
   .our-story-footer__decor--left {
-    top: 132px;
+    top: 8px;
     left: 2%;
     width: 100px;
   }
 
   .our-story-footer__decor--right {
-    top: 288px;
+    top: 108px;
     right: 2%;
     width: 100px;
   }
@@ -304,13 +304,13 @@
   .our-story-footer__about {
     grid-column: 1;
     width: auto;
-    padding-top: 78px;
+    padding-top: 184px;
   }
 
   .our-story-footer__links {
     grid-column: 2;
     min-width: 0;
-    padding-top: 90px;
+    padding-top: 190px;
     font-size: clamp(16px, 2.2vw, 20px);
   }
 
@@ -334,8 +334,8 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
-    padding: 48px 24px 24px;
-    background: linear-gradient(to bottom, #2f6b4f 0, #2f6b4f 244px, #f3e8d0 244px, #f3e8d0 100%);
+    padding: 24px 24px 24px;
+    background: linear-gradient(to bottom, #2f6b4f 0, #2f6b4f 90px, #f3e8d0 90px, #f3e8d0 100%);
   }
 
   .our-story-footer__visit {
@@ -351,7 +351,7 @@
   }
 
   .our-story-footer__badge {
-    top: 174px;
+    top: 20px;
     width: 168px;
   }
 
@@ -360,20 +360,20 @@
   }
 
   .our-story-footer__decor--left {
-    top: 128px;
+    top: 4px;
     left: -16px;
     width: 82px;
   }
 
   .our-story-footer__decor--right {
-    top: 232px;
+    top: 96px;
     right: 0;
     width: 76px;
   }
 
   .our-story-footer__about {
     width: 100%;
-    padding-top: 82px;
+    padding-top: 172px;
   }
 
   .our-story-footer__links {

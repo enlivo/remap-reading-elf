@@ -228,7 +228,7 @@
     gap: 34px 48px;
     height: auto;
     min-height: 0;
-    padding: 58px clamp(34px, 6vw, 64px) 28px;
+    padding: 40px clamp(34px, 6vw, 64px) 28px;
     overflow: clip;
   }
 
@@ -251,15 +251,16 @@
   }
 
   .experience-footer__cream {
-    top: 286px;
+    top: 104px;
   }
 
   .experience-footer__badge {
-    top: 205px;
+    top: 24px;
     width: clamp(180px, 25vw, 225px);
   }
 
   .experience-footer__branch {
+    top: 0;
     width: min(52vw, 430px);
   }
 
@@ -278,13 +279,13 @@
   .experience-footer__about {
     grid-column: 1;
     width: auto;
-    padding-top: 78px;
+    padding-top: 184px;
   }
 
   .experience-footer__links {
     grid-column: 2;
     min-width: 0;
-    padding-top: 90px;
+    padding-top: 190px;
     font-size: clamp(16px, 2.2vw, 20px);
   }
 
@@ -309,11 +310,11 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
-    padding: 48px 24px 24px;
+    padding: 24px 24px 24px;
   }
 
   .experience-footer__cream {
-    top: 244px;
+    top: 90px;
   }
 
   .experience-footer__visit {
@@ -330,7 +331,7 @@
   }
 
   .experience-footer__badge {
-    top: 174px;
+    top: 20px;
     width: 168px;
   }
 
@@ -344,7 +345,7 @@
 
   .experience-footer__about {
     width: 100%;
-    padding-top: 82px;
+    padding-top: 172px;
   }
 
   .experience-footer__links {
