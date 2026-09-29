@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 
 import peachBlob from "../../assets/images/landing-elements/blob-peach.png";
 
-const INSTAGRAM_URL = "https://www.instagram.com/the_reading_elf?stkn=MWc3b3V0aTdnNHg4eg==";
-const INSTAGRAM_EMBED_URL = "https://www.instagram.com/the_reading_elf/embed/";
+const INSTAGRAM_URL = "https://www.instagram.com/thereadingelf_hub/";
+const INSTAGRAM_EMBED_URL = "https://www.instagram.com/thereadingelf_hub/embed/";
 
 export default function InstagramSection({ staged = false, mobileFallback = false }) {
   return (
@@ -50,7 +50,7 @@ export default function InstagramSection({ staged = false, mobileFallback = fals
           target="_blank"
           rel="noreferrer"
         >
-          Open @the_reading_elf on Instagram
+          Open @thereadingelf_hub on Instagram
         </a>
       </div>
     </section>
