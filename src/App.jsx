@@ -8,6 +8,8 @@ import {
 } from "react-dom";
 
 import BooksPage from "./pages/BooksPage.jsx";
+import BookDetailPage from "./pages/BookDetailPage.jsx";
+import { getBookOfMonth } from "./sections/books/bookOfMonthData.js";
 import BlogPage from "./pages/BlogPage.jsx";
 import BlogPostPage, {
   READING_VS_SCREEN_TIME_PATH,
@@ -28,6 +30,23 @@ const supportedPaths = new Set([
   "/our-story",
   "/story-box",
 ]);
+
+const BOOK_DETAIL_PATH = /^\/books\/([a-z0-9-]+)$/;
+
+function getBookDetailSlug(pathname) {
+  const match = BOOK_DETAIL_PATH.exec(pathname);
+
+  return match && getBookOfMonth(match[1])
+    ? match[1]
+    : null;
+}
+
+function isSupportedPath(pathname) {
+  return (
+    supportedPaths.has(pathname) ||
+    getBookDetailSlug(pathname) !== null
+  );
+}
 
 function normalizePathname(pathname) {
   if (!pathname || pathname === "/") {
@@ -216,7 +235,7 @@ export default function App() {
        * switch below are intercepted.
        */
       if (
-        !supportedPaths.has(
+        !isSupportedPath(
           nextPathname,
         )
       ) {
@@ -303,6 +322,12 @@ export default function App() {
 
   if (pathname === "/books") {
     return <BooksPage />;
+  }
+
+  const bookSlug = getBookDetailSlug(pathname);
+
+  if (bookSlug) {
+    return <BookDetailPage key={bookSlug} slug={bookSlug} />;
   }
 
   if (pathname === "/story-box") {

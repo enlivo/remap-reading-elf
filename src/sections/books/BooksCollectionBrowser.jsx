@@ -15,6 +15,52 @@ import decoWaveGreen from "../../../assets/images/books-page/deco-wave-green.png
 import decoSwooshGold from "../../../assets/images/books-page/deco-swoosh-gold.png";
 import decoSwooshCream from "../../../assets/images/books-page/deco-swoosh-cream.png";
 
+const MONTH_TILTS = [1, 2, -2, 3, -3];
+
+function MonthBookCard({ item, index }) {
+  const monthKey = item.badge.toLowerCase();
+  const tilt = MONTH_TILTS[index % MONTH_TILTS.length];
+
+  return (
+    <article className="month-card">
+      <a
+        className="month-card__art"
+        href={`/books/${item.slug}`}
+        aria-label={`Explore ${item.title}`}
+        tabIndex={-1}
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          style={{ "--tilt": `${tilt}deg` }}
+        />
+      </a>
+
+      <p
+        className={`month-card__pill month-card__pill--${monthKey}`}
+      >
+        {item.badge}
+      </p>
+
+      <h3>{item.title}</h3>
+      <p className="month-card__author">
+        By {item.author}
+      </p>
+      <p className="month-card__desc">
+        {item.description}
+      </p>
+
+      <a
+        className="month-card__cta"
+        href={`/books/${item.slug}`}
+      >
+        EXPLORE THIS BOOK →
+      </a>
+    </article>
+  );
+}
+
 function BookCard({ item }) {
   const cardClassName = [
     "books-product-card",
@@ -110,9 +156,35 @@ function CollectionDecorations() {
   );
 }
 
+function isMonthGrid(items) {
+  return (
+    items.length > 0 &&
+    items.every(
+      (item) => item.type === "book-of-month",
+    )
+  );
+}
+
+function renderCards(items) {
+  return items.map((item, index) =>
+    item.type === "book-of-month" ? (
+      <MonthBookCard
+        key={item.id}
+        item={item}
+        index={index}
+      />
+    ) : (
+      <BookCard key={item.id} item={item} />
+    ),
+  );
+}
+
 function gridClassName(items) {
   return [
     "books-product-grid",
+    isMonthGrid(items)
+      ? "books-product-grid--month"
+      : "",
     items.length === 4
       ? "books-product-grid--four"
       : "",
@@ -163,12 +235,7 @@ function AnimatedBookGrid({
         ],
       }}
     >
-      {items.map((item) => (
-        <BookCard
-          key={item.id}
-          item={item}
-        />
-      ))}
+      {renderCards(items)}
     </motion.div>
   );
 }
@@ -358,14 +425,7 @@ export default function BooksCollectionBrowser({
                         )
                       }
                     >
-                      {group.books.map(
-                        (item) => (
-                          <BookCard
-                            key={item.id}
-                            item={item}
-                          />
-                        ),
-                      )}
+                      {renderCards(group.books)}
                     </div>
                   </section>
                 ),

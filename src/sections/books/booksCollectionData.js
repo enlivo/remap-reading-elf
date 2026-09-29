@@ -1,8 +1,5 @@
-import monthApril from "../../../assets/images/books-page/collection-book-by-month-april-a-little-princess.png";
-import monthAugust from "../../../assets/images/books-page/collection-book-by-month-august-a-little-princess.png";
-import monthJuly from "../../../assets/images/books-page/collection-book-by-month-july-little-lord-fauntleroy.png";
-import monthJune from "../../../assets/images/books-page/collection-book-by-month-june-the-lost-prince.png";
-import monthMay from "../../../assets/images/books-page/collection-book-by-month-may-the-land-of-the-blue-flower.png";
+import { BOOKS_OF_MONTH } from "./bookOfMonthData.js";
+
 
 import collectionEnidBlyton from "../../../assets/images/books-page/collection-collections-enid-blyton.png";
 import collectionHarryPotter from "../../../assets/images/books-page/collection-collections-harry-potter.png";
@@ -74,46 +71,21 @@ export const BOOK_FILTERS = [
 ];
 
 export const BOOK_COLLECTION = [
-  {
-    id: "month-august-little-princess",
-    title: "A Little Princess",
-    author: "Frances Hodgson Burnett",
-    badge: "August",
-    image: monthAugust,
+  /*
+   * Book by Month - real books, ported from the Reading Elf site.
+   * Each opens its own page at /books/<slug>.
+   */
+  ...BOOKS_OF_MONTH.map((book) => ({
+    id: `month-${book.slug}`,
+    type: "book-of-month",
+    slug: book.slug,
+    title: book.card.title,
+    author: book.card.author,
+    badge: book.card.month,
+    description: book.card.desc,
+    image: book.card.image,
     categories: ["book-by-month"],
-  },
-  {
-    id: "month-july-fauntleroy",
-    title: "Little Lord Fauntleroy",
-    author: "Frances Hodgson Burnett",
-    badge: "July",
-    image: monthJuly,
-    categories: ["book-by-month"],
-  },
-  {
-    id: "month-june-lost-prince",
-    title: "The Lost Prince",
-    author: "Frances Hodgson Burnett",
-    badge: "June",
-    image: monthJune,
-    categories: ["book-by-month"],
-  },
-  {
-    id: "month-may-blue-flower",
-    title: "The Land of the Blue Flower",
-    author: "Frances Hodgson Burnett",
-    badge: "May",
-    image: monthMay,
-    categories: ["book-by-month"],
-  },
-  {
-    id: "month-april-little-princess",
-    title: "A Little Princess",
-    author: "Frances Hodgson Burnett",
-    badge: "April",
-    image: monthApril,
-    categories: ["book-by-month"],
-  },
+  })),
 
   {
     id: "collection-enid-blyton",
