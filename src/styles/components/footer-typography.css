@@ -108,3 +108,39 @@
   font-size: 14px;
   line-height: 1.6;
 }
+
+/*
+ * "Come See Us! / Thoraipakkam, Chennai" — same size on every page,
+ * matching the Home footer (.site-footer__visit).
+ */
+.experience-footer .experience-footer__visit h2,
+.experience-footer .experience-footer__visit p,
+.events-footer .events-footer__visit h2,
+.events-footer .events-footer__visit p,
+.our-story-footer .our-story-footer__visit h2,
+.our-story-footer .our-story-footer__visit p,
+.blog-footer .blog-footer__visit h2,
+.blog-footer .blog-footer__visit p,
+.blog-footer .blog-footer__desktop-visit h2,
+.blog-footer .blog-footer__desktop-visit p,
+.books-page .books-come-see-us h2,
+.books-page .books-come-see-us p {
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(20px, 1.6vw, 30px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.experience-footer .experience-footer__visit p,
+.events-footer .events-footer__visit p,
+.our-story-footer .our-story-footer__visit p,
+.blog-footer .blog-footer__visit p,
+.blog-footer .blog-footer__desktop-visit p,
+.books-page .books-come-see-us p {
+  margin-top: 0;
+}
+
+/* Books: with the smaller heading, keep it clear of the badge below */
+.books-page .books-come-see-us {
+  padding-bottom: clamp(140px, 11vw, 165px);
+}
