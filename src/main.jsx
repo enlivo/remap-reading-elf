@@ -39,6 +39,7 @@ import "./styles/pages/blog.css";
 import "./styles/sections/blog-footer.css";
 import "./styles/pages/blog-post.css";
 import "./styles/desktop-responsive.css";
+import "./styles/components/footer-typography.css";
 
 createRoot(
   document.getElementById("root"),

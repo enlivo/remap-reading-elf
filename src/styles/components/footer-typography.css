@@ -1,0 +1,97 @@
+/*
+ * Footer wording — one typographic format for every page.
+ *
+ * The Home footer (.site-footer, footer.css) is the reference. Every
+ * other page has its own footer component/stylesheet, so their text
+ * (font, size, weight, line-height) had drifted. This file applies the
+ * Home footer's text styling to all of them. It only touches typography:
+ * no colours (those follow each page's background), no logo/badge,
+ * no positions or layout.
+ *
+ * Loaded last in main.jsx and uses doubled class selectors so it wins
+ * over the page stylesheets (including their responsive blocks).
+ * Do not set font-family / font-size for these selectors in a
+ * page-specific footer stylesheet again.
+ *
+ * Not touched: the big "Come See Us! / Thoraipakkam, Chennai" heading
+ * (page-specific hero layout), and the Blog desktop footer, which is a
+ * single baked-in image (blog-footer.png) rather than live text.
+ */
+
+/* "The Reading Elf" title */
+.experience-footer .experience-footer__about h2,
+.events-footer .events-footer__about h2,
+.our-story-footer .our-story-footer__about h2,
+.story-box-footer .story-box-footer__intro h2,
+.blog-footer .blog-footer__about h2 {
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(38px, 3vw, 58px);
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Description paragraph */
+.experience-footer .experience-footer__about > p,
+.events-footer .events-footer__about > p,
+.our-story-footer .our-story-footer__about > p,
+.story-box-footer .story-box-footer__intro p,
+.blog-footer .blog-footer__about > p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* "Reach Us" / "Quick Links" headings */
+.experience-footer h3,
+.events-footer h3,
+.our-story-footer h3,
+.story-box-footer h3,
+.blog-footer h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Phone number */
+.experience-footer .experience-footer__phone,
+.events-footer .events-footer__phone,
+.our-story-footer .our-story-footer__phone,
+.story-box-footer .story-box-footer__phone,
+.blog-footer .blog-footer__mobile-phone {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  text-decoration: underline;
+}
+
+/* Quick links */
+.experience-footer .experience-footer__links,
+.events-footer .events-footer__links,
+.our-story-footer .our-story-footer__links,
+.story-box-footer .story-box-footer__links a,
+.blog-footer .blog-footer__mobile-links {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: normal;
+}
+
+.experience-footer .experience-footer__links h3,
+.events-footer .events-footer__links h3,
+.our-story-footer .our-story-footer__links h3,
+.story-box-footer .story-box-footer__links h3,
+.blog-footer .blog-footer__mobile-links h3 {
+  font-size: 27px;
+}
+
+/* Copyright / legal line */
+.experience-footer .experience-footer__legal,
+.events-footer .events-footer__legal,
+.our-story-footer .our-story-footer__legal,
+.story-box-footer .story-box-footer__legal,
+.blog-footer .blog-footer__legal {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
