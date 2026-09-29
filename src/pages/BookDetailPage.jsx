@@ -17,7 +17,19 @@ const THEMES = {
   "the-secret-garden": { line: 1 },
   "lion-witch-wardrobe": { line: 2 },
   "hungry-caterpillar": { line: 1 },
+  "unstoppable-us": { line: -1 },
 };
+
+/* text with "\n" becomes separate paragraphs */
+function Paras({ text, className }) {
+  return text
+    .split("\n")
+    .map((line) => (
+      <p key={line} className={className}>
+        {line}
+      </p>
+    ));
+}
 
 function Hero({ book, theme }) {
   const { hero } = book;
@@ -47,9 +59,15 @@ function Hero({ book, theme }) {
                 {line}
               </span>
             ))}
+            {hero.subtitle && (
+              <span className="book-hero__subtitle">{hero.subtitle}</span>
+            )}
           </h1>
 
           <p className="book-hero__author">{hero.author}</p>
+          {hero.illustrator && (
+            <p className="book-hero__illustrator">{hero.illustrator}</p>
+          )}
 
           {hero.meta.length > 0 && (
             <div className="book-hero__meta">
@@ -59,11 +77,20 @@ function Hero({ book, theme }) {
             </div>
           )}
 
+          {hero.lead && <h2 className="book-hero__lead">{hero.lead}</h2>}
+
           {hero.paras.map((text) => (
             <p key={text} className="book-hero__text">
               {text}
             </p>
           ))}
+
+          {hero.closing &&
+            hero.closing.map((text) => (
+              <p key={text} className="book-hero__closing">
+                {text}
+              </p>
+            ))}
 
           <a className="book-btn book-btn--back" href="/books">
             ← Back to all books
@@ -107,9 +134,11 @@ function GridSection({ section, tone }) {
               )}
               <div className="book-card__body">
                 <h3>{item.title}</h3>
-                <p>{item.text}</p>
+                <Paras text={item.text} />
                 {item.text2 && (
-                  <p className="book-card__example">{item.text2}</p>
+                  <div className="book-card__example">
+                    <Paras text={item.text2} />
+                  </div>
                 )}
               </div>
             </article>
@@ -144,11 +173,20 @@ function AuthorSection({ section, tone }) {
   return (
     <section className={`book-section book-author book-section--${tone}`}>
       <div className="book-author__card">
-        <img
-          className="book-author__photo"
-          src={section.photo}
-          alt={section.name}
-        />
+        {section.photo ? (
+          <img
+            className="book-author__photo"
+            src={section.photo}
+            alt={section.name}
+          />
+        ) : (
+          <span className="book-author__photo book-author__monogram" aria-hidden="true">
+            {section.name
+              .split(" ")
+              .map((word) => word[0])
+              .join("")}
+          </span>
+        )}
 
         <div className="book-author__copy">
           <h2>Meet {section.name}</h2>
@@ -179,8 +217,24 @@ function SeriesSection({ section, tone }) {
         >
           {section.items.map((item) => (
             <figure key={item.title} className="book-series__item">
-              <div className="book-series__art">
-                <img src={item.image} alt={item.alt || item.title} loading="lazy" />
+              <div
+                className={`book-series__art${
+                  item.images ? " book-series__art--pair" : ""
+                }${item.placeholder ? " book-series__art--text" : ""}`}
+              >
+                {item.images &&
+                  item.images.map((src) => (
+                    <img key={src} src={src} alt="" loading="lazy" />
+                  ))}
+                {item.image && (
+                  <img src={item.image} alt={item.alt || item.title} loading="lazy" />
+                )}
+                {item.placeholder && (
+                  <span>
+                    <b>Unstoppable Us</b>
+                    {item.placeholder}
+                  </span>
+                )}
               </div>
               <figcaption>
                 <strong>{item.title}</strong>
@@ -189,6 +243,20 @@ function SeriesSection({ section, tone }) {
             </figure>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function ProseSection({ section, tone }) {
+  return (
+    <section className={`book-section book-section--${tone}`}>
+      <div className="book-prose">
+        <h2>{section.title}</h2>
+        <p className="book-prose__lead">{section.lead}</p>
+        {section.paras.map((text) => (
+          <p key={text}>{text}</p>
+        ))}
       </div>
     </section>
   );
@@ -214,7 +282,7 @@ function CtaSection({ section, theme }) {
             </span>
           ))}
         </h2>
-        <p>{section.text}</p>
+        <Paras text={section.text} />
         <a
           className="book-btn"
           href={section.href}
@@ -245,6 +313,8 @@ function renderSection(section, index, theme, tone) {
       return <AuthorSection key={index} section={section} tone={tone} />;
     case "series":
       return <SeriesSection key={index} section={section} tone={tone} />;
+    case "prose":
+      return <ProseSection key={index} section={section} tone={tone} />;
     case "cta":
       return <CtaSection key={index} section={section} theme={theme} />;
     default:

@@ -35,9 +35,196 @@ import imgnarayan_horse_and_two_goats from "../../../assets/images/books-page/bo
 import imgnarayan_profile from "../../../assets/images/books-page/book-of-month/narayan-profile.webp";
 import imgnarayan_swami_and_friends from "../../../assets/images/books-page/book-of-month/narayan-swami-and-friends.webp";
 
+import imgharari_unstoppable_us from "../../../assets/images/books-page/book-of-month/harari-unstoppable-us.webp";
+import imgharari_sapiens from "../../../assets/images/books-page/book-of-month/harari-sapiens.webp";
+import imgharari_homo_deus from "../../../assets/images/books-page/book-of-month/harari-homo-deus.webp";
+import imgharari_nexus from "../../../assets/images/books-page/book-of-month/harari-nexus.webp";
 import ctaShelf from "../../../assets/images/books-page/book-of-month/images-book-bg.webp";
 
 export const BOOKS_OF_MONTH = [
+  {
+    "slug": "unstoppable-us",
+    "metaDescription": "Explore this month's featured book: Unstoppable Us by Yuval Noah Harari. How did humans take over the world? A history, science and human evolution adventure for young readers aged 10+.",
+    "card": {
+      "title": "Unstoppable Us",
+      "author": "Yuval Noah Harari",
+      "month": "September",
+      "desc": "Why are humans running the planet? Yuval Noah Harari takes young readers on an extraordinary journey through the story of humankind, from early humans to the ideas, tools and cooperation that made us unstoppable.",
+      "image": imgharari_unstoppable_us
+    },
+    "hero": {
+      "badge": "September Book of the Month",
+      "title": ["Unstoppable Us"],
+      "subtitle": "How Humans Took Over the World",
+      "author": "By Yuval Noah Harari",
+      "illustrator": "Illustrated by Ricard Zaplana Ruiz",
+      "cover": imgharari_unstoppable_us,
+      "meta": ["History / Science / Human Evolution", "Age 10+ Years"],
+      "lead": "Why are humans running the planet?",
+      "paras": [
+        "We aren't the strongest animals. We can't outrun a lion, swim like a dolphin, or fly like an eagle. Yet somehow, humans have travelled across the world, built cities, invented machines, landed on the Moon, and transformed the planet.",
+        "Unstoppable Us takes young readers on an extraordinary journey through the story of humankind \u2014 from early humans and hunter-gatherers to the ideas, stories, tools and cooperation that helped Homo sapiens become the most powerful species on Earth."
+      ],
+      "closing": [
+        "But the real mystery isn't simply how humans survived.",
+        "It's how humans became unstoppable."
+      ]
+    },
+    "sections": [
+      {
+        "kind": "grid",
+        "variant": "cards",
+        "title": "Creative Learning Activities",
+        "subtitle": "Turn the history of humanity into something children can imagine, question and create.",
+        "items": [
+          {
+            "title": "Invent a Human Superpower",
+            "text": "Humans don't have claws, wings or incredible strength. So what abilities helped us survive?\nAsk children to invent their own human superpower. It could be imagination, cooperation, curiosity, language, problem-solving or something completely new.\nDraw it, name it and explain how it would help humanity.",
+            "icon": "\ud83d\udd25"
+          },
+          {
+            "title": "The Human Journey",
+            "text": "Create a giant timeline showing the journey of humans from early Homo sapiens to the world we live in today.\nAdd important discoveries, inventions and turning points \u2014 fire, tools, farming, writing, cities, machines, space travel and beyond.\nThen ask:",
+            "text2": "What do you think the next step will be?",
+            "icon": "\ud83c\udf0d"
+          },
+          {
+            "title": "Survive the Wild",
+            "text": "Imagine you have been transported 100,000 years into the past with no electricity, buildings, supermarkets or phones.\nYou have only what you can carry.",
+            "text2": "What would you need to survive?",
+            "icon": "\ud83e\udd81"
+          },
+          {
+            "title": "The Story That Changed Everything",
+            "text": "Humans can believe in things that don't physically exist \u2014 countries, money, companies, laws and countless other shared ideas.\nChoose one idea that people collectively believe in.\nDraw it as a character or creature.\nThen imagine what the world would look like if everyone suddenly stopped believing in it.",
+            "icon": "\ud83e\udde0"
+          }
+        ]
+      },
+      {
+        "kind": "grid",
+        "variant": "themes",
+        "title": "Discussion Points & Themes",
+        "subtitle": "Unstoppable Us isn't just a history book. It invites children to question what makes humans different \u2014 and whether being powerful always means being wise.",
+        "items": [
+          {
+            "title": "Cooperation",
+            "text": "One human isn't particularly powerful compared with many animals. But humans can cooperate in enormous numbers.",
+            "text2": "Why are we so good at working together?\nAnd what happens when people cooperate towards something harmful?",
+            "icon": "\ud83e\udd1d"
+          },
+          {
+            "title": "Stories & Shared Beliefs",
+            "text": "Humans don't only communicate about things they can see.\nWe create stories, ideas and shared beliefs that can connect millions of strangers.",
+            "text2": "What are some invisible ideas that shape the world around you?",
+            "icon": "\ud83d\udde3\ufe0f"
+          },
+          {
+            "title": "Curiosity & Discovery",
+            "text": "From controlling fire to exploring the planet and reaching space, humans have always wanted to understand what lies beyond the familiar.",
+            "text2": "What does curiosity make us do?\nAnd can curiosity sometimes take us too far?",
+            "icon": "\ud83d\udd25"
+          },
+          {
+            "title": "Our Power Over the Planet",
+            "text": "Humans have changed the world more dramatically than any other species.\nBut being powerful comes with responsibility.",
+            "text2": "If humans can change the planet, what should we choose to change \u2014 and what should we protect?",
+            "icon": "\ud83c\udf0e"
+          }
+        ]
+      },
+      {
+        "kind": "prose",
+        "title": "Why This Book?",
+        "lead": "Because history isn't just about remembering what happened.",
+        "paras": [
+          "It's about understanding how we got here.",
+          "Unstoppable Us turns the enormous story of human evolution into an exciting journey filled with surprising questions about intelligence, imagination, cooperation, technology and our relationship with the world around us.",
+          "It gives young readers a chance to look at humanity from the outside \u2014 almost as if we were discovering humans as a species for the very first time."
+        ]
+      },
+      {
+        "kind": "grid",
+        "variant": "learning",
+        "title": "Vocabulary List",
+        "subtitle": "Introduce these fascinating words while reading together.",
+        "items": [
+          {
+            "title": "Homo sapiens",
+            "text": "The scientific name for our species of human.",
+            "text2": "Homo sapiens are the humans living on Earth today.",
+            "icon": "\ud83e\uddec"
+          },
+          {
+            "title": "Evolution",
+            "text": "The gradual process through which living things change across generations.",
+            "text2": "Human beings are part of a much longer evolutionary story.",
+            "icon": "\ud83c\udf0e"
+          },
+          {
+            "title": "Hunter-Gatherer",
+            "text": "A person who survives by hunting animals and gathering plants and other foods from nature.",
+            "text2": "For most of human history, people lived as hunter-gatherers.",
+            "icon": "\ud83e\udea8"
+          },
+          {
+            "title": "Cooperation",
+            "text": "Working together with others to achieve something.",
+            "text2": "Human cooperation allowed groups of people to accomplish things that individuals could never do alone.",
+            "icon": "\ud83e\udd1d"
+          },
+          {
+            "title": "Myth",
+            "text": "A traditional story or shared belief that helps people make sense of the world.",
+            "text2": "Shared stories and beliefs have played an important role in human societies.",
+            "icon": "\ud83d\udcad"
+          }
+        ]
+      },
+      {
+        "kind": "author",
+        "name": "Yuval Noah Harari",
+        "tagline": "HISTORIAN \u2022 AUTHOR \u2022 THINKER",
+        "paras": [
+          "Yuval Noah Harari is a historian and bestselling author whose books explore some of humanity's biggest questions \u2014 where we came from, how societies developed, and where humans might be heading.",
+          "In Unstoppable Us, he brings the enormous story of human history to younger readers, turning evolution and early human history into an accessible and thought-provoking adventure."
+        ],
+        "chips": ["Author of Sapiens", "Historian", "Human History Explorer"]
+      },
+      {
+        "kind": "series",
+        "variant": "cards",
+        "title": "Start a Reading Habit",
+        "subtitle": "If Unstoppable Us makes you curious about how humans became who we are, there are many more stories waiting to be explored.",
+        "items": [
+          {
+            "title": "Sapiens",
+            "text": "The bigger story of humankind.",
+            "image": imgharari_sapiens,
+            "alt": "Sapiens: A Brief History of Humankind"
+          },
+          {
+            "title": "Unstoppable Us \u2014 Volume 2",
+            "text": "Continue the journey and discover how humans built the world we know today.",
+            "placeholder": "Volume 2"
+          },
+          {
+            "title": "Explore More History & Science",
+            "text": "Discover books that turn big questions about our world into unforgettable adventures.",
+            "images": [imgharari_homo_deus, imgharari_nexus],
+            "alt": "Homo Deus and Nexus"
+          }
+        ]
+      },
+      {
+        "kind": "cta",
+        "title": ["Start Your Child's", "Reading Journey", "Today"],
+        "text": "What makes humans different?\nWhy did our species survive?\nAnd where could our story go next?\nUnstoppable Us is an invitation to look at humanity with fresh eyes \u2014 to question, imagine, discover and become curious about the incredible story we are all part of.",
+        "button": "GET THIS BOOK VIA WHATSAPP \u2192",
+        "href": "https://wa.me/919500056482"
+      }
+    ]
+  },
   {
     "slug": "malgudi-schooldays",
     "metaDescription": "Explore this month's featured book: Malgudi Schooldays by R.K. Narayan. A timeless Indian classic about friendship, curiosity, and the joys of childhood in the fictional town of Malgudi.",
