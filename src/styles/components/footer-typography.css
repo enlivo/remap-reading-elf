@@ -145,3 +145,64 @@
 .books-page .books-come-see-us {
   padding-bottom: clamp(140px, 11vw, 165px);
 }
+
+/*
+ * Books footer — same text arrangement and spacing as the Home footer
+ * (desktop). Colours, cream background, badge and branch stay Books'.
+ * Values mirror components/footer.css (.site-footer*).
+ */
+@media (min-width: 901px) {
+  .site-footer.site-footer--books {
+    min-height: 560px;
+    padding: clamp(70px, 6vw, 110px) 8% 30px;
+  }
+
+  .site-footer.site-footer--books .site-footer__content {
+    width: min(100%, 1380px);
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr);
+    column-gap: 0;
+    align-items: center;
+  }
+
+  .site-footer.site-footer--books .site-footer__about {
+    padding-top: 0;
+  }
+
+  .site-footer.site-footer--books .site-footer__about h2 {
+    margin: 0;
+  }
+
+  .site-footer.site-footer--books .site-footer__about > p:not(.site-footer__visit) {
+    max-width: none;
+    margin: 1em 0;
+  }
+
+  .site-footer.site-footer--books .site-footer__about h3 {
+    margin: 32px 0 14px;
+  }
+
+  .site-footer.site-footer--books .site-footer__phone {
+    margin-top: 26px;
+  }
+
+  .site-footer.site-footer--books .site-footer__links {
+    grid-column: 3;
+    align-self: center;
+    justify-self: end;
+    min-width: 0;
+    margin-top: 0;
+    gap: 9px;
+  }
+
+  .site-footer.site-footer--books .site-footer__links h3 {
+    margin: 0 0 10px;
+  }
+
+  .site-footer.site-footer--books .site-footer__legal {
+    width: auto;
+    margin: 45px auto 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
