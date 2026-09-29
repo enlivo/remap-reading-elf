@@ -5,7 +5,7 @@ import {
 } from "motion/react";
 
 import heroIllustration from "../../assets/images/hero-illustration.jpg";
-import monthlyBest from "../../design-assets/Website/Landing Page/Monthly Best Quick Link.png";
+import monthlyBest from "../../assets/images/monthly-best-september.png";
 
 import usePhoneLandingViewport from "./usePhoneLandingViewport.js";
 
@@ -320,7 +320,7 @@ export default function HeroSection({
       </motion.p>
 
       <motion.a
-        href="/books"
+        href="/books/unstoppable-us"
         className="landing-hero__monthly"
         style={{
           opacity:
@@ -331,7 +331,7 @@ export default function HeroSection({
       >
         <img
           src={monthlyBest}
-          alt="Monthly Best"
+          alt="Monthly Best: Unstoppable Us, How Humans Took Over the World"
         />
       </motion.a>
     </section>
