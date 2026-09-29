@@ -124,11 +124,12 @@
 .blog-footer .blog-footer__desktop-visit h2,
 .blog-footer .blog-footer__desktop-visit p,
 .books-page .books-come-see-us h2,
-.books-page .books-come-see-us p {
+.books-page .books-come-see-us p,
+.site-footer.site-footer--books .site-footer__visit {
   font-family: "Kind Bond", Georgia, serif;
-  font-size: clamp(20px, 1.6vw, 30px);
+  font-size: 17px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.55;
 }
 
 .experience-footer .experience-footer__visit p,
