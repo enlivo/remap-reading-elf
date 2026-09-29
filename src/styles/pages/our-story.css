@@ -199,6 +199,21 @@
   margin-bottom: 0;
 }
 
+/* Sunaina + Adhruth: same treatment as Shweta - portrait sits right under the
+   cream band and runs down to the bottom of the bio, no white gap above or below */
+@media (min-width: 901px) {
+  .our-story-person--adhruth .our-story-bio,
+  .our-story-person--sunaina .our-story-bio {
+    padding-bottom: 0;
+  }
+
+  .our-story-person--adhruth .our-story-bio__portrait,
+  .our-story-person--sunaina .our-story-bio__portrait {
+    margin-top: 0.3vw;
+    margin-bottom: 0;
+  }
+}
+
 .our-story-bio__copy {
   position: relative;
   z-index: 4;
