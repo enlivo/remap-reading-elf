@@ -569,28 +569,13 @@
   }
 }
 
-/* Footer artwork is a full 1920x1080 frame with its own copy of the header
-   baked into the top ~107px. In normal flow we sit it below the fixed nav
-   and crop that baked header off. */
 @media (min-width: 901px) {
   .blog-stage-runway--flow .blog-state--footer {
     height: auto;
     padding-top: calc(22px + 9.12vw);
   }
 
-  /* clip on the inner wrapper: the section's own padding area would
-     otherwise still show the part pulled up by the negative margin */
   .blog-stage-runway--flow .blog-footer {
     height: auto;
-    overflow: clip;
-  }
-
-  .blog-stage-runway--flow .blog-state--footer .blog-state__canvas {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    margin-top: -5.6vw;
-    transform: none;
   }
 }

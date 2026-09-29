@@ -13,9 +13,8 @@
  * Do not set font-family / font-size for these selectors in a
  * page-specific footer stylesheet again.
  *
- * Not touched: the big "Come See Us! / Thoraipakkam, Chennai" heading
- * (page-specific hero layout), and the Blog desktop footer, which is a
- * single baked-in image (blog-footer.png) rather than live text.
+* Not touched: the big "Come See Us! / Thoraipakkam, Chennai" heading
+ * (page-specific hero layout).
  */
 
 /* "The Reading Elf" title */
@@ -23,7 +22,9 @@
 .events-footer .events-footer__about h2,
 .our-story-footer .our-story-footer__about h2,
 .story-box-footer .story-box-footer__intro h2,
-.blog-footer .blog-footer__about h2 {
+.blog-footer .blog-footer__about h2,
+.blog-footer .blog-footer__desktop-about h2,
+.site-footer.site-footer--books .site-footer__about h2 {
   font-family: "Kind Bond", Georgia, serif;
   font-size: clamp(38px, 3vw, 58px);
   font-weight: 400;
@@ -35,7 +36,9 @@
 .events-footer .events-footer__about > p,
 .our-story-footer .our-story-footer__about > p,
 .story-box-footer .story-box-footer__intro p,
-.blog-footer .blog-footer__about > p {
+.blog-footer .blog-footer__about > p,
+.blog-footer .blog-footer__desktop-about > p,
+.site-footer.site-footer--books .site-footer__about > p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   font-weight: 400;
@@ -47,7 +50,9 @@
 .events-footer h3,
 .our-story-footer h3,
 .story-box-footer h3,
-.blog-footer h3 {
+.blog-footer h3,
+.site-footer.site-footer--books h3,
+.site-footer.site-footer--books .site-footer__about h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 27px;
   font-weight: 400;
@@ -59,7 +64,9 @@
 .events-footer .events-footer__phone,
 .our-story-footer .our-story-footer__phone,
 .story-box-footer .story-box-footer__phone,
-.blog-footer .blog-footer__mobile-phone {
+.blog-footer .blog-footer__mobile-phone,
+.blog-footer .blog-footer__desktop-phone,
+.site-footer.site-footer--books .site-footer__phone {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: normal;
@@ -71,7 +78,9 @@
 .events-footer .events-footer__links,
 .our-story-footer .our-story-footer__links,
 .story-box-footer .story-box-footer__links a,
-.blog-footer .blog-footer__mobile-links {
+.blog-footer .blog-footer__mobile-links,
+.blog-footer .blog-footer__desktop-links,
+.site-footer.site-footer--books .site-footer__links {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: normal;
@@ -81,7 +90,9 @@
 .events-footer .events-footer__links h3,
 .our-story-footer .our-story-footer__links h3,
 .story-box-footer .story-box-footer__links h3,
-.blog-footer .blog-footer__mobile-links h3 {
+.blog-footer .blog-footer__mobile-links h3,
+.blog-footer .blog-footer__desktop-links h3,
+.site-footer.site-footer--books .site-footer__links h3 {
   font-size: 27px;
 }
 
@@ -90,7 +101,9 @@
 .events-footer .events-footer__legal,
 .our-story-footer .our-story-footer__legal,
 .story-box-footer .story-box-footer__legal,
-.blog-footer .blog-footer__legal {
+.blog-footer .blog-footer__legal,
+.blog-footer .blog-footer__desktop-legal,
+.site-footer.site-footer--books .site-footer__legal {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.6;
