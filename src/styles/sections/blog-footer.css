@@ -21,10 +21,44 @@
     position: relative;
     display: block;
     width: 100%;
-    min-height: max(56vw, 760px);
+    height: 100%;
+    min-height: 0;
     overflow: clip;
     color: #70412d;
     background: #f3e8d0;
+  }
+
+  /* blog post page: footer sits in normal flow, not inside the 100svh stage */
+  .blog-footer--standalone .blog-footer__desktop {
+    height: auto;
+    min-height: max(56vw, 760px);
+  }
+
+  @media (max-height: 760px) {
+    .blog-footer__desktop-about {
+      top: 39%;
+    }
+
+    .blog-footer__desktop-about > p {
+      margin-top: 12px;
+    }
+
+    .blog-footer__desktop-about h3 {
+      margin: 18px 0 10px;
+    }
+
+    .blog-footer__desktop-phone {
+      margin-top: 14px;
+    }
+
+    .blog-footer__desktop-links {
+      top: 52%;
+      gap: 6px;
+    }
+
+    .blog-footer__desktop-legal {
+      padding-top: 12px;
+    }
   }
 
   .blog-footer__desktop-top {
