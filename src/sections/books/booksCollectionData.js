@@ -39,7 +39,8 @@ import journalNotebook from "../../../assets/images/books-page/collection-journa
 import journalPocketJournal from "../../../assets/images/books-page/gifts-collectibles-pocket-journal.png";
 import companionGingerbreadV2 from "../../../assets/images/books-page/story-companion-gingerbread-man-v2.jpg";
 import companionGreenElf from "../../../assets/images/books-page/gifts-collectibles-green-elf.png";
-import companionReadingElfBluePink from "../../../assets/images/books-page/story-companion-reading-elf-blue-pink.jpg";
+import companionReadingElfPink from "../../../assets/images/books-page/story-companion-reading-elf-pink.jpg";
+import companionReadingElfBlue from "../../../assets/images/books-page/story-companion-reading-elf-blue.jpg";
 import companionHeidi from "../../../assets/images/books-page/story-companion-heidi.jpg";
 import companionRabbitHeadphones from "../../../assets/images/books-page/gifts-collectibles-rabbit-with-headphones.png";
 
@@ -290,11 +291,19 @@ export const BOOK_COLLECTION = [
     categories: ["story-companion"],
   },
   {
-    id: "companion-reading-elf-blue-pink",
+    id: "companion-reading-elf-pink",
     title: "Reading Elf (Blue & Pink)",
     type: "product",
     price: 985,
-    image: companionReadingElfBluePink,
+    image: companionReadingElfPink,
+    categories: ["story-companion"],
+  },
+  {
+    id: "companion-reading-elf-blue",
+    title: "Reading Elf (Blue & Pink)",
+    type: "product",
+    price: 985,
+    image: companionReadingElfBlue,
     categories: ["story-companion"],
   },
   {
