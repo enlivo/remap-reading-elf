@@ -8,6 +8,15 @@ import {
   useState,
 } from "react";
 
+import ReadingPersonalityRegister from "./reading-personality/ReadingPersonalityRegister.jsx";
+import {
+  getSession,
+  getSource,
+  normalizePhone,
+  postRegistration,
+  postResult,
+  saveSession,
+} from "./reading-personality/readingPersonalityApi.js";
 import ReadingPersonalityQuiz from "./reading-personality/ReadingPersonalityQuiz.jsx";
 import ReadingPersonalityResult from "./reading-personality/ReadingPersonalityResult.jsx";
 import ReadingPersonalityTeaser from "./reading-personality/ReadingPersonalityTeaser.jsx";
@@ -36,6 +45,27 @@ export default function StoryBoxReadingPersonality() {
   ] = useState(null);
   const [resultKey, setResultKey] =
     useState(null);
+  const [notice, setNotice] =
+    useState("");
+  const sessionRef = useRef(getSession());
+
+  // QR entry (/story-box?src=qr): jump straight to the quiz intro. Retried a
+  // few times because images above the quiz shift the layout as they load.
+  useEffect(() => {
+    if (getSource() !== "qr") {
+      return undefined;
+    }
+
+    const scroll = () =>
+      document
+        .getElementById("reading-personality")
+        ?.scrollIntoView({ block: "start" });
+    const timers = [0, 350, 900, 1800].map((delay) =>
+      window.setTimeout(scroll, delay),
+    );
+
+    return () => timers.forEach(window.clearTimeout);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -74,8 +104,39 @@ export default function StoryBoxReadingPersonality() {
     setPhase(nextPhase);
   };
 
+  // A registered session (kept in sessionStorage) skips the form on refresh.
   const startQuiz = () => {
-    resetQuiz("quiz");
+    setNotice("");
+    resetQuiz(sessionRef.current ? "quiz" : "register");
+  };
+
+  const submitRegistration = (values) => {
+    const sessionId = crypto.randomUUID();
+    const name = values.name.trim();
+    const email = values.email.trim();
+
+    sessionRef.current = { sessionId, name, email };
+    saveSession(sessionRef.current);
+    setNotice("");
+    setPhase("quiz");
+
+    // Fire and forget: the quiz is already unlocked.
+    postRegistration({
+      type: "register",
+      sessionId,
+      name,
+      email,
+      phone: normalizePhone(values.phone),
+      source: getSource(),
+      consent: true,
+      website: values.website,
+    }).then((ok) => {
+      if (!ok) {
+        setNotice(
+          "We couldn't save your details just now. No worries — we'll try again automatically.",
+        );
+      }
+    });
   };
 
   const returnToTeaser = () => {
@@ -111,9 +172,21 @@ export default function StoryBoxReadingPersonality() {
           return;
         }
 
-        setResultKey(
-          getResultKey(nextAnswers),
-        );
+        const finalKey =
+          getResultKey(nextAnswers);
+
+        if (sessionRef.current) {
+          postResult({
+            sessionId:
+              sessionRef.current.sessionId,
+            answers: nextAnswers,
+            result:
+              results[finalKey]?.name ??
+              finalKey,
+          });
+        }
+
+        setResultKey(finalKey);
         setSelectedValue(null);
         setPhase("result");
         pendingTimer.current = null;
@@ -154,6 +227,12 @@ export default function StoryBoxReadingPersonality() {
       <ReadingPersonalitySceneProps />
 
       <div className="story-box-reading-personality__inner">
+        {phase === "quiz" && notice && (
+          <p className="rp-notice" role="status">
+            {notice}
+          </p>
+        )}
+
         <AnimatePresence
           mode="wait"
           initial={false}
@@ -162,6 +241,15 @@ export default function StoryBoxReadingPersonality() {
             <ReadingPersonalityTeaser
               key="teaser"
               startQuiz={startQuiz}
+              transition={transition}
+            />
+          )}
+
+          {phase === "register" && (
+            <ReadingPersonalityRegister
+              key="register"
+              onBack={returnToTeaser}
+              onSubmit={submitRegistration}
               transition={transition}
             />
           )}

@@ -158,3 +158,26 @@
     width: 68%;
   }
 }
+
+/* Registration form — mobile (kept last so it wins over earlier blocks) */
+@media (max-width: 900px) {
+  .rp-form {
+    max-width: none;
+  }
+
+  .rp-form h2 {
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: clamp(28px, 7vw, 38px);
+  }
+}
+
+@media (max-width: 599px) {
+  .rp-form {
+    padding: 72px 6% 40px;
+  }
+
+  .rp-form__submit {
+    width: 100%;
+  }
+}
