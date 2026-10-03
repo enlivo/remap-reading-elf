@@ -39,9 +39,128 @@ import imgharari_unstoppable_us from "../../../assets/images/books-page/book-of-
 import imgharari_sapiens from "../../../assets/images/books-page/book-of-month/harari-sapiens.webp";
 import imgharari_homo_deus from "../../../assets/images/books-page/book-of-month/harari-homo-deus.webp";
 import imgharari_nexus from "../../../assets/images/books-page/book-of-month/harari-nexus.webp";
+import imgnorse_mythology from "../../../assets/images/books-page/book-of-month/neil-gaiman-norse-mythology.webp";
+import imggraveyard_book from "../../../assets/images/books-page/book-of-month/neil-gaiman-graveyard-book.webp";
+import imgstardust from "../../../assets/images/books-page/book-of-month/neil-gaiman-stardust.webp";
+import imgamerican_gods from "../../../assets/images/books-page/book-of-month/neil-gaiman-american-gods.webp";
 import ctaShelf from "../../../assets/images/books-page/book-of-month/images-book-bg.webp";
 
 export const BOOKS_OF_MONTH = [
+  {
+    slug: "norse-mythology",
+    metaDescription: "Explore this month's featured book: Norse Mythology by Neil Gaiman. Wild, strange, funny and terrifying — the original stories of Odin, Thor and Loki, for readers aged 10+.",
+    card: {
+      title: "Norse Mythology",
+      author: "Neil Gaiman",
+      month: "October",
+      desc: "Neil Gaiman went back to the source and retold them the way they were always meant to be heard: around a fire, with someone who knows how to make a story breathe.",
+      image: imgnorse_mythology,
+    },
+    hero: {
+      badge: "📚 BOOK OF THE MONTH - October",
+      title: ["Norse", "Mythology"],
+      author: "By Neil Gaiman",
+      cover: imgnorse_mythology,
+      meta: ["Mythology / Adventure / Retelling", "10+ years · Great for family read-alouds too"],
+      paras: [
+        "Before there was Marvel. Before there were movies. There were the original stories — wild, strange, funny, and terrifying all at once. Neil Gaiman went back to the source and retold them the way they were always meant to be heard: around a fire, with someone who knows how to make a story breathe.",
+        "Norse Mythology brings to life the gods of the ancient North — Odin, the all-father with his ravens and his hunger for wisdom. Thor, mighty and hot-headed, with his hammer Mjolnir. And Loki, the trickster, the shape-shifter, the one you can never quite trust and can never quite stop reading about.",
+        "From the creation of the world to its eventual destruction at Ragnarok — these are the stories that shaped an entire mythology. And in Gaiman's hands, they feel utterly, compulsively alive.",
+      ],
+    },
+    sections: [
+      {
+        kind: "grid",
+        variant: "cards",
+        title: "Creative Learning Activities",
+        subtitle: "Bring the myths to life beyond the page.",
+        items: [
+          { title: "Create Your Own God", text: "If you were a Norse god, what would your power be? What would your weapon look like? Draw your character, give them a name, and write three lines about what they protect and what they fear.", icon: "⚡" },
+          { title: "Map the Nine Worlds", text: "Norse mythology has nine worlds connected by the great tree Yggdrasil. Draw your own version of the nine worlds — what does each one look like? What kind of creatures live there?", icon: "🌍" },
+          { title: "Retell a Myth", text: "Pick one story from the book and retell it in your own words — as a comic strip, a short story, or even acted out with siblings. Loki's adventures work particularly well for this.", icon: "📖" },
+        ],
+      },
+      {
+        kind: "feature",
+        title: "Bring the Story Home",
+        // TODO: add the companion/collectibles product photo here (image: <import>); until then the section renders text-only.
+        paras: [
+          "Continue the magic beyond the final page with our mythology-inspired companions and collectibles, thoughtfully curated to celebrate Norse Mythology.",
+          "From illustrated editions to mythology companion books that take the adventure further — they're the perfect way to keep the world of gods and giants alive long after the last page.",
+        ],
+        note: "✨ Available exclusively at The Reading Elf.",
+        bg: "#FFF6EA",
+      },
+      {
+        kind: "grid",
+        variant: "themes",
+        title: "Discussion Points & Themes",
+        items: [
+          { title: "Power and Responsibility", text: "Thor is incredibly powerful but often acts without thinking. Odin is wise but ruthless. What does it mean to use power well? Can you be a hero and still make bad choices?", icon: "⚡" },
+          { title: "The Trickster", text: "Loki causes almost every problem in the book — but also solves many of them. Is he a villain, a hero, or something in between? Why are trickster characters so fascinating?", icon: "🦊" },
+          { title: "Why Stories Matter", text: "These myths were told for thousands of years before anyone wrote them down. Why do you think people kept telling them? What do stories do that facts can't?", icon: "🌍" },
+          { title: "Why This Book?", text: "Neil Gaiman doesn't simplify these myths — he honours them. The humour, the darkness, the strange logic of a world where gods die and giants build walls and the end of everything is already foretold. For children who are ready for stories that don't tie up neatly, this is the book. It asks nothing except that you pay attention.", icon: "🌟" },
+        ],
+      },
+      {
+        kind: "grid",
+        variant: "learning",
+        title: "Vocabulary List",
+        subtitle: "Introduce these words while reading together.",
+        items: [
+          { title: "Mjolnir", text: "Thor's hammer — one of the most powerful weapons in the nine worlds.", icon: "⚡" },
+          { title: "Yggdrasil", text: "The great ash tree at the centre of the Norse universe, connecting all nine worlds.", icon: "🌳" },
+          { title: "Trickster", text: "A character who uses cleverness, deception, and humour rather than brute force.", icon: "🦊" },
+          { title: "Prophecy", text: "A prediction of what will happen — and in Norse mythology, one that cannot be escaped.", icon: "🔮" },
+          { title: "Ragnarok", text: "The Norse end of the world — a great battle where gods and giants destroy each other.", icon: "⚔️" },
+        ],
+      },
+      {
+        kind: "author",
+        name: "Neil Gaiman",
+        // TODO: add the author photo here (photo: <import>); until then the card shows the "NG" monogram.
+        tagline: "MASTER STORYTELLER",
+        paras: [
+          "Neil Gaiman is one of the most celebrated authors of our time — the mind behind Coraline, The Graveyard Book, American Gods, and Sandman. He grew up obsessed with myths and folklore, and Norse Mythology is the book he always wanted to write: a love letter to the stories that shaped him.",
+          "He doesn't adapt these myths. He inhabits them. His Odin is cunning and cold. His Thor is endearingly dim. His Loki is magnetic and dangerous. And somehow, all of it feels true.",
+        ],
+        chips: ["1960 – present · Fantasy, Mythology, Children's Literature"],
+      },
+      {
+        kind: "series",
+        variant: "cards",
+        title: "Start a Reading Habit",
+        subtitle: "Norse Mythology is just the beginning. If your child loved this, explore more worlds:",
+        items: [
+          {
+            title: "The Graveyard Book",
+            text: "A boy raised by ghosts in a graveyard. Dark, tender, and completely unforgettable. Ages 10+",
+            image: imggraveyard_book,
+            alt: "The Graveyard Book by Neil Gaiman",
+          },
+          {
+            title: "Stardust",
+            text: "A young man crosses into a magical kingdom to find a fallen star. Ages 12+",
+            image: imgstardust,
+            alt: "Stardust by Neil Gaiman",
+          },
+          {
+            title: "American Gods — Neil Gaiman",
+            text: "For older teens and adults · What happens when old gods come to modern America",
+            image: imgamerican_gods,
+            alt: "American Gods by Neil Gaiman",
+          },
+        ],
+      },
+      {
+        kind: "cta",
+        title: ["Start Your Child's", "Reading Journey", "Today"],
+        text: "Whether for family read-alouds, independent readers, or a gift that opens an entire world — Norse Mythology is a story worth having on every shelf.",
+        button: "GET THIS BOOK VIA WHATSAPP →",
+        href: `https://wa.me/919500056482?text=${encodeURIComponent("Hi, I'd like to know more about Norse Mythology by Neil Gaiman")}`,
+      },
+    ],
+  },
   {
     "slug": "unstoppable-us",
     "metaDescription": "Explore this month's featured book: Unstoppable Us by Yuval Noah Harari. How did humans take over the world? A history, science and human evolution adventure for young readers aged 10+.",

@@ -970,3 +970,12 @@
   bottom: 9%;
   transform: rotate(5deg);
 }
+
+
+/* ---------- October book (Norse Mythology): feature section without a photo ---------- */
+
+.book-feature--text-only .book-feature__inner {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 860px;
+  text-align: center;
+}
