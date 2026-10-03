@@ -18,6 +18,7 @@ const THEMES = {
   "lion-witch-wardrobe": { line: 2 },
   "hungry-caterpillar": { line: 1 },
   "unstoppable-us": { line: -1 },
+  "norse-mythology": { line: 1 },
 };
 
 /* text with "\n" becomes separate paragraphs */
@@ -151,9 +152,13 @@ function GridSection({ section, tone }) {
 
 function FeatureSection({ section, tone }) {
   return (
-    <section className={`book-section book-feature book-section--${tone}`}>
+    <section
+      className={`book-section book-feature book-section--${tone}${
+        section.image ? "" : " book-feature--text-only"
+      }`}
+    >
       <div className="book-feature__inner">
-        <img src={section.image} alt={section.title} />
+        {section.image && <img src={section.image} alt={section.title} />}
 
         <div className="book-feature__copy">
           <h2>{section.title}</h2>
