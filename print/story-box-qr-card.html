@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story Box QR Card</title>
+<style>
+@font-face {
+  font-family: "Kind Bond";
+  src: url("../assets/fonts/kind-bond.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-variable.ttf") format("truetype");
+  font-weight: 200 1000;
+  font-display: block;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ECC067;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-family: "Nunito", Arial, sans-serif;
+  color: #1f1a17;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #ECC067;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  width: 178mm;
+  padding: 16mm 14mm 15mm;
+  background: #F6CFB7;
+  border-radius: 9mm;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Kind Bond", Georgia, serif;
+  font-weight: 400;
+  font-size: 40pt;
+  line-height: 1.1;
+  color: #B94E38;
+}
+
+.subline {
+  margin: 6mm auto 0;
+  max-width: 140mm;
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #7a4a33;
+}
+
+.qr-frame {
+  display: inline-block;
+  margin: 9mm 0 0;
+  padding: 7mm;
+  background: #ffffff;
+  border-radius: 4mm;
+  line-height: 0;
+}
+
+.qr {
+  display: block;
+  width: 85mm;
+  height: 85mm;
+}
+
+.url {
+  margin: 8mm 0 0;
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: 22pt;
+  color: #B94E38;
+}
+
+@media print {
+  .page { height: 297mm; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="card">
+    <h1>Find Your Reading Personality!</h1>
+    <p class="subline">Scan to take our quick 2-minute quiz and discover your child's reading style</p>
+    <div class="qr-frame">
+      <svg class="qr" role="img" aria-label="QR code: thereadingelf.in/story-box?src=qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h45v45H0z"/><path stroke="#000000" d="M2 2.5h7m1 0h2m2 0h3m2 0h2m1 0h1m1 0h1m1 0h2m1 0h1m3 0h2m1 0h7M2 3.5h1m5 0h1m4 0h5m2 0h2m2 0h3m1 0h4m1 0h1m2 0h1m5 0h1M2 4.5h1m1 0h3m1 0h1m4 0h4m1 0h1m1 0h3m1 0h5m5 0h1m1 0h1m1 0h3m1 0h1M2 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m3 0h2m2 0h1m4 0h1m1 0h3m1 0h1M2 6.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m1 0h3m1 0h1M2 7.5h1m5 0h1m2 0h1m1 0h3m3 0h2m4 0h2m1 0h2m2 0h3m1 0h1m5 0h1M2 8.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 9.5h1m1 0h1m1 0h2m2 0h3m7 0h5M4 10.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m1 0h4m4 0h3m3 0h1m3 0h1m2 0h1M10 11.5h1m3 0h2m1 0h1m2 0h3m3 0h3m1 0h1m1 0h1m1 0h4m1 0h3M5 12.5h1m1 0h6m1 0h2m3 0h3m3 0h1m2 0h1m1 0h1m5 0h3m1 0h1m1 0h1M4 13.5h3m2 0h1m1 0h1m4 0h2m1 0h13m2 0h1m2 0h2m2 0h2M2 14.5h3m1 0h1m1 0h1m3 0h3m3 0h1m2 0h2m2 0h1m1 0h1m3 0h1m1 0h2m1 0h1m2 0h1m2 0h1M2 15.5h1m2 0h3m1 0h2m4 0h5m3 0h2m1 0h2m1 0h1m3 0h2m4 0h1m2 0h1M3 16.5h1m1 0h1m2 0h2m1 0h2m1 0h2m1 0h1m2 0h2m3 0h4m2 0h1m1 0h2m1 0h1m1 0h1m2 0h2M2 17.5h1m7 0h2m3 0h3m3 0h5m2 0h2m1 0h2m1 0h1m1 0h1m5 0h1M2 18.5h4m1 0h3m1 0h1m1 0h3m1 0h3m3 0h1m2 0h3m2 0h1m1 0h1m2 0h2m4 0h1M2 19.5h1m1 0h3m3 0h1m1 0h3m1 0h1m3 0h2m2 0h5m3 0h1m1 0h1m1 0h1m5 0h1M4 20.5h1m1 0h1m1 0h2m2 0h3m3 0h1m2 0h3m1 0h4m2 0h1m6 0h1m1 0h3M4 21.5h1m4 0h5m1 0h2m1 0h2m1 0h4m1 0h1m1 0h1m5 0h1m2 0h1M2 22.5h2m2 0h4m2 0h2m1 0h1m6 0h1m4 0h1m2 0h1m2 0h4m1 0h1m2 0h2M3 23.5h2m1 0h2m4 0h1m3 0h5m7 0h1m1 0h2m2 0h3m1 0h1m1 0h3M2 24.5h1m1 0h1m3 0h2m3 0h1m2 0h2m1 0h3m2 0h3m4 0h1m3 0h1m5 0h2M3 25.5h1m1 0h1m5 0h1m1 0h2m4 0h1m3 0h3m1 0h1m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1M3 26.5h1m1 0h2m1 0h3m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h4m2 0h2M5 27.5h1m3 0h1m2 0h7m1 0h1m3 0h2m4 0h3m2 0h2m5 0h1M2 28.5h2m2 0h3m6 0h1m1 0h2m1 0h4m1 0h1m2 0h1m1 0h2m3 0h1m4 0h3M2 29.5h2m2 0h1m3 0h1m2 0h3m4 0h2m3 0h4m1 0h2m2 0h4M2 30.5h1m2 0h4m2 0h1m2 0h1m2 0h2m3 0h1m1 0h1m2 0h7m1 0h1m3 0h1m2 0h1M11 31.5h2m5 0h2m3 0h4m2 0h3m1 0h1m1 0h1m6 0h1M2 32.5h1m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m1 0h15m4 0h6M3 33.5h2m1 0h2m1 0h1m1 0h2m2 0h1m2 0h3m1 0h2m1 0h1m4 0h4m1 0h3m4 0h1M2 34.5h1m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h1m1 0h3m2 0h5m2 0h1M10 35.5h6m1 0h1m1 0h1m1 0h1m2 0h3m3 0h5m3 0h1m1 0h3M2 36.5h7m3 0h1m2 0h2m3 0h3m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m1 0h2m1 0h2M2 37.5h1m5 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m1 0h4m1 0h1m2 0h2m1 0h1m3 0h1m2 0h1M2 38.5h1m1 0h3m1 0h1m1 0h4m1 0h1m2 0h2m1 0h1m1 0h2m5 0h1m1 0h1m1 0h6M2 39.5h1m1 0h3m1 0h1m3 0h2m1 0h2m1 0h3m1 0h2m2 0h3m1 0h6m2 0h2m1 0h2M2 40.5h1m1 0h3m1 0h1m1 0h2m4 0h2m2 0h1m4 0h2m3 0h2m2 0h1m2 0h4m1 0h1M2 41.5h1m5 0h1m4 0h8m1 0h3m5 0h5m1 0h2m1 0h1m1 0h1M2 42.5h7m6 0h4m2 0h1m2 0h1m4 0h6m2 0h6"/></svg>
+    </div>
+    <p class="url">thereadingelf.in/story-box</p>
+  </section>
+</main>
+</body>
+</html>
