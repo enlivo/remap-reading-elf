@@ -8,6 +8,7 @@ No router library, no CSS framework, no component library.
 Single-pass builds. Make the change, run `npx vite build` to confirm it
 compiles, and stop. Do not run a Playwright audit loop or a
 self-verification pass unless something visibly breaks.
+(Owner's standing preference: single pass, no audit loops, no self-verification.)
 
 ## CSS gotcha — duplicate @media blocks
 
