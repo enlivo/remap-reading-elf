@@ -1,9 +1,11 @@
-/* QR entry (/story-box?src=qr): quiz only, full-height, centred.
-   Two-class selectors so these beat the section's own media-query padding. */
+/* QR entry (/story-box?src=qr): quiz only, filling the visible screen and centred.
+   Selectors include [data-phase] so they beat the teaser's fixed phone height
+   (display: block; height: 74.272vw) in every phase. */
 
 .story-box-page--qr {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   min-height: 100svh;
 }
 
@@ -13,8 +15,19 @@
   flex-direction: column;
 }
 
-.story-box-page--qr .story-box-reading-personality {
+.story-box-page--qr .story-box-reading-personality[data-phase] {
+  display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+  min-height: 100vh;
   min-height: 100svh;
-  padding: 24px 16px;
+}
+
+@media (max-width: 900px) {
+  .story-box-page--qr .story-box-reading-personality[data-phase] {
+    padding: 24px 20px;
+  }
 }
