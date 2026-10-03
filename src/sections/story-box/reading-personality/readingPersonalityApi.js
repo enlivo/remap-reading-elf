@@ -59,9 +59,12 @@ export function saveSession(session) {
 }
 
 export function getSource() {
-  return new URLSearchParams(window.location.search).get("src") === "qr"
-    ? "qr"
-    : "web";
+  const fromUrl =
+    new URLSearchParams(window.location.search).get("src") === "qr";
+  if (fromUrl) {
+    writeJson("rp-src", "qr");
+  }
+  return fromUrl || readJson("rp-src", null) === "qr" ? "qr" : "web";
 }
 
 function getPending() {

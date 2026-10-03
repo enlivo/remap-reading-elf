@@ -107,7 +107,8 @@ export default function StoryBoxReadingPersonality() {
   // A registered session (kept in sessionStorage) skips the form on refresh.
   const startQuiz = () => {
     setNotice("");
-    resetQuiz(sessionRef.current ? "quiz" : "register");
+    const needsGate = getSource() === "qr" && !sessionRef.current;
+    resetQuiz(needsGate ? "register" : "quiz");
   };
 
   const submitRegistration = (values) => {
