@@ -49,24 +49,6 @@ export default function StoryBoxReadingPersonality() {
     useState("");
   const sessionRef = useRef(getSession());
 
-  // QR entry (/story-box?src=qr): jump straight to the quiz intro. Retried a
-  // few times because images above the quiz shift the layout as they load.
-  useEffect(() => {
-    if (getSource() !== "qr") {
-      return undefined;
-    }
-
-    const scroll = () =>
-      document
-        .getElementById("reading-personality")
-        ?.scrollIntoView({ block: "start" });
-    const timers = [0, 350, 900, 1800].map((delay) =>
-      window.setTimeout(scroll, delay),
-    );
-
-    return () => timers.forEach(window.clearTimeout);
-  }, []);
-
   useEffect(() => {
     return () => {
       if (pendingTimer.current) {
