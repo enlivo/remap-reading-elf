@@ -5,7 +5,23 @@ import StoryBoxReadingPersonality from "../sections/story-box/StoryBoxReadingPer
 import StoryBoxMainSection from "../sections/story-box/StoryBoxMainSection.jsx";
 import StoryBoxFooter from "../sections/story-box/StoryBoxFooter.jsx";
 
+// Layout is decided by the URL alone: sessionStorage would keep a QR visitor
+// in the stripped layout for the rest of the tab.
+function isQrEntry() {
+  return new URLSearchParams(window.location.search).get("src") === "qr";
+}
+
 export default function StoryBoxPage() {
+  if (isQrEntry()) {
+    return (
+      <div id="top" className="story-box-page story-box-page--qr">
+        <main>
+          <StoryBoxReadingPersonality />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div id="top" className="story-box-page">
       <StoryBoxNavigation />
