@@ -147,7 +147,20 @@
   display: none;
 }
 
+/*
+ * Desktop layout is measured against the viewport, not the 16:9 canvas,
+ * because the header band (.blog-navigation__strip) is pinned to the
+ * viewport top. The featured band is centred in the space between the
+ * header and the bottom of the viewport. Its visual top includes the
+ * rounded panel that extends 20.8% above the band, hence the 0.208 term.
+ * The 0.32382 factor is the canvas offset needed to centre that group.
+ */
 .blog-hero {
+  --hero-canvas-h: min(56.25vw, 100svh);
+  --hero-header-bottom: calc(22px + 12.09vw);
+  --hero-band-h: calc(var(--hero-canvas-h) * 0.3965);
+  --hero-band-top: calc(var(--hero-header-bottom) / 2 + var(--hero-canvas-h) * 0.32382);
+
   overflow: hidden;
   background: #facbb1;
 }
@@ -158,10 +171,10 @@
   text-decoration: none;
   cursor: pointer;
   position: absolute;
-  top: 18%;
+  top: var(--hero-band-top);
   right: 0;
   left: 0;
-  height: 39.65%;
+  height: var(--hero-band-h);
   background: #2f6b4f;
 }
 
@@ -225,22 +238,24 @@
   pointer-events: none;
 }
 
+/* Leaf sits on the band's upper-left corner, above the copy column. */
 .blog-hero__deco--swoosh {
-  top: 12.7%;
-  left: 15.3%;
+  top: calc(var(--hero-band-top) - var(--hero-band-h) * 0.208 - 3.3cqw);
+  left: 8cqw;
   width: 13.5cqw;
 }
 
 .blog-hero__deco--ribbon {
-  top: 27.8%;
-  left: 6.4%;
+  top: calc(var(--hero-band-top) + var(--hero-band-h) * 0.35);
+  left: 5cqw;
   width: 8cqw;
   transform: rotate(45deg);
 }
 
+/* Wave sits right of the photo, on the band's right edge. */
 .blog-hero__deco--triangles {
-  top: 24.9%;
-  right: 8.1%;
+  top: calc(var(--hero-band-top) + var(--hero-band-h) * 0.2);
+  right: 5cqw;
   width: 11.9cqw;
 }
 
@@ -287,9 +302,13 @@
     aspect-ratio: auto;
   }
 
+  /*
+   * Card starts 84px into the hero, so its rounded panel (12px above the
+   * band) clears the 104px nav by roughly 64px. Bottom edge is unchanged.
+   */
   .blog-hero__feature {
-    top: 24px;
-    height: calc(100% - 74px);
+    top: 84px;
+    height: calc(100% - 134px);
   }
 
   .blog-hero__feature::before {
@@ -319,20 +338,23 @@
     transform: translateX(-50%);
   }
 
+  /* Leaf above the card's top-left corner, clear of the copy. */
   .blog-hero__deco--swoosh {
-    top: 0;
+    top: 34px;
     left: -20px;
     width: 108px;
   }
 
+  /* Ribbon beside the photo, below the copy. */
   .blog-hero__deco--ribbon {
-    top: 160px;
+    top: 236px;
     left: -26px;
     width: 90px;
   }
 
+  /* Wave hangs off the card's bottom-right corner, below the photo. */
   .blog-hero__deco--triangles {
-    top: 132px;
+    top: calc(100% - 66px);
     right: -16px;
     width: 94px;
   }
