@@ -5,7 +5,7 @@ import {
 } from "motion/react";
 
 import heroIllustration from "../../assets/images/hero-illustration.jpg";
-import monthlyBest from "../../assets/images/monthly-best-september.png";
+import monthlyBest from "../../assets/images/monthly-best-october.png";
 
 import usePhoneLandingViewport from "./usePhoneLandingViewport.js";
 
@@ -320,7 +320,7 @@ export default function HeroSection({
       </motion.p>
 
       <motion.a
-        href="/books/unstoppable-us"
+        href="/books/norse-mythology"
         className="landing-hero__monthly"
         style={{
           opacity:
@@ -331,7 +331,7 @@ export default function HeroSection({
       >
         <img
           src={monthlyBest}
-          alt="Monthly Best: Unstoppable Us, How Humans Took Over the World"
+          alt="Monthly Best: Norse Mythology by Neil Gaiman"
         />
       </motion.a>
     </section>
