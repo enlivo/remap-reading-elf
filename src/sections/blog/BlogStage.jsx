@@ -32,17 +32,6 @@ function HeroState({ style }) {
           aria-hidden="true"
         />
 
-        <div className="blog-hero__intro">
-          <h1>
-            More than a bookstore.
-            <span>A place to belong.</span>
-          </h1>
-          <p>
-            Reading clubs, workshops, and programmes built around the belief that
-            reading grows better together.
-          </p>
-        </div>
-
         <a
           className="blog-hero__feature"
           href={READING_VS_SCREEN_TIME_PATH}
