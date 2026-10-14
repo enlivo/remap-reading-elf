@@ -15,6 +15,37 @@ import greenBurst from "../../../design-assets/Website/Events/Elements of Events
 import peachBurst from "../../../design-assets/Website/Events/Elements of Events/1.png";
 import redBurst from "../../../design-assets/Website/Events/Elements of Events/3.png";
 
+import booStorytimeImage from "../../../assets/images/events-page/boo-storytime.webp";
+
+/*
+ * The main screen is taller than the viewport so the heading and event card
+ * fit. Scrolling first reveals the extra height, then the footer rises.
+ * Must match .events-main-screen height and .events-stage-runway height
+ * (100 + EVENTS_MAIN_HEIGHT) in events.css.
+ */
+const EVENTS_MAIN_HEIGHT = 132;
+const EXTRA_RATIO = (EVENTS_MAIN_HEIGHT - 100) / EVENTS_MAIN_HEIGHT;
+
+const REGISTRATION_URL = `https://wa.me/919500056482?text=${encodeURIComponent(
+  "Hi! I'd like to register my child for Boo! It's Storytime on 31 October.",
+)}`;
+
+const EVENT = {
+  title: "Boo! It's Storytime!",
+  host: "Story Time with Gauri Bhargav",
+  description:
+    "A spooky storytelling adventure where little readers dress up as their favourite characters, join an interactive story session, and enjoy a little Halloween magic.",
+  details: [
+    ["Date", "31 October"],
+    ["Time", "6:00 PM onwards"],
+    ["Age group", "4 years and above"],
+    ["Entry fee", "₹600 per child"],
+  ],
+  note: "Come dressed as your favourite character and step into the story! 🎃",
+  venue: "Rooftop, The Reading Elf, Thoraipakkam, Chennai",
+  phone: "95000 56482",
+};
+
 export default function EventsStage() {
   const sceneRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
@@ -40,14 +71,14 @@ export default function EventsStage() {
    */
   const eventsY = useTransform(
     scrollYProgress,
-    [0, 0.43, 0.63, 1],
-    ["0svh", "0svh", "-100svh", "-100svh"],
+    [0, EXTRA_RATIO, 1],
+    ["0svh", `-${EVENTS_MAIN_HEIGHT - 100}svh`, `-${EVENTS_MAIN_HEIGHT}svh`],
   );
 
   const footerY = useTransform(
     scrollYProgress,
-    [0, 0.43, 0.63, 1],
-    ["100svh", "100svh", "0svh", "0svh"],
+    [0, EXTRA_RATIO, 1],
+    ["100svh", "100svh", "0svh"],
   );
 
   return (
@@ -98,14 +129,56 @@ export default function EventsStage() {
           </div>
 
           <header className="events-main__intro">
-            <h1>Coming Soon</h1>
+            <h1>
+              Stories don&rsquo;t just
+              <br />
+              live on shelves here.
+            </h1>
 
             <p>
-              Our previous events have wrapped up.
-              <br />
-              New events are on the way.
+              Workshops, author sessions, and one-day experiences.
+              Something to look forward to, always.
             </p>
           </header>
+
+          <article className="events-main__card">
+            <div className="events-main__card-body">
+              <h2>{EVENT.title}</h2>
+              <p className="events-main__host">{EVENT.host}</p>
+              <p className="events-main__desc">{EVENT.description}</p>
+
+              <dl className="events-main__chips">
+                {EVENT.details.map(([label, value]) => (
+                  <div className="events-main__chip" key={label}>
+                    <dt>{label}</dt>
+                    <dd>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="events-main__note">{EVENT.note}</p>
+              <p className="events-main__venue">
+                <strong>Venue:</strong> {EVENT.venue}
+              </p>
+
+              <a
+                className="events-main__register"
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Register on WhatsApp &middot; {EVENT.phone}
+              </a>
+            </div>
+
+            <img
+              className="events-main__card-image"
+              src={booStorytimeImage}
+              alt="A storyteller in a witch hat reads to children in Halloween costumes on a lantern-lit rooftop."
+              width="960"
+              height="960"
+            />
+          </article>
         </motion.section>
 
         <motion.section
