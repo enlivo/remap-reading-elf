@@ -2,6 +2,10 @@
   .landing-hero { aspect-ratio: auto; min-height: 760px; }
   .landing-hero__art { object-position: center top; }
   .landing-navigation { display: none; }
+  .landing-hero__event { top: 16px; left: 5%; max-width: 88%; padding: 9px 15px; gap: 8px; }
+  .landing-hero__event-badge { font-size: 16px; }
+  .landing-hero__event-list { font-size: 13px; }
+  .landing-hero__event-date { font-size: 11px; }
   .landing-hero__headline { top: 23%; left: 8%; width: 84%; font-size: clamp(32px, 7vw, 60px); }
   .landing-hero__headline span { white-space: normal; }
   .landing-hero__description { top: 40%; left: 8%; width: 84%; font-size: 15px; }
@@ -266,6 +270,32 @@
     right: 6%;
 
     width: 43%;
+  }
+
+  /*
+   * New Events pill stays top-left, clear of the hamburger
+   * on the upper-right.
+   */
+  .landing-hero__event {
+    top: 14px;
+    left: 4%;
+
+    max-width: 90%;
+
+    padding: 8px 14px;
+    gap: 7px;
+  }
+
+  .landing-hero__event-badge {
+    font-size: 15px;
+  }
+
+  .landing-hero__event-list {
+    font-size: 12px;
+  }
+
+  .landing-hero__event-date {
+    font-size: 10px;
   }
 }
 
