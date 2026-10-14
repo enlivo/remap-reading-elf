@@ -289,6 +289,30 @@ export default function HeroSection({
         aria-hidden="true"
       />
 
+      <motion.a
+        href="/events"
+        className="landing-hero__event"
+        style={{
+          opacity:
+            promotionOpacity,
+          visibility:
+            promotionVisibility,
+        }}
+      >
+        <span className="landing-hero__event-badge">
+          New Events
+        </span>
+
+        <ol className="landing-hero__event-list">
+          <li>
+            Boo! It&rsquo;s Storytime!
+            <span className="landing-hero__event-date">
+              31 October
+            </span>
+          </li>
+        </ol>
+      </motion.a>
+
       <motion.h1
         className="landing-hero__headline"
         style={{
