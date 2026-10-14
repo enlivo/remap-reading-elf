@@ -182,7 +182,12 @@ function AuthorSection({ section, tone }) {
           <img
             className="book-author__photo"
             src={section.photo}
-            alt={section.name}
+            alt={section.photoAlt ?? section.name}
+            style={
+              section.photoPosition
+                ? { objectPosition: section.photoPosition }
+                : undefined
+            }
           />
         ) : (
           <span className="book-author__photo book-author__monogram" aria-hidden="true">

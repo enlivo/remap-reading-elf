@@ -35,6 +35,9 @@ import imgnarayan_horse_and_two_goats from "../../../assets/images/books-page/bo
 import imgnarayan_profile from "../../../assets/images/books-page/book-of-month/narayan-profile.webp";
 import imgnarayan_swami_and_friends from "../../../assets/images/books-page/book-of-month/narayan-swami-and-friends.webp";
 
+import imgneil_gaiman_portrait from "../../../assets/images/books-page/book-of-month/neil-gaiman.webp";
+import imgyuval_noah_harari_portrait from "../../../assets/images/books-page/book-of-month/yuval-noah-harari.webp";
+
 import imgharari_unstoppable_us from "../../../assets/images/books-page/book-of-month/harari-unstoppable-us.webp";
 import imgharari_sapiens from "../../../assets/images/books-page/book-of-month/harari-sapiens.webp";
 import imgharari_homo_deus from "../../../assets/images/books-page/book-of-month/harari-homo-deus.webp";
@@ -118,7 +121,9 @@ export const BOOKS_OF_MONTH = [
       {
         kind: "author",
         name: "Neil Gaiman",
-        // TODO: add the author photo here (photo: <import>); until then the card shows the "NG" monogram.
+        photo: imgneil_gaiman_portrait,
+        photoAlt: "Portrait of Neil Gaiman",
+        photoPosition: "top center",
         tagline: "MASTER STORYTELLER",
         paras: [
           "Neil Gaiman is one of the most celebrated authors of our time — the mind behind Coraline, The Graveyard Book, American Gods, and Sandman. He grew up obsessed with myths and folklore, and Norse Mythology is the book he always wanted to write: a love letter to the stories that shaped him.",
@@ -303,6 +308,9 @@ export const BOOKS_OF_MONTH = [
       {
         "kind": "author",
         "name": "Yuval Noah Harari",
+        "photo": imgyuval_noah_harari_portrait,
+        "photoAlt": "Portrait of Yuval Noah Harari",
+        "photoPosition": "top center",
         "tagline": "HISTORIAN \u2022 AUTHOR \u2022 THINKER",
         "paras": [
           "Yuval Noah Harari is a historian and bestselling author whose books explore some of humanity's biggest questions \u2014 where we came from, how societies developed, and where humans might be heading.",
