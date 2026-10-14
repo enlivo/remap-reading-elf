@@ -313,7 +313,11 @@ export default function HeroSection({
         </ol>
       </motion.a>
 
-      <motion.h1
+      <h1 className="sr-only">
+        The Reading Elf &mdash; a children&rsquo;s bookstore in Thoraipakkam, Chennai
+      </h1>
+
+      <motion.p
         className="landing-hero__headline"
         style={{
           y: headlineY,
@@ -323,7 +327,7 @@ export default function HeroSection({
         <span>
           Fall in love with Reading
         </span>
-      </motion.h1>
+      </motion.p>
 
       <motion.p
         className="landing-hero__description"
