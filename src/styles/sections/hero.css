@@ -98,6 +98,9 @@
 }
 
 .landing-hero__event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vw;
   margin: 0;
   padding-left: 1.1em;
 
