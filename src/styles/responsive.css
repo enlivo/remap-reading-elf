@@ -273,29 +273,32 @@
   }
 
   /*
-   * New Events pill stays top-left, clear of the hamburger
-   * on the upper-right.
+   * New Events pill stays top-left, clear of the hamburger on the
+   * upper-right. Two events now stack inside it, so it's shorter and
+   * tighter here than on desktop to clear the headline below it.
    */
   .landing-hero__event {
-    top: 14px;
+    top: 12px;
     left: 4%;
 
     max-width: 90%;
 
-    padding: 8px 14px;
-    gap: 7px;
+    padding: 6px 12px;
+    gap: 6px;
   }
 
   .landing-hero__event-badge {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .landing-hero__event-list {
-    font-size: 12px;
+    gap: 2px;
+    font-size: 11px;
+    line-height: 1.15;
   }
 
   .landing-hero__event-date {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 

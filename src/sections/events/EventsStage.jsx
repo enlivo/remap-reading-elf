@@ -16,35 +16,62 @@ import peachBurst from "../../../design-assets/Website/Events/Elements of Events
 import redBurst from "../../../design-assets/Website/Events/Elements of Events/3.png";
 
 import booStorytimeImage from "../../../assets/images/events-page/boo-storytime.webp";
+import readUnderStarsImage from "../../../assets/images/events-page/read-under-the-stars.webp";
 
 /*
- * The main screen is taller than the viewport so the heading and event card
- * fit. Scrolling first reveals the extra height, then the footer rises.
- * Must match .events-main-screen height and .events-stage-runway height
- * (100 + EVENTS_MAIN_HEIGHT) in events.css.
+ * The main screen is taller than the viewport so the heading and both event
+ * cards fit. Scrolling first reveals the extra height, then the footer
+ * rises. Must match .events-main-screen height and .events-stage-runway
+ * height (100 + EVENTS_MAIN_HEIGHT) in events.css.
  */
-const EVENTS_MAIN_HEIGHT = 132;
+const EVENTS_MAIN_HEIGHT = 196;
 const EXTRA_RATIO = (EVENTS_MAIN_HEIGHT - 100) / EVENTS_MAIN_HEIGHT;
 
-const REGISTRATION_URL = `https://wa.me/919500056482?text=${encodeURIComponent(
-  "Hi! I'd like to register my child for Boo! It's Storytime on 31 October.",
-)}`;
-
-const EVENT = {
-  title: "Boo! It's Storytime!",
-  host: "Story Time with Gauri Bhargav",
-  description:
-    "A spooky storytelling adventure where little readers dress up as their favourite characters, join an interactive story session, and enjoy a little Halloween magic.",
-  details: [
-    ["Date", "31 October"],
-    ["Time", "6:00 PM onwards"],
-    ["Age group", "4 years and above"],
-    ["Entry fee", "₹600 per child"],
-  ],
-  note: "Come dressed as your favourite character and step into the story! 🎃",
-  venue: "Rooftop, The Reading Elf, Thoraipakkam, Chennai",
-  phone: "95000 56482",
-};
+const EVENTS = [
+  {
+    slug: "read-under-the-stars",
+    title: "Read Under the Stars",
+    host: "A Rooftop Reading Experience at The Reading Elf",
+    description:
+      "A quiet rooftop reading evening where book lovers can pick a book, find a cosy spot, and enjoy reading under the stars.",
+    details: [
+      ["Dates", "24, 25 & 26 October · Launch Week"],
+      ["Time", "6:00 PM – 8:30 PM"],
+      ["Age group", "8 years and above"],
+      ["Entry fee", "₹500 per person"],
+    ],
+    highlight: "Exclusively for Book Passport holders",
+    note: "Pick a book. Find a spot. Simply read. ✨",
+    venue: "Rooftop, The Reading Elf, Thoraipakkam, Chennai",
+    phone: "95000 56482",
+    image: readUnderStarsImage,
+    imageAlt: "Families reading on a lantern-lit rooftop under a starry night sky.",
+    registrationUrl: `https://wa.me/919500056482?text=${encodeURIComponent(
+      "Hi! I'd like to book a spot for Read Under the Stars (24-26 October).",
+    )}`,
+  },
+  {
+    slug: "boo-storytime",
+    title: "Boo! It's Storytime!",
+    host: "Story Time with Gauri Bhargav",
+    description:
+      "A spooky storytelling adventure where little readers dress up as their favourite characters, join an interactive story session, and enjoy a little Halloween magic.",
+    details: [
+      ["Date", "31 October"],
+      ["Time", "6:00 PM onwards"],
+      ["Age group", "4 years and above"],
+      ["Entry fee", "₹600 per child"],
+    ],
+    note: "Come dressed as your favourite character and step into the story! 🎃",
+    venue: "Rooftop, The Reading Elf, Thoraipakkam, Chennai",
+    phone: "95000 56482",
+    image: booStorytimeImage,
+    imageAlt: "A storyteller in a witch hat reads to children in Halloween costumes on a lantern-lit rooftop.",
+    registrationUrl: `https://wa.me/919500056482?text=${encodeURIComponent(
+      "Hi! I'd like to register my child for Boo! It's Storytime on 31 October.",
+    )}`,
+  },
+];
 
 export default function EventsStage() {
   const sceneRef = useRef(null);
@@ -141,44 +168,55 @@ export default function EventsStage() {
             </p>
           </header>
 
-          <article className="events-main__card">
-            <div className="events-main__card-body">
-              <h2>{EVENT.title}</h2>
-              <p className="events-main__host">{EVENT.host}</p>
-              <p className="events-main__desc">{EVENT.description}</p>
+          <div className="events-main__cards">
+            {EVENTS.map((event) => (
+              <article className="events-main__card" key={event.slug}>
+                <div className="events-main__card-body">
+                  <h2>{event.title}</h2>
+                  <p className="events-main__host">{event.host}</p>
+                  <p className="events-main__desc">{event.description}</p>
 
-              <dl className="events-main__chips">
-                {EVENT.details.map(([label, value]) => (
-                  <div className="events-main__chip" key={label}>
-                    <dt>{label}</dt>
-                    <dd>{value}</dd>
-                  </div>
-                ))}
-              </dl>
+                  <dl className="events-main__chips">
+                    {event.details.map(([label, value]) => (
+                      <div className="events-main__chip" key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
 
-              <p className="events-main__note">{EVENT.note}</p>
-              <p className="events-main__venue">
-                <strong>Venue:</strong> {EVENT.venue}
-              </p>
+                    {event.highlight && (
+                      <div className="events-main__chip events-main__chip--highlight">
+                        <dt>Highlight</dt>
+                        <dd>{event.highlight}</dd>
+                      </div>
+                    )}
+                  </dl>
 
-              <a
-                className="events-main__register"
-                href={REGISTRATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Register on WhatsApp &middot; {EVENT.phone}
-              </a>
-            </div>
+                  <p className="events-main__note">{event.note}</p>
+                  <p className="events-main__venue">
+                    <strong>Venue:</strong> {event.venue}
+                  </p>
 
-            <img
-              className="events-main__card-image"
-              src={booStorytimeImage}
-              alt="A storyteller in a witch hat reads to children in Halloween costumes on a lantern-lit rooftop."
-              width="960"
-              height="960"
-            />
-          </article>
+                  <a
+                    className="events-main__register"
+                    href={event.registrationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Register on WhatsApp &middot; {event.phone}
+                  </a>
+                </div>
+
+                <img
+                  className="events-main__card-image"
+                  src={event.image}
+                  alt={event.imageAlt}
+                  width="960"
+                  height="960"
+                />
+              </article>
+            ))}
+          </div>
         </motion.section>
 
         <motion.section

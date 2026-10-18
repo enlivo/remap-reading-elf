@@ -165,19 +165,20 @@
   width: clamp(100px, 8.4vw, 161px);
 }
 
-/* ---- Event card (Boo! It's Storytime) ----
- * Desktop: the main screen is taller than the viewport (132svh) so the
- * heading + card fit like the Figma; EventsStage scrolls the extra 32svh
- * before the footer rises. Keep --events-main-height in sync with
- * EVENTS_MAIN_HEIGHT in EventsStage.jsx and the runway height below.
+/* ---- Event cards (Read Under the Stars, Boo! It's Storytime) ----
+ * Desktop: the main screen is taller than the viewport (196svh) so the
+ * heading + both cards fit like the Figma; EventsStage scrolls the extra
+ * 96svh before the footer rises. Keep EVENTS_MAIN_HEIGHT in
+ * EventsStage.jsx, .events-main-screen height and .events-stage-runway
+ * height (100 + EVENTS_MAIN_HEIGHT) below all in sync.
  */
 
 .events-stage-runway {
-  height: 232svh;
+  height: 296svh;
 }
 
 .events-main-screen {
-  height: 132svh;
+  height: 196svh;
 }
 
 .events-main-screen .events-main__intro {
@@ -197,23 +198,29 @@
   line-height: 1.4;
 }
 
-.events-main__card {
+.events-main__cards {
   position: absolute;
   top: 50svh;
   left: 50%;
   z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 4svh;
+  width: min(78vw, 1160px);
+  transform: translateX(-50%);
+}
+
+.events-main__card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 38%);
   align-items: stretch;
   gap: clamp(16px, 2vw, 32px);
-  width: min(78vw, 1160px);
   min-height: 62svh;
   padding: clamp(18px, 3svh, 34px) clamp(20px, 2.4vw, 40px);
   color: #c4392a;
   background: #f2e5cb;
   border: 4px solid #19130f;
   border-radius: clamp(36px, 4.4vw, 64px);
-  transform: translateX(-50%);
 }
 
 .events-main__card-body {
@@ -271,6 +278,13 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+.events-main__chip--highlight {
+  grid-column: 1 / -1;
+  color: #19130f;
+  font-weight: 800;
+  background: #fac64f;
 }
 
 .events-main__chip dd {
@@ -373,17 +387,25 @@
     font-size: clamp(15px, 2.4vw, 19px);
   }
 
-  .events-main__card {
+  .events-main__cards {
     position: relative;
     top: auto;
     left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: auto;
+    margin: 32px 0 0;
+    transform: none;
+  }
+
+  .events-main__card {
     grid-template-columns: 1fr;
     width: min(90vw, 680px);
     height: auto;
     min-height: 0;
-    margin: 32px auto 0;
+    margin: 0 auto;
     padding: 24px 20px;
-    transform: none;
   }
 
   .events-main__card-body {
