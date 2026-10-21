@@ -4,7 +4,7 @@ function BookSection({ book }) {
       <h3 className="blog-post__book-heading">
         {book.number}. {book.heading}
       </h3>
-      <div className="blog-post__book-body">
+      <div className={`blog-post__book-body${book.covers ? " blog-post__book-body--pair" : ""}`}>
         {book.covers ? (
           <div className="blog-post__book-covers">
             {book.covers.map((cover) => (
@@ -69,18 +69,6 @@ export default function NumberedBooksPostBody({ post }) {
         </h2>
         <p>{post.question.text}</p>
       </div>
-
-      <section className="blog-read-more" aria-label={post.readMore.label}>
-        <h2>{post.readMore.label}</h2>
-        <div className="blog-read-more__grid">
-          {post.readMore.items.map((item, index) => (
-            <a className="blog-read-more__card" href={item.href} key={`${item.href}-${index}`}>
-              <img src={item.image} alt={item.alt} loading="lazy" />
-              <span>{item.caption}</span>
-            </a>
-          ))}
-        </div>
-      </section>
     </article>
   );
 }

@@ -8,8 +8,6 @@ import coverRoomOnTheBroom from "../../../assets/images/blog-page/cover-room-on-
 import coverGruffalo from "../../../assets/images/blog-page/cover-gruffalo.webp";
 import coverHarryPotter from "../../../assets/images/blog-page/cover-harry-potter.webp";
 
-import readMorePhoto from "../../../assets/images/blog-page/blog-post-photo.png";
-
 /*
  * Every blog post - card copy for the Blog page band, and body content for
  * its own /blog/<slug> page. BlogStage renders one card per entry in order;
@@ -139,14 +137,6 @@ export const BLOG_POSTS = [
       question: {
         heading: ["What were the books you", "loved reading to your children?"],
         text: "I’d love to hear about the stories that became part of your family memories.",
-      },
-      readMore: {
-        label: "Read More",
-        items: [
-          { image: readMorePhoto, alt: "A boy reading under a lantern-lit tree by a lake", caption: "From Bookstagram!", href: "/blog" },
-          { image: readMorePhoto, alt: "A boy reading under a lantern-lit tree by a lake", caption: "From Bookstagram!", href: "/blog" },
-          { image: readMorePhoto, alt: "A boy reading under a lantern-lit tree by a lake", caption: "From Bookstagram!", href: "/blog" },
-        ],
       },
     },
   },
