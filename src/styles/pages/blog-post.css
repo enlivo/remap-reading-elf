@@ -151,6 +151,104 @@
   padding-left: 12vw;
 }
 
+/* ---------- numbered-books post (Top 5 Books I Loved Reading to My Child) ---------- */
+
+.blog-post--books {
+  padding-right: 6vw;
+  padding-left: 6vw;
+}
+
+.blog-post__title--single {
+  margin-left: 0;
+}
+
+.blog-post__intro {
+  max-width: 54vw;
+  margin: 0 auto 3vw;
+  text-align: center;
+}
+
+.blog-post__intro p {
+  max-width: none;
+}
+
+.blog-post__books {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2vw;
+  max-width: 58vw;
+  margin: 0 auto;
+}
+
+.blog-post__book-heading {
+  margin: 0 0 1.2vw;
+  color: var(--bp-brown);
+  font-family: "Nunito", Arial, sans-serif;
+  font-size: clamp(16px, 1.15vw, 20px);
+  font-weight: 800;
+}
+
+.blog-post__book-body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 2.4vw;
+  align-items: start;
+}
+
+/* Every cover shares this height; width follows its own natural
+   proportions (the landscape Caterpillar cover ends up wider). */
+.blog-post__book-cover {
+  display: block;
+  width: auto;
+  height: 340px;
+  border-radius: 1vw;
+  box-shadow: 0 6px 16px rgba(31, 26, 23, 0.18);
+}
+
+.blog-post__book-covers {
+  display: flex;
+  gap: 1vw;
+}
+
+.blog-post__book-text p {
+  max-width: none;
+}
+
+.blog-post__looking-back,
+.blog-post__question {
+  max-width: 54vw;
+  margin: 3.2vw auto 0;
+  text-align: center;
+}
+
+.blog-post__looking-back p,
+.blog-post__question p {
+  max-width: none;
+  text-align: left;
+}
+
+.blog-post__looking-back h2,
+.blog-post__question h2 {
+  margin: 0 0 1.2vw;
+  color: var(--bp-green);
+  font-family: "Kind Bond", Georgia, serif;
+  font-size: clamp(28px, 2.4vw, 46px);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.blog-post__question {
+  margin-top: 3.6vw;
+}
+
+.blog-post__question h2 span {
+  display: block;
+}
+
+.blog-post__question p {
+  text-align: center;
+}
+
 /* ---------- read more ---------- */
 
 .blog-read-more {
@@ -262,6 +360,56 @@
   .blog-post .blog-post__callout--side {
     margin: 28px 0;
     font-size: 22px;
+  }
+
+  .blog-post__intro,
+  .blog-post__books,
+  .blog-post__looking-back,
+  .blog-post__question {
+    max-width: none;
+  }
+
+  .blog-post__books {
+    gap: 36px;
+  }
+
+  .blog-post__book-heading {
+    font-size: 16px;
+  }
+
+  .blog-post__book-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .blog-post__book-cover {
+    width: auto;
+    height: auto;
+    max-width: 260px;
+    max-height: 260px;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .blog-post__book-covers {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .blog-post__book-covers .blog-post__book-cover {
+    max-width: calc(50% - 0.5rem);
+    margin: 0;
+  }
+
+  .blog-post__looking-back,
+  .blog-post__question {
+    margin-top: 36px;
+  }
+
+  .blog-post__looking-back h2,
+  .blog-post__question h2 {
+    font-size: 28px;
   }
 
   .blog-read-more {
