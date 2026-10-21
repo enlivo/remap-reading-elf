@@ -334,6 +334,7 @@
     opacity: 1 !important;
     overflow: clip;
     transform: none !important;
+    pointer-events: auto !important;
     will-change: auto;
   }
 
@@ -576,6 +577,7 @@
     height: auto;
     aspect-ratio: 16 / 9;
     opacity: 1 !important;
+    pointer-events: auto !important;
     will-change: auto;
   }
 }
