@@ -11,9 +11,8 @@ import BooksPage from "./pages/BooksPage.jsx";
 import BookDetailPage from "./pages/BookDetailPage.jsx";
 import { getBookOfMonth } from "./sections/books/bookOfMonthData.js";
 import BlogPage from "./pages/BlogPage.jsx";
-import BlogPostPage, {
-  READING_VS_SCREEN_TIME_PATH,
-} from "./pages/BlogPostPage.jsx";
+import BlogPostPage from "./pages/BlogPostPage.jsx";
+import { getBlogPost } from "./sections/blog/blogPostsData.js";
 import EventsPage from "./pages/EventsPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -24,7 +23,6 @@ const supportedPaths = new Set([
   "/",
   "/books",
   "/blog",
-  READING_VS_SCREEN_TIME_PATH,
   "/events",
   "/experience",
   "/our-story",
@@ -41,10 +39,21 @@ function getBookDetailSlug(pathname) {
     : null;
 }
 
+const BLOG_POST_PATH = /^\/blog\/([a-z0-9-]+)$/;
+
+function getBlogPostSlug(pathname) {
+  const match = BLOG_POST_PATH.exec(pathname);
+
+  return match && getBlogPost(match[1])
+    ? match[1]
+    : null;
+}
+
 function isSupportedPath(pathname) {
   return (
     supportedPaths.has(pathname) ||
-    getBookDetailSlug(pathname) !== null
+    getBookDetailSlug(pathname) !== null ||
+    getBlogPostSlug(pathname) !== null
   );
 }
 
@@ -350,8 +359,10 @@ export default function App() {
     return <BlogPage />;
   }
 
-  if (pathname === READING_VS_SCREEN_TIME_PATH) {
-    return <BlogPostPage />;
+  const blogPostSlug = getBlogPostSlug(pathname);
+
+  if (blogPostSlug) {
+    return <BlogPostPage key={blogPostSlug} slug={blogPostSlug} />;
   }
 
   return <HomePage />;

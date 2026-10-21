@@ -5,9 +5,16 @@
   background: #facbb1;
 }
 
+/*
+ * Hero + runway heights are set inline by BlogStage.jsx: the first card
+ * keeps its original nav-relative position and height, every later card
+ * is cropped tightly around just its own band (see .blog-hero-slot--first
+ * / --tight below), and the runway height is the hero's real measured
+ * height plus the fade/settle scroll - so there's no dead scroll before
+ * the footer appears, at any viewport size.
+ */
 .blog-stage-runway {
   position: relative;
-  height: 165svh;
   background: #facbb1;
 }
 
@@ -31,19 +38,64 @@
   will-change: opacity;
 }
 
-.blog-state--hero { z-index: 1; }
+.blog-state--hero {
+  z-index: 1;
+  /* Height is intrinsic (sum of its slots below) - BlogStage.jsx measures
+     it and sizes .blog-stage-runway to match. */
+  bottom: auto;
+  height: auto;
+}
 .blog-state--reel { z-index: 2; }
 .blog-state--she-writes { z-index: 3; }
 .blog-state--footer { z-index: 4; }
 
+.blog-hero-slot {
+  --hero-canvas-h: min(56.25vw, 100svh);
+  --hero-header-bottom: calc(22px + 12.09vw);
+  --hero-band-h: calc(var(--hero-canvas-h) * 0.3965);
+  --hero-band-top: calc(var(--hero-header-bottom) / 2 + var(--hero-canvas-h) * 0.32382);
+  /* Half the visible gap between two cards (the other half comes from the
+     next card's own leading edge): ~60-80px at 1440px wide, scaling with
+     viewport width elsewhere. BlogStage.jsx measures the result at runtime,
+     so nothing in JS needs to track this value. */
+  --card-gap: clamp(30px, 2.5vw, 40px);
+
+  position: relative;
+  width: 100%;
+}
+
+/* First card: identical geometry to the single-card page (canvas centred
+   as if in a full 100svh viewport), just cropped to end shortly after its
+   own band instead of running the full 100svh down. */
+.blog-hero-slot--first {
+  height: calc(
+    (100svh - var(--hero-canvas-h)) / 2 + var(--hero-band-top) +
+      var(--hero-band-h) + var(--card-gap)
+  );
+  overflow: hidden;
+}
+
+/* Every later card: no nav to clear, so it's cropped tightly around just
+   its own band with --card-gap of breathing room above and below. */
+.blog-hero-slot--tight {
+  height: calc(var(--card-gap) + var(--hero-band-h) + var(--card-gap));
+  overflow: hidden;
+}
+
 .blog-state__canvas {
   position: absolute;
-  top: 50%;
+  top: calc((100svh - var(--hero-canvas-h)) / 2);
   left: 50%;
   container-type: inline-size;
   width: min(100vw, 177.7778svh);
   aspect-ratio: 16 / 9;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+}
+
+/* Shift the canvas up so the band itself sits --card-gap below this
+   slot's top, instead of centred as if in a full 100svh viewport. */
+.blog-state__canvas--tight {
+  top: calc(var(--card-gap) - var(--hero-band-top));
 }
 
 .blog-state__artwork {
@@ -156,11 +208,8 @@
  * The 0.32382 factor is the canvas offset needed to centre that group.
  */
 .blog-hero {
-  --hero-canvas-h: min(56.25vw, 100svh);
-  --hero-header-bottom: calc(22px + 12.09vw);
-  --hero-band-h: calc(var(--hero-canvas-h) * 0.3965);
-  --hero-band-top: calc(var(--hero-header-bottom) / 2 + var(--hero-canvas-h) * 0.32382);
-
+  /* --hero-canvas-h / --hero-band-h / --hero-band-top / --card-gap are
+     defined on the parent .blog-hero-slot and inherited here. */
   overflow: hidden;
   background: #facbb1;
 }
@@ -259,6 +308,14 @@
   width: 11.9cqw;
 }
 
+/* Starburst straddles the band's lower-right corner (card 2 only). */
+.blog-hero__deco--starburst {
+  top: calc(var(--hero-band-top) + var(--hero-band-h) * 0.78);
+  right: 1.5cqw;
+  z-index: 3;
+  width: 8.5cqw;
+}
+
 @media (max-width: 900px) {
   .blog-stage-runway { height: auto; }
 
@@ -276,12 +333,21 @@
     height: auto;
     opacity: 1 !important;
     overflow: clip;
+    transform: none !important;
     will-change: auto;
   }
 
   .blog-state--hero {
-    height: clamp(570px, 150vw, 680px);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    height: auto;
     margin-top: 96px;
+  }
+
+  .blog-hero-slot {
+    height: clamp(570px, 150vw, 680px);
+    overflow: visible;
   }
 
   .blog-state__canvas {
@@ -357,6 +423,13 @@
     top: calc(100% - 66px);
     right: -16px;
     width: 94px;
+  }
+
+  /* Starburst hangs off the card's bottom-right corner (card 2 only). */
+  .blog-hero__deco--starburst {
+    top: calc(100% - 50px);
+    right: -14px;
+    width: 76px;
   }
 
   .blog-navigation {
