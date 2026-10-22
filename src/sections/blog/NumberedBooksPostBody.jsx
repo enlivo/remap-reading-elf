@@ -4,7 +4,7 @@ function BookSection({ book }) {
       <h3 className="blog-post__book-heading">
         {book.number}. {book.heading}
       </h3>
-      <div className={`blog-post__book-body${book.covers ? " blog-post__book-body--pair" : ""}`}>
+      <div className="blog-post__book-body">
         {book.covers ? (
           <div className="blog-post__book-covers">
             {book.covers.map((cover) => (
