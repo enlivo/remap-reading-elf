@@ -195,6 +195,14 @@
   align-items: start;
 }
 
+/* Two-cover sections (Room on the Broom / The Gruffalo): covers sit in
+   their own row, full-width text below instead of squeezed into a narrow
+   second column. */
+.blog-post__book-body--pair {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 1.6vw;
+}
+
 /* Every cover shares this height; width follows its own natural
    proportions (the landscape Caterpillar cover ends up wider). */
 .blog-post__book-cover {
@@ -247,64 +255,6 @@
 
 .blog-post__question p {
   text-align: center;
-}
-
-/* ---------- read more ---------- */
-
-.blog-read-more {
-  padding: 1.5vw 4vw 3.5vw 3vw;
-  background: var(--bp-green);
-  color: #fff;
-}
-
-.blog-read-more h2 {
-  margin: 0 0 1vw;
-  font-family: "Nunito", Arial, sans-serif;
-  font-size: clamp(22px, 1.9vw, 36px);
-  font-weight: 800;
-}
-
-.blog-read-more__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 17.4vw);
-  justify-content: start;
-  gap: 8.8vw;
-  margin-left: 11.7vw;
-}
-
-.blog-read-more__card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-  text-decoration: none;
-}
-
-.blog-read-more__card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 334 / 373;
-  object-fit: cover;
-  border-radius: 3.3vw;
-  transition: transform 0.2s ease;
-}
-
-.blog-read-more__card:hover img {
-  transform: translateY(-4px);
-}
-
-.blog-read-more__card:focus-visible {
-  outline: 3px solid #fac64f;
-  outline-offset: 6px;
-  border-radius: 12px;
-}
-
-.blog-read-more__card span {
-  margin-top: 1vw;
-  font-family: "Nunito", Arial, sans-serif;
-  font-size: clamp(18px, 1.9vw, 36px);
-  font-weight: 800;
-  white-space: nowrap;
 }
 
 /* ---------- tablet / mobile ---------- */
@@ -411,45 +361,10 @@
   .blog-post__question h2 {
     font-size: 28px;
   }
-
-  .blog-read-more {
-    padding: 32px 6vw 48px;
-  }
-
-  .blog-read-more h2 {
-    margin-bottom: 20px;
-  }
-
-  .blog-read-more__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-left: 0;
-  }
-
-  .blog-read-more__card img {
-    border-radius: 20px;
-  }
-
-  .blog-read-more__card span {
-    margin-top: 10px;
-    font-size: 15px;
-    white-space: normal;
-    text-align: center;
-  }
 }
 
 @media (max-width: 600px) {
   .blog-post-page {
     --bp-strip-bottom: 94px;
-  }
-
-  .blog-read-more__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .blog-read-more__card img {
-    transition: none;
   }
 }
