@@ -175,8 +175,8 @@
 .blog-post__books {
   display: flex;
   flex-direction: column;
-  gap: 3.2vw;
-  max-width: 58vw;
+  gap: 4vw;
+  max-width: 89vw;
   margin: 0 auto;
 }
 
@@ -188,19 +188,27 @@
   font-weight: 800;
 }
 
+/* Column-gap is wide: single-cover items (1, 2, 3, 5) have just one
+   narrower cover on the left, so the text column needs a big gap to start
+   around 40-43% of the page width, matching the Figma reference. */
 .blog-post__book-body {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 2.4vw;
+  column-gap: 9vw;
   align-items: start;
 }
 
-/* Two-cover sections (Room on the Broom / The Gruffalo): covers sit in
-   their own row, full-width text below instead of squeezed into a narrow
-   second column. */
-.blog-post__book-body--pair {
-  grid-template-columns: minmax(0, 1fr);
-  row-gap: 1.6vw;
+/* Item 4 (Room on the Broom + The Gruffalo): two covers already fill most
+   of the left side on their own, so the gap before the text is much
+   smaller - just enough to clear the second cover, matching the Figma
+   reference's near-zero gap there.
+   Desktop only (>900px) - the <=900px rules stack everything and must
+   stay exactly as they are, so :has() is scoped out of that range here
+   rather than relying on specificity against the mobile block below. */
+@media (min-width: 901px) {
+  .blog-post__book-body:has(.blog-post__book-covers) {
+    column-gap: 1.5vw;
+  }
 }
 
 /* Every cover shares this height; width follows its own natural
@@ -208,7 +216,7 @@
 .blog-post__book-cover {
   display: block;
   width: auto;
-  height: 340px;
+  height: 33vw;
   border-radius: 1vw;
   box-shadow: 0 6px 16px rgba(31, 26, 23, 0.18);
 }
