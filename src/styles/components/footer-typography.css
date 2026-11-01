@@ -25,9 +25,9 @@
 .blog-footer .blog-footer__about h2,
 .blog-footer .blog-footer__desktop-about h2,
 .site-footer.site-footer--books .site-footer__about h2 {
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-size: clamp(38px, 3vw, 58px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
 }
 
@@ -126,9 +126,9 @@
 .books-page .books-come-see-us h2,
 .books-page .books-come-see-us p,
 .site-footer.site-footer--books .site-footer__visit {
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.55;
 }
 

@@ -1,10 +1,9 @@
 @font-face {
-  font-family: "Kind Bond";
-  src: url("../../assets/fonts/kind-bond-subset.woff2")
-    format("woff2");
+  font-family: "DynaPuff";
+  src: url("../../assets/fonts/dynapuff-variable.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 700;
 }
 
 :root {
@@ -74,10 +73,10 @@ h1,
 h2,
 h3 {
   font-family:
-    "Kind Bond",
+    "DynaPuff",
     Georgia,
     serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 img {
