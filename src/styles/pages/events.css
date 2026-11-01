@@ -116,9 +116,9 @@
 .events-main__intro h1 {
   margin: 0;
   color: #fac64f;
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-size: clamp(72px, 7vw, 134px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 0.98;
 }
 
@@ -233,7 +233,7 @@
 .events-main__card h2 {
   margin: 0;
   color: #c4392a;
-  font-family: "Cookie", "Kind Bond", Georgia, cursive;
+  font-family: "Cookie", "DynaPuff", Georgia, cursive;
   font-size: clamp(38px, min(3.8vw, 7svh), 64px);
   line-height: 1;
 }

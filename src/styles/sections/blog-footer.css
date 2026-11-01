@@ -81,8 +81,8 @@
   .blog-footer__desktop-visit h2,
   .blog-footer__desktop-visit p {
     margin: 0;
-    font-family: "Kind Bond", Georgia, serif;
-    font-weight: 400;
+    font-family: "DynaPuff", Georgia, serif;
+    font-weight: 600;
     color: #2f6b4f;
   }
 
@@ -282,8 +282,8 @@
   .blog-footer__about h3,
   .blog-footer__mobile-links h3 {
     margin: 0;
-    font-family: "Kind Bond", Georgia, serif;
-    font-weight: 400;
+    font-family: "DynaPuff", Georgia, serif;
+    font-weight: 600;
   }
 
   .blog-footer__visit h2 {

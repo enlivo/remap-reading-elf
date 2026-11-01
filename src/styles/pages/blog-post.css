@@ -50,7 +50,7 @@
 .blog-post__title {
   margin: 0 0 1.5vw -8vw;
   color: var(--bp-red);
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-size: clamp(34px, 2.95vw, 57px);
   font-weight: 400;
   line-height: 1.05;
@@ -64,7 +64,7 @@
 
 .blog-post__lead,
 .blog-post__callout {
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-weight: 400;
   line-height: 1.1;
 }
@@ -247,9 +247,9 @@
 .blog-post__question h2 {
   margin: 0 0 1.2vw;
   color: var(--bp-green);
-  font-family: "Kind Bond", Georgia, serif;
+  font-family: "DynaPuff", Georgia, serif;
   font-size: clamp(28px, 2.4vw, 46px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.12;
 }
 

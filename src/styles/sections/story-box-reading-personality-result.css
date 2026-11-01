@@ -61,7 +61,7 @@
   color: #fff3df;
 
   font-family:
-    "Kind Bond",
+    "DynaPuff",
     Georgia,
     serif;
 
@@ -92,9 +92,10 @@
   color: #c8452e;
 
   font-family:
-    "Kind Bond",
+    "DynaPuff",
     Georgia,
     serif;
+  font-weight: 600;
 
   font-size:
     clamp(
