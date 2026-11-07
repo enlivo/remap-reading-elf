@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { useMotionValue } from "motion/react";
 
 import BooksNavigation from "../components/books/BooksNavigation.jsx";
 import SiteFooter from "../components/SiteFooter.jsx";
 import leafSprig from "../../assets/images/books-page/deco-leaf-sprig.png";
 import waveGreen from "../../assets/images/books-page/deco-wave-green.png";
+import usePageMeta from "../lib/usePageMeta.js";
 import {
   BOOK_OF_MONTH_CTA_SHELF,
   getBookOfMonth,
@@ -235,7 +235,7 @@ function SeriesSection({ section, tone }) {
               >
                 {item.images &&
                   item.images.map((src) => (
-                    <img key={src} src={src} alt="" loading="lazy" />
+                    <img key={src} src={src} alt={item.alt || item.title} loading="lazy" />
                   ))}
                 {item.image && (
                   <img src={item.image} alt={item.alt || item.title} loading="lazy" />
@@ -338,29 +338,11 @@ export default function BookDetailPage({ slug }) {
   const theme = THEMES[slug] ?? THEMES["malgudi-schooldays"];
   const stripY = useMotionValue(0);
 
-  useEffect(() => {
-    if (!book) {
-      return undefined;
-    }
-
-    const previousTitle = document.title;
-    document.title = `Book of the Month: ${book.card.title} | The Reading Elf`;
-
-    const meta = document.querySelector('meta[name="description"]');
-    const previousDescription = meta?.getAttribute("content");
-
-    if (meta) {
-      meta.setAttribute("content", book.metaDescription);
-    }
-
-    return () => {
-      document.title = previousTitle;
-
-      if (meta && previousDescription !== null) {
-        meta.setAttribute("content", previousDescription);
-      }
-    };
-  }, [book]);
+  usePageMeta({
+    title: book ? `Book of the Month: ${book.card.title} | The Reading Elf` : null,
+    description: book?.metaDescription,
+    path: `/books/${slug}`,
+  });
 
   if (!book) {
     return null;

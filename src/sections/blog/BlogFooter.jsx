@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import FooterAddress from "../../components/FooterAddress.jsx";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import commonLeaf from "../../../design-assets/Website/Common Through Out/Leaf.png";
 import leafSprig from "../../../assets/images/books-page/deco-leaf-sprig.png";
@@ -78,6 +79,8 @@ export default function BlogFooter({ standalone = false }) {
             <img src={phoneIcon} alt="" />
             +91 9500056482
           </a>
+
+          <FooterAddress />
         </section>
 
         <nav className="blog-footer__desktop-links" aria-label="Footer quick links">
@@ -129,6 +132,8 @@ export default function BlogFooter({ standalone = false }) {
             <img src={phoneIcon} alt="" />
             +91 9500056482
           </a>
+
+          <FooterAddress />
         </section>
 
         <nav className="blog-footer__mobile-links" aria-label="Blog footer navigation">

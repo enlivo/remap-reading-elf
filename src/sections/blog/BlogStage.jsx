@@ -180,6 +180,8 @@ export default function BlogStage() {
   return (
     <div className="blog-stage-runway" ref={runwayRef} style={runwayStyle}>
       <div className="blog-stage">
+        <h1 className="sr-only">Reading tips and book lists for parents, Chennai</h1>
+
         <HeroState
           heroRef={heroRef}
           style={

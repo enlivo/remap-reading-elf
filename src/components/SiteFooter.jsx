@@ -1,3 +1,4 @@
+import FooterAddress from "./FooterAddress.jsx";
 import logoBadge from "../../assets/images/books-page/logo-badge.png";
 import treeLantern from "../../assets/images/footer-branch-lantern.png";
 import footerLeaf from "../../design-assets/Website/Common Through Out/Leaf.png";
@@ -119,6 +120,8 @@ export default function SiteFooter({
 
             +91 9500056482
           </a>
+
+          <FooterAddress />
         </section>
 
         {isBooks && badgeComposition}

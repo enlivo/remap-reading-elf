@@ -25,6 +25,8 @@ export const BLOG_POSTS = [
     post: {
       layout: "screen-time",
       title: ["Why Reading Is More Powerful Than", "Screen Time for Children..."],
+      excerpt:
+        "I'm not saying screens are bad. Of course children watch television, play games and spend time on screens. That's just the world we live in.",
     },
   },
   {
@@ -41,6 +43,8 @@ export const BLOG_POSTS = [
     post: {
       layout: "numbered-books",
       title: "Top 5 Books I Loved Reading to My Child",
+      excerpt:
+        "Some books are simply books. And then there are the books that become part of your family.",
       intro: [
         "Some books are simply books.",
         "And then there are the books that become part of your family.",
