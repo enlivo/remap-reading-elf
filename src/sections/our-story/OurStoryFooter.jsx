@@ -1,3 +1,4 @@
+import FooterAddress from "../../components/FooterAddress.jsx";
 import logoBadge from "../../../assets/images/books-page/logo-badge.png";
 import branchLantern from "../../../assets/images/footer-branch-lantern.png";
 import leafSprig from "../../../design-assets/Website/Common Through Out/Leaf.png";
@@ -48,6 +49,8 @@ export default function OurStoryFooter() {
           <img src={phoneIcon} alt="" />
           +91 9500056482
         </a>
+
+        <FooterAddress />
       </section>
 
       <nav className="our-story-footer__links" aria-label="Our Story footer navigation">
