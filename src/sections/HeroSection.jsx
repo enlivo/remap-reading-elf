@@ -5,7 +5,7 @@ import {
 } from "motion/react";
 
 import heroIllustration from "../../assets/images/hero-illustration.jpg";
-import monthlyBest from "../../assets/images/monthly-best-october.png";
+import monthlyBest from "../../assets/images/monthly-best-november.png";
 
 import usePhoneLandingViewport from "./usePhoneLandingViewport.js";
 
