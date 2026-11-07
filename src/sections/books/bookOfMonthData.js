@@ -46,9 +46,134 @@ import imgnorse_mythology from "../../../assets/images/books-page/book-of-month/
 import imggraveyard_book from "../../../assets/images/books-page/book-of-month/neil-gaiman-graveyard-book.webp";
 import imgstardust from "../../../assets/images/books-page/book-of-month/neil-gaiman-stardust.webp";
 import imgamerican_gods from "../../../assets/images/books-page/book-of-month/neil-gaiman-american-gods.webp";
+
+import imggruffalo_granny from "../../../assets/images/books-page/book-of-month/julia-donaldson-gruffalo-granny.webp";
+import imgdonaldson_scheffler_portrait from "../../../assets/images/books-page/book-of-month/julia-donaldson-axel-scheffler.webp";
+import imggruffalo from "../../../assets/images/books-page/book-of-month/julia-donaldson-gruffalo.webp";
+import imggruffalos_child from "../../../assets/images/books-page/book-of-month/julia-donaldson-gruffalos-child.webp";
+import imgroom_on_the_broom from "../../../assets/images/books-page/book-of-month/julia-donaldson-room-on-the-broom.webp";
+
 import ctaShelf from "../../../assets/images/books-page/book-of-month/images-book-bg.webp";
 
 export const BOOKS_OF_MONTH = [
+  {
+    slug: "gruffalo-granny",
+    metaDescription: "Explore this month’s featured book: Gruffalo Granny by Julia Donaldson & Axel Scheffler. The newest addition to the Gruffalo family arrives with tusks, claws and a walking stick, for readers aged 3-8.",
+    card: {
+      title: "Gruffalo Granny",
+      author: "Julia Donaldson & Axel Scheffler",
+      month: "November",
+      desc: "We know the Gruffalo. We know the Gruffalo’s Child. But nobody warned us about Granny.",
+      image: imggruffalo_granny,
+    },
+    hero: {
+      badge: "📚 BOOK OF THE MONTH - November",
+      title: ["Gruffalo", "Granny"],
+      author: "By Julia Donaldson & Axel Scheffler",
+      cover: imggruffalo_granny,
+      meta: ["Picture Book / Adventure / Family", "3–8 years · Perfect for read-alouds, every single time"],
+      paras: [
+        "We know the Gruffalo. We know the Gruffalo’s Child. But nobody warned us about Granny.",
+        "Gruffalo Granny is the newest addition to Julia Donaldson and Axel Scheffler’s beloved world — and she arrives exactly as you’d expect a Gruffalo grandmother to arrive: with tusks, with claws, with a walking stick, and with the kind of energy that makes everyone in the deep dark wood slightly nervous. Including, possibly, the mouse.",
+        "This is a book about family. About what happens when the creature everyone fears has a mother of their own. And about how the smallest, cleverest creature in the wood still manages to hold its ground — no matter who shows up.",
+      ],
+    },
+    sections: [
+      {
+        kind: "grid",
+        variant: "cards",
+        title: "Creative Learning Activities",
+        subtitle: "Bring Granny’s world to life beyond the page.",
+        items: [
+          { title: "Design Your Own Gruffalo Granny", text: "Gruffalo Granny has her own look — greyer, older, possibly even more terrifying. Draw your version of a Gruffalo grandmother. What makes her different from the Gruffalo? What does she carry? What does she smell like? What does she bake?", icon: "👵" },
+          { title: "A Family Portrait", text: "The Gruffalo, the Gruffalo’s Child, and now Granny — that’s three generations of Gruffalos in the deep dark wood. Draw the whole family together. Who’s the tallest? Who looks the most frightening? Where is the mouse hiding in the picture?", icon: "🌲" },
+          { title: "Write Granny’s Side of the Story", text: "We always read the story from the mouse’s point of view. But what is Granny thinking? Write a short paragraph — or draw a comic strip — from Gruffalo Granny’s perspective. What does she see when she looks at that tiny mouse?", icon: "🐭" },
+        ],
+      },
+      {
+        kind: "feature",
+        title: "Bring the Story Home",
+        // TODO: add the companion/collectibles product photo here (image: <import>); until then the section renders text-only.
+        paras: [
+          "Continue the magic beyond the final page with our Gruffalo-inspired companions and collectibles, thoughtfully curated to celebrate Julia Donaldson’s world.",
+          "From the original Gruffalo to The Gruffalo’s Child and now Gruffalo Granny — each book adds a new layer to the deep dark wood. Collect the whole family.",
+        ],
+        note: "✨ Available exclusively at The Reading Elf.",
+        bg: "#FFF6EA",
+      },
+      {
+        kind: "grid",
+        variant: "themes",
+        title: "Discussion Points & Themes",
+        items: [
+          { title: "Grandparents and Stories", text: "Every family has a grandparent who seems a little larger than life. What makes grandparents special? What do they know that parents don’t? What would your grandparent do if they met a mouse as clever as this one?", icon: "👵" },
+          { title: "Still the Cleverest", text: "No matter who arrives in the deep dark wood, the mouse always finds a way. Does that make the mouse brave, or just very good at thinking quickly? Is there a difference?", icon: "🐭" },
+          { title: "Family Looks Different for Everyone", text: "The Gruffalo’s family is fierce, enormous, and lives in a wood. But they’re still a family — with a child, a parent, and a grandmother who came to visit. What does this book say about what all families have in common?", icon: "🌲" },
+          { title: "Why This Book?", text: "Julia Donaldson knows that the best sequels don’t just repeat what worked — they add something new to the world. Gruffalo Granny adds warmth. She adds humour. She adds the quiet, universal truth that even the most terrifying creatures in the world were once someone’s grandchild. Axel Scheffler draws her with the same love and detail he brings to every creature in this wood. For children who grew up with the Gruffalo and thought they knew this story — here is proof that the deep dark wood still has surprises.", icon: "🌟" },
+        ],
+      },
+      {
+        kind: "grid",
+        variant: "learning",
+        title: "Vocabulary List",
+        subtitle: "Introduce these words while reading together.",
+        items: [
+          { title: "Granny", text: "A grandmother — the parent of a parent. In this book, the one who may actually be more frightening than the Gruffalo himself.", icon: "👵" },
+          { title: "Deep Dark Wood", text: "The forest where the mouse, the Gruffalo, and now Granny all live. Dark enough to be mysterious. Deep enough to hide a lot.", icon: "🌲" },
+          { title: "Outwit", text: "To be cleverer than someone else — to think of something they didn’t. The mouse outwits everyone it meets. Every single time.", icon: "🐭" },
+          { title: "Tusks", text: "Long pointed teeth that stick out beyond the lips. The Gruffalo has them. So, apparently, does Granny.", icon: "🦷" },
+          { title: "Generation", text: "One step in a family line — grandparent, parent, child. Gruffalo Granny brings three generations of Gruffalos into the same story for the first time.", icon: "👣" },
+        ],
+      },
+      {
+        kind: "author",
+        name: "Julia Donaldson & Axel Scheffler",
+        photo: imgdonaldson_scheffler_portrait,
+        photoAlt: "Portrait of Julia Donaldson and Axel Scheffler",
+        photoPosition: "center 25%",
+        tagline: "MASTER STORYTELLERS",
+        paras: [
+          "Julia Donaldson is one of the most beloved children’s authors in the world — the mind behind The Gruffalo, Room on the Broom, Monkey Puzzle, Zog, and now Gruffalo Granny. She wrote The Gruffalo in 1999 and it went on to sell over 17 million copies. She was the UK Children’s Laureate from 2011 to 2013. What makes her books last is simple: she writes in rhythm, she respects children’s intelligence, and she always, always gives the smallest creature the last word.",
+          "Axel Scheffler is the artist who made this whole world real. His illustrations don’t just support the story — they extend it. The creatures have expression. The wood has atmosphere. And Granny, in his hands, is somehow both terrifying and immediately lovable.",
+          "Together, they have built one of the most enduring universes in children’s literature. And it turns out, there’s still more family to meet.",
+        ],
+        chips: ["Julia Donaldson: 1948 – present · Picture books, Rhyme, Children’s Literature", "Axel Scheffler: 1957 – present · Illustration, Picture books"],
+      },
+      {
+        kind: "series",
+        variant: "cards",
+        title: "Start a Reading Habit",
+        subtitle: "Loved Gruffalo Granny? Read the whole family:",
+        items: [
+          {
+            title: "The Gruffalo",
+            text: "Where it all began. A mouse, a wood, and a creature that wasn’t supposed to exist. Ages 3+",
+            image: imggruffalo,
+            alt: "The Gruffalo by Julia Donaldson & Axel Scheffler",
+          },
+          {
+            title: "The Gruffalo’s Child",
+            text: "The Gruffalo’s daughter goes looking for the Big Bad Mouse. Ages 3+",
+            image: imggruffalos_child,
+            alt: "The Gruffalo’s Child by Julia Donaldson & Axel Scheffler",
+          },
+          {
+            title: "Room on the Broom",
+            text: "A witch, a cat, and a broom that keeps losing passengers. Ages 3+",
+            image: imgroom_on_the_broom,
+            alt: "Room on the Broom by Julia Donaldson & Axel Scheffler",
+          },
+        ],
+      },
+      {
+        kind: "cta",
+        title: ["Start Your Child’s", "Reading Journey", "Today"],
+        text: "Whether it’s a first introduction to the deep dark wood or a reunion with old friends — Gruffalo Granny is the book for November. Warm, funny, and just a little bit frightening. Exactly as it should be.",
+        button: "GET THIS BOOK VIA WHATSAPP →",
+        href: `https://wa.me/919500056482?text=${encodeURIComponent("Hi, I’d like to know more about Gruffalo Granny by Julia Donaldson & Axel Scheffler")}`,
+      },
+    ],
+  },
   {
     slug: "norse-mythology",
     metaDescription: "Explore this month's featured book: Norse Mythology by Neil Gaiman. Wild, strange, funny and terrifying — the original stories of Odin, Thor and Loki, for readers aged 10+.",

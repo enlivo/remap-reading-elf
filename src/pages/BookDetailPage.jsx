@@ -19,6 +19,7 @@ const THEMES = {
   "hungry-caterpillar": { line: 1 },
   "unstoppable-us": { line: -1 },
   "norse-mythology": { line: 1 },
+  "gruffalo-granny": { line: 1 },
 };
 
 /* text with "\n" becomes separate paragraphs */

@@ -354,7 +354,7 @@ export default function HeroSection({
       </motion.p>
 
       <motion.a
-        href="/books/norse-mythology"
+        href="/books/gruffalo-granny"
         className="landing-hero__monthly"
         style={{
           opacity:
@@ -365,7 +365,7 @@ export default function HeroSection({
       >
         <img
           src={monthlyBest}
-          alt="Monthly Best: Norse Mythology by Neil Gaiman"
+          alt="Monthly Best: Gruffalo Granny by Julia Donaldson & Axel Scheffler"
         />
       </motion.a>
     </section>
