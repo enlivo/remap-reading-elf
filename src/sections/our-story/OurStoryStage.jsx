@@ -53,9 +53,9 @@ const people = [
     bio: (
       <>
         <h2 className="our-story-bio__title our-story-bio__title--quote">
-          &ldquo;Every bookstore in Chennai.
+          &ldquo;Every bookstore in Chennai
           <br />
-          None felt like enough.&rdquo;
+          felt like it wasn&apos;t enough.&rdquo;
         </h2>
         <p className="our-story-bio__quote">
           &ldquo;If the bookstore we imagine doesn&apos;t exist yet
