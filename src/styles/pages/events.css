@@ -165,20 +165,23 @@
   width: clamp(100px, 8.4vw, 161px);
 }
 
-/* ---- Event cards (Read Under the Stars, Boo! It's Storytime) ----
- * Desktop: the main screen is taller than the viewport (196svh) so the
- * heading + both cards fit like the Figma; EventsStage scrolls the extra
- * 96svh before the footer rises. Keep EVENTS_MAIN_HEIGHT in
- * EventsStage.jsx, .events-main-screen height and .events-stage-runway
- * height (100 + EVENTS_MAIN_HEIGHT) below all in sync.
+/* ---- Event cards (Children's Day, Read Under the Stars, Sound & Spell
+ * Safari) ----
+ * Desktop: the main screen is taller than the viewport (262svh) so the
+ * heading + all three cards fit like the Figma; EventsStage scrolls the
+ * extra 162svh before the footer rises. Each card adds its own min-height
+ * (62svh) plus the gap between cards (4svh) to this total. Keep
+ * EVENTS_MAIN_HEIGHT in EventsStage.jsx, .events-main-screen height and
+ * .events-stage-runway height (100 + EVENTS_MAIN_HEIGHT) below all in
+ * sync.
  */
 
 .events-stage-runway {
-  height: 296svh;
+  height: 362svh;
 }
 
 .events-main-screen {
-  height: 196svh;
+  height: 262svh;
 }
 
 .events-main-screen .events-main__intro {

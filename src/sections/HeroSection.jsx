@@ -305,15 +305,21 @@ export default function HeroSection({
 
         <ol className="landing-hero__event-list">
           <li>
-            Read Under the Stars
+            Children&rsquo;s Day Storytelling
             <span className="landing-hero__event-date">
-              24&ndash;26 Oct
+              14 Nov
             </span>
           </li>
           <li>
-            Boo! It&rsquo;s Storytime!
+            Read Under the Stars
             <span className="landing-hero__event-date">
-              31 Oct
+              20&ndash;22 Nov
+            </span>
+          </li>
+          <li>
+            Sound &amp; Spell Safari
+            <span className="landing-hero__event-date">
+              5 Dec
             </span>
           </li>
         </ol>

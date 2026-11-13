@@ -77,7 +77,7 @@
   gap: 0.75vw;
 
   max-width: 34%;
-  padding: 0.65vw 1.35vw;
+  padding: 0.55vw 1.3vw;
 
   background: rgba(255, 206, 181, 0.82);
   border-radius: 999px;
@@ -100,7 +100,7 @@
 .landing-hero__event-list {
   display: flex;
   flex-direction: column;
-  gap: 0.3vw;
+  gap: 0.22vw;
   margin: 0;
   padding-left: 1.1em;
 
@@ -124,7 +124,12 @@
   position: absolute;
   z-index: 4;
 
-  top: 17.3%;
+  /*
+   * Pushed down from 17.3% so the three-line New Events pill
+   * (.landing-hero__event below) clears it - see that block's own
+   * comment for the height math.
+   */
+  top: 22%;
   left: 27%;
 
   width: 44%;

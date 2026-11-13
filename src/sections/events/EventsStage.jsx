@@ -15,19 +15,46 @@ import greenBurst from "../../../design-assets/Website/Events/Elements of Events
 import peachBurst from "../../../design-assets/Website/Events/Elements of Events/1.png";
 import redBurst from "../../../design-assets/Website/Events/Elements of Events/3.png";
 
-import booStorytimeImage from "../../../assets/images/events-page/boo-storytime.webp";
 import readUnderStarsImage from "../../../assets/images/events-page/read-under-the-stars.webp";
+import childrensDayImage from "../../../assets/images/events-page/childrens-day-storytelling.webp";
+import soundAndSpellImage from "../../../assets/images/events-page/sound-and-spell-safari.webp";
 
 /*
- * The main screen is taller than the viewport so the heading and both event
+ * The main screen is taller than the viewport so the heading and all event
  * cards fit. Scrolling first reveals the extra height, then the footer
  * rises. Must match .events-main-screen height and .events-stage-runway
- * height (100 + EVENTS_MAIN_HEIGHT) in events.css.
+ * height (100 + EVENTS_MAIN_HEIGHT) in events.css. Each card adds its own
+ * min-height (62svh) plus the gap between cards (4svh) to this total.
  */
-const EVENTS_MAIN_HEIGHT = 196;
+const EVENTS_MAIN_HEIGHT = 262;
 const EXTRA_RATIO = (EVENTS_MAIN_HEIGHT - 100) / EVENTS_MAIN_HEIGHT;
 
 const EVENTS = [
+  {
+    slug: "childrens-day-storytelling",
+    title: "Children's Day Special Storytelling",
+    host: "Storytelling by Nagarajan S.",
+    description:
+      "A little magic, a lot of stories! Celebrate Children's Day with two delightful dragon adventures filled with imagination, laughter and fun.",
+    featuring: [
+      "Dragon Rock – Written by Elena Ashley",
+      "Rugby, My Pet Dragon – Written by Nagarajan S.",
+    ],
+    details: [
+      ["Date", "14 November 2026"],
+      ["Time", "5:30 PM onwards"],
+      ["Age group", "Ages 5 and above"],
+      ["Entry fee", "Free Entry"],
+    ],
+    note: "Let's celebrate childhood, one story at a time! ✨",
+    venue: "Reading Elf Rooftop, Thoraipakkam, Chennai",
+    phone: "95000 56482",
+    image: childrensDayImage,
+    imageAlt: "A storyteller tells a dragon story to children on a lantern-lit rooftop.",
+    registrationUrl: `https://wa.me/919500056482?text=${encodeURIComponent(
+      "Hi! I'd like to register for Children's Day Special Storytelling on 14 November.",
+    )}`,
+  },
   {
     slug: "read-under-the-stars",
     title: "Read Under the Stars",
@@ -35,7 +62,7 @@ const EVENTS = [
     description:
       "A quiet rooftop reading evening where book lovers can pick a book, find a cosy spot, and enjoy reading under the stars.",
     details: [
-      ["Dates", "24, 25 & 26 October · Launch Week"],
+      ["Dates", "20, 21 & 22 November"],
       ["Time", "6:00 PM – 8:30 PM"],
       ["Age group", "8 years and above"],
       ["Entry fee", "₹500 per person"],
@@ -47,28 +74,28 @@ const EVENTS = [
     image: readUnderStarsImage,
     imageAlt: "Families reading on a lantern-lit rooftop under a starry night sky.",
     registrationUrl: `https://wa.me/919500056482?text=${encodeURIComponent(
-      "Hi! I'd like to book a spot for Read Under the Stars (24-26 October).",
+      "Hi! I'd like to book a spot for Read Under the Stars (20-22 November).",
     )}`,
   },
   {
-    slug: "boo-storytime",
-    title: "Boo! It's Storytime!",
-    host: "Story Time with Gauri Bhargav",
+    slug: "sound-and-spell-safari",
+    title: "Sound & Spell Safari",
+    host: "With Bhagirathi Sivamani · Sound-to-Word Mastery",
     description:
-      "A spooky storytelling adventure where little readers dress up as their favourite characters, join an interactive story session, and enjoy a little Halloween magic.",
+      "Where letters turn into words and words come alive. Join us for an engaging learning experience exploring phonics, spelling and grammar.",
     details: [
-      ["Date", "31 October"],
-      ["Time", "6:00 PM onwards"],
-      ["Age group", "4 years and above"],
-      ["Entry fee", "₹600 per child"],
+      ["Date", "5 December 2026"],
+      ["Time", "5:00 PM onwards"],
+      ["Age group", "Ages 5+"],
+      ["Entry fee", "₹699 per child"],
     ],
-    note: "Come dressed as your favourite character and step into the story! 🎃",
-    venue: "Rooftop, The Reading Elf, Thoraipakkam, Chennai",
+    highlight: "Parents are also welcome!",
+    venue: "Reading Elf, Thoraipakkam, Chennai",
     phone: "95000 56482",
-    image: booStorytimeImage,
-    imageAlt: "A storyteller in a witch hat reads to children in Halloween costumes on a lantern-lit rooftop.",
+    image: soundAndSpellImage,
+    imageAlt: "A teacher reads from a glowing book as letters float up, with children listening on a sunny terrace.",
     registrationUrl: `https://wa.me/919500056482?text=${encodeURIComponent(
-      "Hi! I'd like to register my child for Boo! It's Storytime on 31 October.",
+      "Hi! I'd like to register for Sound & Spell Safari on 5 December.",
     )}`,
   },
 ];
@@ -176,6 +203,19 @@ export default function EventsStage() {
                   <p className="events-main__host">{event.host}</p>
                   <p className="events-main__desc">{event.description}</p>
 
+                  {event.featuring && (
+                    <p className="events-main__desc">
+                      <strong>Featuring:</strong>
+                      <br />
+                      {event.featuring.map((item, index) => (
+                        <span key={item}>
+                          {item}
+                          {index < event.featuring.length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  )}
+
                   <dl className="events-main__chips">
                     {event.details.map(([label, value]) => (
                       <div className="events-main__chip" key={label}>
@@ -192,7 +232,7 @@ export default function EventsStage() {
                     )}
                   </dl>
 
-                  <p className="events-main__note">{event.note}</p>
+                  {event.note && <p className="events-main__note">{event.note}</p>}
                   <p className="events-main__venue">
                     <strong>Venue:</strong> {event.venue}
                   </p>

@@ -274,8 +274,10 @@
 
   /*
    * New Events pill stays top-left, clear of the hamburger on the
-   * upper-right. Two events now stack inside it, so it's shorter and
-   * tighter here than on desktop to clear the headline below it.
+   * upper-right. Three events now stack inside it, so padding/gaps/font
+   * sizes are tightened here (vs. desktop) to keep it clear of the
+   * headline below it - see the headline's own top offset further down
+   * this file (the later duplicate @media block wins).
    */
   .landing-hero__event {
     top: 12px;
@@ -283,8 +285,8 @@
 
     max-width: 90%;
 
-    padding: 6px 12px;
-    gap: 6px;
+    padding: 5px 10px;
+    gap: 5px;
   }
 
   .landing-hero__event-badge {
@@ -292,13 +294,13 @@
   }
 
   .landing-hero__event-list {
-    gap: 2px;
-    font-size: 11px;
+    gap: 1px;
+    font-size: 10px;
     line-height: 1.15;
   }
 
   .landing-hero__event-date {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
 
@@ -736,7 +738,12 @@
   }
 
   .landing-hero__headline {
-    top: 9.5svh;
+    /*
+     * Pushed down from 9.5svh so the now-three-line New Events pill
+     * (.landing-hero__event, further up this file) never overlaps the
+     * headline on short phones.
+     */
+    top: 14svh;
     left: 3%;
 
     width: 94%;
